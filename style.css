@@ -23,9 +23,9 @@ html, body {
   display: flex;
   align-items: center;
   gap: 24px;
-  padding: 6px 14px 6px 6px;
-  border-radius: 100px;
-  background: rgba(255, 255, 255, 0.85);
+  padding: 4px 14px 4px 4px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border: 2px solid rgba(255, 255, 255, 0.15);
@@ -34,21 +34,23 @@ html, body {
 }
 
 .navbar-avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 45.173px;
+  width: 60px;
+  height: 60px;
+  border-radius: 24.71px;
   overflow: hidden;
   flex-shrink: 0;
   position: relative;
 }
 
 .navbar-avatar img {
-  width: 121.55%;
-  height: 121.55%;
+  width: 100%;
+  height: 100%;
   position: absolute;
-  left: -14.57%;
-  top: -5.99%;
+  left: 0;
+  top: 0;
   object-fit: cover;
+  object-position: center;
+  border-radius: 24.71px;
 }
 
 .navbar-links {
@@ -62,7 +64,7 @@ html, body {
   justify-content: center;
   height: 48px;
   padding: 12px 20px;
-  border-radius: 50px;
+  border-radius: 20px;
   font-family: 'Fixel Text', sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -71,11 +73,13 @@ html, body {
   color: #121212;
   text-decoration: none;
   transition: background 0.2s;
+  border: 1px solid transparent;
 }
 
 .navbar-links a.active,
 .navbar-links a:hover {
-  background: #dfe0e6;
+  background: #F4F5F6;
+  border: 1px solid rgba(18, 18, 18, 0.05);
 }
 
 .navbar-cta {
@@ -84,16 +88,29 @@ html, body {
   gap: 4px;
   height: 48px;
   padding: 12px 16px 12px 24px;
-  border-radius: 9999px;
+  border-radius: 20px;
   background: #050505;
   color: #fafafa;
   font-family: sans-serif;
-  font-weight: 400;
-  font-size: 14.5px;
+  font-weight: 600;
+  font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.725px;
   text-decoration: none;
   flex-shrink: 0;
+  transition: background 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.navbar-cta:hover {
+  background: #2d2d2d;
+}
+
+.navbar-cta svg {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.navbar-cta:hover svg {
+  transform: translateX(3px);
 }
 
 
