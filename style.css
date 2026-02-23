@@ -219,7 +219,7 @@ main {
 
 /* Card Soon */
 .card-soon {
-  background: #e9ebed;
+  background: transparent;
   border-radius: 44px;
   padding: 24px;
   display: flex;
@@ -227,23 +227,36 @@ main {
   gap: 24px;
   width: 100%;
   overflow: hidden;
+  cursor: pointer;
+  transition: background 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), border 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 1px solid transparent;
+}
+
+.card-soon:hover {
+  background: #e9ebed;
+  border: 1px solid rgba(62, 146, 187, 0.12);
+}
+
+.card-soon:hover .card-image img {
+  transform: scale(1.05);
 }
 
 /* Card Default */
 .card-default {
-  background: #e9ebed;
-  border-radius: 32px;
+  background: transparent;
+  border-radius: 44px;
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 24px;
   width: 100%;
   cursor: pointer;
-  transition: border 0.2s;
+  transition: background 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), border 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   border: 1px solid transparent;
 }
 
 .card-default:hover {
+  background: #e9ebed;
   border: 1px solid rgba(62, 146, 187, 0.12);
 }
 
@@ -263,6 +276,11 @@ main {
   object-fit: cover;
   top: 0;
   left: 0;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-default:hover .card-image img {
+  transform: scale(1.05);
 }
 
 .card-footer {
@@ -455,7 +473,7 @@ main {
   gap: 24px;
   align-items: stretch;
   transform: translateX(calc(50vw - 883.2px));
-  transition: transform 0.4s ease;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .testimonial-slide {
