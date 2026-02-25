@@ -104,17 +104,17 @@ export default function Home() {
                   <img src="https://www.figma.com/api/mcp/asset/35030000-7ef2-49f0-9d76-4eef4cceac01" alt="Designing for the second order" />
                 </div>
                 <div className="card-footer">
-                  <span className="card-title">Designing for the second order</span>
+                  <span className="card-title">The loop that brought users back</span>
                 </div>
               </div>
 
               {/* Card: Default 2 */}
-              <div className="card-default">
+              <div className="card-default" onClick={() => router.push('/skvot')} style={{ cursor: 'pointer' }}>
                 <div className="card-image">
-                  <img src="https://www.figma.com/api/mcp/asset/3dc7a7ac-1274-471c-8ea2-744befe1f7c5" alt="Enhancing reading and memorising" />
+                  <img src="https://www.figma.com/api/mcp/asset/3dc7a7ac-1274-471c-8ea2-744befe1f7c5" alt="SKVOT Mobile App" />
                 </div>
                 <div className="card-footer">
-                  <span className="card-title">Enhancing reading and memorising</span>
+                  <span className="card-title">A bridge between student and lecturer</span>
                 </div>
               </div>
 
@@ -207,7 +207,7 @@ export default function Home() {
             {/* Card 3 */}
             <div className="exp-card">
               <div className="exp-card-header">
-                <div className="exp-company">Skvot Mobile App</div>
+                <div className="exp-company">Skvot</div>
                 <div className="exp-date">Feb 2024 – May 2024</div>
               </div>
               <div className="exp-rows">
@@ -309,9 +309,9 @@ export default function Home() {
           <div className="manifesto-inner">
             <div className="manifesto-section">
               <div className="manifesto-text">
-                <p>I hold two core beliefs that guide my approach to creating exceptional products.</p>
-                <p>Firstly, I believe that great products are built and grown by embracing speed. The sooner we release a usable piece of a product, the sooner we can gather feedback to learn if we&apos;re aiming for the right goal and direction. Too often, the industry—and especially big tech—moves too slowly, falling into the complacency trap of ideating and polishing for months before the first user experiences a feature. This approach burns heaps of money as we dance around the campfire of self-satisfaction. The harsh reality is that a product or feature means nothing until it encounters its first user. Today, with all the available tools to prototype and reach customers, there&apos;s nothing stopping us from obtaining customer validation faster. Product design should be the function that enables or leads this effort.</p>
-                <p>The future of tech is neither slow nor lonely. Let&apos;s embrace speed and collaboration to build the next generation of groundbreaking products.</p>
+                <p>Good design starts with curiosity, not solutions. Before thinking about screens, interactions, or visual direction — I want to understand the problem deeply. What&apos;s actually stopping people? What do they need that they haven&apos;t been able to articulate yet? That&apos;s the work I find most interesting, and it&apos;s what shapes everything that follows.</p>
+                <p>I believe the most impactful design decisions often look like subtractions — removing a feature that would&apos;ve gone unused, simplifying a flow that felt complex, eliminating friction nobody noticed was there. Getting to those decisions requires research, honest conversations, and the willingness to challenge the obvious answer.</p>
+                <p>I care about presenting work honestly too. Design rarely goes exactly as planned, and the most valuable lessons usually come from the moments that didn&apos;t. That&apos;s the process worth showing.</p>
               </div>
             </div>
             <div className="manifesto-border"></div>

@@ -3,10 +3,10 @@ import '@/styles/case-study.css';
 import Navbar from '@/components/Navbar';
 
 export const metadata: Metadata = {
-  title: 'GudFood Vdoma | Danylo Ivanov',
+  title: 'SKVOT Mobile App | Danylo Ivanov',
 };
 
-export default function CaseStudy() {
+export default function SkvotCaseStudy() {
   return (
     <>
       <Navbar variant="case-study" />
@@ -18,8 +18,8 @@ export default function CaseStudy() {
           <div className="cs-hero-inner">
 
             <div className="cs-hero-title-area">
-              <p className="cs-project-name">GudFood Vdoma</p>
-              <h1 className="cs-title">The loop that brought users back</h1>
+              <p className="cs-project-name">Skvot</p>
+              <h1 className="cs-title">A bridge between student and lecturer</h1>
             </div>
 
             <div className="cs-hero-content">
@@ -28,15 +28,15 @@ export default function CaseStudy() {
               <div className="cs-text-sections">
                 <div className="cs-text-section">
                   <h3 className="cs-section-heading">Problem</h3>
-                  <p className="cs-section-body">Customers ordered once or twice and didn&apos;t return. The app had no feedback system — the team had zero structured data on why people left. The UI felt dated compared to Glovo and Bolt Food.</p>
+                  <p className="cs-section-body">The web platform had outdated flows and no mobile app — neither did any competitor. Students relied on Telegram and email to communicate with lecturers. There was no native mobile solution in the market.</p>
                 </div>
                 <div className="cs-text-section">
                   <h3 className="cs-section-heading">Solution</h3>
-                  <p className="cs-section-body">A closed-loop feedback system: post-order star ratings with quick-feedback tags, dish-level reviews that build social proof, and aggregated restaurant ratings that surface quality issues. Paired with a full UI refresh across all core screens.</p>
+                  <p className="cs-section-body">A 4-tab native app shaped entirely by research: a weekly schedule and content feed, a full culture library, a My Courses hub with grades and instructor feedback, and a direct chat replacing Telegram.</p>
                 </div>
                 <div className="cs-text-section">
                   <h3 className="cs-section-heading">Result</h3>
-                  <p className="cs-section-body">Concept validated by the GudFood Vdoma product team as aligned with their product roadmap.</p>
+                  <p className="cs-section-body">0→1 concept delivered in 4 weeks. The research-driven decision to cut homework submission for students and keep lecturer grading is the strongest proof of product thinking — building the right thing, not just the obvious thing.</p>
                 </div>
               </div>
 
@@ -45,30 +45,30 @@ export default function CaseStudy() {
                 <div className="cs-meta-row">
                   <span className="cs-meta-label">Role</span>
                   <div className="cs-meta-values">
-                    <span>Product Designer — Solo</span>
+                    <span>UX/UI Designer (Mobile) — Solo</span>
                   </div>
                 </div>
                 <div className="cs-meta-divider"></div>
                 <div className="cs-meta-row">
                   <span className="cs-meta-label">Team</span>
-                  <span className="cs-meta-value">1 Designer, 1 Mentor, GudFood stakeholders</span>
+                  <span className="cs-meta-value">1 Designer, 1 Mentor</span>
                 </div>
                 <div className="cs-meta-divider"></div>
                 <div className="cs-meta-row">
                   <span className="cs-meta-label">Timeline</span>
-                  <span className="cs-meta-value">Sep — Nov 2024</span>
+                  <span className="cs-meta-value">Mar — Apr 2024</span>
                 </div>
                 <div className="cs-meta-divider"></div>
                 <div className="cs-meta-row">
                   <span className="cs-meta-label">Scope</span>
                   <div className="cs-meta-scope">
                     <div className="cs-meta-scope-col">
-                      <span>Stakeholder Interviews</span>
                       <span>UX Research</span>
-                      <span>Hypothesis Generation</span>
+                      <span>Competitor Analysis</span>
+                      <span>Wireframing</span>
                     </div>
                     <div className="cs-meta-scope-col">
-                      <span>UI Redesign</span>
+                      <span>UI Design</span>
                       <span>Prototyping</span>
                     </div>
                   </div>
