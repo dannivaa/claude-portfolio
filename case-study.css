@@ -106,8 +106,8 @@
 .cs-meta-label {
   font-family: 'Fixel Text', sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
   letter-spacing: -0.56px;
   color: #838f95;
   width: 101px;
@@ -121,8 +121,8 @@
   flex: 1;
   font-family: 'Fixel Text', sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
   letter-spacing: -0.56px;
   color: #050505;
 }
@@ -130,8 +130,8 @@
 .cs-meta-value {
   font-family: 'Fixel Text', sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
   letter-spacing: -0.56px;
   color: #050505;
 }
@@ -154,8 +154,8 @@
   gap: 4px;
   font-family: 'Fixel Text', sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
   letter-spacing: -0.56px;
   color: #050505;
 }

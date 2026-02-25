@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=1440" />
-  <title>Portfolio</title>
+  <title>Danylo Ivanov | Product Designer</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/svg+xml" href="favicon white.svg" media="(prefers-color-scheme: dark)" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -37,11 +39,25 @@
     <section class="hero-wrapper">
       <div class="hero-card">
         <div class="hero-bg">
-          <img src="https://www.figma.com/api/mcp/asset/60b0f1db-7790-42da-b1d9-c30418f7f19a" alt="" />
-          <div class="hero-bg-overlay"></div>
+          <!-- Etheral shadow background -->
+          <svg style="position:absolute;width:0;height:0;">
+            <defs>
+              <filter id="hero-shadow-filter">
+                <feTurbulence result="undulation" numOctaves="2" baseFrequency="0.0005,0.002" seed="0" type="turbulence"/>
+                <feColorMatrix id="hero-hue-rotate" in="undulation" type="hueRotate" values="0"/>
+                <feColorMatrix in="dist" result="circulation" type="matrix" values="4 0 0 0 1  4 0 0 0 1  4 0 0 0 1  1 0 0 0 0"/>
+                <feDisplacementMap in="SourceGraphic" in2="circulation" scale="100" result="dist"/>
+                <feDisplacementMap in="dist" in2="undulation" scale="100" result="output"/>
+              </filter>
+            </defs>
+          </svg>
+          <div class="hero-shadow-wrap">
+            <div class="hero-shadow-layer"></div>
+          </div>
+          <div class="hero-noise"></div>
         </div>
 
-        <p class="hero-headline">An experienced UX/UI Designer with a bias for shipping, quality and no-bullshit. Let's talk about your product.</p>
+        <p class="hero-headline">Product Designer translating user insights into products that actually work.</p>
       </div>
     </section>
 
@@ -115,15 +131,15 @@
           <!-- Card: Default (with hover) -->
           <div class="card-default" onclick="window.location='case-study.html'" style="cursor:pointer;">
             <div class="card-image">
-              <img src="https://www.figma.com/api/mcp/asset/35030000-7ef2-49f0-9d76-4eef4cceac01" alt="Enhancing reading and memorising" />
+              <img src="https://www.figma.com/api/mcp/asset/35030000-7ef2-49f0-9d76-4eef4cceac01" alt="Designing for the second order" />
             </div>
             <div class="card-footer">
-              <span class="card-title">Enhancing reading and memorising</span>
+              <span class="card-title">Designing for the second order</span>
             </div>
           </div>
 
           <!-- Card: Default 2 -->
-          <div class="card-default" onclick="window.location='case-study.html'" style="cursor:pointer;">
+          <div class="card-default">
             <div class="card-image">
               <img src="https://www.figma.com/api/mcp/asset/3dc7a7ac-1274-471c-8ea2-744befe1f7c5" alt="Enhancing reading and memorising" />
             </div>
@@ -143,8 +159,8 @@
         <!-- Card 1 -->
         <div class="exp-card">
           <div class="exp-card-header">
-            <div class="exp-company">GudFood</div>
-            <div class="exp-date">Sep 2025 - Now</div>
+            <div class="exp-company">Lyxonn</div>
+            <div class="exp-date">Sep 2025 – Present</div>
           </div>
           <div class="exp-rows">
             <div class="exp-row">
@@ -166,16 +182,14 @@
             <div class="exp-row">
               <span class="exp-label">Scope</span>
               <div class="exp-scope-list">
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
+                <span class="exp-scope-item">Mobile & Web Design</span>
+                <span class="exp-scope-item">Conversion Optimization</span>
+                <span class="exp-scope-item">UX Research</span>
+                <span class="exp-scope-item">Usability Testing</span>
+                <span class="exp-scope-item">UX Architecture</span>
+                <span class="exp-scope-item">Payments & KYC Flows</span>
+                <span class="exp-scope-item">Design Systems</span>
+                <span class="exp-scope-item">Hypothesis Validation</span>
               </div>
             </div>
           </div>
@@ -184,8 +198,8 @@
         <!-- Card 2 -->
         <div class="exp-card">
           <div class="exp-card-header">
-            <div class="exp-company">GudFood</div>
-            <div class="exp-date">Sep 2025 - Now</div>
+            <div class="exp-company">Cake Alliance</div>
+            <div class="exp-date">Jul 2024 – Sep 2025</div>
           </div>
           <div class="exp-rows">
             <div class="exp-row">
@@ -207,16 +221,14 @@
             <div class="exp-row">
               <span class="exp-label">Scope</span>
               <div class="exp-scope-list">
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
+                <span class="exp-scope-item">Mobile-first UI Design</span>
+                <span class="exp-scope-item">Responsive Interfaces</span>
+                <span class="exp-scope-item">Design Systems</span>
+                <span class="exp-scope-item">User Research</span>
+                <span class="exp-scope-item">Competitive Analysis</span>
+                <span class="exp-scope-item">Usability Testing</span>
+                <span class="exp-scope-item">Product Collaboration</span>
+                <span class="exp-scope-item">Developer Handoff</span>
               </div>
             </div>
           </div>
@@ -225,8 +237,8 @@
         <!-- Card 3 -->
         <div class="exp-card">
           <div class="exp-card-header">
-            <div class="exp-company">GudFood</div>
-            <div class="exp-date">Sep 2025 - Now</div>
+            <div class="exp-company">Skvot Mobile App</div>
+            <div class="exp-date">Feb 2024 – May 2024</div>
           </div>
           <div class="exp-rows">
             <div class="exp-row">
@@ -248,16 +260,13 @@
             <div class="exp-row">
               <span class="exp-label">Scope</span>
               <div class="exp-scope-list">
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
-                <span class="exp-scope-item">UX/UI Designer</span>
+                <span class="exp-scope-item">End-to-end UX/UI</span>
+                <span class="exp-scope-item">Mobile User Flows</span>
+                <span class="exp-scope-item">Wireframing</span>
+                <span class="exp-scope-item">High-fidelity UI</span>
+                <span class="exp-scope-item">Interactive Prototypes</span>
+                <span class="exp-scope-item">Onboarding Design</span>
+                <span class="exp-scope-item">Usability Testing</span>
               </div>
             </div>
           </div>
@@ -342,5 +351,20 @@
 
   </main>
 
+  <script>
+    (function() {
+      var el = document.getElementById('hero-hue-rotate');
+      if (!el) return;
+      var start = null;
+      var duration = 5820; // ms per full 360deg rotation
+      function tick(ts) {
+        if (!start) start = ts;
+        var deg = ((ts - start) / duration * 360) % 360;
+        el.setAttribute('values', String(deg));
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    })();
+  </script>
 </body>
 </html>
