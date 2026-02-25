@@ -17,6 +17,8 @@
   flex-direction: column;
   gap: 48px;
   width: 100%;
+  max-width: 1256px;
+  margin: 0 auto;
 }
 
 .cs-hero-title-area {
@@ -169,6 +171,8 @@
   flex-direction: column;
   gap: 16px;
   width: 100%;
+  max-width: 1728px;
+  margin: 0 auto;
 }
 
 .cs-image-card {
