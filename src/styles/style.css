@@ -638,6 +638,7 @@ main {
 .manifesto-section {
   background: #fff;
   border-radius: 52px;
+  padding: 80px 0;
   overflow: clip;
   width: 100%;
   display: flex;
@@ -660,4 +661,8 @@ main {
   line-height: 52px;
   letter-spacing: -1.3px;
   color: #050C0F;
+}
+
+.manifesto-text p + p {
+  margin-top: 52px;
 }

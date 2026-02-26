@@ -12,12 +12,12 @@
 }
 
 .cs-hero-inner {
-  padding: 128px 80px 80px;
+  padding: 128px 0 80px;
   display: flex;
   flex-direction: column;
   gap: 48px;
-  width: 100%;
-  max-width: 1256px;
+  width: 80vw;
+  max-width: 1440px;
   margin: 0 auto;
 }
 

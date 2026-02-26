@@ -246,64 +246,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* TESTIMONIALS */}
-        <section id="testimonials" className="testimonials-wrapper">
-          <div className="testimonials-section">
-            <div className="testimonials-track-container">
-              <div className="testimonials-track" id="testimonialsTrack">
-
-                <div className="testimonial-slide">
-                  <div className="testimonial-body">
-                    <p className="testimonial-text">Damian is one of the best designers I have worked with. He is very pragmatic and he values engineering input in the early iterations of the design phase and I found that extremely efficient. He is very open to giving and receiving feedback and he also iterates on feedback very quickly. He is very thorough when it comes to UX and UI designing. His deep understanding of UX and UI, coupled with a strong empathy for customer needs, ensures that the entire team is aligned with user perspectives.</p>
-                  </div>
-                  <div className="testimonial-divider"></div>
-                  <div className="testimonial-author">
-                    <div className="testimonial-avatar">
-                      <img src="https://www.figma.com/api/mcp/asset/9120d13f-98b8-468b-8459-fa577fea8164" alt="Ashwini Dhananjeyan" />
-                    </div>
-                    <div className="testimonial-author-info">
-                      <span className="testimonial-name">Ashwini Dhananjeyan</span>
-                      <span className="testimonial-role">Engineering Manager at Miro</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="testimonial-slide">
-                  <div className="testimonial-body">
-                    <p className="testimonial-text">Damian is one of the best designers I have worked with. He is very pragmatic and he values engineering input in the early iterations of the design phase and I found that extremely efficient. He is very open to giving and receiving feedback and he also iterates on feedback very quickly. He is very thorough when it comes to UX and UI designing. His deep understanding of UX and UI, coupled with a strong empathy for customer needs, ensures that the entire team is aligned with user perspectives.</p>
-                  </div>
-                  <div className="testimonial-divider"></div>
-                  <div className="testimonial-author">
-                    <div className="testimonial-avatar">
-                      <img src="https://www.figma.com/api/mcp/asset/9120d13f-98b8-468b-8459-fa577fea8164" alt="Ashwini Dhananjeyan" />
-                    </div>
-                    <div className="testimonial-author-info">
-                      <span className="testimonial-name">Ashwini Dhananjeyan</span>
-                      <span className="testimonial-role">Engineering Manager at Miro</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="testimonial-slide">
-                  <div className="testimonial-body">
-                    <p className="testimonial-text">Damian is one of the best designers I have worked with. He is very pragmatic and he values engineering input in the early iterations of the design phase and I found that extremely efficient. He is very open to giving and receiving feedback and he also iterates on feedback very quickly. He is very thorough when it comes to UX and UI designing. His deep understanding of UX and UI, coupled with a strong empathy for customer needs, ensures that the entire team is aligned with user perspectives.</p>
-                  </div>
-                  <div className="testimonial-divider"></div>
-                  <div className="testimonial-author">
-                    <div className="testimonial-avatar">
-                      <img src="https://www.figma.com/api/mcp/asset/9120d13f-98b8-468b-8459-fa577fea8164" alt="Ashwini Dhananjeyan" />
-                    </div>
-                    <div className="testimonial-author-info">
-                      <span className="testimonial-name">Ashwini Dhananjeyan</span>
-                      <span className="testimonial-role">Engineering Manager at Miro</span>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* TESTIMONIALS — hidden */}
 
         {/* MANIFESTO */}
         <section className="manifesto-wrapper">

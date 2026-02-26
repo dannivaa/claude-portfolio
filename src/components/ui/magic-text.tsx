@@ -49,7 +49,7 @@ export const MagicText: React.FC<MagicTextProps> = ({ text, className }) => {
         const offset = allWords.findIndex((w) => w.pi === pi);
 
         return (
-          <p key={pi} style={{ display: 'flex', flexWrap: 'wrap', margin: 0 }}>
+          <p key={pi} style={{ display: 'flex', flexWrap: 'wrap' }}>
             {paraWords.map((word, wi) => {
               const globalIndex = offset + wi;
               const start = globalIndex / total;
