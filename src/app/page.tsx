@@ -3,6 +3,7 @@
 import '@/styles/style.css';
 import Navbar from '@/components/Navbar';
 import { Component } from '@/components/ui/etheral-shadow';
+import { TextRevealByWord } from '@/components/ui/text-reveal';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
@@ -308,13 +309,7 @@ export default function Home() {
         <section className="manifesto-wrapper">
           <div className="manifesto-inner">
             <div className="manifesto-section">
-              <div className="manifesto-text">
-                <p>Good design starts with curiosity, not solutions. Before thinking about screens, interactions, or visual direction — I want to understand the problem deeply. What&apos;s actually stopping people? What do they need that they haven&apos;t been able to articulate yet? What does the business need that it doesn&apos;t know how to ask for? Those questions are where the interesting work begins, and the answers shape everything that follows.</p>
-                <p>I&apos;ve come to believe that the most impactful design decisions often look like subtractions. Removing a feature that would&apos;ve gone unused. Simplifying a flow that felt unnecessarily complex. Eliminating friction that nobody noticed was there until you asked. Getting to those decisions requires more than intuition — it requires research, honest conversations with real people, and the willingness to challenge the obvious answer even when everyone in the room is already attached to it.</p>
-                <p>When I conduct interviews, I&apos;m not looking for validation. I&apos;m looking for the thing nobody thought to mention — the barrier that existing users have normalized, the gap between what people say they want and what would actually help them. That&apos;s where the real design opportunities hide.</p>
-                <p>I also care about honesty in how I present my work. Design rarely goes exactly as planned. Constraints change, projects don&apos;t ship, decisions get made above your pay grade. The most valuable lessons usually live in those moments, and I think the most trustworthy designers are the ones who can talk about them clearly.</p>
-                <p>At the end of the day, I want to design products that make people&apos;s lives genuinely easier. Not just functional, not just beautiful — but thoughtful in a way that people feel even if they can&apos;t explain it.</p>
-              </div>
+              <TextRevealByWord text="Good design starts with curiosity, not solutions. Before thinking about screens, interactions, or visual direction — I want to understand the problem deeply. What's actually stopping people? What do they need that they haven't been able to articulate yet? What does the business need that it doesn't know how to ask for? Those questions are where the interesting work begins, and the answers shape everything that follows. I've come to believe that the most impactful design decisions often look like subtractions. Removing a feature that would've gone unused. Simplifying a flow that felt unnecessarily complex. Eliminating friction that nobody noticed was there until you asked. Getting to those decisions requires more than intuition — it requires research, honest conversations with real people, and the willingness to challenge the obvious answer even when everyone in the room is already attached to it. When I conduct interviews, I'm not looking for validation. I'm looking for the thing nobody thought to mention — the barrier that existing users have normalized, the gap between what people say they want and what would actually help them. That's where the real design opportunities hide. I also care about honesty in how I present my work. Design rarely goes exactly as planned. Constraints change, projects don't ship, decisions get made above your pay grade. The most valuable lessons usually live in those moments, and I think the most trustworthy designers are the ones who can talk about them clearly. At the end of the day, I want to design products that make people's lives genuinely easier. Not just functional, not just beautiful — but thoughtful in a way that people feel even if they can't explain it." />
             </div>
             <div className="manifesto-border"></div>
           </div>

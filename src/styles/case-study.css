@@ -183,6 +183,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 90vh;
   overflow: hidden;
 }
 
@@ -192,6 +193,127 @@
   height: auto;
   border-radius: 4px;
   display: block;
+}
+
+/* Phone frame rows */
+.cs-phones-row {
+  /* Shared layout variables derived from full-phone aspect ratio (310.67 : 673.514) */
+  --row-height: calc(90vh - 160px);
+  --phone-width: calc(var(--row-height) * 310.67 / 673.514);
+  height: var(--row-height);
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  justify-content: center;
+}
+
+.cs-phones-row--bottom {
+  align-items: flex-end;
+}
+
+/* Full phone — scales to fill the row height, width follows aspect ratio */
+.cs-phone-frame {
+  border: 1px solid rgba(33, 33, 33, 0.15);
+  border-radius: 32px;
+  box-shadow: 0px 4px 22.6px -12px rgba(33, 33, 33, 0.25);
+  overflow: hidden;
+  flex-shrink: 0;
+  height: 100%;
+  width: auto;
+}
+
+.cs-phone-frame img {
+  display: block;
+  height: 100%;
+  width: auto;
+  border-radius: 0;
+  max-width: none;
+}
+
+/* Short crop frame — container ~311×314 (≈1:1), image absolutely positioned to reveal bottom half */
+.cs-phone-frame--short {
+  width: var(--phone-width);
+  height: auto;
+  aspect-ratio: 311 / 314;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-phone-frame--short img {
+  position: absolute;
+  width: 99.89%;
+  height: 214.49%;
+  top: -114.65%;
+  left: 0;
+  display: block;
+  border-radius: 0;
+  max-width: none;
+}
+
+/* Medium phone — same width as a full phone, height auto from natural aspect ratio */
+.cs-phone-frame--medium {
+  width: var(--phone-width);
+  height: auto;
+}
+
+.cs-phone-frame--medium img {
+  width: 100%;
+  height: auto;
+}
+
+/* Row 4: modal frame — bordered + rounded like a phone, but explicit dimensions */
+.cs-screenshot-main {
+  height: calc(var(--row-height) * 473 / 673.514);
+  width: calc(var(--row-height) * 329 / 673.514);
+  border: 1px solid rgba(33, 33, 33, 0.15);
+  border-radius: calc(var(--row-height) * 32 / 673.514);
+  box-shadow: 0px 4px 22.6px -12px rgba(33, 33, 33, 0.25);
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.cs-screenshot-main img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  max-width: none;
+}
+
+/* Row 4: stacked screenshots — width fixed, height driven by natural image aspect ratio */
+.cs-stacked-group {
+  width: calc(var(--row-height) * 387 / 673.514);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.cs-stacked-frame {
+  border: 0.5px solid rgba(33, 33, 33, 0.15);
+  box-shadow: 0px 4px 22.6px -12px rgba(33, 33, 33, 0.25);
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Scaled border-radius from Figma values: 22.9px / 35.5px */
+.cs-stacked-frame:nth-child(1) {
+  border-radius: calc(var(--row-height) * 22.895 / 673.514);
+}
+.cs-stacked-frame:nth-child(2) {
+  border-radius: calc(var(--row-height) * 35.487 / 673.514);
+}
+
+.cs-stacked-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  border-radius: 0;
 }
 
 /* ─── CTA ─────────────────────────────────────────────────────────────────── */
