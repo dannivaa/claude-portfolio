@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 interface NavbarProps {
   variant?: 'home' | 'case-study';
@@ -24,12 +25,10 @@ export default function Navbar({ variant = 'home' }: NavbarProps) {
         </div>
       </div>
       <div className="navbar-right">
-        <a href="#" className="navbar-cta">
+        <button className="navbar-cta">
           Let&apos;s talk
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
-            <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#FAFAFA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </a>
+          <ArrowRight size={20} />
+        </button>
       </div>
     </nav>
   );

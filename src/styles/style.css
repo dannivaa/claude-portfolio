@@ -46,6 +46,24 @@ html, body {
   gap: 24px;
 }
 
+.navbar-cta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 48px;
+  padding: 12px 16px 12px 24px;
+  background: #121212;
+  color: #fafafa;
+  border: none;
+  border-radius: 20px;
+  font-family: 'Fixel Text', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.64px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
 .navbar-secondary-link {
   font-family: 'Fixel Text', sans-serif;
   font-weight: 500;
@@ -83,7 +101,7 @@ html, body {
 }
 
 .navbar-avatar:hover img {
-  transform: scale(1.05);
+  transform: scale(1.15);
 }
 
 .navbar-links {
@@ -113,37 +131,6 @@ html, body {
 .navbar-links a:hover {
   background: #F4F5F6;
   border: 1px solid rgba(18, 18, 18, 0.05);
-}
-
-.navbar-cta {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  height: 48px;
-  padding: 12px 16px 12px 24px;
-  border-radius: 20px;
-  background: #050505;
-  color: #fafafa;
-  font-family: sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: -0.725px;
-  text-decoration: none;
-  flex-shrink: 0;
-  transition: background 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.navbar-cta:hover {
-  background: #2d2d2d;
-}
-
-.navbar-cta svg {
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.navbar-cta:hover svg {
-  transform: translateX(3px);
 }
 
 
@@ -658,11 +645,7 @@ main {
 }
 
 .manifesto-border {
-  position: absolute;
-  inset: 0 0 -0.09px 0;
-  border-radius: 44px;
-  border: 4px solid rgba(18, 18, 18, 0.06);
-  pointer-events: none;
+  display: none;
 }
 
 .manifesto-text {
