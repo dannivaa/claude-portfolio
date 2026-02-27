@@ -102,7 +102,7 @@ export default function Home() {
               {/* Card: Default (with hover) */}
               <div className="card-default" onClick={() => router.push('/case-study')} style={{ cursor: 'pointer' }}>
                 <div className="card-image">
-                  <img src="https://www.figma.com/api/mcp/asset/35030000-7ef2-49f0-9d76-4eef4cceac01" alt="Designing for the second order" />
+                  <img src="/gudfood-cover-v2.png" alt="The loop that brought users back" />
                 </div>
                 <div className="card-footer">
                   <span className="card-title">The loop that brought users back</span>
