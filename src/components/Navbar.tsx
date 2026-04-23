@@ -26,8 +26,12 @@ export default function Navbar({ variant = 'home' }: NavbarProps) {
       </div>
       <div className="navbar-right">
         <button className="navbar-cta">
-          Let&apos;s talk
-          <ArrowRight size={20} />
+          <span className="navbar-cta-label">Let&apos;s talk</span>
+          <div className="navbar-cta-hover">
+            <span>Let&apos;s talk</span>
+            <ArrowRight size={20} />
+          </div>
+          <div className="navbar-cta-blob"></div>
         </button>
       </div>
     </nav>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "@/styles/style.css";
+import LenisProvider from "@/components/LenisProvider";
 
 export const metadata: Metadata = {
   title: "Danylo Ivanov | Product Designer",
@@ -18,7 +19,9 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" media="(prefers-color-scheme: light)" />
         <link rel="icon" type="image/svg+xml" href="/favicon white.svg" media="(prefers-color-scheme: dark)" />
       </head>
-      <body>{children}</body>
+      <body>
+        <LenisProvider>{children}</LenisProvider>
+      </body>
     </html>
   );
 }

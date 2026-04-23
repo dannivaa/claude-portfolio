@@ -14,6 +14,7 @@ export default function Home() {
       <Navbar variant="home" />
 
       <main>
+        <article>
 
         {/* HERO */}
         <section className="hero-wrapper">
@@ -91,7 +92,7 @@ export default function Home() {
               {/* Card: Soon */}
               <div className="card-soon">
                 <div className="card-image">
-                  <img src="https://www.figma.com/api/mcp/asset/2ee2001c-9848-42ef-875c-c5283827dc5b" alt="Enhancing reading and memorising" />
+                  <img src="/card-image.png" alt="Enhancing reading and memorising" />
                 </div>
                 <div className="card-footer">
                   <span className="card-title">Enhancing reading and memorising</span>
@@ -102,7 +103,7 @@ export default function Home() {
               {/* Card: Default (with hover) */}
               <div className="card-default" onClick={() => router.push('/case-study')} style={{ cursor: 'pointer' }}>
                 <div className="card-image">
-                  <img src="/gudfood-cover-v2.png" alt="The loop that brought users back" />
+                  <img src="/card-image.png" alt="The loop that brought users back" />
                 </div>
                 <div className="card-footer">
                   <span className="card-title">The loop that brought users back</span>
@@ -112,7 +113,7 @@ export default function Home() {
               {/* Card: Default 2 */}
               <div className="card-default" onClick={() => router.push('/skvot')} style={{ cursor: 'pointer' }}>
                 <div className="card-image">
-                  <img src="https://www.figma.com/api/mcp/asset/3dc7a7ac-1274-471c-8ea2-744befe1f7c5" alt="SKVOT Mobile App" />
+                  <img src="/card-image.png" alt="SKVOT Mobile App" />
                 </div>
                 <div className="card-footer">
                   <span className="card-title">A bridge between student and lecturer</span>
@@ -260,6 +261,7 @@ export default function Home() {
           </div>
         </section>
 
+        </article>
       </main>
     </>
   );
