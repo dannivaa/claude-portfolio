@@ -27,7 +27,7 @@ export default function Home() {
                 sizing="fill"
               />
             </div>
-            <p className="hero-headline">Product Designer translating user insights into products that actually work.</p>
+            <p className="hero-headline">Product Designer crafting solutions that drive business wins.</p>
           </div>
         </section>
 
