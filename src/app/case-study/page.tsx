@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import '@/styles/case-study.css';
 import Navbar from '@/components/Navbar';
+import { FadeIn } from '@/components/ui/fade-in';
 
 export const metadata: Metadata = {
   title: 'GudFood Vdoma | Danylo Ivanov',
@@ -81,6 +82,7 @@ export default function CaseStudy() {
 
         {/* GALLERY */}
         <section className="cs-gallery">
+          <FadeIn>
           <div className="cs-gallery-inner">
 
             {/* Row 1: 3 phones – home screens before/after */}
@@ -158,10 +160,12 @@ export default function CaseStudy() {
             </div>
 
           </div>
+          </FadeIn>
         </section>
 
         {/* CTA */}
         <section className="cs-cta-wrapper">
+          <FadeIn>
           <div className="cs-cta-inner">
             <div className="cs-cta-badge">
               <span className="cs-cta-dot"></span>
@@ -175,6 +179,7 @@ export default function CaseStudy() {
               </svg>
             </a>
           </div>
+          </FadeIn>
         </section>
 
       </main>

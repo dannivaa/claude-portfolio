@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import '@/styles/case-study.css';
 import Navbar from '@/components/Navbar';
+import { FadeIn } from '@/components/ui/fade-in';
 
 export const metadata: Metadata = {
   title: 'SKVOT Mobile App | Danylo Ivanov',
@@ -81,6 +82,7 @@ export default function SkvotCaseStudy() {
 
         {/* GALLERY */}
         <section className="cs-gallery">
+          <FadeIn>
           <div className="cs-gallery-inner">
             <div className="cs-image-card">
               <img src="https://www.figma.com/api/mcp/asset/43035999-dece-4aee-8afe-6c5fc076e241" alt="" />
@@ -104,10 +106,12 @@ export default function SkvotCaseStudy() {
               <img src="https://www.figma.com/api/mcp/asset/2dc67a8e-6835-4078-85e3-27a7067ad747" alt="" />
             </div>
           </div>
+          </FadeIn>
         </section>
 
         {/* CTA */}
         <section className="cs-cta-wrapper">
+          <FadeIn>
           <div className="cs-cta-inner">
             <div className="cs-cta-badge">
               <span className="cs-cta-dot"></span>
@@ -121,6 +125,7 @@ export default function SkvotCaseStudy() {
               </svg>
             </a>
           </div>
+          </FadeIn>
         </section>
 
       </main>

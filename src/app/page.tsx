@@ -4,6 +4,7 @@ import '@/styles/style.css';
 import Navbar from '@/components/Navbar';
 import { Component } from '@/components/ui/etheral-shadow';
 import { MagicText } from '@/components/ui/magic-text';
+import { FadeIn } from '@/components/ui/fade-in';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
@@ -32,7 +33,7 @@ export default function Home() {
         </section>
 
         {/* WORKED WITH */}
-        <div className="worked-with">
+        <FadeIn className="worked-with">
           <span className="worked-with-label">I worked with:</span>
 
           {/* lyxonn */}
@@ -82,10 +83,11 @@ export default function Home() {
           <div style={{ height: '40px', width: '113.746px', position: 'relative', flexShrink: 0 }}>
             <img src="https://www.figma.com/api/mcp/asset/e12c4a62-5247-4282-8fd7-641cd6cf43b7" alt="SKVOT" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} />
           </div>
-        </div>
+        </FadeIn>
 
         {/* PROJECTS */}
         <section id="projects" className="projects-wrapper">
+          <FadeIn>
           <div className="projects-section">
             <div className="project-cards">
 
@@ -122,10 +124,12 @@ export default function Home() {
 
             </div>
           </div>
+          </FadeIn>
         </section>
 
         {/* EXPERIENCE */}
         <section id="experience" className="experience-section">
+          <FadeIn>
           <div className="experience-grid">
 
             {/* Card 1 */}
@@ -245,12 +249,14 @@ export default function Home() {
             </div>
 
           </div>
+          </FadeIn>
         </section>
 
         {/* TESTIMONIALS — hidden */}
 
         {/* MANIFESTO */}
         <section className="manifesto-wrapper">
+          <FadeIn>
           <div className="manifesto-inner">
             <div className="manifesto-section">
               <div className="manifesto-text">
@@ -259,6 +265,7 @@ export default function Home() {
             </div>
             <div className="manifesto-border"></div>
           </div>
+          </FadeIn>
         </section>
 
         </article>
