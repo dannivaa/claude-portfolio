@@ -26,6 +26,8 @@
   flex-direction: column;
   gap: 8px;
   width: 100%;
+  align-items: center;
+  text-align: center;
 }
 
 .cs-project-name {
@@ -157,6 +159,155 @@
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.56px;
+  color: #050505;
+}
+
+/* ─── HERO: NAKED PHONE STRIP ─────────────────────────────────────────────── */
+.cs-phones-naked {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+}
+
+.cs-phone-naked {
+  border: 1px solid rgba(33, 33, 33, 0.15);
+  border-radius: 32px;
+  box-shadow: 0px 4px 22.6px -12px rgba(33, 33, 33, 0.25);
+  overflow: hidden;
+  flex-shrink: 0;
+  height: 58vh;
+  width: auto;
+}
+
+.cs-phone-naked img {
+  display: block;
+  height: 100%;
+  width: auto;
+}
+
+/* ─── HERO: PSR ROWS ──────────────────────────────────────────────────────── */
+.cs-psr-rows {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.cs-psr-row {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  padding: 24px 0;
+  border-top: 1px solid #e2e6e8;
+}
+
+.cs-psr-row:last-child {
+  border-bottom: 1px solid #e2e6e8;
+}
+
+.cs-psr-label {
+  width: 120px;
+  flex-shrink: 0;
+  font-family: 'Fixel Text', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.72px;
+  color: #050505;
+}
+
+/* ─── HERO: METADATA BAR ──────────────────────────────────────────────────── */
+.cs-meta-bar {
+  background: #f4f5f6;
+  border-radius: 20px;
+  padding: 24px 32px;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.cs-meta-bar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 28px;
+}
+
+.cs-meta-bar-item:first-child {
+  padding-left: 0;
+}
+
+.cs-meta-bar-item:last-child {
+  padding-right: 0;
+}
+
+.cs-meta-bar-divider {
+  width: 1px;
+  background: #e2e6e8;
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+/* ─── CONTENT SECTIONS ────────────────────────────────────────────────────── */
+.cs-content-sections {
+  padding: 0 16px;
+  width: 100%;
+}
+
+.cs-content-sections-inner {
+  width: 80vw;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.cs-content-section {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 80px;
+  padding: 80px 0;
+  border-top: 1px solid #e2e6e8;
+}
+
+.cs-content-label {
+  font-family: 'Fixel Text', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.56px;
+  color: #838f95;
+  padding-top: 4px;
+}
+
+.cs-content-body {
+  font-family: 'Fixel Text', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.72px;
+  color: #838f95;
+}
+
+.cs-content-body p {
+  margin: 0 0 20px;
+}
+
+.cs-content-body p:last-child {
+  margin-bottom: 0;
+}
+
+.cs-content-body ol {
+  margin: 0 0 20px;
+  padding-left: 24px;
+}
+
+.cs-content-body li {
+  margin-bottom: 10px;
+}
+
+.cs-content-body strong {
+  font-weight: 600;
   color: #050505;
 }
 
