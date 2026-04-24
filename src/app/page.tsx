@@ -122,6 +122,16 @@ export default function Home() {
                 </div>
               </div>
 
+              {/* Card: Safey */}
+              <div className="card-default" onClick={() => router.push('/safey')} style={{ cursor: 'pointer' }}>
+                <div className="card-image">
+                  <img src="/card-image.png" alt="Safey AI Companion" />
+                </div>
+                <div className="card-footer">
+                  <span className="card-title">Designing a monetization strategy for an AI companion app</span>
+                </div>
+              </div>
+
             </div>
           </div>
           </FadeIn>
