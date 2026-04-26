@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import '@/styles/case-study.css';
 import Navbar from '@/components/Navbar';
 import { FadeIn } from '@/components/ui/fade-in';
+import { FadeInMount } from '@/components/ui/fade-in-mount';
+import { SplitText } from '@/components/ui/split-text';
 
 export const metadata: Metadata = {
   title: 'GudFood Vdoma | Danylo Ivanov',
@@ -19,61 +21,71 @@ export default function CaseStudy() {
           <div className="cs-hero-inner">
 
             <div className="cs-hero-title-area">
-              <p className="cs-project-name">GudFood Vdoma</p>
-              <h1 className="cs-title">The loop that brought users back</h1>
+              <p className="cs-project-name"><SplitText text="GudFood Vdoma" /></p>
+              <h1 className="cs-title"><SplitText text="The loop that brought users back" delay={0.3} /></h1>
             </div>
 
             {/* Naked phone strip */}
             <div className="cs-phones-naked">
-              <div className="cs-phone-naked">
-                <img src="/day 2 onboarding.png" alt="App onboarding screen" />
-              </div>
-              <div className="cs-phone-naked">
-                <img src="/day 2 home.png" alt="App home screen" />
-              </div>
-              <div className="cs-phone-naked">
-                <img src="/day 3 paywall.png" alt="App paywall screen" />
-              </div>
+              <FadeInMount delay={0.8}>
+                <div className="cs-phone-naked">
+                  <img src="/day 2 onboarding.png" alt="App onboarding screen" />
+                </div>
+              </FadeInMount>
+              <FadeInMount delay={0.95}>
+                <div className="cs-phone-naked">
+                  <img src="/day 2 home.png" alt="App home screen" />
+                </div>
+              </FadeInMount>
+              <FadeInMount delay={1.1}>
+                <div className="cs-phone-naked">
+                  <img src="/day 3 paywall.png" alt="App paywall screen" />
+                </div>
+              </FadeInMount>
             </div>
 
             {/* Problem / Solution / Result rows */}
-            <div className="cs-psr-rows">
-              <div className="cs-psr-row">
-                <span className="cs-psr-label">Problem</span>
-                <p className="cs-section-body">Customers ordered once or twice and didn&apos;t return. The app had no feedback system — the team had zero structured data on why people left. The UI felt dated compared to Glovo and Bolt Food.</p>
+            <FadeIn>
+              <div className="cs-psr-rows">
+                <div className="cs-psr-row">
+                  <span className="cs-psr-label">Problem</span>
+                  <p className="cs-section-body">Customers ordered once or twice and didn&apos;t return. The app had no feedback system — the team had zero structured data on why people left. The UI felt dated compared to Glovo and Bolt Food.</p>
+                </div>
+                <div className="cs-psr-row">
+                  <span className="cs-psr-label">Solution</span>
+                  <p className="cs-section-body">A closed-loop feedback system: post-order star ratings with quick-feedback tags, dish-level reviews that build social proof, and aggregated restaurant ratings that surface quality issues. Paired with a full UI refresh across all core screens.</p>
+                </div>
+                <div className="cs-psr-row">
+                  <span className="cs-psr-label">Result</span>
+                  <p className="cs-section-body">Concept validated by the GudFood Vdoma product team as aligned with their product roadmap.</p>
+                </div>
               </div>
-              <div className="cs-psr-row">
-                <span className="cs-psr-label">Solution</span>
-                <p className="cs-section-body">A closed-loop feedback system: post-order star ratings with quick-feedback tags, dish-level reviews that build social proof, and aggregated restaurant ratings that surface quality issues. Paired with a full UI refresh across all core screens.</p>
-              </div>
-              <div className="cs-psr-row">
-                <span className="cs-psr-label">Result</span>
-                <p className="cs-section-body">Concept validated by the GudFood Vdoma product team as aligned with their product roadmap.</p>
-              </div>
-            </div>
+            </FadeIn>
 
             {/* Metadata bar */}
-            <div className="cs-meta-bar">
-              <div className="cs-meta-bar-item">
-                <span className="cs-meta-label">Role</span>
-                <span className="cs-meta-value">Product Designer — Solo</span>
+            <FadeIn>
+              <div className="cs-meta-bar">
+                <div className="cs-meta-bar-item">
+                  <span className="cs-meta-label">Role</span>
+                  <span className="cs-meta-value">Product Designer — Solo</span>
+                </div>
+                <div className="cs-meta-bar-divider" />
+                <div className="cs-meta-bar-item">
+                  <span className="cs-meta-label">Team</span>
+                  <span className="cs-meta-value">1 Designer, 1 Mentor, GudFood stakeholders</span>
+                </div>
+                <div className="cs-meta-bar-divider" />
+                <div className="cs-meta-bar-item">
+                  <span className="cs-meta-label">Timeline</span>
+                  <span className="cs-meta-value">Sep — Nov 2024</span>
+                </div>
+                <div className="cs-meta-bar-divider" />
+                <div className="cs-meta-bar-item">
+                  <span className="cs-meta-label">Scope</span>
+                  <span className="cs-meta-value">Stakeholder Interviews · UX Research · Hypothesis Generation · UI Redesign · Prototyping</span>
+                </div>
               </div>
-              <div className="cs-meta-bar-divider" />
-              <div className="cs-meta-bar-item">
-                <span className="cs-meta-label">Team</span>
-                <span className="cs-meta-value">1 Designer, 1 Mentor, GudFood stakeholders</span>
-              </div>
-              <div className="cs-meta-bar-divider" />
-              <div className="cs-meta-bar-item">
-                <span className="cs-meta-label">Timeline</span>
-                <span className="cs-meta-value">Sep — Nov 2024</span>
-              </div>
-              <div className="cs-meta-bar-divider" />
-              <div className="cs-meta-bar-item">
-                <span className="cs-meta-label">Scope</span>
-                <span className="cs-meta-value">Stakeholder Interviews · UX Research · Hypothesis Generation · UI Redesign · Prototyping</span>
-              </div>
-            </div>
+            </FadeIn>
 
           </div>
         </section>

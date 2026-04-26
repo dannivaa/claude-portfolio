@@ -417,13 +417,19 @@ main {
   flex-shrink: 0;
 }
 
+.experience-section > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .experience-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 28px;
   align-items: stretch;
   width: 100%;
-  max-width: min(75vw, 1440px);
+  max-width: 1440px;
 }
 
 .exp-card {
@@ -695,4 +701,358 @@ main {
 
 .manifesto-text p + p {
   margin-top: 52px;
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  /* Navbar */
+  .navbar {
+    gap: 16px;
+    padding: 4px 8px 4px 4px;
+    border-radius: 22px;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    gap: 16px;
+  }
+
+  .navbar-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 18px;
+  }
+
+  .navbar-avatar img {
+    border-radius: 18px;
+  }
+
+  .navbar-links a {
+    height: 40px;
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 16px;
+  }
+
+  .navbar-cta {
+    height: 40px;
+    padding: 8px 20px;
+    font-size: 14px;
+    border-radius: 16px;
+  }
+
+  .navbar-secondary-link {
+    font-size: 14px;
+  }
+
+  /* Hero */
+  .hero-card {
+    padding: 16px 80px;
+    gap: 100px;
+    border-radius: 40px;
+  }
+
+  /* Projects */
+  .projects-section {
+    padding: 60px;
+    border-radius: 40px;
+  }
+
+  .project-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Experience — keep desktop padding/font on tablet; remove the 75vw cap
+     so cards expand wider as the viewport narrows; wrap to 2-per-row and
+     pin third (orphan) card to the same width as the others */
+  .experience-section {
+    padding: 80px 12px;
+  }
+
+  .experience-grid {
+    max-width: 100%;
+  }
+
+  .exp-card {
+    flex: 0 0 calc(50% - 14px);
+  }
+
+  /* Testimonials */
+  .testimonials-section {
+    padding: 60px 0;
+    border-radius: 32px;
+  }
+
+  .testimonials-track {
+    gap: 16px;
+    padding: 0 60px;
+  }
+
+  .testimonial-body {
+    padding: 60px 36px;
+  }
+
+  .testimonial-text {
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.56px;
+  }
+
+  .testimonial-slide {
+    min-height: 380px;
+    border-radius: 32px;
+  }
+
+  /* Manifesto */
+  .manifesto-section {
+    padding: 60px 0;
+    border-radius: 40px;
+  }
+
+  .manifesto-text {
+    max-width: 75%;
+    font-size: 27px;
+    line-height: 38px;
+    letter-spacing: -0.97px;
+    gap: 24px;
+  }
+
+  .manifesto-text p + p {
+    margin-top: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Navbar */
+  .navbar {
+    top: 16px;
+    gap: 8px;
+    padding: 4px 6px 4px 4px;
+    max-width: calc(100% - 24px);
+    border-radius: 18px;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    gap: 8px;
+  }
+
+  .navbar-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+  }
+
+  .navbar-avatar img {
+    border-radius: 12px;
+  }
+
+  .navbar-links a {
+    height: 36px;
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 12px;
+  }
+
+  .navbar-cta {
+    height: 36px;
+    padding: 6px 14px;
+    font-size: 12px;
+    border-radius: 12px;
+  }
+
+  .navbar-secondary-link {
+    font-size: 12px;
+  }
+
+  /* Hero */
+  .hero-wrapper {
+    padding: 8px;
+  }
+
+  .hero-card {
+    padding: 24px;
+    gap: 60px;
+    height: 80vh;
+    border-radius: 28px;
+  }
+
+  .hero-headline {
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 1.05;
+  }
+
+  .hero-border {
+    inset: 8px;
+    border-radius: 22px;
+    border-width: 3px;
+  }
+
+  /* Projects */
+  .projects-wrapper {
+    padding: 8px;
+  }
+
+  .projects-section {
+    padding: 24px;
+    border-radius: 28px;
+  }
+
+  .project-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Experience */
+  .experience-section {
+    padding: 60px 12px;
+  }
+
+  .experience-grid {
+    flex-direction: column;
+    gap: 16px;
+    max-width: 100%;
+  }
+
+  .exp-card {
+    flex: 1 1 100%;
+    width: 100%;
+    padding: 28px 24px;
+    border-radius: 20px;
+  }
+
+  .exp-company {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.72px;
+  }
+
+  .exp-row {
+    gap: 16px;
+  }
+
+  .exp-label {
+    width: 80px;
+  }
+
+  /* Testimonials: stack vertically */
+  .testimonials-wrapper {
+    padding: 8px;
+  }
+
+  .testimonials-section {
+    padding: 24px 0;
+    border-radius: 24px;
+  }
+
+  .testimonials-track {
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 16px;
+    align-items: stretch;
+  }
+
+  .testimonial-slide {
+    flex: 1 1 auto;
+    max-width: 100%;
+    width: 100%;
+    min-height: 0;
+    border-radius: 24px;
+    border-width: 2px;
+  }
+
+  .testimonial-body {
+    padding: 32px 20px;
+  }
+
+  .testimonial-text {
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.52px;
+  }
+
+  /* Manifesto */
+  .manifesto-wrapper {
+    padding: 8px;
+  }
+
+  .manifesto-section {
+    padding: 40px 16px;
+    border-radius: 28px;
+  }
+
+  .manifesto-text {
+    max-width: 100%;
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: -0.78px;
+    gap: 18px;
+    padding: 0 4px;
+  }
+
+  .manifesto-text p + p {
+    margin-top: 24px;
+  }
+
+  /* Worked-with */
+  .worked-with {
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    top: 12px;
+    gap: 6px;
+    padding: 3px 4px 3px 3px;
+    border-radius: 14px;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    gap: 4px;
+  }
+
+  .navbar-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+  }
+
+  .navbar-avatar img {
+    border-radius: 10px;
+  }
+
+  .navbar-links a {
+    height: 32px;
+    padding: 4px 8px;
+    font-size: 11px;
+    border-radius: 10px;
+  }
+
+  .navbar-cta {
+    height: 32px;
+    padding: 4px 10px;
+    font-size: 11px;
+    border-radius: 10px;
+  }
+
+  .navbar-secondary-link {
+    display: none;
+  }
+
+  .hero-card {
+    padding: 20px;
+    gap: 40px;
+    height: 75vh;
+  }
+
+  .manifesto-text {
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.64px;
+  }
 }

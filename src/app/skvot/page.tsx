@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import '@/styles/case-study.css';
 import Navbar from '@/components/Navbar';
 import { FadeIn } from '@/components/ui/fade-in';
+import { FadeInMount } from '@/components/ui/fade-in-mount';
+import { SplitText } from '@/components/ui/split-text';
 
 export const metadata: Metadata = {
   title: 'SKVOT Mobile App | Danylo Ivanov',
@@ -19,61 +21,71 @@ export default function SkvotCaseStudy() {
           <div className="cs-hero-inner">
 
             <div className="cs-hero-title-area">
-              <p className="cs-project-name">SKVOT</p>
-              <h1 className="cs-title">A bridge between student and lecturer</h1>
+              <p className="cs-project-name"><SplitText text="SKVOT" /></p>
+              <h1 className="cs-title"><SplitText text="A bridge between student and lecturer" delay={0.3} /></h1>
             </div>
 
             {/* Naked phone strip */}
             <div className="cs-phones-naked">
-              <div className="cs-phone-naked">
-                <img src="/day 2 onboarding.png" alt="App screen 1" />
-              </div>
-              <div className="cs-phone-naked">
-                <img src="/day 2 home.png" alt="App screen 2" />
-              </div>
-              <div className="cs-phone-naked">
-                <img src="/day 3 paywall.png" alt="App screen 3" />
-              </div>
+              <FadeInMount delay={0.8}>
+                <div className="cs-phone-naked">
+                  <img src="/day 2 onboarding.png" alt="App screen 1" />
+                </div>
+              </FadeInMount>
+              <FadeInMount delay={0.95}>
+                <div className="cs-phone-naked">
+                  <img src="/day 2 home.png" alt="App screen 2" />
+                </div>
+              </FadeInMount>
+              <FadeInMount delay={1.1}>
+                <div className="cs-phone-naked">
+                  <img src="/day 3 paywall.png" alt="App screen 3" />
+                </div>
+              </FadeInMount>
             </div>
 
             {/* Problem / Solution / Result rows */}
-            <div className="cs-psr-rows">
-              <div className="cs-psr-row">
-                <span className="cs-psr-label">Problem</span>
-                <p className="cs-section-body">The web platform had outdated flows and no mobile app — neither did any competitor. Students relied on Telegram and email to communicate with lecturers. There was no native mobile solution in the market.</p>
+            <FadeIn>
+              <div className="cs-psr-rows">
+                <div className="cs-psr-row">
+                  <span className="cs-psr-label">Problem</span>
+                  <p className="cs-section-body">The web platform had outdated flows and no mobile app — neither did any competitor. Students relied on Telegram and email to communicate with lecturers. There was no native mobile solution in the market.</p>
+                </div>
+                <div className="cs-psr-row">
+                  <span className="cs-psr-label">Solution</span>
+                  <p className="cs-section-body">A 4-tab native app shaped entirely by research: a weekly schedule and content feed, a full culture library, a My Courses hub with grades and instructor feedback, and a direct chat replacing Telegram.</p>
+                </div>
+                <div className="cs-psr-row">
+                  <span className="cs-psr-label">Result</span>
+                  <p className="cs-section-body">0→1 concept delivered in 4 weeks. The research-driven decision to cut homework submission for students and keep lecturer grading is the strongest proof of product thinking — building the right thing, not just the obvious thing.</p>
+                </div>
               </div>
-              <div className="cs-psr-row">
-                <span className="cs-psr-label">Solution</span>
-                <p className="cs-section-body">A 4-tab native app shaped entirely by research: a weekly schedule and content feed, a full culture library, a My Courses hub with grades and instructor feedback, and a direct chat replacing Telegram.</p>
-              </div>
-              <div className="cs-psr-row">
-                <span className="cs-psr-label">Result</span>
-                <p className="cs-section-body">0→1 concept delivered in 4 weeks. The research-driven decision to cut homework submission for students and keep lecturer grading is the strongest proof of product thinking — building the right thing, not just the obvious thing.</p>
-              </div>
-            </div>
+            </FadeIn>
 
             {/* Metadata bar */}
-            <div className="cs-meta-bar">
-              <div className="cs-meta-bar-item">
-                <span className="cs-meta-label">Role</span>
-                <span className="cs-meta-value">UX/UI Designer (Mobile) — Solo</span>
+            <FadeIn>
+              <div className="cs-meta-bar">
+                <div className="cs-meta-bar-item">
+                  <span className="cs-meta-label">Role</span>
+                  <span className="cs-meta-value">UX/UI Designer (Mobile) — Solo</span>
+                </div>
+                <div className="cs-meta-bar-divider" />
+                <div className="cs-meta-bar-item">
+                  <span className="cs-meta-label">Team</span>
+                  <span className="cs-meta-value">1 Designer, 1 Mentor</span>
+                </div>
+                <div className="cs-meta-bar-divider" />
+                <div className="cs-meta-bar-item">
+                  <span className="cs-meta-label">Timeline</span>
+                  <span className="cs-meta-value">Mar — Apr 2024</span>
+                </div>
+                <div className="cs-meta-bar-divider" />
+                <div className="cs-meta-bar-item">
+                  <span className="cs-meta-label">Scope</span>
+                  <span className="cs-meta-value">UX Research · Competitor Analysis · Wireframing · UI Design · Prototyping</span>
+                </div>
               </div>
-              <div className="cs-meta-bar-divider" />
-              <div className="cs-meta-bar-item">
-                <span className="cs-meta-label">Team</span>
-                <span className="cs-meta-value">1 Designer, 1 Mentor</span>
-              </div>
-              <div className="cs-meta-bar-divider" />
-              <div className="cs-meta-bar-item">
-                <span className="cs-meta-label">Timeline</span>
-                <span className="cs-meta-value">Mar — Apr 2024</span>
-              </div>
-              <div className="cs-meta-bar-divider" />
-              <div className="cs-meta-bar-item">
-                <span className="cs-meta-label">Scope</span>
-                <span className="cs-meta-value">UX Research · Competitor Analysis · Wireframing · UI Design · Prototyping</span>
-              </div>
-            </div>
+            </FadeIn>
 
           </div>
         </section>

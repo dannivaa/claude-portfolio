@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import { Component } from '@/components/ui/etheral-shadow';
 import { MagicText } from '@/components/ui/magic-text';
 import { FadeIn } from '@/components/ui/fade-in';
+import { SplitText } from '@/components/ui/split-text';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
@@ -28,7 +29,7 @@ export default function Home() {
                 sizing="fill"
               />
             </div>
-            <p className="hero-headline">Product Designer crafting solutions that drive business wins.</p>
+            <p className="hero-headline"><SplitText text="Product Designer crafting solutions that drive business wins." /></p>
           </div>
         </section>
 

@@ -202,8 +202,12 @@
   border-top: 1px solid #e2e6e8;
 }
 
+.cs-psr-row:first-child {
+  border-top: none;
+}
+
 .cs-psr-row:last-child {
-  border-bottom: 1px solid #e2e6e8;
+  border-bottom: none;
 }
 
 .cs-psr-label {
@@ -270,14 +274,17 @@
   border-top: 1px solid #e2e6e8;
 }
 
+.cs-content-sections-inner > *:first-child > .cs-content-section {
+  border-top: none;
+}
+
 .cs-content-label {
   font-family: 'Fixel Text', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: -0.56px;
-  color: #838f95;
-  padding-top: 4px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.72px;
+  color: #050505;
 }
 
 .cs-content-body {
@@ -307,7 +314,7 @@
 }
 
 .cs-content-body strong {
-  font-weight: 600;
+  font-weight: 500;
   color: #050505;
 }
 
@@ -566,4 +573,266 @@
 
 .cs-cta-btn:hover svg {
   transform: translateX(3px);
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .cs-hero-inner {
+    width: 90vw;
+    padding: 96px 0 60px;
+    gap: 36px;
+  }
+
+  .cs-title {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -2.88px;
+  }
+
+  .cs-project-name,
+  .cs-section-heading,
+  .cs-section-body,
+  .cs-psr-label,
+  .cs-content-label,
+  .cs-content-body {
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.56px;
+  }
+
+  .cs-hero-content {
+    gap: 48px;
+  }
+
+  .cs-meta-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 24px 28px;
+    border-radius: 28px;
+  }
+
+  .cs-content-section {
+    grid-template-columns: 160px 1fr;
+    gap: 48px;
+    padding: 60px 0;
+  }
+
+  .cs-content-sections-inner {
+    width: 90vw;
+  }
+
+  .cs-image-card {
+    padding: 60px;
+    height: 70vh;
+    border-radius: 32px;
+  }
+
+  .cs-phones-row {
+    --row-height: calc(70vh - 120px);
+    --phone-width: calc(var(--row-height) * 310.67 / 673.514);
+    gap: 20px;
+  }
+
+  .cs-phone-naked {
+    height: 48vh;
+    border-radius: 24px;
+  }
+
+  .cs-cta-inner {
+    padding: 40px;
+    min-height: 380px;
+    border-radius: 32px;
+  }
+
+  .cs-cta-title {
+    font-size: 50px;
+    line-height: 56px;
+    letter-spacing: -3px;
+  }
+
+  .cs-meta-bar {
+    padding: 20px 24px;
+    border-radius: 16px;
+  }
+
+  .cs-meta-bar-item {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cs-hero {
+    padding: 0 16px;
+  }
+
+  .cs-hero-inner {
+    width: 100%;
+    padding: 80px 0 40px;
+    gap: 32px;
+  }
+
+  .cs-title {
+    font-size: 38px;
+    line-height: 44px;
+    letter-spacing: -2.28px;
+  }
+
+  .cs-project-name,
+  .cs-section-heading,
+  .cs-section-body,
+  .cs-psr-label,
+  .cs-content-label,
+  .cs-content-body {
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.52px;
+  }
+
+  /* Hero: stack text + meta card */
+  .cs-hero-content {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .cs-meta-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px 24px;
+    gap: 12px;
+  }
+
+  .cs-meta-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .cs-meta-label {
+    width: 100%;
+  }
+
+  .cs-meta-scope {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Hero: naked phone strip — keep centered, scroll only if overflow */
+  .cs-phones-naked {
+    overflow-x: auto;
+    gap: 12px;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cs-phone-naked {
+    flex-shrink: 0;
+    height: 56vw;
+    border-radius: 18px;
+  }
+
+  /* PSR rows stack */
+  .cs-psr-row {
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 0;
+  }
+
+  .cs-psr-label {
+    width: 100%;
+  }
+
+  /* Meta bar stacks */
+  .cs-meta-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 24px;
+    gap: 12px;
+  }
+
+  .cs-meta-bar-item {
+    padding: 0;
+  }
+
+  .cs-meta-bar-divider {
+    width: 100%;
+    height: 1px;
+  }
+
+  /* Content sections: single column */
+  .cs-content-sections-inner {
+    width: 100%;
+  }
+
+  .cs-content-section {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 40px 0;
+  }
+
+  /* Gallery */
+  .cs-image-card {
+    padding: 24px;
+    height: auto;
+    border-radius: 24px;
+  }
+
+  .cs-image-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Phone rows — horizontal scroll, recalc vars */
+  .cs-phones-row {
+    --row-height: 70vw;
+    --phone-width: calc(var(--row-height) * 310.67 / 673.514);
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 8px 0;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cs-phone-frame,
+  .cs-phone-frame--short,
+  .cs-phone-frame--medium,
+  .cs-screenshot-main,
+  .cs-stacked-group {
+    flex-shrink: 0;
+  }
+
+  /* CTA */
+  .cs-cta-wrapper {
+    padding: 8px;
+  }
+
+  .cs-cta-inner {
+    padding: 32px 20px;
+    min-height: 320px;
+    border-radius: 24px;
+    gap: 16px;
+  }
+
+  .cs-cta-title {
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: -2.16px;
+  }
+
+  .cs-cta-btn {
+    padding: 16px 20px 16px 24px;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cs-title {
+    font-size: 32px;
+    line-height: 36px;
+    letter-spacing: -1.92px;
+  }
+
+  .cs-cta-title {
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: -1.68px;
+  }
 }

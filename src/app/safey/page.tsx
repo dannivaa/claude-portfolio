@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import '@/styles/case-study.css';
 import Navbar from '@/components/Navbar';
 import { FadeIn } from '@/components/ui/fade-in';
+import { FadeInMount } from '@/components/ui/fade-in-mount';
+import { SplitText } from '@/components/ui/split-text';
 
 export const metadata: Metadata = {
   title: 'Safey AI Companion | Danylo Ivanov',
@@ -19,61 +21,71 @@ export default function SafeyCaseStudy() {
           <div className="cs-hero-inner">
 
             <div className="cs-hero-title-area">
-              <p className="cs-project-name">Safey</p>
-              <h1 className="cs-title">Designing a monetization strategy for an AI companion app</h1>
+              <p className="cs-project-name"><SplitText text="Safey" /></p>
+              <h1 className="cs-title"><SplitText text="Designing a monetization strategy for an AI companion app" delay={0.3} /></h1>
             </div>
 
             {/* Naked phone strip */}
             <div className="cs-phones-naked">
-              <div className="cs-phone-naked">
-                <img src="/day 2 onboarding.png" alt="App screen 1" />
-              </div>
-              <div className="cs-phone-naked">
-                <img src="/day 2 home.png" alt="App screen 2" />
-              </div>
-              <div className="cs-phone-naked">
-                <img src="/day 3 paywall.png" alt="App screen 3" />
-              </div>
+              <FadeInMount delay={0.8}>
+                <div className="cs-phone-naked">
+                  <img src="/day 2 onboarding.png" alt="App screen 1" />
+                </div>
+              </FadeInMount>
+              <FadeInMount delay={0.95}>
+                <div className="cs-phone-naked">
+                  <img src="/day 2 home.png" alt="App screen 2" />
+                </div>
+              </FadeInMount>
+              <FadeInMount delay={1.1}>
+                <div className="cs-phone-naked">
+                  <img src="/day 3 paywall.png" alt="App screen 3" />
+                </div>
+              </FadeInMount>
             </div>
 
             {/* Problem / Solution / Result rows */}
-            <div className="cs-psr-rows">
-              <div className="cs-psr-row">
-                <span className="cs-psr-label">Problem</span>
-                <p className="cs-section-body">The AI companion market is growing rapidly but is visually and emotionally undifferentiated. Every competitor looks and feels the same — generic UI, interchangeable feature sets, no distinctive identity. Most products treat monetization as an afterthought.</p>
+            <FadeIn>
+              <div className="cs-psr-rows">
+                <div className="cs-psr-row">
+                  <span className="cs-psr-label">Problem</span>
+                  <p className="cs-section-body">The AI companion market is growing rapidly but is visually and emotionally undifferentiated. Every competitor looks and feels the same — generic UI, interchangeable feature sets, no distinctive identity. Most products treat monetization as an afterthought.</p>
+                </div>
+                <div className="cs-psr-row">
+                  <span className="cs-psr-label">Solution</span>
+                  <p className="cs-section-body">A subscription-only model with a distinctive brand identity, a paywall built on competitor revenue-per-download analysis, and a warm visual identity designed to own emotional territory no competitor had claimed.</p>
+                </div>
+                <div className="cs-psr-row">
+                  <span className="cs-psr-label">Result</span>
+                  <p className="cs-section-body">Concept targeting 15–20% free-to-paid conversion rate, built on market data from 6 competitors and anchored to the CHAI paywall model — the category&apos;s most efficient monetizer at $6.67 per download.</p>
+                </div>
               </div>
-              <div className="cs-psr-row">
-                <span className="cs-psr-label">Solution</span>
-                <p className="cs-section-body">A subscription-only model with a distinctive brand identity, a paywall built on competitor revenue-per-download analysis, and a warm visual identity designed to own emotional territory no competitor had claimed.</p>
-              </div>
-              <div className="cs-psr-row">
-                <span className="cs-psr-label">Result</span>
-                <p className="cs-section-body">Concept targeting 15–20% free-to-paid conversion rate, built on market data from 6 competitors and anchored to the CHAI paywall model — the category&apos;s most efficient monetizer at $6.67 per download.</p>
-              </div>
-            </div>
+            </FadeIn>
 
             {/* Metadata bar */}
-            <div className="cs-meta-bar">
-              <div className="cs-meta-bar-item">
-                <span className="cs-meta-label">Role</span>
-                <span className="cs-meta-value">Product Designer — Solo</span>
+            <FadeIn>
+              <div className="cs-meta-bar">
+                <div className="cs-meta-bar-item">
+                  <span className="cs-meta-label">Role</span>
+                  <span className="cs-meta-value">Product Designer — Solo</span>
+                </div>
+                <div className="cs-meta-bar-divider" />
+                <div className="cs-meta-bar-item">
+                  <span className="cs-meta-label">Timeline</span>
+                  <span className="cs-meta-value">3-day design sprint · 2024</span>
+                </div>
+                <div className="cs-meta-bar-divider" />
+                <div className="cs-meta-bar-item">
+                  <span className="cs-meta-label">Platform</span>
+                  <span className="cs-meta-value">iOS</span>
+                </div>
+                <div className="cs-meta-bar-divider" />
+                <div className="cs-meta-bar-item">
+                  <span className="cs-meta-label">Scope</span>
+                  <span className="cs-meta-value">Product Audit · Competitor Research · Brand Identity · Paywall Design</span>
+                </div>
               </div>
-              <div className="cs-meta-bar-divider" />
-              <div className="cs-meta-bar-item">
-                <span className="cs-meta-label">Timeline</span>
-                <span className="cs-meta-value">3-day design sprint · 2024</span>
-              </div>
-              <div className="cs-meta-bar-divider" />
-              <div className="cs-meta-bar-item">
-                <span className="cs-meta-label">Platform</span>
-                <span className="cs-meta-value">iOS</span>
-              </div>
-              <div className="cs-meta-bar-divider" />
-              <div className="cs-meta-bar-item">
-                <span className="cs-meta-label">Scope</span>
-                <span className="cs-meta-value">Product Audit · Competitor Research · Brand Identity · Paywall Design</span>
-              </div>
-            </div>
+            </FadeIn>
 
           </div>
         </section>
