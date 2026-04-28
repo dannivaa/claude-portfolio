@@ -2,6 +2,7 @@
 
 import '@/styles/style.css';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { Component } from '@/components/ui/etheral-shadow';
 import { MagicText } from '@/components/ui/magic-text';
 import { FadeIn } from '@/components/ui/fade-in';
@@ -281,6 +282,8 @@ export default function Home() {
 
         </article>
       </main>
+
+      <Footer />
     </>
   );
 }
