@@ -11,6 +11,7 @@ html, body {
   background: #fff;
   font-family: 'Fixel Text', sans-serif;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
 /* ─── NAVBAR ─────────────────────────────────────────────────────────────── */
@@ -426,10 +427,9 @@ main {
 }
 
 .experience-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 28px;
-  align-items: stretch;
   width: 100%;
   max-width: 1440px;
 }
@@ -438,7 +438,7 @@ main {
   background: #f4f5f6;
   border-radius: 32px;
   padding: 48px 40px;
-  flex: 1 1 calc(33.333% - 19px);
+  flex: 1 1 calc(50% - 14px);
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -729,30 +729,35 @@ main {
   gap: 16px;
 }
 
-/* ─── CTA banner ─── */
-.cs-footer-cta {
+/* ─── HP Banner ─── */
+.hp-banner {
+  width: 100%;
+  padding: 16px 16px 0;
+}
+
+.hp-banner-cta {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 32px;
   padding: 64px 80px;
   border-radius: 52px;
-  background: var(--cs-footer-cta-bg);
-  color: var(--cs-footer-cta-text);
+  background: #121212;
+  color: #fafafa;
   text-decoration: none;
   transition: background 240ms ease;
   overflow: hidden;
 }
 
-.cs-footer-cta:hover {
-  background: var(--cs-footer-cta-bg-hover);
+.hp-banner-cta:hover {
+  background: #1f1f1f;
 }
 
-.cs-footer-cta:hover .cs-footer-cta-arrow {
+.hp-banner-cta:hover .hp-banner-cta-arrow {
   transform: translateX(12px);
 }
 
-.cs-footer-cta-text {
+.hp-banner-cta-text {
   font-family: 'Fixel Display', 'Fixel Text', sans-serif;
   font-weight: 500;
   font-size: clamp(56px, 9vw, 144px);
@@ -760,7 +765,7 @@ main {
   letter-spacing: -0.04em;
 }
 
-.cs-footer-cta-arrow {
+.hp-banner-cta-arrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -768,20 +773,20 @@ main {
   transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.cs-footer-cta-arrow svg {
+.hp-banner-cta-arrow svg {
   width: clamp(48px, 6vw, 96px);
   height: clamp(48px, 6vw, 96px);
 }
 
 /* ─── Connect block ─── */
-.cs-footer-connect {
+.connect-block {
   position: relative;
   padding: 80px;
   border-radius: 52px;
   background: var(--cs-footer-card-bg);
 }
 
-.cs-footer-connect-title {
+.connect-block-title {
   margin: 0 0 96px;
   font-family: 'Fixel Display', 'Fixel Text', sans-serif;
   font-weight: 500;
@@ -791,20 +796,20 @@ main {
   color: var(--cs-footer-text);
 }
 
-.cs-footer-connect-grid {
+.connect-block-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 80px;
   align-items: start;
 }
 
-.cs-footer-col {
+.connect-col {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.cs-footer-col-label {
+.connect-col-label {
   margin: 0;
   font-family: 'Fixel Display', 'Fixel Text', sans-serif;
   font-weight: 500;
@@ -815,7 +820,7 @@ main {
 }
 
 /* Contact column */
-.cs-footer-contact-info {
+.connect-contact-info {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -825,7 +830,7 @@ main {
   color: var(--cs-footer-muted);
 }
 
-.cs-footer-contact-email {
+.connect-contact-email {
   color: var(--cs-footer-muted);
   text-decoration: none;
   transition: color 200ms ease;
@@ -833,17 +838,17 @@ main {
   letter-spacing: -0.02em;
 }
 
-.cs-footer-contact-email:hover {
+.connect-contact-email:hover {
   color: var(--cs-footer-text);
 }
 
-.cs-footer-socials {
+.connect-socials {
   display: flex;
   gap: 12px;
   margin-top: 24px;
 }
 
-.cs-footer-social {
+.connect-social {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -855,18 +860,18 @@ main {
   transition: background 200ms ease;
 }
 
-.cs-footer-social:hover {
+.connect-social:hover {
   background: var(--cs-footer-surface-hover);
 }
 
 /* Now column */
-.cs-footer-now-list {
+.connect-now-list {
   margin: 0;
   display: flex;
   flex-direction: column;
 }
 
-.cs-footer-now-item {
+.connect-now-item {
   display: grid;
   grid-template-columns: minmax(140px, 0.5fr) 1fr;
   gap: 24px;
@@ -874,18 +879,18 @@ main {
   padding: 16px 0;
 }
 
-.cs-footer-now-item + .cs-footer-now-item {
+.connect-now-item + .connect-now-item {
   border-top: 1px solid var(--cs-footer-border);
 }
 
-.cs-footer-now-label {
+.connect-now-label {
   margin: 0;
   font-size: 14px;
   letter-spacing: -0.01em;
   color: var(--cs-footer-muted);
 }
 
-.cs-footer-now-value {
+.connect-now-value {
   margin: 0;
   font-size: 18px;
   letter-spacing: -0.02em;
@@ -893,7 +898,7 @@ main {
 }
 
 /* Bottom strip */
-.cs-footer-bottom {
+.connect-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -905,8 +910,8 @@ main {
   color: var(--cs-footer-muted);
 }
 
-.cs-footer-copy,
-.cs-footer-built {
+.connect-copy,
+.connect-built {
   letter-spacing: -0.02em;
 }
 
@@ -1044,25 +1049,25 @@ main {
     gap: 12px;
   }
 
-  .cs-footer-cta {
+  .hp-banner-cta {
     padding: 48px 56px;
     border-radius: 44px;
   }
 
-  .cs-footer-connect {
+  .connect-block {
     padding: 56px 48px;
     border-radius: 44px;
   }
 
-  .cs-footer-connect-title {
+  .connect-block-title {
     margin-bottom: 72px;
   }
 
-  .cs-footer-connect-grid {
+  .connect-block-grid {
     gap: 56px;
   }
 
-  .cs-footer-bottom {
+  .connect-bottom {
     margin-top: 72px;
   }
 }
@@ -1159,8 +1164,7 @@ main {
   }
 
   .experience-grid {
-    flex-direction: column;
-    flex-wrap: nowrap;
+    grid-template-columns: 1fr;
     gap: 16px;
     max-width: 100%;
   }
@@ -1258,7 +1262,7 @@ main {
     gap: 8px;
   }
 
-  .cs-footer-cta {
+  .hp-banner-cta {
     flex-direction: row;
     align-items: center;
     gap: 16px;
@@ -1266,45 +1270,45 @@ main {
     border-radius: 28px;
   }
 
-  .cs-footer-cta-text {
+  .hp-banner-cta-text {
     font-size: clamp(36px, 8vw, 56px);
   }
 
-  .cs-footer-cta-arrow svg {
+  .hp-banner-cta-arrow svg {
     width: 36px;
     height: 36px;
   }
 
-  .cs-footer-connect {
+  .connect-block {
     padding: 40px 28px;
     border-radius: 28px;
   }
 
-  .cs-footer-connect-title {
+  .connect-block-title {
     margin-bottom: 56px;
     font-size: clamp(40px, 12vw, 64px);
   }
 
-  .cs-footer-connect-grid {
+  .connect-block-grid {
     grid-template-columns: 1fr;
     gap: 48px;
   }
 
-  .cs-footer-col-label {
+  .connect-col-label {
     font-size: 24px;
   }
 
-  .cs-footer-now-item {
+  .connect-now-item {
     grid-template-columns: 1fr;
     gap: 4px;
     padding: 14px 0;
   }
 
-  .cs-footer-now-value {
+  .connect-now-value {
     font-size: 16px;
   }
 
-  .cs-footer-bottom {
+  .connect-bottom {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
@@ -1377,31 +1381,31 @@ main {
     gap: 6px;
   }
 
-  .cs-footer-cta {
+  .hp-banner-cta {
     padding: 24px 20px;
     border-radius: 24px;
   }
 
-  .cs-footer-cta-text {
+  .hp-banner-cta-text {
     font-size: clamp(28px, 9vw, 40px);
   }
 
-  .cs-footer-cta-arrow svg {
+  .hp-banner-cta-arrow svg {
     width: 28px;
     height: 28px;
   }
 
-  .cs-footer-connect {
+  .connect-block {
     padding: 32px 20px;
     border-radius: 24px;
   }
 
-  .cs-footer-connect-title {
+  .connect-block-title {
     margin-bottom: 40px;
     font-size: clamp(32px, 13vw, 48px);
   }
 
-  .cs-footer-bottom {
+  .connect-bottom {
     margin-top: 40px;
   }
 }

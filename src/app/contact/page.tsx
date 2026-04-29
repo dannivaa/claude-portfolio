@@ -1,8 +1,11 @@
+'use client';
+
 import '@/styles/style.css';
 import '@/styles/contact.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { ArrowUpRight } from 'lucide-react';
+import { FadeIn } from '@/components/ui/fade-in';
 
 const EMAIL = 'danyloivanovv@gmail.com';
 const LINKEDIN_URL = 'https://www.linkedin.com/in/danyloivanovv/?skipRedirect=true';
@@ -45,7 +48,7 @@ export default function ContactPage() {
     <>
       <Navbar variant="case-study" />
 
-      <main className="contact-main">
+      <FadeIn><main className="contact-main">
         <div className="contact-section">
           <div className="contact-grid-wrapper">
             <div className="contact-grid">
@@ -75,7 +78,7 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-      </main>
+      </main></FadeIn>
 
       <Footer />
     </>

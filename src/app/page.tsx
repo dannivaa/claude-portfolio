@@ -95,6 +95,36 @@ export default function Home() {
           <div className="projects-section">
             <div className="project-cards">
 
+              {/* Card: Safey */}
+              <div className="card-default" onClick={() => router.push('/safey')} style={{ cursor: 'pointer' }}>
+                <div className="card-image">
+                  <img src="/card-image-safey.png" alt="Safey AI Companion" />
+                </div>
+                <div className="card-footer">
+                  <span className="card-title">Designing a monetization strategy for an AI companion app</span>
+                </div>
+              </div>
+
+              {/* Card: GudFood */}
+              <div className="card-default" onClick={() => router.push('/case-study')} style={{ cursor: 'pointer' }}>
+                <div className="card-image">
+                  <img src="/card-image-gudfood.png" alt="The loop that brought users back" />
+                </div>
+                <div className="card-footer">
+                  <span className="card-title">The loop that brought users back</span>
+                </div>
+              </div>
+
+              {/* Card: SKVOT */}
+              <div className="card-default" onClick={() => router.push('/skvot')} style={{ cursor: 'pointer' }}>
+                <div className="card-image">
+                  <img src="/card-image-skvot.png" alt="SKVOT Mobile App" />
+                </div>
+                <div className="card-footer">
+                  <span className="card-title">A bridge between student and lecturer</span>
+                </div>
+              </div>
+
               {/* Card: Soon */}
               <div className="card-soon">
                 <div className="card-image">
@@ -103,36 +133,6 @@ export default function Home() {
                 <div className="card-footer">
                   <span className="card-title">Enhancing reading and memorising</span>
                   <div className="card-badge"><span>Case Study Soon</span></div>
-                </div>
-              </div>
-
-              {/* Card: Default (with hover) */}
-              <div className="card-default" onClick={() => router.push('/case-study')} style={{ cursor: 'pointer' }}>
-                <div className="card-image">
-                  <img src="/card-image.png" alt="The loop that brought users back" />
-                </div>
-                <div className="card-footer">
-                  <span className="card-title">The loop that brought users back</span>
-                </div>
-              </div>
-
-              {/* Card: Default 2 */}
-              <div className="card-default" onClick={() => router.push('/skvot')} style={{ cursor: 'pointer' }}>
-                <div className="card-image">
-                  <img src="/card-image.png" alt="SKVOT Mobile App" />
-                </div>
-                <div className="card-footer">
-                  <span className="card-title">A bridge between student and lecturer</span>
-                </div>
-              </div>
-
-              {/* Card: Safey */}
-              <div className="card-default" onClick={() => router.push('/safey')} style={{ cursor: 'pointer' }}>
-                <div className="card-image">
-                  <img src="/card-image.png" alt="Safey AI Companion" />
-                </div>
-                <div className="card-footer">
-                  <span className="card-title">Designing a monetization strategy for an AI companion app</span>
                 </div>
               </div>
 
@@ -162,14 +162,6 @@ export default function Home() {
                 </div>
                 <div className="exp-divider"></div>
                 <div className="exp-row">
-                  <span className="exp-label">Key Projects</span>
-                  <div className="exp-value">
-                    <span className="exp-value-main" style={{ fontSize: '14.9px', letterSpacing: '-0.596px', lineHeight: '24px' }}>WIP</span>
-                    <span className="exp-value-sub">To be announced</span>
-                  </div>
-                </div>
-                <div className="exp-divider"></div>
-                <div className="exp-row">
                   <span className="exp-label">Scope</span>
                   <div className="exp-scope-list">
                     <span className="exp-scope-item">Mobile & Web Design</span>
@@ -195,16 +187,8 @@ export default function Home() {
                 <div className="exp-row">
                   <span className="exp-label">Role</span>
                   <div className="exp-value">
-                    <span className="exp-value-main">Product Designer</span>
+                    <span className="exp-value-main">UX/UI Designer</span>
                     <span className="exp-value-sub">Full-time</span>
-                  </div>
-                </div>
-                <div className="exp-divider"></div>
-                <div className="exp-row">
-                  <span className="exp-label">Key Projects</span>
-                  <div className="exp-value">
-                    <span className="exp-value-main" style={{ fontSize: '14.9px', letterSpacing: '-0.596px', lineHeight: '24px' }}>WIP</span>
-                    <span className="exp-value-sub">To be announced</span>
                   </div>
                 </div>
                 <div className="exp-divider"></div>
@@ -227,6 +211,34 @@ export default function Home() {
             {/* Card 3 */}
             <div className="exp-card">
               <div className="exp-card-header">
+                <div className="exp-company">GudFood Vdoma</div>
+                <div className="exp-date">Sep – Nov 2024</div>
+              </div>
+              <div className="exp-rows">
+                <div className="exp-row">
+                  <span className="exp-label">Role</span>
+                  <div className="exp-value">
+                    <span className="exp-value-main">Product Designer</span>
+                    <span className="exp-value-sub">Freelance</span>
+                  </div>
+                </div>
+                <div className="exp-divider"></div>
+                <div className="exp-row">
+                  <span className="exp-label">Scope</span>
+                  <div className="exp-scope-list">
+                    <span className="exp-scope-item">UX Research</span>
+                    <span className="exp-scope-item">Stakeholder Interviews</span>
+                    <span className="exp-scope-item">Hypothesis Generation</span>
+                    <span className="exp-scope-item">UI Redesign</span>
+                    <span className="exp-scope-item">Prototyping</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="exp-card">
+              <div className="exp-card-header">
                 <div className="exp-company">Skvot</div>
                 <div className="exp-date">Feb 2024 – May 2024</div>
               </div>
@@ -234,16 +246,8 @@ export default function Home() {
                 <div className="exp-row">
                   <span className="exp-label">Role</span>
                   <div className="exp-value">
-                    <span className="exp-value-main">Product Designer</span>
+                    <span className="exp-value-main">UX/UI Designer</span>
                     <span className="exp-value-sub">Full-time</span>
-                  </div>
-                </div>
-                <div className="exp-divider"></div>
-                <div className="exp-row">
-                  <span className="exp-label">Key Projects</span>
-                  <div className="exp-value">
-                    <span className="exp-value-main" style={{ fontSize: '14.9px', letterSpacing: '-0.596px', lineHeight: '24px' }}>WIP</span>
-                    <span className="exp-value-sub">To be announced</span>
                   </div>
                 </div>
                 <div className="exp-divider"></div>
@@ -268,32 +272,18 @@ export default function Home() {
 
         {/* TESTIMONIALS — hidden */}
 
-        {/* MANIFESTO */}
-        <section className="manifesto-wrapper">
-          <FadeIn>
-          <div className="manifesto-inner">
-            <div className="manifesto-section">
-              <div className="manifesto-text">
-                <MagicText text={`Good design starts with curiosity, not solutions. Before thinking about screens, interactions, or visual direction — I want to understand the problem deeply. What's actually stopping people? What do they need that they haven't been able to articulate yet? What does the business need that it doesn't know how to ask for? Those questions are where the interesting work begins, and the answers shape everything that follows.\n\nI've come to believe that the most impactful design decisions often look like subtractions. Removing a feature that would've gone unused. Simplifying a flow that felt unnecessarily complex. Eliminating friction that nobody noticed was there until you asked. Getting to those decisions requires more than intuition — it requires research, honest conversations with real people, and the willingness to challenge the obvious answer even when everyone in the room is already attached to it.\n\nWhen I conduct interviews, I'm not looking for validation. I'm looking for the thing nobody thought to mention — the barrier that existing users have normalized, the gap between what people say they want and what would actually help them. That's where the real design opportunities hide.\n\nI also care about honesty in how I present my work. Design rarely goes exactly as planned. Constraints change, projects don't ship, decisions get made above your pay grade. The most valuable lessons usually live in those moments, and I think the most trustworthy designers are the ones who can talk about them clearly.\n\nAt the end of the day, I want to design products that make people's lives genuinely easier. Not just functional, not just beautiful — but thoughtful in a way that people feel even if they can't explain it.`} />
-              </div>
-            </div>
-            <div className="manifesto-border"></div>
-          </div>
-          </FadeIn>
-        </section>
-
         </article>
       </main>
 
       {/* "Let's talk" CTA — homepage only, sits between main and footer */}
-      <div className="cs-footer" style={{ paddingBottom: 0 }}>
-        <Link className="cs-footer-cta" href="/contact" aria-label="Let's talk — open contact page">
-          <span className="cs-footer-cta-text">Let&rsquo;s talk</span>
-          <span className="cs-footer-cta-arrow" aria-hidden>
+      <FadeIn className="hp-banner">
+        <Link className="hp-banner-cta" href="/contact" aria-label="Let's talk — open contact page">
+          <span className="hp-banner-cta-text">Let&rsquo;s talk</span>
+          <span className="hp-banner-cta-arrow" aria-hidden>
             <ArrowRight size={48} strokeWidth={2.25} />
           </span>
         </Link>
-      </div>
+      </FadeIn>
 
       <Footer />
     </>

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import '@/styles/case-study.css';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { FadeIn } from '@/components/ui/fade-in';
 import { FadeInMount } from '@/components/ui/fade-in-mount';
 import { SplitText } from '@/components/ui/split-text';
@@ -150,26 +151,9 @@ export default function SafeyCaseStudy() {
           </div>
         </div>
 
-        {/* CTA */}
-        <section className="cs-cta-wrapper">
-          <FadeIn>
-          <div className="cs-cta-inner">
-            <div className="cs-cta-badge">
-              <span className="cs-cta-dot"></span>
-              Available to work with you
-            </div>
-            <h2 className="cs-cta-title">Let&apos;s design next one together</h2>
-            <a href="#" className="cs-cta-btn">
-              Let&apos;s talk
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
-                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#FAFAFA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
-          </div>
-          </FadeIn>
-        </section>
-
       </main>
+
+      <Footer />
     </>
   );
 }

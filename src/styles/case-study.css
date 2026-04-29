@@ -214,7 +214,7 @@
   width: 120px;
   flex-shrink: 0;
   font-family: 'Fixel Text', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 18px;
   line-height: 28px;
   letter-spacing: -0.72px;
@@ -334,9 +334,6 @@
 }
 
 .cs-image-card {
-  background: #f4f5f6;
-  border-radius: 40px;
-  padding: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -356,7 +353,7 @@
 /* Phone frame rows */
 .cs-phones-row {
   /* Shared layout variables derived from full-phone aspect ratio (310.67 : 673.514) */
-  --row-height: calc(90vh - 160px);
+  --row-height: 90vh;
   --phone-width: calc(var(--row-height) * 310.67 / 673.514);
   height: var(--row-height);
   display: flex;
@@ -622,13 +619,11 @@
   }
 
   .cs-image-card {
-    padding: 60px;
     height: 70vh;
-    border-radius: 32px;
   }
 
   .cs-phones-row {
-    --row-height: calc(70vh - 120px);
+    --row-height: 70vh;
     --phone-width: calc(var(--row-height) * 310.67 / 673.514);
     gap: 20px;
   }
@@ -770,9 +765,7 @@
 
   /* Gallery */
   .cs-image-card {
-    padding: 24px;
     height: auto;
-    border-radius: 24px;
   }
 
   .cs-image-card img {

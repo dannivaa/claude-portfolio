@@ -1,7 +1,7 @@
 'use client';
 
-import { ArrowRight } from 'lucide-react';
 import { FadeIn } from '@/components/ui/fade-in';
+
 
 const EMAIL = 'danyloivanovv@gmail.com';
 const LINKEDIN_URL = 'https://www.linkedin.com/in/danyloivanovv/?skipRedirect=true';
@@ -47,65 +47,57 @@ function CVIcon() {
 
 export default function Footer() {
   return (
+    <FadeIn>
     <footer className="cs-footer">
-      {/* "Let's talk" CTA banner */}
-      <FadeIn>
-        <a className="cs-footer-cta" href={`mailto:${EMAIL}`} aria-label={`Let's talk — email ${EMAIL}`}>
-          <span className="cs-footer-cta-text">Let&rsquo;s talk</span>
-          <span className="cs-footer-cta-arrow" aria-hidden>
-            <ArrowRight size={48} strokeWidth={2.25} />
-          </span>
-        </a>
-      </FadeIn>
-
       {/* Connect block */}
-      <div className="cs-footer-connect">
-        <h2 className="cs-footer-connect-title">Connect</h2>
+      <div className="connect-block">
+        <h2 className="connect-block-title">Connect</h2>
 
-        <div className="cs-footer-connect-grid">
+        <div className="connect-block-grid">
           {/* Left — Contact */}
-          <div className="cs-footer-col">
-            <h3 className="cs-footer-col-label">Contact</h3>
+          <div className="connect-col">
+            <h3 className="connect-col-label">Contact</h3>
 
-            <div className="cs-footer-contact-info">
-              <a href={`mailto:${EMAIL}`} className="cs-footer-contact-email">
+            <div className="connect-contact-info">
+              <a href={`mailto:${EMAIL}`} className="connect-contact-email">
                 {EMAIL}
               </a>
             </div>
 
-            <div className="cs-footer-socials">
-              <a href={LINKEDIN_URL} target="_blank" rel="noreferrer noopener" aria-label="LinkedIn" className="cs-footer-social">
+            <div className="connect-socials">
+              <a href={LINKEDIN_URL} target="_blank" rel="noreferrer noopener" aria-label="LinkedIn" className="connect-social">
                 <LinkedInIcon />
               </a>
-              <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer noopener" aria-label="Instagram" className="cs-footer-social">
+              <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer noopener" aria-label="Instagram" className="connect-social">
                 <InstagramIcon />
               </a>
-              <a href={CV_URL} target="_blank" rel="noreferrer noopener" aria-label="CV" className="cs-footer-social">
+              <a href={CV_URL} target="_blank" rel="noreferrer noopener" aria-label="CV" className="connect-social">
                 <CVIcon />
               </a>
             </div>
           </div>
 
           {/* Right — Now */}
-          <div className="cs-footer-col">
-            <h3 className="cs-footer-col-label">Now</h3>
+          <div className="connect-col">
+            <h3 className="connect-col-label">Now</h3>
 
-            <dl className="cs-footer-now-list">
+            <dl className="connect-now-list">
               {NOW_ITEMS.map((item) => (
-                <div key={item.label} className="cs-footer-now-item">
-                  <dt className="cs-footer-now-label">{item.label}</dt>
-                  <dd className="cs-footer-now-value">{item.value}</dd>
+                <div key={item.label} className="connect-now-item">
+                  <dt className="connect-now-label">{item.label}</dt>
+                  <dd className="connect-now-value">{item.value}</dd>
                 </div>
               ))}
             </dl>
           </div>
         </div>
 
-        <div className="cs-footer-bottom">
-          <span className="cs-footer-copy">© 2026 Danylo Ivanov</span>
-          <span className="cs-footer-built">Fully vibe-coded with Claude Code</span>
+        <div className="connect-bottom">
+          <span className="connect-copy">© 2026 Danylo Ivanov</span>
+          <span className="connect-built">Fully vibe-coded with Claude Code</span>
         </div>
       </div>
     </footer>
+    </FadeIn>
   );
 }
