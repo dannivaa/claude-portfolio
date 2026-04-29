@@ -16,8 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=1440" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" media="(prefers-color-scheme: light)" />
-        <link rel="icon" type="image/svg+xml" href="/favicon white.svg" media="(prefers-color-scheme: dark)" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </head>
       <body>
         <LenisProvider>{children}</LenisProvider>

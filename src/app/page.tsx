@@ -1,8 +1,10 @@
 'use client';
 
 import '@/styles/style.css';
+import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { ArrowRight } from 'lucide-react';
 import { Component } from '@/components/ui/etheral-shadow';
 import { MagicText } from '@/components/ui/magic-text';
 import { FadeIn } from '@/components/ui/fade-in';
@@ -282,6 +284,16 @@ export default function Home() {
 
         </article>
       </main>
+
+      {/* "Let's talk" CTA — homepage only, sits between main and footer */}
+      <div className="cs-footer" style={{ paddingBottom: 0 }}>
+        <Link className="cs-footer-cta" href="/contact" aria-label="Let's talk — open contact page">
+          <span className="cs-footer-cta-text">Let&rsquo;s talk</span>
+          <span className="cs-footer-cta-arrow" aria-hidden>
+            <ArrowRight size={48} strokeWidth={2.25} />
+          </span>
+        </Link>
+      </div>
 
       <Footer />
     </>

@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
 
 interface NavbarProps {
@@ -6,6 +9,8 @@ interface NavbarProps {
 }
 
 export default function Navbar({ variant = 'home' }: NavbarProps) {
+  const router = useRouter();
+
   return (
     <nav className="navbar">
       <div className="navbar-left">
@@ -24,7 +29,7 @@ export default function Navbar({ variant = 'home' }: NavbarProps) {
         </div>
       </div>
       <div className="navbar-right">
-        <button className="navbar-cta">
+        <button className="navbar-cta" onClick={() => router.push('/contact')}>
           <span className="navbar-cta-label">Let&apos;s talk</span>
           <div className="navbar-cta-hover">
             <span>Let&apos;s talk</span>
