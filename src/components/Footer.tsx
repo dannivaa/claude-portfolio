@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { FadeIn } from '@/components/ui/fade-in';
 
@@ -49,14 +48,6 @@ function CVIcon() {
 export default function Footer() {
   return (
     <footer className="cs-footer">
-      {/* Connect block */}
-      <div className="cs-footer-connect">
-        <h2
-          ref={titleRef}
-          className={`cs-footer-connect-title${highlightActive ? ' is-visible' : ''}`}
-        >
-          Connect
-        </h2>
       {/* "Let's talk" CTA banner */}
       <FadeIn>
         <a className="cs-footer-cta" href={`mailto:${EMAIL}`} aria-label={`Let's talk — email ${EMAIL}`}>
