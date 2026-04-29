@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
+import { useLenis } from 'lenis/react';
 
 interface NavbarProps {
   variant?: 'home' | 'case-study';
@@ -10,11 +11,22 @@ interface NavbarProps {
 
 export default function Navbar({ variant = 'home' }: NavbarProps) {
   const router = useRouter();
+  const pathname = usePathname();
+  const lenis = useLenis();
 
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <Link href="/" className="navbar-avatar">
+        <Link
+          href="/"
+          className="navbar-avatar"
+          onClick={(e) => {
+            if (pathname === '/') {
+              e.preventDefault();
+              lenis?.scrollTo(0);
+            }
+          }}
+        >
           <img src="/pfp-updated.png" alt="Avatar" />
         </Link>
         <div className="navbar-links">
