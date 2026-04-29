@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { ArrowRight } from 'lucide-react';
+import { FadeIn } from '@/components/ui/fade-in';
 
 const EMAIL = 'danyloivanovv@gmail.com';
 const LINKEDIN_URL = 'https://www.linkedin.com/in/danyloivanovv/?skipRedirect=true';
@@ -45,29 +47,6 @@ function CVIcon() {
 }
 
 export default function Footer() {
-  const titleRef = useRef<HTMLHeadingElement | null>(null);
-  const [highlightActive, setHighlightActive] = useState(false);
-
-  useEffect(() => {
-    const node = titleRef.current;
-    if (!node) return;
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setHighlightActive(true);
-            io.disconnect();
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-
-    io.observe(node);
-    return () => io.disconnect();
-  }, []);
-
   return (
     <footer className="cs-footer">
       {/* Connect block */}
@@ -78,6 +57,19 @@ export default function Footer() {
         >
           Connect
         </h2>
+      {/* "Let's talk" CTA banner */}
+      <FadeIn>
+        <a className="cs-footer-cta" href={`mailto:${EMAIL}`} aria-label={`Let's talk — email ${EMAIL}`}>
+          <span className="cs-footer-cta-text">Let&rsquo;s talk</span>
+          <span className="cs-footer-cta-arrow" aria-hidden>
+            <ArrowRight size={48} strokeWidth={2.25} />
+          </span>
+        </a>
+      </FadeIn>
+
+      {/* Connect block */}
+      <div className="cs-footer-connect">
+        <h2 className="cs-footer-connect-title">Connect</h2>
 
         <div className="cs-footer-connect-grid">
           {/* Left — Contact */}
