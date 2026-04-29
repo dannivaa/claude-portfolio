@@ -1,6 +1,5 @@
 'use client';
 
-import { ArrowRight } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 const EMAIL = 'danyloivanovv@gmail.com';
@@ -71,22 +70,13 @@ export default function Footer() {
 
   return (
     <footer className="cs-footer">
-      {/* "Let's talk" CTA banner */}
-      <a className="cs-footer-cta" href={`mailto:${EMAIL}`} aria-label={`Let's talk — email ${EMAIL}`}>
-        <span className="cs-footer-cta-text">Let&rsquo;s talk</span>
-        <span className="cs-footer-cta-arrow" aria-hidden>
-          <ArrowRight size={48} strokeWidth={2.25} />
-        </span>
-      </a>
-
       {/* Connect block */}
       <div className="cs-footer-connect">
         <h2
           ref={titleRef}
           className={`cs-footer-connect-title${highlightActive ? ' is-visible' : ''}`}
         >
-          Let&rsquo;s build something{' '}
-          <span className="cs-footer-highlight">together</span>
+          Connect
         </h2>
 
         <div className="cs-footer-connect-grid">
