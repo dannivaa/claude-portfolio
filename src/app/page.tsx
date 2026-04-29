@@ -272,6 +272,33 @@ export default function Home() {
 
         {/* TESTIMONIALS — hidden */}
 
+        {/* ABOUT */}
+        <section className="about-wrapper">
+          <FadeIn>
+          <div className="about-card about-card--light">
+            <div className="about-text-col">
+              <span className="about-eyebrow">About me</span>
+              <h2 className="about-headline">Hey, I&rsquo;m Danylo.</h2>
+              <p className="about-body">I&rsquo;m a Product Designer focused on solving real problems for real people. I always start with data—understanding what&rsquo;s actually happening before I move. Then comes the people: talking to users, learning what they need, and building something that matters.<br/><br/>Outside of design, I&rsquo;m a drummer writing my own songs, spend a lot of time with people who mean everything to me, and I&rsquo;m constantly reading—books, manga, whatever pulls my attention. I cook, I watch anime, I build things because that&rsquo;s how I stay sane.<br/><br/>I notice things. I ask questions. I care about getting it right.</p>
+              <div className="about-spotify">
+                <p className="about-spotify-label">Playlist for building things</p>
+                <iframe
+                  src="https://open.spotify.com/embed/playlist/2l4YUpAEfKwN8IJsKLgYOY?utm_source=generator"
+                  width="100%"
+                  height="152"
+                  frameBorder={0}
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div className="about-photo-col">
+              <img className="about-photo" src="/about me.png" alt="Danylo Ivanov" />
+            </div>
+          </div>
+          </FadeIn>
+        </section>
+
         </article>
       </main>
 
