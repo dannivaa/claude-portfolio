@@ -17,7 +17,6 @@ export default function Navbar({ variant = 'home' }: NavbarProps) {
             <>
               <a href="#projects">My work</a>
               <a href="#experience">Experience</a>
-              <a href="#testimonials">Testimonials</a>
             </>
           ) : (
             <Link href="/">About me</Link>
