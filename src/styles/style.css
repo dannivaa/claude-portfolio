@@ -899,50 +899,7 @@ main {
 
 /* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  /* Navbar */
-  .navbar {
-    gap: 16px;
-    padding: 4px 8px 4px 4px;
-    border-radius: 22px;
-  }
-
-  .navbar-left,
-  .navbar-right {
-    gap: 16px;
-  }
-
-  .navbar-avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 18px;
-  }
-
-  .navbar-avatar img {
-    border-radius: 18px;
-  }
-
-  .navbar-links a {
-    height: 40px;
-    padding: 8px 14px;
-    font-size: 14px;
-    border-radius: 16px;
-  }
-
-  .navbar-cta {
-    height: 40px;
-    padding: 8px 24px;
-    font-size: 14px;
-    border-radius: 16px;
-  }
-
-  .navbar-cta-hover svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .navbar-secondary-link {
-    font-size: 14px;
-  }
+  /* Navbar — no changes at tablet; desktop pill behaviour is preserved */
 
   /* Hero */
   .hero-card {
@@ -1055,51 +1012,9 @@ main {
 }
 
 @media (max-width: 768px) {
-  /* Navbar */
+  /* Navbar — centered pill, no size changes */
   .navbar {
     top: 16px;
-    gap: 8px;
-    padding: 4px 6px 4px 4px;
-    max-width: calc(100% - 24px);
-    border-radius: 18px;
-  }
-
-  .navbar-left,
-  .navbar-right {
-    gap: 8px;
-  }
-
-  .navbar-avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 15px;
-  }
-
-  .navbar-avatar img {
-    border-radius: 15px;
-  }
-
-  .navbar-links a {
-    height: 36px;
-    padding: 6px 10px;
-    font-size: 12px;
-    border-radius: 12px;
-  }
-
-  .navbar-cta {
-    height: 36px;
-    padding: 6px 24px;
-    font-size: 12px;
-    border-radius: 12px;
-  }
-
-  .navbar-cta-hover svg {
-    width: 15px;
-    height: 15px;
-  }
-
-  .navbar-secondary-link {
-    font-size: 12px;
   }
 
   /* Hero */
@@ -1301,48 +1216,11 @@ main {
 
 @media (max-width: 480px) {
   .navbar {
-    top: 12px;
-    gap: 6px;
-    padding: 3px 4px 3px 3px;
-    border-radius: 14px;
-  }
-
-  .navbar-left,
-  .navbar-right {
-    gap: 4px;
-  }
-
-  .navbar-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 10px;
-  }
-
-  .navbar-avatar img {
-    border-radius: 10px;
-  }
-
-  .navbar-links a {
-    height: 32px;
-    padding: 4px 8px;
-    font-size: 11px;
-    border-radius: 10px;
-  }
-
-  .navbar-cta {
-    height: 32px;
-    padding: 4px 20px;
-    font-size: 11px;
-    border-radius: 10px;
-  }
-
-  .navbar-cta-hover svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  .navbar-secondary-link {
-    display: none;
+    top: 10px;
+    left: 8px;
+    right: 8px;
+    transform: none;
+    width: auto;
   }
 
   .hero-card {
