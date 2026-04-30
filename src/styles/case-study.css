@@ -592,7 +592,7 @@
   .cs-psr-label,
   .cs-content-label,
   .cs-content-body {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 22px;
     letter-spacing: -0.56px;
   }
@@ -678,7 +678,7 @@
   .cs-psr-label,
   .cs-content-label,
   .cs-content-body {
-    font-size: 13px;
+    font-size: 16px;
     line-height: 20px;
     letter-spacing: -0.52px;
   }
@@ -727,7 +727,7 @@
   /* PSR rows stack */
   .cs-psr-row {
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
     padding: 16px 0;
   }
 
