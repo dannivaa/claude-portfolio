@@ -1101,7 +1101,7 @@ main {
 
   .project-cards {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 40px;
   }
 
   /* Experience */
