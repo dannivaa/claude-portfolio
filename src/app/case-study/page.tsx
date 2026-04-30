@@ -30,17 +30,17 @@ export default function CaseStudy() {
             <div className="cs-phones-naked">
               <FadeInMount delay={0.8}>
                 <div className="cs-phone-naked">
-                  <img src="/day 2 onboarding.png" alt="App onboarding screen" />
+                  <img src="/images/day 2 onboarding.png" alt="App onboarding screen" />
                 </div>
               </FadeInMount>
               <FadeInMount delay={0.95}>
                 <div className="cs-phone-naked">
-                  <img src="/day 2 home.png" alt="App home screen" />
+                  <img src="/images/day 2 home.png" alt="App home screen" />
                 </div>
               </FadeInMount>
               <FadeInMount delay={1.1}>
                 <div className="cs-phone-naked">
-                  <img src="/day 3 paywall.png" alt="App paywall screen" />
+                  <img src="/images/day 3 paywall.png" alt="App paywall screen" />
                 </div>
               </FadeInMount>
             </div>

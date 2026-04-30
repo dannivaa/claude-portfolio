@@ -27,7 +27,7 @@ export default function Navbar({ variant = 'home' }: NavbarProps) {
             }
           }}
         >
-          <img src="/pfp-updated.png" alt="Avatar" />
+          <img src="/images/pfp-updated.png" alt="Avatar" />
         </Link>
         <div className="navbar-links">
           {variant === 'home' ? (

@@ -30,17 +30,17 @@ export default function SkvotCaseStudy() {
             <div className="cs-phones-naked">
               <FadeInMount delay={0.8}>
                 <div className="cs-phone-naked">
-                  <img src="/day 2 onboarding.png" alt="App screen 1" />
+                  <img src="/images/day 2 onboarding.png" alt="App screen 1" />
                 </div>
               </FadeInMount>
               <FadeInMount delay={0.95}>
                 <div className="cs-phone-naked">
-                  <img src="/day 2 home.png" alt="App screen 2" />
+                  <img src="/images/day 2 home.png" alt="App screen 2" />
                 </div>
               </FadeInMount>
               <FadeInMount delay={1.1}>
                 <div className="cs-phone-naked">
-                  <img src="/day 3 paywall.png" alt="App screen 3" />
+                  <img src="/images/day 3 paywall.png" alt="App screen 3" />
                 </div>
               </FadeInMount>
             </div>

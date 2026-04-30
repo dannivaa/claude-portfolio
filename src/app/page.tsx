@@ -9,7 +9,10 @@ import { Component } from '@/components/ui/etheral-shadow';
 import { MagicText } from '@/components/ui/magic-text';
 import { FadeIn } from '@/components/ui/fade-in';
 import { SplitText } from '@/components/ui/split-text';
+import { ParticleTypography } from '@/components/ui/particle-typography';
 import { useRouter } from 'next/navigation';
+import { Cursor } from '@/components/ui/custom-cursor';
+import ClickSpark from '@/components/ClickSpark';
 
 export default function Home() {
   const router = useRouter();
@@ -32,7 +35,7 @@ export default function Home() {
                 sizing="fill"
               />
             </div>
-            <p className="hero-headline"><SplitText text="Product Designer crafting solutions that drive business wins." /></p>
+            <p className="hero-headline">Product Designer crafting solutions that drive business wins.</p>
           </div>
         </section>
 
@@ -97,9 +100,13 @@ export default function Home() {
 
               {/* Card: Safey */}
               <div className="card-default" onClick={() => router.push('/safey')} style={{ cursor: 'pointer' }}>
-                <div className="card-image">
-                  <img src="/card-image-safey.png" alt="Safey AI Companion" />
-                </div>
+                <ClickSpark sparkColor="#228bcc" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
+                  <Cursor name="Read me" cursorColor="#228bcc" style={{ borderRadius: 24 }}>
+                    <div className="card-image">
+                      <img src="/images/card-image-safey.png" alt="Safey AI Companion" />
+                    </div>
+                  </Cursor>
+                </ClickSpark>
                 <div className="card-footer">
                   <span className="card-title">Designing a monetization strategy for an AI companion app</span>
                 </div>
@@ -107,9 +114,13 @@ export default function Home() {
 
               {/* Card: GudFood */}
               <div className="card-default" onClick={() => router.push('/case-study')} style={{ cursor: 'pointer' }}>
-                <div className="card-image">
-                  <img src="/card-image-gudfood.png" alt="The loop that brought users back" />
-                </div>
+                <ClickSpark sparkColor="#ea6406" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
+                  <Cursor name="Read me" cursorColor="#ea6406" style={{ borderRadius: 24 }}>
+                    <div className="card-image">
+                      <img src="/images/card-image-gudfood.png" alt="The loop that brought users back" />
+                    </div>
+                  </Cursor>
+                </ClickSpark>
                 <div className="card-footer">
                   <span className="card-title">The loop that brought users back</span>
                 </div>
@@ -117,9 +128,13 @@ export default function Home() {
 
               {/* Card: SKVOT */}
               <div className="card-default" onClick={() => router.push('/skvot')} style={{ cursor: 'pointer' }}>
-                <div className="card-image">
-                  <img src="/card-image-skvot.png" alt="SKVOT Mobile App" />
-                </div>
+                <ClickSpark sparkColor="#121212" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
+                  <Cursor name="Read me" cursorColor="#121212" style={{ borderRadius: 24 }}>
+                    <div className="card-image">
+                      <img src="/images/card-image-skvot.png" alt="SKVOT Mobile App" />
+                    </div>
+                  </Cursor>
+                </ClickSpark>
                 <div className="card-footer">
                   <span className="card-title">A bridge between student and lecturer</span>
                 </div>
@@ -127,9 +142,13 @@ export default function Home() {
 
               {/* Card: Soon */}
               <div className="card-soon">
-                <div className="card-image">
-                  <img src="/card-image.png" alt="Enhancing reading and memorising" />
-                </div>
+                <ClickSpark sparkColor="#666666" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
+                  <Cursor name="Gotta wait..." cursorColor="#666666" style={{ borderRadius: 24 }}>
+                    <div className="card-image">
+                      <img src="/images/card-image.png" alt="Enhancing reading and memorising" />
+                    </div>
+                  </Cursor>
+                </ClickSpark>
                 <div className="card-footer">
                   <span className="card-title">Enhancing reading and memorising</span>
                   <div className="card-badge"><span>Case Study Soon</span></div>
@@ -293,7 +312,7 @@ export default function Home() {
               </div>
             </div>
             <div className="about-photo-col">
-              <img className="about-photo" src="/about me.png" alt="Danylo Ivanov" />
+              <img className="about-photo" src="/images/about me.png" alt="Danylo Ivanov" />
             </div>
           </div>
           </FadeIn>

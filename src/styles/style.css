@@ -274,7 +274,13 @@ main {
   line-height: 1.1;
   letter-spacing: -0.04em;
   color: #fff;
-  text-align: left;
+  text-align: center;
+}
+
+.hero-particle-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 /* ─── WORKED WITH ─────────────────────────────────────────────────────────── */
@@ -322,60 +328,38 @@ main {
 .project-cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  column-gap: 24px;
+  row-gap: 48px;
   width: 100%;
 }
 
 /* Card Soon */
 .card-soon,
 .card-default {
-  border-radius: 24px;
-  aspect-ratio: 704 / 436;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   cursor: pointer;
-  position: relative;
 }
 
 .card-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: -14px;
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 24px;
+  aspect-ratio: 704 / 436;
+  overflow: hidden;
 }
 
 .card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.card-soon:hover .card-image,
-.card-default:hover .card-image {
-  transform: translateY(-14px);
+  display: block;
 }
 
 .card-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   display: flex;
   align-items: center;
-  gap: 24px;
-  padding: 40px 24px 20px;
-  background: linear-gradient(to bottom, transparent 0%, rgba(5, 12, 15, 0.72) 100%);
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.card-soon:hover .card-footer,
-.card-default:hover .card-footer {
-  opacity: 1;
-  transform: translateY(0);
+  gap: 12px;
+  padding: 0 4px;
 }
 
 .card-title {
@@ -384,14 +368,12 @@ main {
   font-size: 20px;
   line-height: 28px;
   letter-spacing: -0.8px;
-  color: #ffffff;
+  color: #050c0f;
   flex: 1;
 }
 
 .card-badge {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(3.5px);
-  -webkit-backdrop-filter: blur(3.5px);
+  background: rgba(5, 12, 15, 0.07);
   border-radius: 9999px;
   padding: 2px 12px;
   height: 32px;
@@ -406,7 +388,7 @@ main {
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.64px;
-  color: #ffffff;
+  color: rgba(5, 12, 15, 0.45);
   white-space: nowrap;
 }
 
