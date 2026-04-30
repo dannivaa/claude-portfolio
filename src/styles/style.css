@@ -1217,47 +1217,44 @@ main {
 @media (max-width: 480px) {
   .navbar {
     top: 10px;
-    left: 8px;
-    right: 8px;
-    transform: none;
-    width: auto;
     gap: 16px;
     padding: 4px 8px 4px 4px;
-    border-radius: 18px;
+    border-radius: 22px;
+    max-width: calc(100vw - 16px);
   }
 
   .navbar-left,
   .navbar-right {
-    gap: 12px;
+    gap: 16px;
   }
 
   .navbar-avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 16px;
+    width: 48px;
+    height: 48px;
+    border-radius: 20px;
   }
 
   .navbar-avatar img {
-    border-radius: 16px;
+    border-radius: 20px;
   }
 
   .navbar-links a {
-    height: 36px;
-    padding: 6px 12px;
-    font-size: 13px;
-    border-radius: 12px;
+    height: 40px;
+    padding: 8px 10px;
+    font-size: 14px;
+    border-radius: 16px;
   }
 
   .navbar-cta {
-    height: 36px;
-    padding: 6px 18px;
-    font-size: 13px;
-    border-radius: 12px;
+    height: 40px;
+    padding: 8px 18px;
+    font-size: 14px;
+    border-radius: 16px;
   }
 
   .navbar-cta-hover svg {
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
   }
 
   .hero-card {
