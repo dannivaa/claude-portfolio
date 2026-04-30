@@ -9,7 +9,6 @@ import { Component } from '@/components/ui/etheral-shadow';
 import { MagicText } from '@/components/ui/magic-text';
 import { FadeIn } from '@/components/ui/fade-in';
 import { SplitText } from '@/components/ui/split-text';
-import { ParticleTypography } from '@/components/ui/particle-typography';
 import { useRouter } from 'next/navigation';
 import { Cursor } from '@/components/ui/custom-cursor';
 import ClickSpark from '@/components/ClickSpark';
