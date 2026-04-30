@@ -29,7 +29,7 @@ export default function Home() {
             <div className="hero-bg">
               <Component
                 color="#4695C0"
-                animation={{ scale: 100, speed: 90 }}
+                animation={{ scale: 0, speed: 0 }}
                 noise={{ opacity: 1, scale: 1.2 }}
                 sizing="fill"
               />
