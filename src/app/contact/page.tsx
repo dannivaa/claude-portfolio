@@ -18,28 +18,28 @@ const CARDS = [
     text: 'View CV',
     href: CV_URL,
     external: true,
-    icon: { src: '/drive.svg', alt: 'Google Drive' },
+    icon: { src: '/icons/drive.svg', alt: 'Google Drive' },
   },
   {
     label: 'Get in touch',
     text: EMAIL,
     href: `mailto:${EMAIL}`,
     external: false,
-    icon: { src: '/gmail.svg', alt: 'Gmail' },
+    icon: { src: '/icons/gmail.svg', alt: 'Gmail' },
   },
   {
     label: 'Connect',
     text: 'LinkedIn',
     href: LINKEDIN_URL,
     external: true,
-    icon: { src: '/linkedin.svg', alt: 'LinkedIn' },
+    icon: { src: '/icons/linkedin.svg', alt: 'LinkedIn' },
   },
   {
     label: 'Follow',
     text: 'Instagram',
     href: INSTAGRAM_URL,
     external: true,
-    icon: { src: '/instagram.svg', alt: 'Instagram' },
+    icon: { src: '/icons/instagram.svg', alt: 'Instagram' },
   },
 ];
 
