@@ -40,7 +40,7 @@ export function Cursor({
   const [mounted, setMounted] = useState(false);
   const [scaled, setScaled] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const exitTimer = useRef<ReturnType<typeof setTimeout>>();
+  const exitTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current) return;
