@@ -463,9 +463,9 @@ main {
 .exp-date {
   font-family: 'Fixel Text', sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.56px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.64px;
   color: #838f95;
 }
 
@@ -491,9 +491,9 @@ main {
 .exp-label {
   font-family: 'Fixel Text', sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.56px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.64px;
   color: #838f95;
   width: 100.67px;
   flex-shrink: 0;
@@ -508,18 +508,18 @@ main {
 .exp-value-main {
   font-family: 'Fixel Text', sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.56px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.64px;
   color: #050C0F;
 }
 
 .exp-value-sub {
   font-family: 'Fixel Text', sans-serif;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: -0.48px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.56px;
   color: #838f95;
 }
 
@@ -532,9 +532,9 @@ main {
 .exp-scope-item {
   font-family: 'Fixel Text', sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.56px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.64px;
   color: #050C0F;
   white-space: nowrap;
 }
@@ -1425,7 +1425,6 @@ main {
 
 /* Light card */
 .about-card--light {
-  background: #f4f5f6;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
