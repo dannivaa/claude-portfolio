@@ -102,7 +102,7 @@ export default function Home() {
                 <ClickSpark sparkColor="#228bcc" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="Open Safey" cursorColor="#228bcc" style={{ borderRadius: 24 }}>
                     <div className="card-image">
-                      <img src="/images/Safey/card-image-safey.png" alt="Safey AI Companion" />
+                      <img src="/images/Safey/safey-thumbnail.png" alt="Safey AI Companion" />
                     </div>
                   </Cursor>
                 </ClickSpark>
@@ -116,7 +116,7 @@ export default function Home() {
                 <ClickSpark sparkColor="#ea6406" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="Open GudFood" cursorColor="#ea6406" style={{ borderRadius: 24 }}>
                     <div className="card-image">
-                      <img src="/images/GudFood/card-image-gudfood.png" alt="The loop that brought users back" />
+                      <img src="/images/GudFood/gudfood-thumbnail.png" alt="The loop that brought users back" />
                     </div>
                   </Cursor>
                 </ClickSpark>
@@ -130,7 +130,7 @@ export default function Home() {
                 <ClickSpark sparkColor="#121212" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="Open Skvot" cursorColor="#121212" style={{ borderRadius: 24 }}>
                     <div className="card-image">
-                      <img src="/images/Skvot/card-image-skvot.png" alt="SKVOT Mobile App" />
+                      <img src="/images/Skvot/skvot-thumbnail.png" alt="SKVOT Mobile App" />
                     </div>
                   </Cursor>
                 </ClickSpark>
@@ -144,7 +144,7 @@ export default function Home() {
                 <ClickSpark sparkColor="#8a0dd7" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="Gotta wait..." cursorColor="#8a0dd7" style={{ borderRadius: 24 }}>
                     <div className="card-image">
-                      <img src="/images/card-image-comingsoon-v0.png" alt="One behavioral change, measurable impact" />
+                      <img src="/images/soon-thumbnail.png" alt="One behavioral change, measurable impact" />
                     </div>
                   </Cursor>
                 </ClickSpark>
