@@ -100,9 +100,9 @@ export default function Home() {
               {/* Card: Safey */}
               <div className="card-default" onClick={() => router.push('/safey')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#228bcc" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="Read me" cursorColor="#228bcc" style={{ borderRadius: 24 }}>
+                  <Cursor name="Open Safey" cursorColor="#228bcc" style={{ borderRadius: 24 }}>
                     <div className="card-image">
-                      <img src="/images/card-image-safey.png" alt="Safey AI Companion" />
+                      <img src="/images/Safey/card-image-safey.png" alt="Safey AI Companion" />
                     </div>
                   </Cursor>
                 </ClickSpark>
@@ -114,9 +114,9 @@ export default function Home() {
               {/* Card: GudFood */}
               <div className="card-default" onClick={() => router.push('/case-study')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#ea6406" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="Read me" cursorColor="#ea6406" style={{ borderRadius: 24 }}>
+                  <Cursor name="Open GudFood" cursorColor="#ea6406" style={{ borderRadius: 24 }}>
                     <div className="card-image">
-                      <img src="/images/card-image-gudfood.png" alt="The loop that brought users back" />
+                      <img src="/images/GudFood/card-image-gudfood.png" alt="The loop that brought users back" />
                     </div>
                   </Cursor>
                 </ClickSpark>
@@ -128,9 +128,9 @@ export default function Home() {
               {/* Card: SKVOT */}
               <div className="card-default" onClick={() => router.push('/skvot')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#121212" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="Read me" cursorColor="#121212" style={{ borderRadius: 24 }}>
+                  <Cursor name="Open Skvot" cursorColor="#121212" style={{ borderRadius: 24 }}>
                     <div className="card-image">
-                      <img src="/images/card-image-skvot.png" alt="SKVOT Mobile App" />
+                      <img src="/images/Skvot/card-image-skvot.png" alt="SKVOT Mobile App" />
                     </div>
                   </Cursor>
                 </ClickSpark>
@@ -141,15 +141,15 @@ export default function Home() {
 
               {/* Card: Soon */}
               <div className="card-soon">
-                <ClickSpark sparkColor="#666666" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="Gotta wait..." cursorColor="#666666" style={{ borderRadius: 24 }}>
+                <ClickSpark sparkColor="#8a0dd7" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
+                  <Cursor name="Gotta wait..." cursorColor="#8a0dd7" style={{ borderRadius: 24 }}>
                     <div className="card-image">
-                      <img src="/images/card-image.png" alt="Enhancing reading and memorising" />
+                      <img src="/images/card-image-comingsoon-v0.png" alt="One Behavioral Change, Measurable Impact" />
                     </div>
                   </Cursor>
                 </ClickSpark>
                 <div className="card-footer">
-                  <span className="card-title">Enhancing reading and memorising</span>
+                  <span className="card-title">One Behavioral Change, Measurable Impact</span>
                   <div className="card-badge"><span>Case Study Soon</span></div>
                 </div>
               </div>
@@ -299,7 +299,7 @@ export default function Home() {
               <h2 className="about-headline">Hey, I&rsquo;m Danylo.</h2>
               <p className="about-body">I&rsquo;m a Product Designer focused on solving real problems for real people. I always start with data—understanding what&rsquo;s actually happening before I move. Then comes the people: talking to users, learning what they need, and building something that matters.<br/><br/>Outside of design, I&rsquo;m a drummer writing my own songs, spend a lot of time with people who mean everything to me, and I&rsquo;m constantly reading—books, manga, whatever pulls my attention. I cook, I watch anime, I build things because that&rsquo;s how I stay sane.<br/><br/>I notice things. I ask questions. I care about getting it right.</p>
               <div className="about-spotify">
-                <p className="about-spotify-label">Playlist for building things</p>
+                <p className="about-spotify-label">My go-to playlist for building things</p>
                 <iframe
                   src="https://open.spotify.com/embed/playlist/2l4YUpAEfKwN8IJsKLgYOY?utm_source=generator"
                   width="100%"
