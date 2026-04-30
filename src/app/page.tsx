@@ -144,12 +144,12 @@ export default function Home() {
                 <ClickSpark sparkColor="#8a0dd7" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="Gotta wait..." cursorColor="#8a0dd7" style={{ borderRadius: 24 }}>
                     <div className="card-image">
-                      <img src="/images/card-image-comingsoon-v0.png" alt="One Behavioral Change, Measurable Impact" />
+                      <img src="/images/card-image-comingsoon-v0.png" alt="One behavioral change, measurable impact" />
                     </div>
                   </Cursor>
                 </ClickSpark>
                 <div className="card-footer">
-                  <span className="card-title">One Behavioral Change, Measurable Impact</span>
+                  <span className="card-title">One behavioral change, measurable impact</span>
                   <div className="card-badge"><span>Case Study Soon</span></div>
                 </div>
               </div>
