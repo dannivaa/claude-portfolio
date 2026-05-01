@@ -68,17 +68,12 @@ export default function SafeyCaseStudy() {
               <div className="cs-meta-bar">
                 <div className="cs-meta-bar-item">
                   <span className="cs-meta-label">Role</span>
-                  <span className="cs-meta-value">Product Designer — Solo</span>
+                  <span className="cs-meta-value">Product Designer</span>
                 </div>
                 <div className="cs-meta-bar-divider" />
                 <div className="cs-meta-bar-item">
                   <span className="cs-meta-label">Timeline</span>
-                  <span className="cs-meta-value">3-day design sprint · 2024</span>
-                </div>
-                <div className="cs-meta-bar-divider" />
-                <div className="cs-meta-bar-item">
-                  <span className="cs-meta-label">Platform</span>
-                  <span className="cs-meta-value">iOS</span>
+                  <span className="cs-meta-value">March — May 2026</span>
                 </div>
                 <div className="cs-meta-bar-divider" />
                 <div className="cs-meta-bar-item">
