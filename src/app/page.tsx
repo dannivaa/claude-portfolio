@@ -112,7 +112,7 @@ export default function Home() {
               </div>
 
               {/* Card: GudFood */}
-              <div className="card-default" onClick={() => router.push('/case-study')} style={{ cursor: 'pointer' }}>
+              <div className="card-default" onClick={() => router.push('/gudfood')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#ea6406" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="Open GudFood" cursorColor="#ea6406" style={{ borderRadius: 24 }}>
                     <div className="card-image">
@@ -142,7 +142,7 @@ export default function Home() {
               {/* Card: Soon */}
               <div className="card-soon">
                 <ClickSpark sparkColor="#8a0dd7" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="Gotta wait..." cursorColor="#8a0dd7" style={{ borderRadius: 24 }}>
+                  <Cursor name="Working on it..." cursorColor="#8a0dd7" style={{ borderRadius: 24 }}>
                     <div className="card-image">
                       <img src="/images/soon-thumbnail.png" alt="One behavioral change, measurable impact" />
                     </div>
@@ -150,7 +150,7 @@ export default function Home() {
                 </ClickSpark>
                 <div className="card-footer">
                   <span className="card-title">One behavioral change, measurable impact</span>
-                  <div className="card-badge"><span>Case Study Soon</span></div>
+                  <div className="card-badge"><span>Coming Soon</span></div>
                 </div>
               </div>
 

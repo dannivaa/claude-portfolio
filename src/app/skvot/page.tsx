@@ -68,12 +68,7 @@ export default function SkvotCaseStudy() {
               <div className="cs-meta-bar">
                 <div className="cs-meta-bar-item">
                   <span className="cs-meta-label">Role</span>
-                  <span className="cs-meta-value">UX/UI Designer (Mobile) — Solo</span>
-                </div>
-                <div className="cs-meta-bar-divider" />
-                <div className="cs-meta-bar-item">
-                  <span className="cs-meta-label">Team</span>
-                  <span className="cs-meta-value">1 Designer, 1 Mentor</span>
+                  <span className="cs-meta-value">UX/UI Designer</span>
                 </div>
                 <div className="cs-meta-bar-divider" />
                 <div className="cs-meta-bar-item">
