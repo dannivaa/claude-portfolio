@@ -3,6 +3,7 @@ import "./globals.css";
 import "@/styles/style.css";
 import LenisProvider from "@/components/LenisProvider";
 import ClickSpark from "@/components/ClickSpark";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({
         <ClickSpark sparkColor="#121212" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
           <LenisProvider>{children}</LenisProvider>
         </ClickSpark>
+        <SpeedInsights />
         <Analytics />
       </body>
     </html>
