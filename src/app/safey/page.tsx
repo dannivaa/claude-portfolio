@@ -30,17 +30,17 @@ export default function SafeyCaseStudy() {
             <div className="cs-phones-naked">
               <FadeInMount delay={0.8}>
                 <div className="cs-phone-naked">
-                  <img src="/images/day 2 onboarding.png" alt="App screen 1" />
+                  <img src="/images/Safey/01.png" alt="Safey screen 1" />
                 </div>
               </FadeInMount>
               <FadeInMount delay={0.95}>
                 <div className="cs-phone-naked">
-                  <img src="/images/day 2 home.png" alt="App screen 2" />
+                  <img src="/images/Safey/02.png" alt="Safey screen 2" />
                 </div>
               </FadeInMount>
               <FadeInMount delay={1.1}>
                 <div className="cs-phone-naked">
-                  <img src="/images/day 3 paywall.png" alt="App screen 3" />
+                  <img src="/images/Safey/03.png" alt="Safey screen 3" />
                 </div>
               </FadeInMount>
             </div>
@@ -68,17 +68,12 @@ export default function SafeyCaseStudy() {
               <div className="cs-meta-bar">
                 <div className="cs-meta-bar-item">
                   <span className="cs-meta-label">Role</span>
-                  <span className="cs-meta-value">Product Designer — Solo</span>
+                  <span className="cs-meta-value">Product Designer</span>
                 </div>
                 <div className="cs-meta-bar-divider" />
                 <div className="cs-meta-bar-item">
                   <span className="cs-meta-label">Timeline</span>
-                  <span className="cs-meta-value">3-day design sprint · 2024</span>
-                </div>
-                <div className="cs-meta-bar-divider" />
-                <div className="cs-meta-bar-item">
-                  <span className="cs-meta-label">Platform</span>
-                  <span className="cs-meta-value">iOS</span>
+                  <span className="cs-meta-value">March — May 2026</span>
                 </div>
                 <div className="cs-meta-bar-divider" />
                 <div className="cs-meta-bar-item">

@@ -30,17 +30,17 @@ export default function SkvotCaseStudy() {
             <div className="cs-phones-naked">
               <FadeInMount delay={0.8}>
                 <div className="cs-phone-naked">
-                  <img src="/images/day 2 onboarding.png" alt="App screen 1" />
+                  <img src="/images/Skvot/01.png" alt="SKVOT screen 1" />
                 </div>
               </FadeInMount>
               <FadeInMount delay={0.95}>
                 <div className="cs-phone-naked">
-                  <img src="/images/day 2 home.png" alt="App screen 2" />
+                  <img src="/images/Skvot/02.png" alt="SKVOT screen 2" />
                 </div>
               </FadeInMount>
               <FadeInMount delay={1.1}>
                 <div className="cs-phone-naked">
-                  <img src="/images/day 3 paywall.png" alt="App screen 3" />
+                  <img src="/images/Skvot/03.png" alt="SKVOT screen 3" />
                 </div>
               </FadeInMount>
             </div>
@@ -68,12 +68,7 @@ export default function SkvotCaseStudy() {
               <div className="cs-meta-bar">
                 <div className="cs-meta-bar-item">
                   <span className="cs-meta-label">Role</span>
-                  <span className="cs-meta-value">UX/UI Designer (Mobile) — Solo</span>
-                </div>
-                <div className="cs-meta-bar-divider" />
-                <div className="cs-meta-bar-item">
-                  <span className="cs-meta-label">Team</span>
-                  <span className="cs-meta-value">1 Designer, 1 Mentor</span>
+                  <span className="cs-meta-value">UX/UI Designer</span>
                 </div>
                 <div className="cs-meta-bar-divider" />
                 <div className="cs-meta-bar-item">
@@ -148,33 +143,24 @@ export default function SkvotCaseStudy() {
           </div>
         </div>
 
-        {/* GALLERY */}
-        <section className="cs-gallery">
-          <FadeIn>
-          <div className="cs-gallery-inner">
-            <div className="cs-image-card">
-              <img src="https://www.figma.com/api/mcp/asset/43035999-dece-4aee-8afe-6c5fc076e241" alt="" />
-            </div>
-            <div className="cs-image-card">
-              <img src="https://www.figma.com/api/mcp/asset/cdb32618-d3b5-41c5-90e2-bb8f2ae53868" alt="" />
-            </div>
-            <div className="cs-image-card">
-              <img src="https://www.figma.com/api/mcp/asset/55088ca6-6199-494e-80f4-ef531af7636f" alt="" />
-            </div>
-            <div className="cs-image-card">
-              <img src="https://www.figma.com/api/mcp/asset/a5e3450b-3cf8-4764-a62a-0b5c4e0464a9" alt="" />
-            </div>
-            <div className="cs-image-card">
-              <img src="https://www.figma.com/api/mcp/asset/e86241f9-eb17-4689-a536-da44a33a15b0" alt="" />
-            </div>
-            <div className="cs-image-card">
-              <img src="https://www.figma.com/api/mcp/asset/fd41f1ad-e7df-4940-bea6-d6b201655191" alt="" />
-            </div>
-            <div className="cs-image-card">
-              <img src="https://www.figma.com/api/mcp/asset/2dc67a8e-6835-4078-85e3-27a7067ad747" alt="" />
-            </div>
+        {/* SCREENSHOTS — bottom */}
+        <section className="cs-hero">
+          <div className="cs-hero-inner">
+            <FadeIn>
+              <div className="cs-phones-naked">
+                <div className="cs-phone-naked"><img src="/images/Skvot/04.png" alt="" /></div>
+                <div className="cs-phone-naked"><img src="/images/Skvot/05.png" alt="" /></div>
+                <div className="cs-phone-naked"><img src="/images/Skvot/06.png" alt="" /></div>
+              </div>
+            </FadeIn>
+            <FadeIn>
+              <div className="cs-phones-naked">
+                <div className="cs-phone-naked"><img src="/images/Skvot/07.png" alt="" /></div>
+                <div className="cs-phone-naked"><img src="/images/Skvot/08.png" alt="" /></div>
+                <div className="cs-phone-naked"><img src="/images/Skvot/09.png" alt="" /></div>
+              </div>
+            </FadeIn>
           </div>
-          </FadeIn>
         </section>
 
       </main>

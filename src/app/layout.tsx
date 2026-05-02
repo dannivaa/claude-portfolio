@@ -4,6 +4,7 @@ import "@/styles/style.css";
 import LenisProvider from "@/components/LenisProvider";
 import ClickSpark from "@/components/ClickSpark";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Danylo Ivanov | Product Designer",
@@ -25,6 +26,7 @@ export default function RootLayout({
           <LenisProvider>{children}</LenisProvider>
         </ClickSpark>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
