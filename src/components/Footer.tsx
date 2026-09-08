@@ -51,8 +51,6 @@ export default function Footer() {
     <footer className="cs-footer">
       {/* Connect block */}
       <div className="connect-block">
-        <h2 className="connect-block-title">Connect</h2>
-
         <div className="connect-block-grid">
           {/* Left — Contact */}
           <div className="connect-col">
