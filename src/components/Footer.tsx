@@ -11,8 +11,8 @@ const CV_URL = 'https://drive.google.com/file/d/18xcqEFFbm7c3aLR7aRaWbhls1EpI-Xw
 const NOW_ITEMS = [
   { label: 'Designing at', value: 'Lyxonn' },
   { label: 'Based in', value: 'Kyiv, Ukraine' },
-  { label: 'Status', value: 'Open to full-time roles' },
-  { label: 'Currently exploring', value: 'Integrating AI into design workflows' },
+  { label: 'Status', value: 'Open to part-time roles' },
+  { label: 'Currently exploring', value: 'Finding where AI can own the most of a workflow' },
 ];
 
 /* ── Inline SVG icons (from svgrepo, recolored via currentColor) ── */
