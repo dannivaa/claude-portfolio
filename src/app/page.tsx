@@ -93,11 +93,11 @@ export default function Home() {
 
         {/* PROJECTS */}
         <section id="projects" className="projects-wrapper">
-          <FadeIn>
           <div className="projects-section">
             <div className="project-cards">
 
               {/* Card: Safey */}
+              <FadeIn>
               <div className="card-default" onClick={() => router.push('/safey')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#228bcc" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="Open Safey" cursorColor="#228bcc" style={{ borderRadius: 24 }}>
@@ -110,8 +110,10 @@ export default function Home() {
                   <span className="card-title">Designing a monetization strategy for an AI companion app</span>
                 </div>
               </div>
+              </FadeIn>
 
               {/* Card: GudFood */}
+              <FadeIn delay={0.08}>
               <div className="card-default" onClick={() => router.push('/gudfood')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#ea6406" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="Open GudFood" cursorColor="#ea6406" style={{ borderRadius: 24 }}>
@@ -124,8 +126,10 @@ export default function Home() {
                   <span className="card-title">The loop that brought users back</span>
                 </div>
               </div>
+              </FadeIn>
 
               {/* Card: SKVOT */}
+              <FadeIn>
               <div className="card-default" onClick={() => router.push('/skvot')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#121212" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="Open Skvot" cursorColor="#121212" style={{ borderRadius: 24 }}>
@@ -138,8 +142,10 @@ export default function Home() {
                   <span className="card-title">A bridge between student and lecturer</span>
                 </div>
               </div>
+              </FadeIn>
 
               {/* Card: Soon */}
+              <FadeIn delay={0.08}>
               <div className="card-soon">
                 <ClickSpark sparkColor="#8a0dd7" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="Working on it..." cursorColor="#8a0dd7" style={{ borderRadius: 24 }}>
@@ -153,10 +159,10 @@ export default function Home() {
                   <div className="card-badge"><span>Coming Soon</span></div>
                 </div>
               </div>
+              </FadeIn>
 
             </div>
           </div>
-          </FadeIn>
         </section>
 
         {/* EXPERIENCE */}
