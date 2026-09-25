@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 
 const colorMap: Record<string, string> = {
   blue:   '#3B82F6',
@@ -42,14 +43,15 @@ export function Cursor({
   const ref = useRef<HTMLDivElement>(null);
   const exitTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
+  // Viewport coords: the chip is portaled to <body> with position: fixed,
+  // so it escapes each card's stacking context and renders above siblings.
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    setPos({ x: e.clientX, y: e.clientY });
   };
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = (e: React.MouseEvent) => {
     clearTimeout(exitTimer.current);
+    setPos({ x: e.clientX, y: e.clientY });
     setMounted(true);
   };
 
@@ -81,10 +83,10 @@ export function Cursor({
     >
       {children}
 
-      {mounted && (name || customSVG) && (
+      {mounted && (name || customSVG) && createPortal(
         <div
           style={{
-            position: 'absolute',
+            position: 'fixed',
             left: pos.x,
             top: pos.y,
             transform: 'translate(0px, 28px)',
@@ -117,7 +119,8 @@ export function Cursor({
             {customSVG}
             {name}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
