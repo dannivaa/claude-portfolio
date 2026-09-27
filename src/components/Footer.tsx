@@ -43,9 +43,14 @@ export default function Footer() {
           </li>
           <li>
             Based in
-            <span className="connect-meta-value">Kyiv, Ukraine</span>
+            <span className="connect-meta-value connect-ukraine">Kyiv, Ukraine</span>
           </li>
         </ul>
+
+        {/* Revealed while "Kyiv, Ukraine" is hovered */}
+        <span className="connect-ukraine-banner" aria-hidden>
+          Stand with Ukraine
+        </span>
       </div>
     </footer>
     </FadeIn>

@@ -877,6 +877,92 @@ main {
   margin: -0.275em 0 0 0.4em;
 }
 
+/* Stand with Ukraine: hovering "Kyiv, Ukraine" floods the bar with Pantone
+   Freedom Blue, fades the rest of the content out and reveals the banner in
+   Energizing Yellow. Leaving the text reverses it. */
+.cs-footer {
+  --ua-blue: #0057b7;
+  --ua-yellow: #ffd700;
+  --ua-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.connect-block {
+  transition: background-color 500ms var(--ua-ease);
+}
+
+.connect-socials,
+.connect-meta li:first-child {
+  transition: opacity 300ms var(--ua-ease);
+}
+
+.connect-meta li:last-child,
+.connect-meta-value {
+  transition: color 500ms var(--ua-ease);
+}
+
+.connect-ukraine {
+  cursor: default;
+}
+
+.connect-ukraine-banner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fixel Display', 'Fixel Text', sans-serif;
+  font-weight: 600;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ua-yellow);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 400ms var(--ua-ease),
+    transform 500ms var(--ua-ease);
+  pointer-events: none;
+}
+
+.connect-block:has(.connect-ukraine:hover) {
+  background-color: var(--ua-blue);
+}
+
+.connect-block:has(.connect-ukraine:hover) .connect-socials,
+.connect-block:has(.connect-ukraine:hover) .connect-meta li:first-child {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.connect-block:has(.connect-ukraine:hover) .connect-meta li:last-child {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.connect-block:has(.connect-ukraine:hover) .connect-meta-value {
+  color: #ffffff;
+}
+
+.connect-block:has(.connect-ukraine:hover) .connect-ukraine-banner {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 80ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connect-block,
+  .connect-socials,
+  .connect-meta li,
+  .connect-meta-value,
+  .connect-ukraine-banner {
+    transition: none;
+  }
+
+  .connect-ukraine-banner {
+    transform: none;
+  }
+}
+
 /* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
   /* Navbar — no changes at tablet; desktop pill behaviour is preserved */
@@ -1134,6 +1220,10 @@ main {
   .connect-meta,
   .connect-socials {
     gap: 12px 24px;
+  }
+
+  .connect-ukraine-banner {
+    font-size: 24px;
   }
 }
 
