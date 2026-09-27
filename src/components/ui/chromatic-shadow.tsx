@@ -1,6 +1,6 @@
 'use client';
 
-import type { CSSProperties } from 'react';
+import { useEffect, useRef, type CSSProperties } from 'react';
 import { Component as EtherealShadow, SHADOW_MASK_URL } from '@/components/ui/etheral-shadow';
 
 type ChromaticShadowProps = {
@@ -22,6 +22,7 @@ function hexToRgb(hex: string): [number, number, number] {
  * createPointerLens writes on the hero card; without them it stays invisible.
  */
 export function ChromaticShadow({ color, noise }: ChromaticShadowProps) {
+  const ref = useRef<HTMLDivElement>(null);
   const [r, g, b] = hexToRgb(color);
   const mask = `url('${SHADOW_MASK_URL}')`;
   const channels: { className: string; color: string }[] = [
@@ -30,10 +31,40 @@ export function ChromaticShadow({ color, noise }: ChromaticShadowProps) {
     { className: 'chromatic-shadow__ch chromatic-shadow__ch--b', color: `rgb(0, 0, ${b})` },
   ];
 
+  // The channel layers are oversized so the scaled-down red copy still covers the frame,
+  // which means `mask-size: cover` would fit the mask to the wrong box. Size it in px to
+  // the frame's cover fit instead, so it lines up with the base shadow's mask.
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let natural: { w: number; h: number } | null = null;
+
+    const fit = () => {
+      if (!natural) return;
+      const { width, height } = el.getBoundingClientRect();
+      const scale = Math.max(width / natural.w, height / natural.h);
+      el.style.setProperty('--mask-size', `${natural.w * scale}px ${natural.h * scale}px`);
+    };
+
+    const img = new Image();
+    img.onload = () => {
+      natural = { w: img.naturalWidth, h: img.naturalHeight };
+      fit();
+    };
+    img.src = SHADOW_MASK_URL;
+
+    const ro = new ResizeObserver(fit);
+    ro.observe(el);
+    return () => {
+      img.onload = null;
+      ro.disconnect();
+    };
+  }, []);
+
   return (
     <EtherealShadow color={color} animation={{ scale: 0, speed: 0 }} noise={noise} sizing="fill">
       {/* Sits between the shadow and EtherealShadow's grain layer. */}
-      <div className="chromatic-shadow" aria-hidden="true">
+      <div ref={ref} className="chromatic-shadow" aria-hidden="true">
         {channels.map((ch) => (
           <div
             key={ch.className + ch.color}

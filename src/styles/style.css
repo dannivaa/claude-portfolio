@@ -358,15 +358,18 @@ main {
 
 .chromatic-shadow__ch {
   position: absolute;
-  inset: 0;
+  /* Oversized so red, scaled down by up to 15% around any point in the frame, still
+     covers it (needs k / (1 - k) ≈ 18% per side). Mask stays frame-sized via --mask-size. */
+  inset: -20%;
   mix-blend-mode: plus-lighter;
-  mask-size: cover;
+  mask-size: var(--mask-size, cover);
   mask-repeat: no-repeat;
   mask-position: center;
-  -webkit-mask-size: cover;
+  -webkit-mask-size: var(--mask-size, cover);
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
-  transform-origin: var(--lens-x, 50%) var(--lens-y, 50%);
+  /* Lens point in this box: the frame offset is 20% of the frame = 1/7 of this 140% box */
+  transform-origin: calc(var(--lens-x, 50%) + 100% / 7) calc(var(--lens-y, 50%) + 100% / 7);
 }
 
 .chromatic-shadow__ch--r {
