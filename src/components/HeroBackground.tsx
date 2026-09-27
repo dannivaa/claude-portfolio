@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ChromaticImage, type TextureSource } from '@/components/ui/chromatic-image';
+import { ChromaticImage, type LensChannel, type TextureSource } from '@/components/ui/chromatic-image';
 
 type Mode = 'off' | 'pointer' | 'ambient';
 
@@ -31,7 +31,12 @@ function resolveMode(): Mode {
   return window.matchMedia(MOUSE_QUERY).matches ? 'pointer' : 'ambient';
 }
 
-export default function HeroBackground() {
+type HeroBackgroundProps = {
+  /** Shares the cursor lens with the headline; only fed in pointer mode, never on touch drift. */
+  lens?: LensChannel;
+};
+
+export default function HeroBackground({ lens }: HeroBackgroundProps) {
   // Starts as the plain image so SSR and the LCP paint don't wait on WebGL.
   const [mode, setMode] = useState<Mode>('off');
   const [isMobile, setIsMobile] = useState(false);
@@ -58,6 +63,7 @@ export default function HeroBackground() {
       intensity={isMobile ? 0.012 : 0.018}
       radius={isMobile ? 0.45 : 0.35}
       maxPixelRatio={isMobile ? 1.5 : 2}
+      lens={mode === 'pointer' ? lens : undefined}
     />
   );
 }

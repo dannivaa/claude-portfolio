@@ -1,6 +1,7 @@
 'use client';
 
 import '@/styles/style.css';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -10,12 +11,16 @@ import { MagicText } from '@/components/ui/magic-text';
 import { FadeIn } from '@/components/ui/fade-in';
 import { SplitText } from '@/components/ui/split-text';
 import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
+import { createLensChannel } from '@/components/ui/chromatic-image';
+import { ChromaticHeadline } from '@/components/ui/chromatic-headline';
 import { useRouter } from 'next/navigation';
 import { Cursor } from '@/components/ui/custom-cursor';
 import ClickSpark from '@/components/ClickSpark';
 
 export default function Home() {
   const router = useRouter();
+  const heroCardRef = useRef<HTMLDivElement>(null);
+  const [heroLens] = useState(createLensChannel);
 
   return (
     <>
@@ -26,12 +31,17 @@ export default function Home() {
 
         {/* HERO */}
         <section className="hero-wrapper">
-          <div className="hero-card">
+          <div className="hero-card" ref={heroCardRef}>
             <div className="hero-bg">
-              <HeroBackground />
+              <HeroBackground lens={heroLens} />
             </div>
             <GooeyTextReveal className="hero-headline-reveal" delay={0.2} duration={2.2} stagger={0.18}>
-              <p className="hero-headline">Product Designer crafting solutions that drive business wins.</p>
+              <ChromaticHeadline
+                className="hero-headline"
+                text="Product Designer crafting solutions that drive business wins."
+                lens={heroLens}
+                frameRef={heroCardRef}
+              />
             </GooeyTextReveal>
           </div>
         </section>

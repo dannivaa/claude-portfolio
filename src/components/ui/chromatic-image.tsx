@@ -5,6 +5,26 @@ import { cn } from '@/lib/utils';
 
 export type TextureSource = { src: string; width: number };
 
+/** Lens state per drawn frame, in the canvas box: 0–1 coords with y down, velocity in the same units. */
+export type LensState = { x: number; y: number; vx: number; vy: number; strength: number; radius: number };
+
+export type LensChannel = {
+  emit: (state: LensState) => void;
+  subscribe: (listener: (state: LensState) => void) => () => void;
+};
+
+/** Lets other elements (e.g. the headline) follow the same eased lens as the shader. */
+export function createLensChannel(): LensChannel {
+  const listeners = new Set<(state: LensState) => void>();
+  return {
+    emit: (state) => listeners.forEach((l) => l(state)),
+    subscribe: (listener) => {
+      listeners.add(listener);
+      return () => listeners.delete(listener);
+    },
+  };
+}
+
 type ChromaticImageProps = {
   /** Fallback / LCP image. Also what shows before WebGL is ready and when it's disabled. */
   src: string;
@@ -20,6 +40,8 @@ type ChromaticImageProps = {
   /** Lens radius as a fraction of the canvas height. */
   radius?: number;
   maxPixelRatio?: number;
+  /** Receives the eased lens state on every drawn frame. */
+  lens?: LensChannel;
   className?: string;
 };
 
@@ -93,6 +115,7 @@ export function ChromaticImage({
   intensity = 0.018,
   radius = 0.35,
   maxPixelRatio = 2,
+  lens,
   className,
 }: ChromaticImageProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -175,11 +198,14 @@ export function ChromaticImage({
       vel.x += ((mouse.x - px) * 0.6 - vel.x) * 0.15;
       vel.y += ((mouse.y - py) * 0.6 - vel.y) * 0.15;
       strength += (targetStrength - strength) * 0.06;
+      // Snap once settled so the last frame (and any lens listener) lands exactly on the target.
+      if (Math.abs(targetStrength - strength) < 0.001) strength = targetStrength;
 
       gl.uniform2f(uMouse, mouse.x, mouse.y);
       gl.uniform2f(uVel, vel.x, vel.y);
       gl.uniform1f(uStrength, strength);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      lens?.emit({ x: mouse.x, y: 1 - mouse.y, vx: vel.x, vy: -vel.y, strength, radius });
 
       const settled =
         mode !== 'ambient' &&
@@ -270,6 +296,7 @@ export function ChromaticImage({
     return () => {
       disposed = true;
       if (raf) cancelAnimationFrame(raf);
+      lens?.emit({ x: mouse.x, y: 1 - mouse.y, vx: 0, vy: 0, strength: 0, radius });
       image.onload = null;
       window.removeEventListener('pointermove', onPointerMove);
       document.removeEventListener('pointerout', onPointerOut);
@@ -280,7 +307,7 @@ export function ChromaticImage({
       gl.getExtension('WEBGL_lose_context')?.loseContext();
       setReady(false);
     };
-  }, [mode, textures, intensity, radius, maxPixelRatio]);
+  }, [mode, textures, intensity, radius, maxPixelRatio, lens]);
 
   return (
     <div className={cn('chromatic-image', className)}>
