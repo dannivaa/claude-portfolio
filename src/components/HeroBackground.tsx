@@ -14,6 +14,7 @@ type Mode = 'pending' | 'static' | 'mobile' | 'desktop';
 
 const MOBILE_QUERY = '(max-width: 768px)';
 const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
+const MOUSE_QUERY = '(hover: hover) and (pointer: fine)';
 
 function supportsWebGL() {
   try {
@@ -32,18 +33,17 @@ function resolveMode(): Mode {
 
 export default function HeroBackground() {
   const [mode, setMode] = useState<Mode>('pending');
+  const [hasMouse, setHasMouse] = useState(false);
 
   useEffect(() => {
-    const update = () => setMode(resolveMode());
-    update();
-    const mobile = window.matchMedia(MOBILE_QUERY);
-    const reducedMotion = window.matchMedia(REDUCED_MOTION_QUERY);
-    mobile.addEventListener('change', update);
-    reducedMotion.addEventListener('change', update);
-    return () => {
-      mobile.removeEventListener('change', update);
-      reducedMotion.removeEventListener('change', update);
+    const queries = [MOBILE_QUERY, REDUCED_MOTION_QUERY, MOUSE_QUERY].map((q) => window.matchMedia(q));
+    const update = () => {
+      setMode(resolveMode());
+      setHasMouse(window.matchMedia(MOUSE_QUERY).matches);
     };
+    update();
+    queries.forEach((q) => q.addEventListener('change', update));
+    return () => queries.forEach((q) => q.removeEventListener('change', update));
   }, []);
 
   if (mode === 'pending') return null;
@@ -68,12 +68,14 @@ export default function HeroBackground() {
   return (
     <WaveGridBackground
       className="hero-wave-grid"
-      colorBase="#0B1A22"
-      colorHigh="#4695C0"
+      colorBase="#081319"
+      colorHigh="#2C5F7A"
       gridSize={gridSize}
       waveSpeed={6 * waveScale}
       waveWidth={3 * waveScale}
       waveFrequency={1.2 / waveScale}
+      // Idle ripples only on touch devices, where there is no cursor to drive the grid.
+      autoAnimate={!hasMouse}
       shadows={!isMobile}
       maxPixelRatio={isMobile ? 1.5 : 2}
     />
