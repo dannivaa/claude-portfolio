@@ -17,6 +17,15 @@ import { useRouter } from 'next/navigation';
 import { Cursor } from '@/components/ui/custom-cursor';
 import ClickSpark from '@/components/ClickSpark';
 
+// viewBox cropped to the stroke bounds (paths span 3–21 × 6–18, +1 for half the 2px stroke)
+// so the chip's gap and padding measure from visible ink, not the icon's 24×24 safe area.
+const eyeIcon = (
+  <svg xmlns="http://www.w3.org/2000/svg" width="13.125" height="9.1875" viewBox="2 5 20 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ display: 'block', flexShrink: 0 }}>
+    <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+    <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
+  </svg>
+);
+
 export default function Home() {
   const router = useRouter();
   const heroCardRef = useRef<HTMLDivElement>(null);
@@ -112,7 +121,7 @@ export default function Home() {
               <FadeIn>
               <div className="card-default" onClick={() => router.push('/safey')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#228bcc" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="Open Safey" cursorColor="#228bcc" style={{ borderRadius: 24 }}>
+                  <Cursor name="VIEW CASE STUDY" customSVG={eyeIcon} cursorColor="#228bcc" style={{ borderRadius: 24 }}>
                     <div className="card-image">
                       <img src="/images/Safey/safey-thumbnail.png" alt="Safey AI Companion" />
                     </div>
@@ -128,7 +137,7 @@ export default function Home() {
               <FadeIn delay={0.08}>
               <div className="card-default" onClick={() => router.push('/gudfood')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#ea6406" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="Open GudFood" cursorColor="#ea6406" style={{ borderRadius: 24 }}>
+                  <Cursor name="VIEW CASE STUDY" customSVG={eyeIcon} cursorColor="#ea6406" style={{ borderRadius: 24 }}>
                     <div className="card-image">
                       <img src="/images/GudFood/gudfood-thumbnail.png" alt="The loop that brought users back" />
                     </div>
@@ -144,7 +153,7 @@ export default function Home() {
               <FadeIn>
               <div className="card-default" onClick={() => router.push('/skvot')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#121212" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="Open Skvot" cursorColor="#121212" style={{ borderRadius: 24 }}>
+                  <Cursor name="VIEW CASE STUDY" customSVG={eyeIcon} cursorColor="#121212" style={{ borderRadius: 24 }}>
                     <div className="card-image">
                       <img src="/images/Skvot/skvot-thumbnail.png" alt="SKVOT Mobile App" />
                     </div>
@@ -160,7 +169,7 @@ export default function Home() {
               <FadeIn delay={0.08}>
               <div className="card-soon">
                 <ClickSpark sparkColor="#8a0dd7" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="Working on it..." cursorColor="#8a0dd7" style={{ borderRadius: 24 }}>
+                  <Cursor name="WORKING ON IT..." cursorColor="#8a0dd7" style={{ borderRadius: 24 }}>
                     <div className="card-image">
                       <img src="/images/soon-thumbnail.png" alt="One behavioral change, measurable impact" />
                     </div>
