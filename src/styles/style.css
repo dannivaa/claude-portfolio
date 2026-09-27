@@ -915,8 +915,24 @@ main {
   transition: color 600ms var(--ua-ease-in-out);
 }
 
+/* Button reset: "Kyiv, Ukraine" reads as plain text but is tappable and
+   keyboard-focusable */
 .connect-ukraine {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
   cursor: default;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.connect-ukraine:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 .connect-ukraine-banner {
@@ -953,31 +969,31 @@ main {
   pointer-events: none;
 }
 
-.connect-block:has(.connect-ukraine:hover) {
+.connect-block.is-ukraine {
   background-color: var(--ua-blue);
 }
 
-.connect-block:has(.connect-ukraine:hover) .connect-socials,
-.connect-block:has(.connect-ukraine:hover) .connect-meta li:first-child {
+.connect-block.is-ukraine .connect-socials,
+.connect-block.is-ukraine .connect-meta li:first-child {
   opacity: 0;
   pointer-events: none;
   transition-delay: 0ms;
 }
 
-.connect-block:has(.connect-ukraine:hover) .connect-meta li:last-child {
+.connect-block.is-ukraine .connect-meta li:last-child {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.connect-block:has(.connect-ukraine:hover) .connect-meta-value {
+.connect-block.is-ukraine .connect-meta-value {
   color: #ffffff;
 }
 
-.connect-block:has(.connect-ukraine:hover) .connect-ukraine-banner {
+.connect-block.is-ukraine .connect-ukraine-banner {
   opacity: 1;
   transition-delay: 100ms;
 }
 
-.connect-block:has(.connect-ukraine:hover) .connect-ukraine-text {
+.connect-block.is-ukraine .connect-ukraine-text {
   filter: blur(0);
   transition: filter 1000ms var(--ua-ease-out) 100ms;
 }
@@ -989,7 +1005,7 @@ main {
   .connect-meta-value,
   .connect-ukraine-banner,
   .connect-ukraine-text,
-  .connect-block:has(.connect-ukraine:hover) .connect-ukraine-text {
+  .connect-block.is-ukraine .connect-ukraine-text {
     transition: none;
   }
 }
