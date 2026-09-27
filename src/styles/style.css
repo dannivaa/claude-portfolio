@@ -356,6 +356,17 @@ main {
   opacity: 1;
 }
 
+/* Headline fringes follow the background lens; --ca-x/--ca-y are set per word in [-1, 1].
+   Red trails toward the cursor and blue away from it, matching the shader's channel split. */
+.chromatic-headline__word {
+  --ca-x: 0;
+  --ca-y: 0;
+  --ca-max: 0.035em;
+  text-shadow:
+    calc(var(--ca-x) * var(--ca-max) * -1) calc(var(--ca-y) * var(--ca-max) * -1) 0 rgba(255, 32, 72, 0.9),
+    calc(var(--ca-x) * var(--ca-max)) calc(var(--ca-y) * var(--ca-max)) 0 rgba(0, 150, 255, 0.9);
+}
+
 /* Scrim keeps the headline ≥3:1 where the light streak crosses it */
 .hero-chromatic::after {
   content: '';
