@@ -60,13 +60,20 @@ export default function HeroBackground() {
   }
 
   const isMobile = mode === 'mobile';
+  const gridSize = isMobile ? 30 : 64;
+  // Wave params are in world units; the camera pulls back as the grid grows,
+  // so scale them to keep the ripple the same size on screen.
+  const waveScale = gridSize / 40;
 
   return (
     <WaveGridBackground
       className="hero-wave-grid"
       colorBase="#0B1A22"
       colorHigh="#4695C0"
-      gridSize={isMobile ? 20 : 40}
+      gridSize={gridSize}
+      waveSpeed={6 * waveScale}
+      waveWidth={3 * waveScale}
+      waveFrequency={1.2 / waveScale}
       shadows={!isMobile}
       maxPixelRatio={isMobile ? 1.5 : 2}
     />
