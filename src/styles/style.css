@@ -949,6 +949,12 @@ main {
   text-decoration: none;
 }
 
+/* Skiper40 arrow: widen the default 0.3em gap */
+.connect-link svg,
+.connect-contact-email svg {
+  margin-left: 0.5em;
+}
+
 /* Now column */
 .connect-now-list {
   margin: 0;

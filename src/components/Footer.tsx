@@ -1,7 +1,7 @@
 'use client';
 
 import { FadeIn } from '@/components/ui/fade-in';
-import { Link001 } from '@/components/ui/skiper-ui/skiper40';
+import { Link001, Link002 } from '@/components/ui/skiper-ui/skiper40';
 
 
 const EMAIL = 'danyloivanovv@gmail.com';
@@ -32,9 +32,9 @@ export default function Footer() {
             <h3 className="connect-col-label">Contact</h3>
 
             <div className="connect-contact-info">
-              <a href={`mailto:${EMAIL}`} className="connect-contact-email">
+              <Link002 href={`mailto:${EMAIL}`} className="connect-contact-email">
                 {EMAIL}
-              </a>
+              </Link002>
             </div>
 
             <ul className="connect-socials">
