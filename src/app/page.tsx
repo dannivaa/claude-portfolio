@@ -30,7 +30,7 @@ export default function Home() {
             <div className="hero-bg">
               <HeroBackground />
             </div>
-            <GooeyTextReveal className="hero-headline-reveal" delay={0.2}>
+            <GooeyTextReveal className="hero-headline-reveal" delay={0.2} duration={2.2} stagger={0.18}>
               <p className="hero-headline">Product Designer crafting solutions that drive business wins.</p>
             </GooeyTextReveal>
           </div>
