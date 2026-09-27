@@ -108,7 +108,7 @@ export function Cursor({
               whiteSpace: 'nowrap',
               display: 'flex',
               alignItems: 'center',
-              gap: 6,
+              gap: 8,
               transform: scaled ? 'scale(1)' : 'scale(0)',
               transformOrigin: 'left center',
               transition: scaled

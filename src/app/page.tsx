@@ -169,7 +169,7 @@ export default function Home() {
               <FadeIn delay={0.08}>
               <div className="card-soon">
                 <ClickSpark sparkColor="#8a0dd7" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="Working on it..." cursorColor="#8a0dd7" style={{ borderRadius: 24 }}>
+                  <Cursor name="WORKING ON IT..." cursorColor="#8a0dd7" style={{ borderRadius: 24 }}>
                     <div className="card-image">
                       <img src="/images/soon-thumbnail.png" alt="One behavioral change, measurable impact" />
                     </div>
