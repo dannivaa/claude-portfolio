@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { FadeIn } from '@/components/ui/fade-in';
 import { FadeInMount } from '@/components/ui/fade-in-mount';
+import Image from 'next/image';
 import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
 
 export const metadata: Metadata = {
@@ -30,17 +31,17 @@ export default function CaseStudy() {
             <div className="cs-phones-naked">
               <FadeInMount delay={0.8}>
                 <div className="cs-phone-naked">
-                  <img src="/images/GudFood/01.png" alt="GudFood screen 1" />
+                  <Image src="/images/GudFood/01.png" alt="GudFood screen 1" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" loading="eager" />
                 </div>
               </FadeInMount>
               <FadeInMount delay={0.95}>
                 <div className="cs-phone-naked">
-                  <img src="/images/GudFood/02.png" alt="GudFood screen 2" />
+                  <Image src="/images/GudFood/02.png" alt="GudFood screen 2" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" loading="eager" />
                 </div>
               </FadeInMount>
               <FadeInMount delay={1.1}>
                 <div className="cs-phone-naked">
-                  <img src="/images/GudFood/03.png" alt="GudFood screen 3" />
+                  <Image src="/images/GudFood/03.png" alt="GudFood screen 3" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" loading="eager" />
                 </div>
               </FadeInMount>
             </div>
@@ -159,16 +160,16 @@ export default function CaseStudy() {
           <div className="cs-hero-inner">
             <FadeIn>
               <div className="cs-phones-naked">
-                <div className="cs-phone-naked"><img src="/images/GudFood/04.png" alt="" /></div>
-                <div className="cs-phone-naked"><img src="/images/GudFood/05.png" alt="" /></div>
-                <div className="cs-phone-naked"><img src="/images/GudFood/06.png" alt="" /></div>
+                <div className="cs-phone-naked"><Image src="/images/GudFood/04.png" alt="" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" /></div>
+                <div className="cs-phone-naked"><Image src="/images/GudFood/05.png" alt="" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" /></div>
+                <div className="cs-phone-naked"><Image src="/images/GudFood/06.png" alt="" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" /></div>
               </div>
             </FadeIn>
             <FadeIn>
               <div className="cs-phones-naked">
-                <div className="cs-phone-naked"><img src="/images/GudFood/07.png" alt="" /></div>
-                <div className="cs-phone-naked"><img src="/images/GudFood/08.png" alt="" /></div>
-                <div className="cs-phone-naked"><img src="/images/GudFood/09.png" alt="" /></div>
+                <div className="cs-phone-naked"><Image src="/images/GudFood/07.png" alt="" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" /></div>
+                <div className="cs-phone-naked"><Image src="/images/GudFood/08.png" alt="" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" /></div>
+                <div className="cs-phone-naked"><Image src="/images/GudFood/09.png" alt="" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" /></div>
               </div>
             </FadeIn>
           </div>

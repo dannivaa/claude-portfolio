@@ -17,7 +17,6 @@ const ClickSpark = ({
 }) => {
   const canvasRef = useRef(null);
   const sparksRef = useRef([]);
-  const startTimeRef = useRef(null);
   // Canvas is portaled to <body> so ancestors with filter/transform (e.g. FadeIn)
   // can't become its containing block and offset sparks from the pointer.
   const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
@@ -55,17 +54,19 @@ const ClickSpark = ({
     [easing]
   );
 
+  // The loop only runs while sparks are alive. An always-on rAF clearing a viewport-sized
+  // canvas every frame (one per card + the global one) competes with scroll for frame budget.
+  const animationIdRef = useRef(null);
+  const drawRef = useRef(null);
+
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-
-    let animationId;
-
     const draw = timestamp => {
-      if (!startTimeRef.current) {
-        startTimeRef.current = timestamp;
+      const canvas = canvasRef.current;
+      if (!canvas) {
+        animationIdRef.current = null;
+        return;
       }
+      const ctx = canvas.getContext('2d');
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       sparksRef.current = sparksRef.current.filter(spark => {
@@ -95,15 +96,12 @@ const ClickSpark = ({
         return true;
       });
 
-      animationId = requestAnimationFrame(draw);
+      animationIdRef.current = sparksRef.current.length ? requestAnimationFrame(draw) : null;
     };
+    drawRef.current = draw;
+  }, [sparkColor, sparkSize, sparkRadius, duration, easeFunc, extraScale]);
 
-    animationId = requestAnimationFrame(draw);
-
-    return () => {
-      cancelAnimationFrame(animationId);
-    };
-  }, [mounted, sparkColor, sparkSize, sparkRadius, sparkCount, duration, easeFunc, extraScale]);
+  useEffect(() => () => cancelAnimationFrame(animationIdRef.current), []);
 
   const handleClick = e => {
     const canvas = canvasRef.current;
@@ -124,6 +122,9 @@ const ClickSpark = ({
     }));
 
     sparksRef.current.push(...newSparks);
+    if (animationIdRef.current === null) {
+      animationIdRef.current = requestAnimationFrame(t => drawRef.current(t));
+    }
   };
 
   return (

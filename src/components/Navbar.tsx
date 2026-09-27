@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 import { useLenis } from 'lenis/react';
 
 const NAV_SECTIONS = [
@@ -28,7 +29,7 @@ export default function Navbar() {
             }
           }}
         >
-          <img src="/images/pfp3d.png" alt="Avatar" />
+          <Image src="/images/pfp3d.png" alt="Avatar" width={3920} height={3920} sizes="60px" loading="eager" />
         </Link>
         <div className="navbar-links">
           {NAV_SECTIONS.map(({ id, label }) => (
