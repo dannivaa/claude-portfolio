@@ -819,190 +819,62 @@ main {
   gap: 16px;
 }
 
-/* ─── HP Banner ─── */
-.hp-banner {
-  width: 100%;
-  padding: 16px 16px 0;
-}
-
-.hp-banner-cta {
+/* ─── Connect block ─── */
+.connect-block {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  padding: 64px 80px;
-  border-radius: 52px;
-  background: #121212;
-  color: #fafafa;
-  text-decoration: none;
-  transition: background 240ms ease;
-  overflow: hidden;
-}
-
-.hp-banner-cta:hover {
-  background: #1f1f1f;
-}
-
-.hp-banner-cta:hover .hp-banner-cta-arrow {
-  transform: translateX(12px);
-}
-
-.hp-banner-cta-text {
-  font-family: 'Fixel Display', 'Fixel Text', sans-serif;
-  font-weight: 500;
-  font-size: clamp(56px, 9vw, 144px);
-  line-height: 1;
-  letter-spacing: -0.04em;
-}
-
-.hp-banner-cta-arrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hp-banner-cta-arrow svg {
-  width: clamp(48px, 6vw, 96px);
-  height: clamp(48px, 6vw, 96px);
-}
-
-/* ─── Connect block ─── */
-.connect-block {
-  position: relative;
-  padding: 80px;
-  border-radius: 52px;
+  padding: 28px 40px;
+  border-radius: 24px;
   background: var(--cs-footer-card-bg);
 }
 
-.connect-block-title {
-  margin: 0 0 96px;
-  font-family: 'Fixel Display', 'Fixel Text', sans-serif;
-  font-weight: 500;
-  font-size: clamp(56px, 8vw, 120px);
-  line-height: 1;
-  letter-spacing: -0.04em;
-  color: var(--cs-footer-text);
-}
-
-.connect-block-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 80px;
-  align-items: start;
-}
-
-.connect-col {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.connect-col-label {
-  margin: 0;
-  font-family: 'Fixel Display', 'Fixel Text', sans-serif;
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
-  color: var(--cs-footer-text);
-}
-
-/* Contact column */
-.connect-contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
-  color: var(--cs-footer-muted);
-}
-
-.connect-contact-email {
-  color: var(--cs-footer-muted);
-  text-decoration: none;
-  transition: color 200ms ease;
-  align-self: flex-start;
-  letter-spacing: -0.02em;
-}
-
-.connect-contact-email:hover {
-  color: var(--cs-footer-text);
-}
-
+.connect-meta,
 .connect-socials {
   display: flex;
-  gap: 12px;
-  margin-top: 24px;
-}
-
-.connect-social {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--cs-footer-surface);
-  color: var(--cs-footer-text);
-  transition: background 200ms ease;
-}
-
-.connect-social:hover {
-  background: var(--cs-footer-surface-hover);
-}
-
-/* Now column */
-.connect-now-list {
+  flex-wrap: wrap;
+  gap: 32px;
   margin: 0;
-  display: flex;
-  flex-direction: column;
+  padding: 0;
+  list-style: none;
 }
 
-.connect-now-item {
-  display: grid;
-  grid-template-columns: minmax(140px, 0.5fr) 1fr;
-  gap: 24px;
-  align-items: baseline;
-  padding: 16px 0;
-}
-
-.connect-now-item + .connect-now-item {
-  border-top: 1px solid var(--cs-footer-border);
-}
-
-.connect-now-label {
-  margin: 0;
-  font-size: 14px;
-  letter-spacing: -0.01em;
+.connect-meta {
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
   color: var(--cs-footer-muted);
 }
 
-.connect-now-value {
-  margin: 0;
-  font-size: 18px;
-  letter-spacing: -0.02em;
+.connect-meta-value {
   color: var(--cs-footer-text);
 }
 
-/* Bottom strip */
-.connect-bottom {
+/* "Working at <link>": Link001 renders as a flex box, so lay the item out
+   as a row with a word-sized gap instead of relying on inline whitespace */
+.connect-meta li {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  margin-top: 96px;
-  padding-top: 32px;
-  border-top: 1px solid var(--cs-footer-border);
-  font-size: 14px;
-  color: var(--cs-footer-muted);
+  gap: 0.3em;
 }
 
-.connect-copy,
-.connect-built {
+.connect-link {
+  font-size: 16px;
+  line-height: 1.4;
   letter-spacing: -0.02em;
+  color: var(--cs-footer-text);
+  text-decoration: none;
+}
+
+/* Skiper40 arrow: take it out of flow so it doesn't reserve space after
+   each word (keeps the row flush right and the gaps even) */
+.connect-link svg {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin: -0.275em 0 0 0.4em;
 }
 
 /* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
@@ -1096,26 +968,9 @@ main {
     gap: 12px;
   }
 
-  .hp-banner-cta {
-    padding: 48px 56px;
-    border-radius: 44px;
-  }
-
   .connect-block {
-    padding: 56px 48px;
-    border-radius: 44px;
-  }
-
-  .connect-block-title {
-    margin-bottom: 72px;
-  }
-
-  .connect-block-grid {
-    gap: 56px;
-  }
-
-  .connect-bottom {
-    margin-top: 72px;
+    padding: 24px 32px;
+    border-radius: 20px;
   }
 }
 
@@ -1268,58 +1123,17 @@ main {
     gap: 8px;
   }
 
-  .hp-banner-cta {
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
-    padding: 32px 28px;
-    border-radius: 28px;
-  }
-
-  .hp-banner-cta-text {
-    font-size: clamp(36px, 8vw, 56px);
-  }
-
-  .hp-banner-cta-arrow svg {
-    width: 36px;
-    height: 36px;
-  }
-
   .connect-block {
-    padding: 40px 28px;
-    border-radius: 28px;
-  }
-
-  .connect-block-title {
-    margin-bottom: 56px;
-    font-size: clamp(40px, 12vw, 64px);
-  }
-
-  .connect-block-grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .connect-col-label {
-    font-size: 24px;
-  }
-
-  .connect-now-item {
-    grid-template-columns: 1fr;
-    gap: 4px;
-    padding: 14px 0;
-  }
-
-  .connect-now-value {
-    font-size: 16px;
-  }
-
-  .connect-bottom {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
-    margin-top: 56px;
-    padding-top: 24px;
+    gap: 24px;
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  .connect-meta,
+  .connect-socials {
+    gap: 12px 24px;
   }
 }
 
@@ -1388,32 +1202,9 @@ main {
     gap: 6px;
   }
 
-  .hp-banner-cta {
-    padding: 24px 20px;
-    border-radius: 24px;
-  }
-
-  .hp-banner-cta-text {
-    font-size: clamp(28px, 9vw, 40px);
-  }
-
-  .hp-banner-cta-arrow svg {
-    width: 28px;
-    height: 28px;
-  }
-
   .connect-block {
-    padding: 32px 20px;
-    border-radius: 24px;
-  }
-
-  .connect-block-title {
-    margin-bottom: 40px;
-    font-size: clamp(32px, 13vw, 48px);
-  }
-
-  .connect-bottom {
-    margin-top: 40px;
+    padding: 20px;
+    border-radius: 16px;
   }
 }
 
@@ -1555,7 +1346,6 @@ main {
   .testimonials-wrapper,
   .manifesto-wrapper,
   .about-wrapper,
-  .hp-banner,
   .cs-footer {
     max-width: 1728px;
     margin-left: auto;
