@@ -871,111 +871,45 @@ main {
 /* ─── Connect block ─── */
 .connect-block {
   position: relative;
-  padding: 64px;
-  border-radius: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 28px 40px;
+  border-radius: 24px;
   background: var(--cs-footer-card-bg);
 }
 
-.connect-block-title {
-  margin: 0 0 96px;
-  font-family: 'Fixel Display', 'Fixel Text', sans-serif;
-  font-weight: 500;
-  font-size: clamp(56px, 8vw, 120px);
-  line-height: 1;
-  letter-spacing: -0.04em;
-  color: var(--cs-footer-text);
+.connect-built {
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: var(--cs-footer-muted);
 }
 
-.connect-block-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 80px;
-  align-items: start;
-}
-
-.connect-col {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-/* Contact column */
 .connect-socials {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 32px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .connect-link {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.4;
   letter-spacing: -0.02em;
   color: var(--cs-footer-text);
   text-decoration: none;
-  width: fit-content; /* keep the underline to the text, not the column */
 }
 
-/* Skiper40 arrow: widen the default 0.3em gap */
+/* Skiper40 arrow: take it out of flow so it doesn't reserve space after
+   each word (keeps the row flush right and the gaps even) */
 .connect-link svg {
-  margin-left: 0.5em;
-}
-
-/* Now column */
-.connect-now-list {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.connect-now-item {
-  display: grid;
-  grid-template-columns: minmax(140px, 0.5fr) 1fr;
-  gap: 24px;
-  align-items: baseline;
-  padding: 16px 0;
-}
-
-.connect-now-item:first-child {
-  padding-top: 0;
-}
-
-.connect-now-item + .connect-now-item {
-  border-top: 1px solid var(--cs-footer-border);
-}
-
-.connect-now-label {
-  margin: 0;
-  font-size: 18px;
-  letter-spacing: -0.01em;
-  color: var(--cs-footer-muted);
-}
-
-.connect-now-value {
-  margin: 0;
-  font-size: 18px;
-  letter-spacing: -0.02em;
-  color: var(--cs-footer-text);
-}
-
-/* Bottom strip */
-.connect-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  margin-top: 64px;
-  padding-top: 24px;
-  border-top: 1px solid var(--cs-footer-border);
-  font-size: 14px;
-  color: var(--cs-footer-muted);
-}
-
-.connect-built {
-  letter-spacing: -0.02em;
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin: -0.275em 0 0 0.4em;
 }
 
 /* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
@@ -1075,20 +1009,8 @@ main {
   }
 
   .connect-block {
-    padding: 56px 48px;
-    border-radius: 44px;
-  }
-
-  .connect-block-title {
-    margin-bottom: 72px;
-  }
-
-  .connect-block-grid {
-    gap: 56px;
-  }
-
-  .connect-bottom {
-    margin-top: 56px;
+    padding: 24px 32px;
+    border-radius: 20px;
   }
 }
 
@@ -1259,37 +1181,15 @@ main {
   }
 
   .connect-block {
-    padding: 40px 28px;
-    border-radius: 28px;
-  }
-
-  .connect-block-title {
-    margin-bottom: 56px;
-    font-size: clamp(40px, 12vw, 64px);
-  }
-
-  .connect-block-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .connect-now-item {
-    grid-template-columns: 1fr;
-    gap: 4px;
-    padding: 14px 0;
-  }
-
-  .connect-now-label,
-  .connect-now-value {
-    font-size: 16px;
-  }
-
-  .connect-bottom {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: flex-start;
-    gap: 8px;
-    margin-top: 40px;
-    padding-top: 20px;
+    gap: 16px;
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  .connect-socials {
+    gap: 24px;
   }
 }
 
@@ -1373,17 +1273,8 @@ main {
   }
 
   .connect-block {
-    padding: 32px 20px;
-    border-radius: 24px;
-  }
-
-  .connect-block-title {
-    margin-bottom: 40px;
-    font-size: clamp(32px, 13vw, 48px);
-  }
-
-  .connect-bottom {
-    margin-top: 32px;
+    padding: 20px;
+    border-radius: 16px;
   }
 }
 
