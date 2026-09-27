@@ -41,7 +41,10 @@ export default function Footer() {
               Homecrowd
             </Link001>
           </li>
-          <li>Based in Kyiv, Ukraine</li>
+          <li>
+            Based in
+            <span className="connect-meta-value">Kyiv, Ukraine</span>
+          </li>
         </ul>
       </div>
     </footer>
