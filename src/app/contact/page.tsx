@@ -46,7 +46,7 @@ const CARDS = [
 export default function ContactPage() {
   return (
     <>
-      <Navbar variant="case-study" />
+      <Navbar />
 
       <FadeIn><main className="contact-main">
         <div className="contact-section">

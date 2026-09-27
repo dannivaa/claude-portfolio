@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function SkvotCaseStudy() {
   return (
     <>
-      <Navbar variant="case-study" />
+      <Navbar />
 
       <main className="cs-main">
 
