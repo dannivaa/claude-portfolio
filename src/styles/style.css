@@ -46,6 +46,17 @@
   font-display: swap;
 }
 
+/* ExtraBold subset holding only the glyphs of the footer's "Stand with
+   Ukraine" banner (~3 KB vs 84 KB). Separate family name so nothing else
+   can fall into a font with missing characters. */
+@font-face {
+  font-family: 'Fixel Display UA';
+  src: url('/fonts/FixelDisplay-ExtraBold-UA.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -878,26 +889,30 @@ main {
 }
 
 /* Stand with Ukraine: hovering "Kyiv, Ukraine" floods the bar with Pantone
-   Freedom Blue, fades the rest of the content out and reveals the banner in
-   Energizing Yellow. Leaving the text reverses it. */
+   Freedom Blue, fades the rest of the content out and condenses the banner
+   in Energizing Yellow out of a gooey blur (same filter as the hero
+   headline). Leaving the text plays it all in reverse. */
 .cs-footer {
   --ua-blue: #0057b7;
   --ua-yellow: #ffd700;
-  --ua-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ua-ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --ua-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .connect-block {
-  transition: background-color 500ms var(--ua-ease);
+  transition: background-color 900ms var(--ua-ease-in-out);
 }
 
+/* On the way back, wait for the blue to mostly clear before the content
+   returns, so dark text never sits on the blue */
 .connect-socials,
 .connect-meta li:first-child {
-  transition: opacity 300ms var(--ua-ease);
+  transition: opacity 500ms var(--ua-ease-in-out) 400ms;
 }
 
 .connect-meta li:last-child,
 .connect-meta-value {
-  transition: color 500ms var(--ua-ease);
+  transition: color 900ms var(--ua-ease-in-out);
 }
 
 .connect-ukraine {
@@ -910,18 +925,31 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Fixel Display', 'Fixel Text', sans-serif;
-  font-weight: 600;
+  font-family: 'Fixel Display UA', 'Fixel Display', sans-serif;
+  font-weight: 800;
   font-size: clamp(28px, 3vw, 40px);
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
   color: var(--ua-yellow);
   opacity: 0;
-  transform: translateY(8px);
-  transition:
-    opacity 400ms var(--ua-ease),
-    transform 500ms var(--ua-ease);
+  transition: opacity 500ms var(--ua-ease-in-out);
+  pointer-events: none;
+}
+
+.connect-ukraine-goo {
+  display: block;
+}
+
+.connect-ukraine-text {
+  display: inline-block;
+  filter: blur(0.35em);
+  transition: filter 700ms var(--ua-ease-in-out);
+  will-change: filter;
+}
+
+.connect-ukraine-defs {
+  position: absolute;
   pointer-events: none;
 }
 
@@ -933,6 +961,7 @@ main {
 .connect-block:has(.connect-ukraine:hover) .connect-meta li:first-child {
   opacity: 0;
   pointer-events: none;
+  transition-delay: 0ms;
 }
 
 .connect-block:has(.connect-ukraine:hover) .connect-meta li:last-child {
@@ -945,8 +974,12 @@ main {
 
 .connect-block:has(.connect-ukraine:hover) .connect-ukraine-banner {
   opacity: 1;
-  transform: translateY(0);
-  transition-delay: 80ms;
+  transition-delay: 150ms;
+}
+
+.connect-block:has(.connect-ukraine:hover) .connect-ukraine-text {
+  filter: blur(0);
+  transition: filter 1600ms var(--ua-ease-out) 150ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -954,12 +987,10 @@ main {
   .connect-socials,
   .connect-meta li,
   .connect-meta-value,
-  .connect-ukraine-banner {
+  .connect-ukraine-banner,
+  .connect-ukraine-text,
+  .connect-block:has(.connect-ukraine:hover) .connect-ukraine-text {
     transition: none;
-  }
-
-  .connect-ukraine-banner {
-    transform: none;
   }
 }
 

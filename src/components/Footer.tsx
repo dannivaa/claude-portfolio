@@ -1,5 +1,6 @@
 'use client';
 
+import { useId } from 'react';
 import { FadeIn } from '@/components/ui/fade-in';
 import { Link001 } from '@/components/ui/skiper-ui/skiper40';
 
@@ -16,6 +17,10 @@ const SOCIAL_LINKS = [
 ];
 
 export default function Footer() {
+  // Same alpha-threshold "goo" filter as the hero's GooeyTextReveal; the blur
+  // it resolves is driven by CSS so it can play forward and in reverse on hover
+  const gooFilterId = `ua-goo-${useId().replace(/:/g, '')}`;
+
   return (
     <FadeIn>
     <footer className="cs-footer">
@@ -49,8 +54,25 @@ export default function Footer() {
 
         {/* Revealed while "Kyiv, Ukraine" is hovered */}
         <span className="connect-ukraine-banner" aria-hidden>
-          Stand with Ukraine
+          <span
+            className="connect-ukraine-goo"
+            style={{ filter: `url(#${gooFilterId}) blur(0.4px)` }}
+          >
+            <span className="connect-ukraine-text">Stand with Ukraine</span>
+          </span>
         </span>
+
+        <svg aria-hidden focusable="false" width="0" height="0" className="connect-ukraine-defs">
+          <defs>
+            <filter id={gooFilterId} x="-50%" y="-50%" width="200%" height="200%">
+              <feColorMatrix
+                in="SourceGraphic"
+                type="matrix"
+                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 255 -140"
+              />
+            </filter>
+          </defs>
+        </svg>
       </div>
     </footer>
     </FadeIn>
