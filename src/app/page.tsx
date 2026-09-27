@@ -112,7 +112,7 @@ export default function Home() {
               <FadeIn>
               <div className="card-default" onClick={() => router.push('/safey')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#228bcc" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="Open Safey" cursorColor="#228bcc" style={{ borderRadius: 24 }}>
+                  <Cursor name="View Case Study" cursorColor="#228bcc" style={{ borderRadius: 24 }}>
                     <div className="card-image">
                       <img src="/images/Safey/safey-thumbnail.png" alt="Safey AI Companion" />
                     </div>
@@ -128,7 +128,7 @@ export default function Home() {
               <FadeIn delay={0.08}>
               <div className="card-default" onClick={() => router.push('/gudfood')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#ea6406" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="Open GudFood" cursorColor="#ea6406" style={{ borderRadius: 24 }}>
+                  <Cursor name="View Case Study" cursorColor="#ea6406" style={{ borderRadius: 24 }}>
                     <div className="card-image">
                       <img src="/images/GudFood/gudfood-thumbnail.png" alt="The loop that brought users back" />
                     </div>
@@ -144,7 +144,7 @@ export default function Home() {
               <FadeIn>
               <div className="card-default" onClick={() => router.push('/skvot')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#121212" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="Open Skvot" cursorColor="#121212" style={{ borderRadius: 24 }}>
+                  <Cursor name="View Case Study" cursorColor="#121212" style={{ borderRadius: 24 }}>
                     <div className="card-image">
                       <img src="/images/Skvot/skvot-thumbnail.png" alt="SKVOT Mobile App" />
                     </div>
