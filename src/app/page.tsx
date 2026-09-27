@@ -12,6 +12,7 @@ import { SplitText } from '@/components/ui/split-text';
 import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
 import { ChromaticHeadline } from '@/components/ui/chromatic-headline';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { Cursor } from '@/components/ui/custom-cursor';
 import ClickSpark from '@/components/ClickSpark';
 
@@ -128,12 +129,12 @@ export default function Home() {
             <div className="project-cards">
 
               {/* Card: Safey */}
-              <FadeIn>
+              <FadeIn blur={false}>
               <div className="card-default" onClick={() => router.push('/safey')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#228bcc" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="VIEW CASE STUDY" customSVG={eyeIcon} cursorColor="#228bcc" style={{ borderRadius: 24 }}>
                     <div className="card-image">
-                      <img src="/images/Safey/safey-thumbnail.png" alt="Safey AI Companion" />
+                      <Image src="/images/Safey/safey-thumbnail.png" alt="Safey AI Companion" width={2112} height={1308} sizes="(max-width: 768px) 100vw, 50vw" />
                     </div>
                   </Cursor>
                 </ClickSpark>
@@ -144,12 +145,12 @@ export default function Home() {
               </FadeIn>
 
               {/* Card: GudFood */}
-              <FadeIn delay={0.08}>
+              <FadeIn delay={0.08} blur={false}>
               <div className="card-default" onClick={() => router.push('/gudfood')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#ea6406" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="VIEW CASE STUDY" customSVG={eyeIcon} cursorColor="#ea6406" style={{ borderRadius: 24 }}>
                     <div className="card-image">
-                      <img src="/images/GudFood/gudfood-thumbnail.png" alt="The loop that brought users back" />
+                      <Image src="/images/GudFood/gudfood-thumbnail.png" alt="The loop that brought users back" width={2112} height={1308} sizes="(max-width: 768px) 100vw, 50vw" />
                     </div>
                   </Cursor>
                 </ClickSpark>
@@ -160,12 +161,12 @@ export default function Home() {
               </FadeIn>
 
               {/* Card: SKVOT */}
-              <FadeIn>
+              <FadeIn blur={false}>
               <div className="card-default" onClick={() => router.push('/skvot')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#121212" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="VIEW CASE STUDY" customSVG={eyeIcon} cursorColor="#121212" style={{ borderRadius: 24 }}>
                     <div className="card-image">
-                      <img src="/images/Skvot/skvot-thumbnail.png" alt="SKVOT Mobile App" />
+                      <Image src="/images/Skvot/skvot-thumbnail.png" alt="SKVOT Mobile App" width={2112} height={1308} sizes="(max-width: 768px) 100vw, 50vw" />
                     </div>
                   </Cursor>
                 </ClickSpark>
@@ -176,12 +177,12 @@ export default function Home() {
               </FadeIn>
 
               {/* Card: Soon */}
-              <FadeIn delay={0.08}>
+              <FadeIn delay={0.08} blur={false}>
               <div className="card-soon">
                 <ClickSpark sparkColor="#8a0dd7" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="WORKING ON IT..." customSVG={lockIcon} cursorColor="#8a0dd7" style={{ borderRadius: 24 }}>
                     <div className="card-image">
-                      <img src="/images/soon-thumbnail.png" alt="One behavioral change, measurable impact" />
+                      <Image src="/images/soon-thumbnail.png" alt="One behavioral change, measurable impact" width={2112} height={1308} sizes="(max-width: 768px) 100vw, 50vw" />
                     </div>
                   </Cursor>
                 </ClickSpark>
