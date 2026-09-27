@@ -104,7 +104,7 @@ export function Cursor({
               fontWeight: 500,
               fontFamily: "'Fixel Text', sans-serif",
               letterSpacing: '0.7px',
-              lineHeight: '24px',
+              lineHeight: '20px',
               whiteSpace: 'nowrap',
               display: 'flex',
               alignItems: 'center',
