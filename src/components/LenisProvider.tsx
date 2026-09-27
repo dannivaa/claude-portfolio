@@ -8,7 +8,10 @@ function ScrollReset() {
   const lenis = useLenis();
 
   useEffect(() => {
-    lenis?.scrollTo(0, { immediate: true });
+    // Arriving from another page via /#section → land on that section instead of the top
+    const hash = window.location.hash;
+    const target = hash ? document.getElementById(hash.slice(1)) : null;
+    lenis?.scrollTo(target ?? 0, { immediate: true });
   }, [pathname]);
 
   return null;
