@@ -11,8 +11,6 @@ const INSTAGRAM_URL = 'https://www.instagram.com/dan_ivaa/';
 const NOW_ITEMS = [
   { label: 'Designing at', value: 'Lyxonn' },
   { label: 'Based in', value: 'Kyiv, Ukraine' },
-  { label: 'Status', value: 'Open to part-time roles' },
-  { label: 'Currently exploring', value: 'Finding where AI can own the most of a workflow' },
 ];
 
 const SOCIAL_LINKS = [
