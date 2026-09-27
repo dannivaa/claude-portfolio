@@ -1,6 +1,7 @@
 'use client';
 
 import { FadeIn } from '@/components/ui/fade-in';
+import { Link001 } from '@/components/ui/skiper-ui/skiper40';
 
 
 const EMAIL = 'danyloivanovv@gmail.com';
@@ -39,9 +40,9 @@ export default function Footer() {
             <ul className="connect-socials">
               {SOCIAL_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} target="_blank" rel="noreferrer noopener" className="connect-link">
+                  <Link001 href={link.href} className="connect-link">
                     {link.label}
-                  </a>
+                  </Link001>
                 </li>
               ))}
             </ul>
