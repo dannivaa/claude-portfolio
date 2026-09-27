@@ -324,7 +324,7 @@ export default function Home() {
             <div className="about-text-col">
               <span className="about-eyebrow">About me</span>
               <h2 className="about-headline">Hey, I&rsquo;m Danylo.</h2>
-              <p className="about-body">I&rsquo;m a Product Designer focused on solving real problems for real people. I always start with data—understanding what&rsquo;s actually happening before I move. Then comes the people: talking to users, learning what they need, and building something that matters.<br/><br/>Outside of design, I&rsquo;m a drummer writing my own songs, spend a lot of time with people who mean everything to me, and I&rsquo;m constantly reading—books, manga, whatever pulls my attention. I cook, I watch anime, I build things because that&rsquo;s how I stay sane.<br/><br/>I notice things. I ask questions. I care about getting it right.</p>
+              <p className="about-body">I&rsquo;m a Product Designer who solves real problems for real people. I start with data — what&rsquo;s actually happening — before I move. Then I talk to users, learn what they need, and build something that matters.<br/><br/>Outside of design, I play drums and write my own songs. I spend a lot of time with the people who matter to me. I read constantly — books, manga, whatever pulls me in. I cook, watch anime, build things. It&rsquo;s how I stay sane.<br/><br/>I notice things. I ask questions. I care about getting it right.</p>
               <div className="about-spotify">
                 <p className="about-spotify-label">My go-to playlist for building things</p>
                 <iframe
