@@ -934,24 +934,19 @@ main {
 
 .connect-socials {
   display: flex;
-  gap: 12px;
-  margin-top: 24px;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-.connect-social {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--cs-footer-surface);
+.connect-link {
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
   color: var(--cs-footer-text);
-  transition: background 200ms ease;
-}
-
-.connect-social:hover {
-  background: var(--cs-footer-surface-hover);
+  text-decoration: none;
 }
 
 /* Now column */
