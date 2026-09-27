@@ -910,33 +910,11 @@ main {
 }
 
 /* Contact column */
-.connect-contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
-  color: var(--cs-footer-muted);
-}
-
-.connect-contact-email {
-  color: var(--cs-footer-muted);
-  text-decoration: none;
-  transition: color 200ms ease;
-  align-self: flex-start;
-  letter-spacing: -0.02em;
-}
-
-.connect-contact-email:hover {
-  color: var(--cs-footer-text);
-}
-
 .connect-socials {
   display: flex;
   flex-wrap: wrap;
-  gap: 32px;
-  margin: 24px 0 0;
+  gap: 20px; /* + ~1em reserved by each hidden Skiper arrow */
+  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -950,8 +928,7 @@ main {
 }
 
 /* Skiper40 arrow: widen the default 0.3em gap */
-.connect-link svg,
-.connect-contact-email svg {
+.connect-link svg {
   margin-left: 0.5em;
 }
 

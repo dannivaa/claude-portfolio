@@ -1,7 +1,7 @@
 'use client';
 
 import { FadeIn } from '@/components/ui/fade-in';
-import { Link001, Link002 } from '@/components/ui/skiper-ui/skiper40';
+import { Link001 } from '@/components/ui/skiper-ui/skiper40';
 
 
 const EMAIL = 'danyloivanovv@gmail.com';
@@ -16,8 +16,9 @@ const NOW_ITEMS = [
 ];
 
 const SOCIAL_LINKS = [
-  { label: 'LinkedIn', href: LINKEDIN_URL },
-  { label: 'Instagram', href: INSTAGRAM_URL },
+  { label: 'Email', href: `mailto:${EMAIL}`, external: false },
+  { label: 'LinkedIn', href: LINKEDIN_URL, external: true },
+  { label: 'Instagram', href: INSTAGRAM_URL, external: true },
 ];
 
 export default function Footer() {
@@ -31,16 +32,14 @@ export default function Footer() {
           <div className="connect-col">
             <h3 className="connect-col-label">Contact</h3>
 
-            <div className="connect-contact-info">
-              <Link002 href={`mailto:${EMAIL}`} className="connect-contact-email">
-                {EMAIL}
-              </Link002>
-            </div>
-
             <ul className="connect-socials">
               {SOCIAL_LINKS.map((link) => (
                 <li key={link.label}>
-                  <Link001 href={link.href} className="connect-link">
+                  <Link001
+                    href={link.href}
+                    target={link.external ? '_blank' : '_self'}
+                    className="connect-link"
+                  >
                     {link.label}
                   </Link001>
                 </li>

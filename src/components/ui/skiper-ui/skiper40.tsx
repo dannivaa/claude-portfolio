@@ -49,15 +49,18 @@ const Link001 = ({
   children,
   href,
   className,
+  target = "_blank",
 }: {
   children: React.ReactNode;
   href: string;
   className?: string;
+  target?: React.HTMLAttributeAnchorTarget;
 }) => {
   return (
     <a
       href={href}
-      target="_blank"
+      target={target}
+      rel={target === "_blank" ? "noreferrer noopener" : undefined}
       className={cn(
         "group relative flex items-center",
         "before:pointer-events-none before:absolute before:left-0 before:top-[1.5em] before:h-[0.05em] before:w-full before:bg-current before:content-['']",
