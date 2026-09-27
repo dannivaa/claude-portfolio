@@ -12,7 +12,7 @@ const ENABLED_QUERY = '(hover: hover) and (pointer: fine) and (prefers-reduced-m
 /**
  * Cursor lens shared by the hero background and headline. Besides notifying
  * subscribers every frame, it writes CSS vars on the frame so pure-CSS layers can follow:
- * --lens-x/--lens-y (px), --lens-vx/--lens-vy (px), --lens-s (0–1), --lens-h (frame height, px).
+ * --lens-x/--lens-y (px), --lens-s (0–1), --lens-h (frame height, px).
  */
 export function createPointerLens(): PointerLens {
   const listeners = new Set<(state: LensState) => void>();
@@ -28,8 +28,6 @@ export function createPointerLens(): PointerLens {
       const s = frame.style;
       s.setProperty('--lens-x', `${(lens.x * box.width).toFixed(1)}px`);
       s.setProperty('--lens-y', `${(lens.y * box.height).toFixed(1)}px`);
-      s.setProperty('--lens-vx', `${(lens.vx * box.width * 0.5).toFixed(2)}px`);
-      s.setProperty('--lens-vy', `${(lens.vy * box.height * 0.5).toFixed(2)}px`);
       s.setProperty('--lens-s', lens.strength.toFixed(3));
       s.setProperty('--lens-h', `${box.height.toFixed(0)}px`);
       const state = { x: lens.x, y: lens.y, vx: lens.vx, vy: lens.vy, strength: lens.strength };

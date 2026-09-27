@@ -341,8 +341,10 @@ main {
 }
 
 /* Chromatic lens over the EtherealShadow. Channels are added back together
-   (plus-lighter), so at rest it matches the plain shadow; red scales toward the
-   cursor and blue away from it. --lens-* vars come from createPointerLens. */
+   (plus-lighter), so at rest it matches the plain shadow; green and blue scale away
+   from the cursor (blue twice as far), so red separates toward it. Only scale up:
+   a layer scaled down around the cursor would leave its own box and mask short of
+   the frame edge. --lens-* vars come from createPointerLens. */
 .chromatic-shadow {
   --lens-k: calc(var(--lens-s, 0) * 0.15);
   position: absolute;
@@ -358,26 +360,23 @@ main {
 
 .chromatic-shadow__ch {
   position: absolute;
-  /* Oversized so red, scaled down by up to 15% around any point in the frame, still
-     covers it (needs k / (1 - k) ≈ 18% per side). Mask stays frame-sized via --mask-size. */
-  inset: -20%;
+  inset: 0;
   mix-blend-mode: plus-lighter;
-  mask-size: var(--mask-size, cover);
+  mask-size: cover;
   mask-repeat: no-repeat;
   mask-position: center;
-  -webkit-mask-size: var(--mask-size, cover);
+  -webkit-mask-size: cover;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
-  /* Lens point in this box: the frame offset is 20% of the frame = 1/7 of this 140% box */
-  transform-origin: calc(var(--lens-x, 50%) + 100% / 7) calc(var(--lens-y, 50%) + 100% / 7);
+  transform-origin: var(--lens-x, 50%) var(--lens-y, 50%);
 }
 
-.chromatic-shadow__ch--r {
-  transform: translate(calc(var(--lens-vx, 0px) * -1), calc(var(--lens-vy, 0px) * -1)) scale(calc(1 - var(--lens-k)));
+.chromatic-shadow__ch--g {
+  transform: scale(calc(1 + var(--lens-k)));
 }
 
 .chromatic-shadow__ch--b {
-  transform: translate(var(--lens-vx, 0px), var(--lens-vy, 0px)) scale(calc(1 + var(--lens-k)));
+  transform: scale(calc(1 + var(--lens-k) * 2));
 }
 
 /* Headline fringes follow an eased cursor lens; --ca-x/--ca-y are set per word in [-1, 1].
