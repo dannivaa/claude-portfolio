@@ -139,7 +139,7 @@ export default function Home() {
                   </Cursor>
                 </ClickSpark>
                 <div className="card-footer">
-                  <span className="card-title">Designing a monetization strategy for an AI companion app</span>
+                  <span className="card-title">Turning conversations into revenue</span>
                 </div>
               </div>
               </FadeIn>

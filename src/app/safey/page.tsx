@@ -24,7 +24,7 @@ export default function SafeyCaseStudy() {
 
             <GooeyTextReveal className="cs-hero-title-area" delay={0.2} duration={2.2} stagger={0.18}>
               <p className="cs-project-name">Safey</p>
-              <h1 className="cs-title">Designing a monetization strategy for an AI companion app</h1>
+              <h1 className="cs-title">Turning conversations into revenue</h1>
             </GooeyTextReveal>
 
             {/* Naked phone strip */}
