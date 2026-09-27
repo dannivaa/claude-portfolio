@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { FadeIn } from '@/components/ui/fade-in';
 import { FadeInMount } from '@/components/ui/fade-in-mount';
+import Image from 'next/image';
 import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
 
 export const metadata: Metadata = {
@@ -30,17 +31,17 @@ export default function SafeyCaseStudy() {
             <div className="cs-phones-naked">
               <FadeInMount delay={0.8}>
                 <div className="cs-phone-naked">
-                  <img src="/images/Safey/01.png" alt="Safey screen 1" />
+                  <Image src="/images/Safey/01.png" alt="Safey screen 1" width={1560} height={3376} sizes="(max-width: 768px) 26vw, 27vh" loading="eager" />
                 </div>
               </FadeInMount>
               <FadeInMount delay={0.95}>
                 <div className="cs-phone-naked">
-                  <img src="/images/Safey/02.png" alt="Safey screen 2" />
+                  <Image src="/images/Safey/02.png" alt="Safey screen 2" width={1560} height={3376} sizes="(max-width: 768px) 26vw, 27vh" loading="eager" />
                 </div>
               </FadeInMount>
               <FadeInMount delay={1.1}>
                 <div className="cs-phone-naked">
-                  <img src="/images/Safey/03.png" alt="Safey screen 3" />
+                  <Image src="/images/Safey/03.png" alt="Safey screen 3" width={1560} height={3376} sizes="(max-width: 768px) 26vw, 27vh" loading="eager" />
                 </div>
               </FadeInMount>
             </div>

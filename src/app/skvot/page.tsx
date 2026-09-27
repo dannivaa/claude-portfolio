@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { FadeIn } from '@/components/ui/fade-in';
 import { FadeInMount } from '@/components/ui/fade-in-mount';
+import Image from 'next/image';
 import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
 
 export const metadata: Metadata = {
@@ -30,17 +31,17 @@ export default function SkvotCaseStudy() {
             <div className="cs-phones-naked">
               <FadeInMount delay={0.8}>
                 <div className="cs-phone-naked">
-                  <img src="/images/Skvot/01.png" alt="SKVOT screen 1" />
+                  <Image src="/images/Skvot/01.png" alt="SKVOT screen 1" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" loading="eager" />
                 </div>
               </FadeInMount>
               <FadeInMount delay={0.95}>
                 <div className="cs-phone-naked">
-                  <img src="/images/Skvot/02.png" alt="SKVOT screen 2" />
+                  <Image src="/images/Skvot/02.png" alt="SKVOT screen 2" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" loading="eager" />
                 </div>
               </FadeInMount>
               <FadeInMount delay={1.1}>
                 <div className="cs-phone-naked">
-                  <img src="/images/Skvot/03.png" alt="SKVOT screen 3" />
+                  <Image src="/images/Skvot/03.png" alt="SKVOT screen 3" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" loading="eager" />
                 </div>
               </FadeInMount>
             </div>
@@ -148,16 +149,16 @@ export default function SkvotCaseStudy() {
           <div className="cs-hero-inner">
             <FadeIn>
               <div className="cs-phones-naked">
-                <div className="cs-phone-naked"><img src="/images/Skvot/04.png" alt="" /></div>
-                <div className="cs-phone-naked"><img src="/images/Skvot/05.png" alt="" /></div>
-                <div className="cs-phone-naked"><img src="/images/Skvot/06.png" alt="" /></div>
+                <div className="cs-phone-naked"><Image src="/images/Skvot/04.png" alt="" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" /></div>
+                <div className="cs-phone-naked"><Image src="/images/Skvot/05.png" alt="" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" /></div>
+                <div className="cs-phone-naked"><Image src="/images/Skvot/06.png" alt="" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" /></div>
               </div>
             </FadeIn>
             <FadeIn>
               <div className="cs-phones-naked">
-                <div className="cs-phone-naked"><img src="/images/Skvot/07.png" alt="" /></div>
-                <div className="cs-phone-naked"><img src="/images/Skvot/08.png" alt="" /></div>
-                <div className="cs-phone-naked"><img src="/images/Skvot/09.png" alt="" /></div>
+                <div className="cs-phone-naked"><Image src="/images/Skvot/07.png" alt="" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" /></div>
+                <div className="cs-phone-naked"><Image src="/images/Skvot/08.png" alt="" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" /></div>
+                <div className="cs-phone-naked"><Image src="/images/Skvot/09.png" alt="" width={1179} height={2556} sizes="(max-width: 768px) 26vw, 27vh" /></div>
               </div>
             </FadeIn>
           </div>
