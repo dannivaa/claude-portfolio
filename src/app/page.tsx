@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { ArrowRight } from 'lucide-react';
-import { Component } from '@/components/ui/etheral-shadow';
+import HeroBackground from '@/components/HeroBackground';
 import { MagicText } from '@/components/ui/magic-text';
 import { FadeIn } from '@/components/ui/fade-in';
 import { SplitText } from '@/components/ui/split-text';
@@ -25,14 +25,9 @@ export default function Home() {
 
         {/* HERO */}
         <section className="hero-wrapper">
-          <div className="hero-card">
+          <div className="hero-card hero-card--wave">
             <div className="hero-bg">
-              <Component
-                color="#4695C0"
-                animation={{ scale: 0, speed: 0 }}
-                noise={{ opacity: 1, scale: 1.2 }}
-                sizing="fill"
-              />
+              <HeroBackground />
             </div>
             <p className="hero-headline">Product Designer crafting solutions that drive business wins.</p>
           </div>

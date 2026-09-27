@@ -150,6 +150,10 @@ export interface WaveGridBackgroundProps {
   autoAnimate?: boolean;
   /** Apply the vignette + RGB-shift post-processing pass. Defaults to true. */
   vignette?: boolean;
+  /** Render cast shadows (adds a full depth pass). Defaults to true. */
+  shadows?: boolean;
+  /** Upper bound for devicePixelRatio. Defaults to 2. */
+  maxPixelRatio?: number;
 }
 
 export function WaveGridBackground({
@@ -166,6 +170,8 @@ export function WaveGridBackground({
   waveJitter = 0.2,
   autoAnimate = true,
   vignette = true,
+  shadows = true,
+  maxPixelRatio = 2,
 }: WaveGridBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -211,7 +217,7 @@ export function WaveGridBackground({
     const getSize = () => ({
       width: container.clientWidth || 1,
       height: container.clientHeight || 1,
-      pixelRatio: Math.min(window.devicePixelRatio, 2),
+      pixelRatio: Math.min(window.devicePixelRatio, maxPixelRatio),
     });
     let size = getSize();
 
@@ -259,7 +265,7 @@ export function WaveGridBackground({
 
     const keyLight = new THREE.DirectionalLight("#ffffff", 4.0);
     keyLight.position.set(-20, 10, 6);
-    keyLight.castShadow = true;
+    keyLight.castShadow = shadows;
     keyLight.shadow.mapSize.set(1024, 1024);
     keyLight.shadow.radius = 6;
     keyLight.shadow.camera.near = 0.1;
@@ -430,8 +436,8 @@ export function WaveGridBackground({
 
     const instancedMesh = new THREE.InstancedMesh(geometry, material, count);
     instancedMesh.customDepthMaterial = depthMaterial;
-    instancedMesh.castShadow = true;
-    instancedMesh.receiveShadow = true;
+    instancedMesh.castShadow = shadows;
+    instancedMesh.receiveShadow = shadows;
     scene.add(instancedMesh);
 
     const dummy = new THREE.Object3D();
@@ -455,7 +461,7 @@ export function WaveGridBackground({
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.95;
-    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.enabled = shadows;
     renderer.shadowMap.type = THREE.PCFShadowMap;
     renderer.setClearColor("#808080");
     renderer.setSize(size.width, size.height);
@@ -487,7 +493,7 @@ export function WaveGridBackground({
 
     // ── Animation loop ─────────────────────────────────────────────────────
     const clock = new THREE.Clock();
-    renderer.setAnimationLoop(() => {
+    const tick = () => {
       const delta = clock.getDelta();
       const p = propsRef.current;
 
@@ -507,11 +513,31 @@ export function WaveGridBackground({
       lerpedMouse.y += (mouse.y - lerpedMouse.y) * 0.04;
       positionCamera(lerpedMouse.x, lerpedMouse.y);
       composer.render();
+    };
+
+    // Only run the loop while the canvas is on screen and the tab is visible.
+    let inView = true;
+    let running = false;
+    const syncLoop = () => {
+      const shouldRun = inView && !document.hidden;
+      if (shouldRun === running) return;
+      running = shouldRun;
+      if (running) clock.getDelta();
+      renderer.setAnimationLoop(running ? tick : null);
+    };
+    const intersectionObserver = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      syncLoop();
     });
+    intersectionObserver.observe(container);
+    document.addEventListener("visibilitychange", syncLoop);
+    syncLoop();
 
     // ── Cleanup ──────────────────────────────────────────────────────────────
     return () => {
       renderer.setAnimationLoop(null);
+      intersectionObserver.disconnect();
+      document.removeEventListener("visibilitychange", syncLoop);
       window.removeEventListener("resize", applySize);
       canvas.removeEventListener("pointermove", onPointerMove);
       canvas.removeEventListener("pointerleave", onPointerLeave);
@@ -529,7 +555,7 @@ export function WaveGridBackground({
     // Scene is built once; live values flow through propsRef. Rebuild only when
     // structural inputs change.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gridSize, vignette]);
+  }, [gridSize, vignette, shadows, maxPixelRatio]);
 
   return (
     <div ref={containerRef} className={cn("relative h-full w-full overflow-hidden", className)}>
