@@ -5,11 +5,12 @@ import { useRouter, usePathname } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
 import { useLenis } from 'lenis/react';
 
-interface NavbarProps {
-  variant?: 'home' | 'case-study';
-}
+const NAV_SECTIONS = [
+  { id: 'projects', label: 'My work' },
+  { id: 'experience', label: 'Experience' },
+];
 
-export default function Navbar({ variant = 'home' }: NavbarProps) {
+export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
   const lenis = useLenis();
@@ -30,14 +31,21 @@ export default function Navbar({ variant = 'home' }: NavbarProps) {
           <img src="/images/pfp3d.png" alt="Avatar" />
         </Link>
         <div className="navbar-links">
-          {variant === 'home' ? (
-            <>
-              <a href="#projects">My work</a>
-              <a href="#experience">Experience</a>
-            </>
-          ) : (
-            <Link href="/">About me</Link>
-          )}
+          {NAV_SECTIONS.map(({ id, label }) => (
+            <Link
+              key={id}
+              href={`/#${id}`}
+              scroll={false}
+              onClick={(e) => {
+                if (pathname === '/') {
+                  e.preventDefault();
+                  lenis?.scrollTo(`#${id}`);
+                }
+              }}
+            >
+              {label}
+            </Link>
+          ))}
         </div>
       </div>
       <div className="navbar-right">

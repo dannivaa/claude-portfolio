@@ -102,6 +102,10 @@ const ClickSpark = ({
   const handleClick = e => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    // Nested ClickSparks (global in layout + per-card): innermost wins, outer ones skip.
+    // Flag instead of stopPropagation so parent onClick handlers (card navigation) still fire.
+    if (e.nativeEvent.__clickSparkHandled) return;
+    e.nativeEvent.__clickSparkHandled = true;
     const x = e.clientX;
     const y = e.clientY;
 

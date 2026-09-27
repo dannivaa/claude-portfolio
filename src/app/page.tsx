@@ -35,7 +35,7 @@ export default function Home() {
 
   return (
     <>
-      <Navbar variant="home" />
+      <Navbar />
 
       <main>
         <article>
