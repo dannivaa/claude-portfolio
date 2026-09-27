@@ -103,7 +103,7 @@ export function Cursor({
               fontSize: 16,
               fontWeight: 500,
               fontFamily: "'Fixel Text', sans-serif",
-              letterSpacing: '-0.42px',
+              letterSpacing: '0.8px',
               lineHeight: '24px',
               whiteSpace: 'nowrap',
               display: 'flex',
