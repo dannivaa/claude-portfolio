@@ -479,7 +479,7 @@ main {
 
 @media (hover: hover) {
   .card-default:hover .card-image::after {
-    opacity: 0.2;
+    opacity: 0.35;
   }
 }
 
