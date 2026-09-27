@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { FadeIn } from '@/components/ui/fade-in';
 import { FadeInMount } from '@/components/ui/fade-in-mount';
-import { SplitText } from '@/components/ui/split-text';
+import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
 
 export const metadata: Metadata = {
   title: 'Safey AI Companion | Danylo Ivanov',
@@ -21,10 +21,10 @@ export default function SafeyCaseStudy() {
         <section className="cs-hero">
           <div className="cs-hero-inner">
 
-            <div className="cs-hero-title-area">
-              <p className="cs-project-name"><SplitText text="Safey" /></p>
-              <h1 className="cs-title"><SplitText text="Designing a monetization strategy for an AI companion app" delay={0.3} /></h1>
-            </div>
+            <GooeyTextReveal className="cs-hero-title-area" delay={0.2} duration={2.2} stagger={0.18}>
+              <p className="cs-project-name">Safey</p>
+              <h1 className="cs-title">Designing a monetization strategy for an AI companion app</h1>
+            </GooeyTextReveal>
 
             {/* Naked phone strip */}
             <div className="cs-phones-naked">
