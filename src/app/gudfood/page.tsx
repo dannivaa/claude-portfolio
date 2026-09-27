@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { FadeIn } from '@/components/ui/fade-in';
 import { FadeInMount } from '@/components/ui/fade-in-mount';
-import { SplitText } from '@/components/ui/split-text';
+import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
 
 export const metadata: Metadata = {
   title: 'GudFood Vdoma | Danylo Ivanov',
@@ -21,10 +21,10 @@ export default function CaseStudy() {
         <section className="cs-hero">
           <div className="cs-hero-inner">
 
-            <div className="cs-hero-title-area">
-              <p className="cs-project-name"><SplitText text="GudFood Vdoma" /></p>
-              <h1 className="cs-title"><SplitText text="The loop that brought users back" delay={0.3} /></h1>
-            </div>
+            <GooeyTextReveal className="cs-hero-title-area" delay={0.2} duration={2.2} stagger={0.18}>
+              <p className="cs-project-name">GudFood Vdoma</p>
+              <h1 className="cs-title">The loop that brought users back</h1>
+            </GooeyTextReveal>
 
             {/* Naked phone strip */}
             <div className="cs-phones-naked">

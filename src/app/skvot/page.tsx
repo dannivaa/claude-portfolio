@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { FadeIn } from '@/components/ui/fade-in';
 import { FadeInMount } from '@/components/ui/fade-in-mount';
-import { SplitText } from '@/components/ui/split-text';
+import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
 
 export const metadata: Metadata = {
   title: 'SKVOT Mobile App | Danylo Ivanov',
@@ -21,10 +21,10 @@ export default function SkvotCaseStudy() {
         <section className="cs-hero">
           <div className="cs-hero-inner">
 
-            <div className="cs-hero-title-area">
-              <p className="cs-project-name"><SplitText text="SKVOT" /></p>
-              <h1 className="cs-title"><SplitText text="A bridge between student and lecturer" delay={0.3} /></h1>
-            </div>
+            <GooeyTextReveal className="cs-hero-title-area" delay={0.2} duration={2.2} stagger={0.18}>
+              <p className="cs-project-name">SKVOT</p>
+              <h1 className="cs-title">A bridge between student and lecturer</h1>
+            </GooeyTextReveal>
 
             {/* Naked phone strip */}
             <div className="cs-phones-naked">
