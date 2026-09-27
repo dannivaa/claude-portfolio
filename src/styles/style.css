@@ -330,28 +330,39 @@ main {
   z-index: 1;
 }
 
-/* WebGL wave grid: headline lets the cursor through so the grid reacts under it */
-.hero-card--wave .hero-headline {
-  pointer-events: none;
-}
-
-.hero-headline-reveal {
-  position: relative;
-  z-index: 1;
+/* Chromatic hero image: plain <img> paints first (LCP), WebGL canvas fades in over it */
+.hero-chromatic,
+.chromatic-image__img,
+.chromatic-image__canvas {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  height: 100%;
+}
+
+.chromatic-image__img {
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.chromatic-image__canvas {
+  display: block;
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+
+.chromatic-image__canvas.is-ready {
+  opacity: 1;
+}
+
+/* Scrim keeps the headline ≥3:1 where the light streak crosses it */
+.hero-chromatic::after {
+  content: '';
+  position: absolute;
+  inset: 0;
   pointer-events: none;
-}
-
-.hero-wave-grid {
-  animation: hero-wave-in 0.8s ease-out both;
-}
-
-@keyframes hero-wave-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(5, 12, 15, 0.6) 0%, rgba(5, 12, 15, 0.45) 60%, rgba(5, 12, 15, 0) 100%);
 }
 
 /* ─── WORKED WITH ─────────────────────────────────────────────────────────── */

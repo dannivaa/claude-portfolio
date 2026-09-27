@@ -26,7 +26,7 @@ export default function Home() {
 
         {/* HERO */}
         <section className="hero-wrapper">
-          <div className="hero-card hero-card--wave">
+          <div className="hero-card">
             <div className="hero-bg">
               <HeroBackground />
             </div>

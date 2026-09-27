@@ -1,25 +1,24 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-import { Component as EtherealShadow } from '@/components/ui/etheral-shadow';
+import { ChromaticImage, type TextureSource } from '@/components/ui/chromatic-image';
 
-// three.js is only fetched when the WebGL background is actually used.
-const WaveGridBackground = dynamic(
-  () => import('@/components/ui/wave-grid-background').then((m) => m.WaveGridBackground),
-  { ssr: false }
-);
+type Mode = 'off' | 'pointer' | 'ambient';
 
-type Mode = 'pending' | 'static' | 'mobile' | 'desktop';
-
-const MOBILE_QUERY = '(max-width: 768px)';
 const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
 const MOUSE_QUERY = '(hover: hover) and (pointer: fine)';
+const MOBILE_QUERY = '(max-width: 768px)';
+
+const TEXTURES: TextureSource[] = [
+  { src: '/images/hero-bg-1280.webp', width: 1280 },
+  { src: '/images/hero-bg-2560.webp', width: 2560 },
+  { src: '/images/hero-bg-3840.webp', width: 3840 },
+];
+const SRC_SET = TEXTURES.map((t) => `${t.src} ${t.width}w`).join(', ');
 
 function supportsWebGL() {
   try {
-    const canvas = document.createElement('canvas');
-    return !!(canvas.getContext('webgl2') || canvas.getContext('webgl'));
+    return !!document.createElement('canvas').getContext('webgl');
   } catch {
     return false;
   }
@@ -27,56 +26,37 @@ function supportsWebGL() {
 
 function resolveMode(): Mode {
   const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
-  if (window.matchMedia(REDUCED_MOTION_QUERY).matches || saveData || !supportsWebGL()) return 'static';
-  return window.matchMedia(MOBILE_QUERY).matches ? 'mobile' : 'desktop';
+  if (window.matchMedia(REDUCED_MOTION_QUERY).matches || saveData || !supportsWebGL()) return 'off';
+  // No cursor to drive the lens on touch devices, so it drifts on its own.
+  return window.matchMedia(MOUSE_QUERY).matches ? 'pointer' : 'ambient';
 }
 
 export default function HeroBackground() {
-  const [mode, setMode] = useState<Mode>('pending');
-  const [hasMouse, setHasMouse] = useState(false);
+  // Starts as the plain image so SSR and the LCP paint don't wait on WebGL.
+  const [mode, setMode] = useState<Mode>('off');
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const queries = [MOBILE_QUERY, REDUCED_MOTION_QUERY, MOUSE_QUERY].map((q) => window.matchMedia(q));
+    const queries = [REDUCED_MOTION_QUERY, MOUSE_QUERY, MOBILE_QUERY].map((q) => window.matchMedia(q));
     const update = () => {
       setMode(resolveMode());
-      setHasMouse(window.matchMedia(MOUSE_QUERY).matches);
+      setIsMobile(window.matchMedia(MOBILE_QUERY).matches);
     };
     update();
     queries.forEach((q) => q.addEventListener('change', update));
     return () => queries.forEach((q) => q.removeEventListener('change', update));
   }, []);
 
-  if (mode === 'pending') return null;
-
-  if (mode === 'static') {
-    return (
-      <EtherealShadow
-        color="#4695C0"
-        animation={{ scale: 0, speed: 0 }}
-        noise={{ opacity: 1, scale: 1.2 }}
-        sizing="fill"
-      />
-    );
-  }
-
-  const isMobile = mode === 'mobile';
-  const gridSize = isMobile ? 30 : 64;
-  // Wave params are in world units; the camera pulls back as the grid grows,
-  // so scale them to keep the ripple the same size on screen.
-  const waveScale = gridSize / 40;
-
   return (
-    <WaveGridBackground
-      className="hero-wave-grid"
-      colorBase="#081319"
-      colorHigh="#2C5F7A"
-      gridSize={gridSize}
-      waveSpeed={6 * waveScale}
-      waveWidth={3 * waveScale}
-      waveFrequency={1.2 / waveScale}
-      // Idle ripples only on touch devices, where there is no cursor to drive the grid.
-      autoAnimate={!hasMouse}
-      shadows={!isMobile}
+    <ChromaticImage
+      className="hero-chromatic"
+      src="/images/hero-bg-2560.webp"
+      srcSet={SRC_SET}
+      sizes="100vw"
+      textures={TEXTURES}
+      mode={mode}
+      intensity={isMobile ? 0.012 : 0.018}
+      radius={isMobile ? 0.45 : 0.35}
       maxPixelRatio={isMobile ? 1.5 : 2}
     />
   );
