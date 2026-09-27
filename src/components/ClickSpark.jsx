@@ -1,6 +1,9 @@
 'use client';
 
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback, useSyncExternalStore } from 'react';
+import { createPortal } from 'react-dom';
+
+const subscribeNoop = () => () => {};
 
 const ClickSpark = ({
   sparkColor = '#fff',
@@ -15,6 +18,9 @@ const ClickSpark = ({
   const canvasRef = useRef(null);
   const sparksRef = useRef([]);
   const startTimeRef = useRef(null);
+  // Canvas is portaled to <body> so ancestors with filter/transform (e.g. FadeIn)
+  // can't become its containing block and offset sparks from the pointer.
+  const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -31,7 +37,7 @@ const ClickSpark = ({
     return () => {
       window.removeEventListener('resize', resizeCanvas);
     };
-  }, []);
+  }, [mounted]);
 
   const easeFunc = useCallback(
     t => {
@@ -97,7 +103,7 @@ const ClickSpark = ({
     return () => {
       cancelAnimationFrame(animationId);
     };
-  }, [sparkColor, sparkSize, sparkRadius, sparkCount, duration, easeFunc, extraScale]);
+  }, [mounted, sparkColor, sparkSize, sparkRadius, sparkCount, duration, easeFunc, extraScale]);
 
   const handleClick = e => {
     const canvas = canvasRef.current;
@@ -129,18 +135,21 @@ const ClickSpark = ({
       }}
       onClick={handleClick}
     >
-      <canvas
-        ref={canvasRef}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          pointerEvents: 'none',
-          zIndex: 99999,
-        }}
-      />
+      {mounted && createPortal(
+        <canvas
+          ref={canvasRef}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            pointerEvents: 'none',
+            zIndex: 99999,
+          }}
+        />,
+        document.body
+      )}
       {children}
     </div>
   );
