@@ -46,6 +46,17 @@
   font-display: swap;
 }
 
+/* ExtraBold subset holding only the glyphs of the footer's "Stand with
+   Ukraine" banner (~3 KB vs 84 KB). Separate family name so nothing else
+   can fall into a font with missing characters. */
+@font-face {
+  font-family: 'Fixel Display UA';
+  src: url('/fonts/FixelDisplay-ExtraBold-UA.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -877,6 +888,128 @@ main {
   margin: -0.275em 0 0 0.4em;
 }
 
+/* Stand with Ukraine: hovering "Kyiv, Ukraine" floods the bar with Pantone
+   Freedom Blue, fades the rest of the content out and condenses the banner
+   in Energizing Yellow out of a gooey blur (same filter as the hero
+   headline). Leaving the text plays it all in reverse. */
+.cs-footer {
+  --ua-blue: #0057b7;
+  --ua-yellow: #ffd700;
+  --ua-ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --ua-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.connect-block {
+  transition: background-color 600ms var(--ua-ease-in-out);
+}
+
+/* On the way back, wait for the blue to mostly clear before the content
+   returns, so dark text never sits on the blue */
+.connect-socials,
+.connect-meta li:first-child {
+  transition: opacity 350ms var(--ua-ease-in-out) 250ms;
+}
+
+.connect-meta li:last-child,
+.connect-meta-value {
+  transition: color 600ms var(--ua-ease-in-out);
+}
+
+/* Button reset: "Kyiv, Ukraine" reads as plain text but is tappable and
+   keyboard-focusable */
+.connect-ukraine {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: default;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.connect-ukraine:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.connect-ukraine-banner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fixel Display UA', 'Fixel Display', sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--ua-yellow);
+  opacity: 0;
+  transition: opacity 350ms var(--ua-ease-in-out);
+  pointer-events: none;
+}
+
+.connect-ukraine-goo {
+  display: block;
+}
+
+.connect-ukraine-text {
+  display: inline-block;
+  filter: blur(0.35em);
+  transition: filter 450ms var(--ua-ease-in-out);
+  will-change: filter;
+}
+
+.connect-ukraine-defs {
+  position: absolute;
+  pointer-events: none;
+}
+
+.connect-block.is-ukraine {
+  background-color: var(--ua-blue);
+}
+
+.connect-block.is-ukraine .connect-socials,
+.connect-block.is-ukraine .connect-meta li:first-child {
+  opacity: 0;
+  pointer-events: none;
+  transition-delay: 0ms;
+}
+
+.connect-block.is-ukraine .connect-meta li:last-child {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.connect-block.is-ukraine .connect-meta-value {
+  color: #ffffff;
+}
+
+.connect-block.is-ukraine .connect-ukraine-banner {
+  opacity: 1;
+  transition-delay: 100ms;
+}
+
+.connect-block.is-ukraine .connect-ukraine-text {
+  filter: blur(0);
+  transition: filter 1000ms var(--ua-ease-out) 100ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connect-block,
+  .connect-socials,
+  .connect-meta li,
+  .connect-meta-value,
+  .connect-ukraine-banner,
+  .connect-ukraine-text,
+  .connect-block.is-ukraine .connect-ukraine-text {
+    transition: none;
+  }
+}
+
 /* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
   /* Navbar — no changes at tablet; desktop pill behaviour is preserved */
@@ -1134,6 +1267,10 @@ main {
   .connect-meta,
   .connect-socials {
     gap: 12px 24px;
+  }
+
+  .connect-ukraine-banner {
+    font-size: 24px;
   }
 }
 
