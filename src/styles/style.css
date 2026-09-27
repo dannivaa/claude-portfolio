@@ -462,6 +462,27 @@ main {
   display: block;
 }
 
+/* Hover state layer: white overlay on clickable cards */
+.card-default .card-image {
+  position: relative;
+}
+
+.card-default .card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease-out;
+}
+
+@media (hover: hover) {
+  .card-default:hover .card-image::after {
+    opacity: 0.16;
+  }
+}
+
 .card-footer {
   display: flex;
   flex-direction: column;
