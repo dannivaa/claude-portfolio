@@ -9,6 +9,7 @@ import HeroBackground from '@/components/HeroBackground';
 import { MagicText } from '@/components/ui/magic-text';
 import { FadeIn } from '@/components/ui/fade-in';
 import { SplitText } from '@/components/ui/split-text';
+import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
 import { useRouter } from 'next/navigation';
 import { Cursor } from '@/components/ui/custom-cursor';
 import ClickSpark from '@/components/ClickSpark';
@@ -29,7 +30,9 @@ export default function Home() {
             <div className="hero-bg">
               <HeroBackground />
             </div>
-            <p className="hero-headline">Product Designer crafting solutions that drive business wins.</p>
+            <GooeyTextReveal className="hero-headline-reveal" delay={0.2}>
+              <p className="hero-headline">Product Designer crafting solutions that drive business wins.</p>
+            </GooeyTextReveal>
           </div>
         </section>
 
