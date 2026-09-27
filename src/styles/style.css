@@ -335,6 +335,16 @@ main {
   pointer-events: none;
 }
 
+.hero-headline-reveal {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
 .hero-wave-grid {
   animation: hero-wave-in 0.8s ease-out both;
 }
