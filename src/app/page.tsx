@@ -2,10 +2,8 @@
 
 import '@/styles/style.css';
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { ArrowRight } from 'lucide-react';
 import { ChromaticShadow } from '@/components/ui/chromatic-shadow';
 import { createPointerLens } from '@/components/ui/pointer-lens';
 import { MagicText } from '@/components/ui/magic-text';
@@ -346,16 +344,6 @@ export default function Home() {
 
         </article>
       </main>
-
-      {/* "Let's talk" CTA — homepage only, sits between main and footer */}
-      <FadeIn className="hp-banner">
-        <Link className="hp-banner-cta" href="/contact" aria-label="Let's talk — open contact page">
-          <span className="hp-banner-cta-text">Let&rsquo;s talk</span>
-          <span className="hp-banner-cta-arrow" aria-hidden>
-            <ArrowRight size={48} strokeWidth={2.25} />
-          </span>
-        </Link>
-      </FadeIn>
 
       <Footer />
     </>
