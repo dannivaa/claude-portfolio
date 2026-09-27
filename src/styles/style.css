@@ -330,34 +330,57 @@ main {
   z-index: 1;
 }
 
-/* Chromatic hero image: plain <img> paints first (LCP), WebGL canvas fades in over it */
-.hero-chromatic,
-.chromatic-image__img,
-.chromatic-image__canvas {
+.hero-headline-reveal {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* Chromatic lens over the EtherealShadow. Channels are added back together
+   (plus-lighter), so at rest it matches the plain shadow; green and blue scale away
+   from the cursor (blue twice as far), so red separates toward it. Only scale up:
+   a layer scaled down around the cursor would leave its own box and mask short of
+   the frame edge. --lens-* vars come from createPointerLens. */
+.chromatic-shadow {
+  --lens-k: calc(var(--lens-s, 0) * 0.15);
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  isolation: isolate;
+  pointer-events: none;
+  /* Same as .hero-card, so channels add onto the card colour like the base shadow does */
+  background-color: #050C0F;
+  opacity: var(--lens-s, 0);
+  mask-image: radial-gradient(circle calc(var(--lens-h, 800px) * 0.5) at var(--lens-x, 50%) var(--lens-y, 50%), #000 0%, #000 35%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle calc(var(--lens-h, 800px) * 0.5) at var(--lens-x, 50%) var(--lens-y, 50%), #000 0%, #000 35%, transparent 100%);
 }
 
-.chromatic-image__img {
-  object-fit: cover;
-  object-position: center;
-  display: block;
+.chromatic-shadow__ch {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: plus-lighter;
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  transform-origin: var(--lens-x, 50%) var(--lens-y, 50%);
 }
 
-.chromatic-image__canvas {
-  display: block;
-  opacity: 0;
-  transition: opacity 0.6s ease-out;
+.chromatic-shadow__ch--g {
+  transform: scale(calc(1 + var(--lens-k)));
 }
 
-.chromatic-image__canvas.is-ready {
-  opacity: 1;
+.chromatic-shadow__ch--b {
+  transform: scale(calc(1 + var(--lens-k) * 2));
 }
 
-/* Headline fringes follow the background lens; --ca-x/--ca-y are set per word in [-1, 1].
-   Red trails toward the cursor and blue away from it, matching the shader's channel split. */
+/* Headline fringes follow an eased cursor lens; --ca-x/--ca-y are set per word in [-1, 1].
+   Red trails toward the cursor and blue away from it, like an RGB channel split. */
 .chromatic-headline__word {
   --ca-x: 0;
   --ca-y: 0;
@@ -365,15 +388,6 @@ main {
   text-shadow:
     calc(var(--ca-x) * var(--ca-max) * -1) calc(var(--ca-y) * var(--ca-max) * -1) 0 rgba(255, 32, 72, 0.9),
     calc(var(--ca-x) * var(--ca-max)) calc(var(--ca-y) * var(--ca-max)) 0 rgba(0, 150, 255, 0.9);
-}
-
-/* Scrim keeps the headline ≥3:1 where the light streak crosses it */
-.hero-chromatic::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(5, 12, 15, 0.6) 0%, rgba(5, 12, 15, 0.45) 60%, rgba(5, 12, 15, 0) 100%);
 }
 
 /* ─── WORKED WITH ─────────────────────────────────────────────────────────── */
