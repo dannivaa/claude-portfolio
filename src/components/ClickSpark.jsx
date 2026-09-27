@@ -15,9 +15,22 @@ const ClickSpark = ({
   const canvasRef = useRef(null);
   const sparksRef = useRef([]);
 
+  // Canvas lives on <body>, not inside the wrapper: an ancestor with transform/filter (FadeIn)
+  // would otherwise pin the "fixed" canvas to the card, offsetting sparks and dragging a
+  // viewport-sized layer into that ancestor's blur.
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const canvas = document.createElement('canvas');
+    Object.assign(canvas.style, {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      width: '100vw',
+      height: '100vh',
+      pointerEvents: 'none',
+      zIndex: '99999',
+    });
+    document.body.appendChild(canvas);
+    canvasRef.current = canvas;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -29,6 +42,8 @@ const ClickSpark = ({
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      canvas.remove();
+      canvasRef.current = null;
     };
   }, []);
 
@@ -130,18 +145,6 @@ const ClickSpark = ({
       }}
       onClick={handleClick}
     >
-      <canvas
-        ref={canvasRef}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          pointerEvents: 'none',
-          zIndex: 99999,
-        }}
-      />
       {children}
     </div>
   );

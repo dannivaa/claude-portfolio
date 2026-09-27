@@ -129,7 +129,7 @@ export default function Home() {
             <div className="project-cards">
 
               {/* Card: Safey */}
-              <FadeIn blur={false}>
+              <FadeIn>
               <div className="card-default" onClick={() => router.push('/safey')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#228bcc" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="VIEW CASE STUDY" customSVG={eyeIcon} cursorColor="#228bcc" style={{ borderRadius: 24 }}>
@@ -145,7 +145,7 @@ export default function Home() {
               </FadeIn>
 
               {/* Card: GudFood */}
-              <FadeIn delay={0.08} blur={false}>
+              <FadeIn delay={0.08}>
               <div className="card-default" onClick={() => router.push('/gudfood')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#ea6406" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="VIEW CASE STUDY" customSVG={eyeIcon} cursorColor="#ea6406" style={{ borderRadius: 24 }}>
@@ -161,7 +161,7 @@ export default function Home() {
               </FadeIn>
 
               {/* Card: SKVOT */}
-              <FadeIn blur={false}>
+              <FadeIn>
               <div className="card-default" onClick={() => router.push('/skvot')} style={{ cursor: 'pointer' }}>
                 <ClickSpark sparkColor="#121212" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="VIEW CASE STUDY" customSVG={eyeIcon} cursorColor="#121212" style={{ borderRadius: 24 }}>
@@ -177,7 +177,7 @@ export default function Home() {
               </FadeIn>
 
               {/* Card: Soon */}
-              <FadeIn delay={0.08} blur={false}>
+              <FadeIn delay={0.08}>
               <div className="card-soon">
                 <ClickSpark sparkColor="#8a0dd7" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
                   <Cursor name="WORKING ON IT..." customSVG={lockIcon} cursorColor="#8a0dd7" style={{ borderRadius: 24 }}>
