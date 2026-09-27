@@ -15,7 +15,7 @@ const CV_URL = 'https://drive.google.com/file/d/18xcqEFFbm7c3aLR7aRaWbhls1EpI-Xw
 const CARDS = [
   {
     label: 'Learn more',
-    text: 'View CV',
+    text: 'View Resume',
     href: CV_URL,
     external: true,
     icon: { src: '/icons/drive.svg', alt: 'Google Drive' },
