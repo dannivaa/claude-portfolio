@@ -912,8 +912,9 @@ main {
 /* Contact column */
 .connect-socials {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* + ~1em reserved by each hidden Skiper arrow */
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -925,6 +926,7 @@ main {
   letter-spacing: -0.02em;
   color: var(--cs-footer-text);
   text-decoration: none;
+  width: fit-content; /* keep the underline to the text, not the column */
 }
 
 /* Skiper40 arrow: widen the default 0.3em gap */
@@ -953,7 +955,7 @@ main {
 
 .connect-now-label {
   margin: 0;
-  font-size: 14px;
+  font-size: 18px;
   letter-spacing: -0.01em;
   color: var(--cs-footer-muted);
 }
@@ -1288,6 +1290,7 @@ main {
     padding: 14px 0;
   }
 
+  .connect-now-label,
   .connect-now-value {
     font-size: 16px;
   }
