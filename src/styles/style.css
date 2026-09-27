@@ -894,7 +894,15 @@ main {
   font-size: 16px;
   line-height: 1.4;
   letter-spacing: -0.02em;
-  color: var(--cs-footer-muted);
+  color: var(--cs-footer-text);
+}
+
+/* "Working at <link>": Link001 renders as a flex box, so lay the item out
+   as a row with a word-sized gap instead of relying on inline whitespace */
+.connect-meta li {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
 }
 
 .connect-link {
@@ -1183,7 +1191,7 @@ main {
   }
 
   .connect-block {
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: flex-start;
     gap: 16px;
     padding: 24px;
