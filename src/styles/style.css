@@ -330,6 +330,20 @@ main {
   z-index: 1;
 }
 
+/* WebGL wave grid: headline lets the cursor through so the grid reacts under it */
+.hero-card--wave .hero-headline {
+  pointer-events: none;
+}
+
+.hero-wave-grid {
+  animation: hero-wave-in 0.8s ease-out both;
+}
+
+@keyframes hero-wave-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* ─── WORKED WITH ─────────────────────────────────────────────────────────── */
 .worked-with {
   display: none;
