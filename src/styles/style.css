@@ -880,12 +880,7 @@ main {
   background: var(--cs-footer-card-bg);
 }
 
-.connect-built {
-  font-size: 14px;
-  letter-spacing: -0.02em;
-  color: var(--cs-footer-muted);
-}
-
+.connect-meta,
 .connect-socials {
   display: flex;
   flex-wrap: wrap;
@@ -893,6 +888,13 @@ main {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.connect-meta {
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--cs-footer-muted);
 }
 
 .connect-link {
@@ -1188,8 +1190,9 @@ main {
     border-radius: 20px;
   }
 
+  .connect-meta,
   .connect-socials {
-    gap: 24px;
+    gap: 8px 24px;
   }
 }
 
