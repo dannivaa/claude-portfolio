@@ -871,7 +871,7 @@ main {
 /* ─── Connect block ─── */
 .connect-block {
   position: relative;
-  padding: 80px;
+  padding: 64px;
   border-radius: 52px;
   background: var(--cs-footer-card-bg);
 }
@@ -897,16 +897,6 @@ main {
   display: flex;
   flex-direction: column;
   gap: 24px;
-}
-
-.connect-col-label {
-  margin: 0;
-  font-family: 'Fixel Display', 'Fixel Text', sans-serif;
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
-  color: var(--cs-footer-text);
 }
 
 /* Contact column */
@@ -949,6 +939,10 @@ main {
   padding: 16px 0;
 }
 
+.connect-now-item:first-child {
+  padding-top: 0;
+}
+
 .connect-now-item + .connect-now-item {
   border-top: 1px solid var(--cs-footer-border);
 }
@@ -973,14 +967,13 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  margin-top: 96px;
-  padding-top: 32px;
+  margin-top: 64px;
+  padding-top: 24px;
   border-top: 1px solid var(--cs-footer-border);
   font-size: 14px;
   color: var(--cs-footer-muted);
 }
 
-.connect-copy,
 .connect-built {
   letter-spacing: -0.02em;
 }
@@ -1095,7 +1088,7 @@ main {
   }
 
   .connect-bottom {
-    margin-top: 72px;
+    margin-top: 56px;
   }
 }
 
@@ -1277,11 +1270,7 @@ main {
 
   .connect-block-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .connect-col-label {
-    font-size: 24px;
+    gap: 32px;
   }
 
   .connect-now-item {
@@ -1299,8 +1288,8 @@ main {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
-    margin-top: 56px;
-    padding-top: 24px;
+    margin-top: 40px;
+    padding-top: 20px;
   }
 }
 
@@ -1394,7 +1383,7 @@ main {
   }
 
   .connect-bottom {
-    margin-top: 40px;
+    margin-top: 32px;
   }
 }
 

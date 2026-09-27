@@ -28,8 +28,6 @@ export default function Footer() {
         <div className="connect-block-grid">
           {/* Left — Contact */}
           <div className="connect-col">
-            <h3 className="connect-col-label">Contact</h3>
-
             <ul className="connect-socials">
               {SOCIAL_LINKS.map((link) => (
                 <li key={link.label}>
@@ -47,8 +45,6 @@ export default function Footer() {
 
           {/* Right — Now */}
           <div className="connect-col">
-            <h3 className="connect-col-label">Now</h3>
-
             <dl className="connect-now-list">
               {NOW_ITEMS.map((item) => (
                 <div key={item.label} className="connect-now-item">
@@ -61,7 +57,6 @@ export default function Footer() {
         </div>
 
         <div className="connect-bottom">
-          <span className="connect-copy">© 2026 Danylo Ivanov</span>
           <span className="connect-built">Fully vibe-coded with Claude Code</span>
         </div>
       </div>
