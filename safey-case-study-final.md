@@ -1,4 +1,4 @@
-# Safey: AI Companion — Designing a monetization strategy for an AI companion app
+# Safey: AI Companion — Turning conversations into revenue
 
 **Tags:** Product Design · Mobile App · Monetization · Brand Identity  
 **Year:** 2024
