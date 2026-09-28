@@ -900,6 +900,12 @@ main {
   text-decoration: none;
 }
 
+/* Skiper40 underline is 0.05em (0.8px at 16px); a sub-pixel line gets
+   anti-aliased to grey. Pin it to a whole pixel so it stays solid black. */
+.connect-link::before {
+  height: 1px;
+}
+
 /* Skiper40 arrow: take it out of flow so it doesn't reserve space after
    each word (keeps the row flush right and the gaps even) */
 .connect-link svg {
