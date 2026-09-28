@@ -357,7 +357,7 @@ main {
    a layer scaled down around the cursor would leave its own box and mask short of
    the frame edge. --lens-* vars come from createPointerLens. */
 .chromatic-shadow {
-  --lens-k: calc(var(--lens-s, 0) * 0.15);
+  --lens-k: calc(var(--lens-s, 0) * 0.3);
   position: absolute;
   inset: 0;
   isolation: isolate;
@@ -365,8 +365,8 @@ main {
   /* Same as .hero-card, so channels add onto the card colour like the base shadow does */
   background-color: #050C0F;
   opacity: var(--lens-s, 0);
-  mask-image: radial-gradient(circle calc(var(--lens-h, 800px) * 0.5) at var(--lens-x, 50%) var(--lens-y, 50%), #000 0%, #000 35%, transparent 100%);
-  -webkit-mask-image: radial-gradient(circle calc(var(--lens-h, 800px) * 0.5) at var(--lens-x, 50%) var(--lens-y, 50%), #000 0%, #000 35%, transparent 100%);
+  mask-image: radial-gradient(circle calc(var(--lens-h, 800px) * 0.75) at var(--lens-x, 50%) var(--lens-y, 50%), #000 0%, #000 45%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle calc(var(--lens-h, 800px) * 0.75) at var(--lens-x, 50%) var(--lens-y, 50%), #000 0%, #000 45%, transparent 100%);
 }
 
 .chromatic-shadow__ch {
