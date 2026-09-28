@@ -9,7 +9,6 @@ import { Link001 } from '@/components/ui/skiper-ui/skiper40';
 const EMAIL = 'danyloivanovv@gmail.com';
 const LINKEDIN_URL = 'https://www.linkedin.com/in/danyloivanovv/?skipRedirect=true';
 const INSTAGRAM_URL = 'https://www.instagram.com/dan_ivaa/';
-const HOMECROWD_URL = 'https://gethomecrowd.com/';
 
 const SOCIAL_LINKS = [
   { label: 'Email', href: `mailto:${EMAIL}`, external: false },
@@ -70,10 +69,8 @@ export default function Footer() {
 
         <ul className="connect-meta">
           <li>
-            Working at
-            <Link001 href={HOMECROWD_URL} className="connect-link">
-              Homecrowd
-            </Link001>
+            Designing at
+            <span className="connect-meta-value">Lyxonn</span>
           </li>
           <li>
             Based in
