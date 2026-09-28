@@ -147,7 +147,14 @@ export const GooeyTextReveal = React.forwardRef<
       const reducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
-      if (reducedMotion) return;
+      // Server HTML hides the text (data-gooey-pending) so it doesn't flash sharp
+      // before hydration; lift that once the start state is in place.
+      const showContent = () => container.removeAttribute("data-gooey-pending");
+
+      if (reducedMotion) {
+        showContent();
+        return;
+      }
 
       let splits: SplitText[] = [];
       let filters: SVGFilterElement[] = [];
@@ -202,9 +209,13 @@ export const GooeyTextReveal = React.forwardRef<
           splits.push(split);
         });
 
-        if (blurs.length === 0) return;
+        if (blurs.length === 0) {
+          showContent();
+          return;
+        }
 
         gsap.set(blurs, { attr: { stdDeviation: (i: number) => startBlurs[i] } });
+        showContent();
 
         const animation: gsap.TweenVars = {
           attr: { stdDeviation: 0 },
@@ -299,7 +310,11 @@ export const GooeyTextReveal = React.forwardRef<
 
   return (
     <>
-      <div ref={setContainerRef} {...props}>
+      <div
+        ref={setContainerRef}
+        data-gooey-pending={disabled ? undefined : ""}
+        {...props}
+      >
         {children}
       </div>
 
