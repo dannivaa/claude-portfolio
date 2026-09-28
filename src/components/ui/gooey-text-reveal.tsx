@@ -44,20 +44,42 @@ export interface GooeyTextRevealProps
   onComplete?: () => void;
 }
 
+const SVG_NS = "http://www.w3.org/2000/svg";
 const LINE_EDGE_BLUR = 0.4;
+const GOO_MATRIX = "1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 255 -140";
 
-function wrapLine(line: HTMLElement) {
-  const inner = document.createElement("span");
-  inner.dataset.gooeyRevealInner = "";
-  inner.style.display = "inline-block";
-  inner.style.willChange = "filter";
+/**
+ * One filter per line: blur, then alpha threshold (the "ink" edge), then a slight
+ * edge blur. The animated blur lives inside the SVG filter rather than as a CSS
+ * blur on a composited child, because WebKit drops the parent's url() filter over
+ * composited descendants, which left iOS Safari with a plain blur and no ink.
+ */
+function createLineFilter(id: string) {
+  const filter = document.createElementNS(SVG_NS, "filter");
+  filter.setAttribute("id", id);
+  filter.setAttribute("x", "-50%");
+  filter.setAttribute("y", "-50%");
+  filter.setAttribute("width", "200%");
+  filter.setAttribute("height", "200%");
+  filter.setAttribute("color-interpolation-filters", "sRGB");
 
-  while (line.firstChild) {
-    inner.appendChild(line.firstChild);
-  }
+  const blur = document.createElementNS(SVG_NS, "feGaussianBlur");
+  blur.setAttribute("in", "SourceGraphic");
+  blur.setAttribute("stdDeviation", "0");
+  blur.setAttribute("result", "blur");
 
-  line.appendChild(inner);
-  return inner;
+  const threshold = document.createElementNS(SVG_NS, "feColorMatrix");
+  threshold.setAttribute("in", "blur");
+  threshold.setAttribute("type", "matrix");
+  threshold.setAttribute("values", GOO_MATRIX);
+  threshold.setAttribute("result", "goo");
+
+  const edge = document.createElementNS(SVG_NS, "feGaussianBlur");
+  edge.setAttribute("in", "goo");
+  edge.setAttribute("stdDeviation", String(LINE_EDGE_BLUR));
+
+  filter.append(blur, threshold, edge);
+  return { filter, blur };
 }
 
 function getRevealTargets(container: HTMLDivElement) {
@@ -97,6 +119,7 @@ export const GooeyTextReveal = React.forwardRef<
   forwardedRef,
 ) {
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const defsRef = React.useRef<SVGDefsElement>(null);
   const reactId = React.useId();
   const filterId = React.useMemo(
     () => `gooey-text-reveal-${reactId.replace(/:/g, "")}`,
@@ -118,14 +141,23 @@ export const GooeyTextReveal = React.forwardRef<
   useGSAP(
     () => {
       const container = containerRef.current;
-      if (!container || disabled) return;
+      const defs = defsRef.current;
+      if (!container || !defs || disabled) return;
 
       const reducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
-      if (reducedMotion) return;
+      // Server HTML hides the text (data-gooey-pending) so it doesn't flash sharp
+      // before hydration; lift that once the start state is in place.
+      const showContent = () => container.removeAttribute("data-gooey-pending");
+
+      if (reducedMotion) {
+        showContent();
+        return;
+      }
 
       let splits: SplitText[] = [];
+      let filters: SVGFilterElement[] = [];
       let tween: gsap.core.Tween | null = null;
       let animationFrame = 0;
       let measuredWidth = container.getBoundingClientRect().width;
@@ -138,13 +170,17 @@ export const GooeyTextReveal = React.forwardRef<
 
         splits.forEach((split) => split.revert());
         splits = [];
+
+        filters.forEach((filter) => filter.remove());
+        filters = [];
       };
 
       const build = () => {
         if (disposed) return;
         revert();
 
-        const layers: HTMLElement[] = [];
+        const blurs: SVGFEGaussianBlurElement[] = [];
+        const startBlurs: number[] = [];
 
         getRevealTargets(container).forEach((target) => {
           const split = SplitText.create(target, {
@@ -155,22 +191,34 @@ export const GooeyTextReveal = React.forwardRef<
 
           split.lines.forEach((line) => {
             const lineElement = line as HTMLElement;
+            const { filter, blur } = createLineFilter(
+              `${filterId}-${filters.length}`,
+            );
+            defs.appendChild(filter);
+            filters.push(filter);
+
             lineElement.style.display = "block";
-            lineElement.style.filter =
-              `url(#${filterId}) blur(${LINE_EDGE_BLUR}px)`;
-            lineElement.style.willChange = "filter";
-            layers.push(wrapLine(lineElement));
+            lineElement.style.filter = `url(#${filter.id})`;
+            blurs.push(blur);
+            // SVG blur is in px; convert the em-based amount per line.
+            startBlurs.push(
+              parseFloat(getComputedStyle(lineElement).fontSize) * blurAmount,
+            );
           });
 
           splits.push(split);
         });
 
-        if (layers.length === 0) return;
+        if (blurs.length === 0) {
+          showContent();
+          return;
+        }
 
-        gsap.set(layers, { filter: `blur(${blurAmount}em)` });
+        gsap.set(blurs, { attr: { stdDeviation: (i: number) => startBlurs[i] } });
+        showContent();
 
         const animation: gsap.TweenVars = {
-          filter: "blur(0em)",
+          attr: { stdDeviation: 0 },
           duration,
           ease,
           stagger,
@@ -210,7 +258,7 @@ export const GooeyTextReveal = React.forwardRef<
           animation.delay = delay;
         }
 
-        tween = gsap.to(layers, animation);
+        tween = gsap.to(blurs, animation);
       };
 
       build();
@@ -262,7 +310,11 @@ export const GooeyTextReveal = React.forwardRef<
 
   return (
     <>
-      <div ref={setContainerRef} {...props}>
+      <div
+        ref={setContainerRef}
+        data-gooey-pending={disabled ? undefined : ""}
+        {...props}
+      >
         {children}
       </div>
 
@@ -273,15 +325,7 @@ export const GooeyTextReveal = React.forwardRef<
         height="0"
         style={{ position: "absolute", pointerEvents: "none" }}
       >
-        <defs>
-          <filter id={filterId} x="-50%" y="-50%" width="200%" height="200%">
-            <feColorMatrix
-              in="SourceGraphic"
-              type="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 255 -140"
-            />
-          </filter>
-        </defs>
+        <defs ref={defsRef} />
       </svg>
     </>
   );
