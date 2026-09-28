@@ -181,6 +181,7 @@ export const GooeyTextReveal = React.forwardRef<
 
         const blurs: SVGFEGaussianBlurElement[] = [];
         const startBlurs: number[] = [];
+        const lineFilters = new Map<SVGFEGaussianBlurElement, [HTMLElement, string]>();
 
         getRevealTargets(container).forEach((target) => {
           const split = SplitText.create(target, {
@@ -199,6 +200,7 @@ export const GooeyTextReveal = React.forwardRef<
 
             lineElement.style.display = "block";
             lineElement.style.filter = `url(#${filter.id})`;
+            lineFilters.set(blur, [lineElement, lineElement.style.filter]);
             blurs.push(blur);
             // SVG blur is in px; convert the em-based amount per line.
             startBlurs.push(
@@ -221,7 +223,23 @@ export const GooeyTextReveal = React.forwardRef<
           attr: { stdDeviation: 0 },
           duration,
           ease,
-          stagger,
+          stagger: {
+            each: stagger,
+            // Drop each line's filter once its reveal finishes. WebKit rasterises
+            // SVG filters on HTML at 1x, so leaving it on made settled text look
+            // low-res on iPhone. Toggling on progress keeps scrub reversible.
+            onUpdate(this: gsap.core.Tween) {
+              const entry = lineFilters.get(
+                this.targets()[0] as SVGFEGaussianBlurElement,
+              );
+              if (!entry) return;
+              const [lineElement, filterValue] = entry;
+              const next = this.progress() === 1 ? "" : filterValue;
+              if (lineElement.style.filter !== next) {
+                lineElement.style.filter = next;
+              }
+            },
+          },
           onComplete,
         };
 
