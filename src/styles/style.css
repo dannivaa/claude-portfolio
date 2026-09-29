@@ -333,6 +333,7 @@ main {
   letter-spacing: -0.04em;
   color: #fff;
   text-align: center;
+  text-wrap: balance;
 }
 
 .hero-particle-canvas {

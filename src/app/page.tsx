@@ -62,7 +62,7 @@ export default function Home() {
             <GooeyTextReveal className="hero-headline-reveal" delay={0.2} duration={2.2} stagger={0.18}>
               <ChromaticHeadline
                 className="hero-headline"
-                text="Product Designer crafting solutions that drive business wins."
+                text="Product designer who builds."
                 lens={heroLens}
                 frameRef={heroCardRef}
               />
