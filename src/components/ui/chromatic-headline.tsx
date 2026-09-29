@@ -11,6 +11,9 @@ type ChromaticHeadlineProps = {
   frameRef: RefObject<HTMLElement | null>;
   /** Lens radius as a fraction of the frame height. */
   radius?: number;
+  /** Words (matched exactly, punctuation included) to set in the emphasis style. */
+  emphasis?: string[];
+  as?: 'p' | 'h1' | 'h2';
   className?: string;
 };
 
@@ -23,8 +26,8 @@ const WORD_SELECTOR = '[data-chromatic-word]';
  * Offsets are written as unitless --ca-x/--ca-y in [-1, 1]; CSS maps them to em,
  * so the split scales with the headline's responsive font size.
  */
-export function ChromaticHeadline({ text, lens, frameRef, radius = 0.35, className }: ChromaticHeadlineProps) {
-  const ref = useRef<HTMLParagraphElement>(null);
+export function ChromaticHeadline({ text, lens, frameRef, radius = 0.35, emphasis, as: Tag = 'p', className }: ChromaticHeadlineProps) {
+  const ref = useRef<HTMLHeadingElement & HTMLParagraphElement>(null);
 
   useEffect(() => {
     const headline = ref.current;
@@ -108,15 +111,18 @@ export function ChromaticHeadline({ text, lens, frameRef, radius = 0.35, classNa
 
   const parts = text.split(' ');
   return (
-    <p ref={ref} className={cn('chromatic-headline', className)}>
+    <Tag ref={ref} className={cn('chromatic-headline', className)}>
       {parts.map((word, i) => (
         <Fragment key={i}>
-          <span className="chromatic-headline__word" data-chromatic-word="">
+          <span
+            className={cn('chromatic-headline__word', emphasis?.includes(word) && 'chromatic-headline__word--em')}
+            data-chromatic-word=""
+          >
             {word}
           </span>
           {i < parts.length - 1 && ' '}
         </Fragment>
       ))}
-    </p>
+    </Tag>
   );
 }
