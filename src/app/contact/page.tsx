@@ -15,10 +15,10 @@ export const metadata: Metadata = {
 };
 
 const CHANNELS = [
-  { label: 'Email', value: EMAIL, href: `mailto:${EMAIL}`, external: false, icon: '/icons/gmail.svg' },
-  { label: 'LinkedIn', value: 'in/danyloivanovv', href: LINKEDIN_URL, external: true, icon: '/icons/linkedin.svg' },
-  { label: 'Resume', value: 'View on Google Drive', href: RESUME_URL, external: true, icon: '/icons/drive.svg' },
-  { label: 'Instagram', value: '@dan_ivaa', href: INSTAGRAM_URL, external: true, icon: '/icons/instagram.svg' },
+  { label: 'Email', value: 'Write to me directly', href: `mailto:${EMAIL}`, external: false, icon: '/icons/gmail.svg' },
+  { label: 'LinkedIn', value: 'Full work history', href: LINKEDIN_URL, external: true, icon: '/icons/linkedin.svg' },
+  { label: 'Resume', value: 'Opens in Google Drive', href: RESUME_URL, external: true, icon: '/icons/drive.svg' },
+  { label: 'Instagram', value: 'Life outside of design', href: INSTAGRAM_URL, external: true, icon: '/icons/instagram.svg' },
 ];
 
 export default function ContactPage() {

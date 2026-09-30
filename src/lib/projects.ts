@@ -14,10 +14,8 @@ export type Project = {
   accent: string;
   /** Two stops of the soft gradient behind the project's screens, sampled from its thumbnail. */
   stage: [edge: string, center: string];
-  /** Screens cycled on the homepage card. */
-  cardScreens: string[];
-  /** Phones visible on each side of the centre one in the card carousel. */
-  cardSpread: 1 | 2;
+  /** What plays on the homepage card: Danylo's exported video, or a CSS motion loop. */
+  card: { video: { webm: string; mp4: string; poster: string } } | { scene: 'gudfood' | 'skvot' };
 };
 
 export const PROJECTS: Project[] = [
@@ -34,9 +32,13 @@ export const PROJECTS: Project[] = [
     thumbnailAlt: 'Safey companion profile, character cards and a monthly versus yearly paywall',
     accent: '#1f74b8',
     stage: ['#8fd0e6', '#fdb682'],
-    // Listed twice so the screen wrapping round is always one of the hidden ones
-    cardScreens: ['01', '02', '03', '01', '02', '03'].map((n) => `/images/Safey/${n}.png`),
-    cardSpread: 1,
+    card: {
+      video: {
+        webm: '/videos/safey-card.webm',
+        mp4: '/videos/safey-card.mp4',
+        poster: '/videos/safey-card-poster.jpg',
+      },
+    },
   },
   {
     slug: 'gudfood',
@@ -51,8 +53,7 @@ export const PROJECTS: Project[] = [
     thumbnailAlt: 'GudFood order card with rate and reorder actions, cuisine categories and dish ratings',
     accent: '#c9530b',
     stage: ['#ffe9ae', '#f6a355'],
-    cardScreens: ['01', '03', '04', '05', '06', '07', '08'].map((n) => `/images/GudFood/${n}.png`),
-    cardSpread: 2,
+    card: { scene: 'gudfood' },
   },
   {
     slug: 'skvot',
@@ -67,18 +68,9 @@ export const PROJECTS: Project[] = [
     thumbnailAlt: 'SKVOT course card, culture article and course progress screens',
     accent: '#141412',
     stage: ['#ececec', '#b9b9ba'],
-    cardScreens: ['02', '03', '04', '05', '06', '07', '08'].map((n) => `/images/Skvot/${n}.png`),
-    cardSpread: 2,
+    card: { scene: 'skvot' },
   },
 ];
-
-export const UPCOMING = {
-  index: '04',
-  title: 'One behavioral change, measurable impact',
-  thumbnail: '/images/soon-thumbnail.png',
-  thumbnailAlt: 'Calorie tracker dashboard with macros and a breakfast log',
-  accent: '#7a1fc2',
-};
 
 export function getProject(slug: ProjectSlug): Project {
   const project = PROJECTS.find((p) => p.slug === slug);

@@ -8,7 +8,6 @@ import { useLenis } from 'lenis/react';
 const NAV_SECTIONS = [
   { id: 'projects', label: 'Work' },
   { id: 'experience', label: 'Experience' },
-  { id: 'about', label: 'About' },
 ];
 
 export default function Navbar() {
@@ -50,6 +49,9 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
+          <Link href="/about" aria-current={pathname === '/about' ? 'page' : undefined}>
+            About
+          </Link>
         </nav>
 
         <Link className="btn btn-primary" href="/contact">
