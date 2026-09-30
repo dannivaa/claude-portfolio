@@ -1,204 +1,235 @@
 /* ─── CONTACT PAGE ────────────────────────────────────────────────────────── */
-
-/*
-  Layout goal: the 4 cards fill exactly 100dvh so the footer is only
-  visible on scroll. The navbar is fixed at top:28px with height ~68px,
-  so content starts at ~96px. We add a small visual gap on top of that.
-*/
-
-.contact-main {
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  /* top: clear the fixed navbar (28px offset + 68px height = 96px) + 20px breathing room */
-  padding: 116px 16px 16px;
+.contact-hero > .shell {
+  padding-top: 96px;
+  padding-bottom: 80px;
 }
 
-.contact-section {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 1600px;
-  margin: 0 auto;
+.contact-title {
+  margin-top: 24px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 128px;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
 }
 
-.contact-grid-wrapper {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
+.contact-title em {
+  font-style: italic;
+  color: var(--safey);
 }
 
-.contact-grid {
+.contact-lede {
+  max-width: 520px;
+  margin-top: 36px;
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.contact-channels > .shell {
+  padding-top: 0;
+}
+
+/* Rows span rail to rail */
+.contact-list {
+  list-style: none;
+  margin: 0 calc(-1 * var(--pad));
+}
+
+.contact-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  transition: background-color 0.25s;
+}
+
+.contact-item:hover {
+  background: var(--paper-2);
+}
+
+.contact-row {
   flex: 1;
-  min-height: 0;
+  min-width: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 16px;
-}
-
-.contact-card {
-  background: #f4f5f6;
-  border-radius: 44px;
-  padding: 24px;
-  min-height: 0; /* allow shrinking within grid row */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
-  text-decoration: none;
+  grid-template-columns: 44px 160px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 28px;
+  padding: 28px var(--pad);
   color: inherit;
-  cursor: pointer;
-  transition: background 0.2s ease;
 }
 
-.contact-card:hover {
-  background: #ebebec;
+.contact-row:focus-visible {
+  outline-offset: -4px;
 }
 
-.contact-card-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+.contact-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  box-shadow: 0 0 0 1px var(--line);
 }
 
-.contact-card-label {
-  font-family: 'Fixel Text', sans-serif;
-  font-weight: 500;
-  font-size: clamp(18px, 1.8vw, 28px);
-  letter-spacing: -0.04em;
-  line-height: 1.5;
-  color: #707070;
-  white-space: nowrap;
+.contact-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-.contact-card-arrow {
-  width: clamp(44px, 3.5vw, 56px);
-  height: clamp(44px, 3.5vw, 56px);
-  flex-shrink: 0;
-  background: #fff;
-  border: 2px solid #d9dadb;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s ease, border-color 0.2s ease;
+.contact-value {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
 }
 
-.contact-card:hover .contact-card-arrow {
-  background: #f4f5f6;
-  border-color: #c8c9ca;
+.contact-arrow {
+  width: 44px;
+  height: 44px;
 }
 
-.contact-card-bottom {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+@media (hover: hover) {
+  .contact-row:hover .contact-arrow {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+  }
+
+  .contact-row:hover .contact-arrow svg {
+    transform: rotate(45deg);
+  }
 }
 
-.contact-card-icon {
-  width: clamp(36px, 3vw, 48px);
-  height: clamp(36px, 3vw, 48px);
-  flex-shrink: 0;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0px 4px 23.3px -12px rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+/* The copy button sits outside the mailto link, just before the row's arrow */
+.contact-copy {
+  position: absolute;
+  top: 50%;
+  right: calc(var(--pad) + 44px + 16px);
+  transform: translateY(-50%);
+  height: 40px;
+  padding: 0 16px;
+  font-size: 14px;
+  background: var(--paper);
 }
 
-.contact-card-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.contact-local {
+  margin-top: 32px;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-.contact-card-text {
-  font-family: 'Fixel Text', sans-serif;
-  font-weight: 500;
-  font-size: clamp(20px, 2.2vw, 32px);
-  letter-spacing: -0.04em;
-  line-height: 1.4;
-  color: #121212;
-  /* allow wrapping on email address */
-  word-break: break-all;
+.contact-time {
+  font-variant-numeric: tabular-nums;
 }
 
-/* ─── RESPONSIVE ─────────────────────────────────────────────────────────── */
+.contact-time::before {
+  content: ' · ';
+}
 
+/* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .contact-main {
-    padding: 116px 12px 12px;
+  .contact-hero > .shell {
+    padding-top: 72px;
+    padding-bottom: 64px;
   }
 
-  .contact-grid {
-    gap: 12px;
+  .contact-title {
+    font-size: 96px;
   }
 
-  .contact-card {
-    border-radius: 36px;
-    padding: 20px;
+  .contact-lede {
+    font-size: 18px;
+  }
+
+  .contact-row {
+    grid-template-columns: 44px 120px minmax(0, 1fr) auto;
+    gap: 20px;
+  }
+
+  .contact-value {
+    font-size: 32px;
   }
 }
 
 @media (max-width: 768px) {
-  /* On mobile let it scroll naturally — a single column won't fit in dvh */
-  .contact-main {
-    height: auto;
-    min-height: 100dvh;
-    padding: 108px 12px 12px;
+  .contact-hero > .shell {
+    padding-top: 48px;
+    padding-bottom: 40px;
   }
 
-  .contact-section {
-    flex: none;
+  .contact-title {
+    margin-top: 18px;
+    font-size: 76px;
   }
 
-  .contact-grid-wrapper {
-    flex: none;
-  }
-
-  .contact-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 180px);
-    gap: 12px;
-  }
-
-  .contact-card {
-    border-radius: 28px;
-    padding: 18px;
-  }
-
-  .contact-card-label {
+  .contact-lede {
+    margin-top: 24px;
     font-size: 17px;
   }
 
-  .contact-card-text {
-    font-size: 20px;
-    word-break: break-all;
+  /* Label stacks over the value; the copy button moves under the address */
+  .contact-item {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .contact-card-arrow {
+  .contact-row {
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    column-gap: 16px;
+    row-gap: 4px;
+    padding: 20px var(--pad);
+  }
+
+  .contact-icon {
+    grid-row: 1 / span 2;
     width: 40px;
     height: 40px;
-    border-radius: 12px;
+    border-radius: 10px;
   }
 
-  .contact-card-icon {
+  .contact-label {
+    grid-column: 2;
+  }
+
+  .contact-value {
+    grid-column: 2;
+    font-size: 24px;
+  }
+
+  .contact-arrow {
+    grid-column: 3;
+    grid-row: 1 / span 2;
     width: 36px;
     height: 36px;
-    border-radius: 12px;
+  }
+
+  .contact-copy {
+    position: static;
+    align-self: flex-start;
+    transform: none;
+    margin: -4px 0 20px calc(var(--pad) + 40px + 16px);
+    height: 36px;
+    padding: 0 14px;
+    font-size: 13px;
   }
 }
 
 @media (max-width: 480px) {
-  .contact-grid {
-    grid-template-rows: repeat(4, 160px);
+  .contact-title {
+    font-size: 60px;
+  }
+
+  .contact-value {
+    font-size: 21px;
   }
 }

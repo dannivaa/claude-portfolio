@@ -1,361 +1,277 @@
-'use client';
-
-import '@/styles/style.css';
-import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { ChromaticShadow } from '@/components/ui/chromatic-shadow';
-import { createPointerLens } from '@/components/ui/pointer-lens';
-import { MagicText } from '@/components/ui/magic-text';
 import { FadeIn } from '@/components/ui/fade-in';
-import { SplitText } from '@/components/ui/split-text';
-import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
-import { ChromaticHeadline } from '@/components/ui/chromatic-headline';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
-import { Cursor } from '@/components/ui/custom-cursor';
-import ClickSpark from '@/components/ClickSpark';
+import { FadeInMount } from '@/components/ui/fade-in-mount';
+import { HeroTitle } from '@/components/home/HeroTitle';
+import { WorkCard, UpcomingCard } from '@/components/home/WorkCard';
+import { KyivTime } from '@/components/KyivTime';
+import { PROJECTS } from '@/lib/projects';
+import { RESUME_URL } from '@/lib/site';
 
-// Hover-chip icons: each viewBox is cropped to its stroke bounds (path extents +1 for half the
-// 2px stroke) so the chip's gap and padding measure from visible ink, not the 24×24 safe area.
-// Rendered at 0.65625px per unit so stroke weight matches across icons and the 14px label.
-
-// Paths span 3–21 × 6–18.
-const eyeIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" width="13.125" height="9.1875" viewBox="2 5 20 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ display: 'block', flexShrink: 0 }}>
-    <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-    <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
-  </svg>
-);
-
-// Paths span 5–19 × 3–21.
-const lockIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" width="10.5" height="13.125" viewBox="4 2 16 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ display: 'block', flexShrink: 0 }}>
-    <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" />
-    <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />
-    <path d="M8 11v-4a4 4 0 1 1 8 0v4" />
-  </svg>
-);
+const EXPERIENCE = [
+  {
+    company: 'Lyxonn',
+    period: 'Sep 2025 – Present',
+    role: 'Product Designer',
+    type: 'Full-time',
+    scope: ['Mobile & Web Design', 'Conversion Optimization', 'UX Research', 'Usability Testing', 'UX Architecture', 'Payments & KYC Flows', 'Design Systems', 'Hypothesis Validation'],
+  },
+  {
+    company: 'Cake Alliance',
+    period: 'Jul 2024 – Sep 2025',
+    role: 'UX/UI Designer',
+    type: 'Full-time',
+    scope: ['Mobile-first UI Design', 'Responsive Interfaces', 'Design Systems', 'User Research', 'Competitive Analysis', 'Usability Testing', 'Product Collaboration', 'Developer Handoff'],
+  },
+  {
+    company: 'GudFood Vdoma',
+    period: 'Sep – Nov 2024',
+    role: 'Product Designer',
+    type: 'Freelance',
+    scope: ['UX Research', 'Stakeholder Interviews', 'Hypothesis Generation', 'UI Redesign', 'Prototyping'],
+    caseStudy: '/gudfood',
+  },
+  {
+    company: 'SKVOT',
+    period: 'Feb – May 2024',
+    role: 'UX/UI Designer',
+    type: 'Full-time',
+    scope: ['End-to-end UX/UI', 'Mobile User Flows', 'Wireframing', 'High-fidelity UI', 'Interactive Prototypes', 'Onboarding Design', 'Usability Testing'],
+    caseStudy: '/skvot',
+  },
+];
 
 export default function Home() {
-  const router = useRouter();
-  const heroCardRef = useRef<HTMLDivElement>(null);
-  const [heroLens] = useState(createPointerLens);
-
-  useEffect(() => {
-    if (heroCardRef.current) return heroLens.attach(heroCardRef.current);
-  }, [heroLens]);
-
   return (
     <>
       <Navbar />
 
       <main>
-        <article>
-
         {/* HERO */}
-        <section className="hero-wrapper">
-          <div className="hero-card" ref={heroCardRef}>
-            <div className="hero-bg">
-              <ChromaticShadow color="#4695C0" noise={{ opacity: 1, scale: 1.2 }} />
-            </div>
-            <GooeyTextReveal className="hero-headline-reveal" delay={0.2} duration={2.2} stagger={0.18}>
-              <ChromaticHeadline
-                className="hero-headline"
-                text="Product Designer crafting solutions that drive business wins."
-                lens={heroLens}
-                frameRef={heroCardRef}
-              />
-            </GooeyTextReveal>
+        <section className="hero">
+          <div className="shell">
+            <FadeInMount delay={0.05}>
+              <div className="hero-kicker">
+                <span className="hero-kicker-photo">
+                  <Image src="/images/pfp3d.png" alt="Portrait of Danylo Ivanov" width={3920} height={3920} sizes="48px" loading="eager" />
+                </span>
+                <span className="hero-kicker-text">
+                  <span className="hero-kicker-name">Danylo Ivanov</span>
+                  <span className="hero-kicker-role">Product Designer in Kyiv, Ukraine</span>
+                </span>
+              </div>
+            </FadeInMount>
+
+            <HeroTitle />
+
+            <FadeInMount delay={0.75}>
+              <div className="hero-foot">
+                <p className="hero-lede">
+                  I start with the data, talk to the people behind it, and design the flows where products win or
+                  lose users — onboarding, payments, KYC and paywalls.
+                </p>
+                <div className="hero-actions">
+                  <Link className="btn btn-primary" href="/contact">
+                    Let&apos;s talk
+                    <ArrowRight size={16} strokeWidth={2} aria-hidden />
+                  </Link>
+                  <a className="btn btn-ghost" href={RESUME_URL} target="_blank" rel="noreferrer noopener">
+                    View resume
+                    <ArrowUpRight size={15} strokeWidth={2} aria-hidden />
+                  </a>
+                </div>
+              </div>
+            </FadeInMount>
+
+            <FadeInMount delay={0.9}>
+              <dl className="hero-meta">
+                <div>
+                  <dt>Now</dt>
+                  <dd>Product Designer at Lyxonn</dd>
+                </div>
+                <div>
+                  <dt>Before</dt>
+                  <dd>Cake Alliance, GudFood Vdoma, SKVOT</dd>
+                </div>
+                <div>
+                  <dt>Focus</dt>
+                  <dd>Mobile products, conversion, retention</dd>
+                </div>
+                <div>
+                  <dt>Based in</dt>
+                  <dd>
+                    Kyiv, Ukraine
+                    <KyivTime className="hero-time" />
+                  </dd>
+                </div>
+              </dl>
+            </FadeInMount>
           </div>
         </section>
 
-        {/* WORKED WITH */}
-        <FadeIn className="worked-with">
-          <span className="worked-with-label">I worked with:</span>
-
-          {/* lyxonn */}
-          <div style={{ height: '40px', width: '126.511px', position: 'relative', flexShrink: 0 }}>
-            <img loading="lazy" src="https://www.figma.com/api/mcp/asset/75fb4730-728d-4b65-ac52-c54ca9bab1d5" alt="lyxonn" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} />
-          </div>
-
-          {/* cake */}
-          <div style={{ height: '40px', width: '77.871px', position: 'relative', flexShrink: 0, overflow: 'hidden' }}>
-            <div style={{
-              position: 'absolute', top: 0, right: 0, bottom: '0.03%', left: 0,
-              WebkitMaskImage: "url('https://www.figma.com/api/mcp/asset/27543362-3eda-499c-ad2a-7877243ed6ff')",
-              maskImage: "url('https://www.figma.com/api/mcp/asset/27543362-3eda-499c-ad2a-7877243ed6ff')",
-              maskSize: '77.871px 39.989px', maskRepeat: 'no-repeat', maskPosition: '0 0'
-            }}>
-              <img loading="lazy" src="https://www.figma.com/api/mcp/asset/8cdce95c-d28b-4e31-81e4-40046d10bd35" alt="cake" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} />
-            </div>
-          </div>
-
-          {/* gudfood */}
-          <div style={{ height: '40px', width: '79.452px', position: 'relative', flexShrink: 0, overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', top: '7.81%', right: '54.9%', bottom: '7.89%', left: '2.83%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/fb21b04c-2cc0-4cb8-b520-43fb5ef1ff65" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '59.04%', right: '97.1%', bottom: '30.68%', left: '2.71%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/b92d1d01-48a4-49b3-8eb6-da112afd0655" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '2.32%', right: '52.12%', bottom: '2.24%', left: '0.02%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/e5a24fb3-94c1-401c-ad7f-3463b9a65959" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '28.49%', right: '81.98%', bottom: '47.4%', left: '12.14%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/fbc8279f-d1f0-4e63-922b-24e9467ec3d5" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '7.67%', right: '75.66%', bottom: '84.93%', left: '20.28%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/68ffe0a5-3a7a-483a-8a7a-37d9acb3ae25" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '9.18%', right: '65.93%', bottom: '78.63%', left: '29.45%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/e5617987-ceee-493d-8c6e-8d0c7b8991cc" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '25.34%', right: '91.44%', bottom: '57.81%', left: '4.34%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/9bac2d5c-842e-4a64-89f1-53c93a52f172" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '34.66%', right: '72.46%', bottom: '41.1%', left: '21.72%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/f7996556-2c83-4bb0-b6df-03133232c895" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '40.82%', right: '62.88%', bottom: '34.93%', left: '31.31%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/357b0b21-a659-4b50-b697-a909dcf326d0" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '49.73%', right: '54.9%', bottom: '26.03%', left: '39.66%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/a8bbc202-708b-4434-9ac4-82c54aaf69eb" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '10.68%', right: '82.67%', bottom: '70.68%', left: '11.52%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/d39af0c0-1d63-4248-9f14-f1da8ecc209e" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '11.51%', right: '73.08%', bottom: '64.38%', left: '21.1%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/eee92281-6c83-47fc-9d53-74d415a0f0c0" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '17.67%', right: '63.51%', bottom: '58.08%', left: '30.69%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/cdbbb40e-df63-406b-afd8-8f235518c172" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '28.9%', right: '55.79%', bottom: '51.92%', left: '39.66%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/b27d2d0c-c944-4c27-8b68-e4647c87feee" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '68.49%', right: '90.82%', bottom: '14.11%', left: '4%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/cfacd319-d627-4c71-a85f-00f7e98341d0" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '74.79%', right: '81.23%', bottom: '7.67%', left: '12.97%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/e2da752c-113a-4e27-bb60-14bd642b9fbe" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '80.96%', right: '71.72%', bottom: '8.36%', left: '22.62%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/19b7b3ef-fca9-40bd-bef9-8bd5a836bcef" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '45.34%', right: '91.44%', bottom: '30.55%', left: '2.76%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/b4594ed3-0033-47e7-973d-6bd712f8ba11" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '51.51%', right: '81.91%', bottom: '24.25%', left: '12.28%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/38c7465b-abbb-4835-9fea-ff5dfe6b9340" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '57.81%', right: '72.39%', bottom: '18.08%', left: '21.79%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/96b9a163-f856-4f43-9cba-9a2f957eca7e" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '63.97%', right: '62.8%', bottom: '12.88%', left: '31.38%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/3e10e359-20ff-4425-a35d-e00b84da5878" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-            <div style={{ position: 'absolute', top: '3.15%', right: 0, bottom: '3.42%', left: '37.38%' }}><img loading="lazy" src="https://www.figma.com/api/mcp/asset/48a1d363-bd7a-4d23-881f-7d132f8673ce" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} /></div>
-          </div>
-
-          {/* SKVOT */}
-          <div style={{ height: '40px', width: '113.746px', position: 'relative', flexShrink: 0 }}>
-            <img loading="lazy" src="https://www.figma.com/api/mcp/asset/e12c4a62-5247-4282-8fd7-641cd6cf43b7" alt="SKVOT" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} />
-          </div>
-        </FadeIn>
-
-        {/* PROJECTS */}
-        <section id="projects" className="projects-wrapper">
-          <div className="projects-section">
-            <div className="project-cards">
-
-              {/* Card: Safey */}
-              <FadeIn>
-              <div className="card-default" onClick={() => router.push('/safey')} style={{ cursor: 'pointer' }}>
-                <ClickSpark sparkColor="#228bcc" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="VIEW CASE STUDY" customSVG={eyeIcon} cursorColor="#228bcc" style={{ borderRadius: 24 }}>
-                    <div className="card-image">
-                      <Image src="/images/Safey/safey-thumbnail.png" alt="Safey AI Companion" width={2112} height={1308} sizes="(max-width: 1024px) 100vw, (max-width: 1728px) 45vw, 780px" />
-                    </div>
-                  </Cursor>
-                </ClickSpark>
-                <div className="card-footer">
-                  <span className="card-title">Turning conversations into revenue</span>
+        {/* WORK */}
+        <section id="projects" className="section" aria-labelledby="work-title">
+          <div className="shell">
+            <FadeIn>
+              <div className="sec-head">
+                <div>
+                  <p className="kicker">
+                    <span className="kicker-index">01</span>Work
+                  </p>
+                  <h2 id="work-title" className="sec-title">
+                    Selected case studies
+                  </h2>
                 </div>
+                <p className="sec-aside">
+                  Each one starts with a business problem and ends with the metric it&rsquo;s meant to move.
+                </p>
               </div>
-              </FadeIn>
+            </FadeIn>
 
-              {/* Card: GudFood */}
+            <div className="work-grid">
+              {PROJECTS.map((project, i) => (
+                <FadeIn key={project.slug} delay={i % 2 ? 0.08 : 0}>
+                  <WorkCard project={project} />
+                </FadeIn>
+              ))}
               <FadeIn delay={0.08}>
-              <div className="card-default" onClick={() => router.push('/gudfood')} style={{ cursor: 'pointer' }}>
-                <ClickSpark sparkColor="#ea6406" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="VIEW CASE STUDY" customSVG={eyeIcon} cursorColor="#ea6406" style={{ borderRadius: 24 }}>
-                    <div className="card-image">
-                      <Image src="/images/GudFood/gudfood-thumbnail.png" alt="The loop that brought users back" width={2112} height={1308} sizes="(max-width: 1024px) 100vw, (max-width: 1728px) 45vw, 780px" />
-                    </div>
-                  </Cursor>
-                </ClickSpark>
-                <div className="card-footer">
-                  <span className="card-title">The loop that brought users back</span>
-                </div>
-              </div>
+                <UpcomingCard />
               </FadeIn>
-
-              {/* Card: SKVOT */}
-              <FadeIn>
-              <div className="card-default" onClick={() => router.push('/skvot')} style={{ cursor: 'pointer' }}>
-                <ClickSpark sparkColor="#121212" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="VIEW CASE STUDY" customSVG={eyeIcon} cursorColor="#121212" style={{ borderRadius: 24 }}>
-                    <div className="card-image">
-                      <Image src="/images/Skvot/skvot-thumbnail.png" alt="SKVOT Mobile App" width={2112} height={1308} sizes="(max-width: 1024px) 100vw, (max-width: 1728px) 45vw, 780px" />
-                    </div>
-                  </Cursor>
-                </ClickSpark>
-                <div className="card-footer">
-                  <span className="card-title">A bridge between student and lecturer</span>
-                </div>
-              </div>
-              </FadeIn>
-
-              {/* Card: Soon */}
-              <FadeIn delay={0.08}>
-              <div className="card-soon">
-                <ClickSpark sparkColor="#8a0dd7" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-                  <Cursor name="WORKING ON IT..." customSVG={lockIcon} cursorColor="#8a0dd7" style={{ borderRadius: 24 }}>
-                    <div className="card-image">
-                      <Image src="/images/soon-thumbnail.png" alt="One behavioral change, measurable impact" width={2112} height={1308} sizes="(max-width: 1024px) 100vw, (max-width: 1728px) 45vw, 780px" />
-                    </div>
-                  </Cursor>
-                </ClickSpark>
-                <div className="card-footer">
-                  <span className="card-title">One behavioral change, measurable impact</span>
-                  <div className="card-badge"><span>Coming Soon</span></div>
-                </div>
-              </div>
-              </FadeIn>
-
             </div>
           </div>
         </section>
 
         {/* EXPERIENCE */}
-        <section id="experience" className="experience-section">
-          <FadeIn>
-          <div className="experience-grid">
+        <section id="experience" className="section" aria-labelledby="experience-title">
+          <div className="shell">
+            <FadeIn>
+              <div className="sec-head">
+                <div>
+                  <p className="kicker">
+                    <span className="kicker-index">02</span>Experience
+                  </p>
+                  <h2 id="experience-title" className="sec-title">
+                    Where I&rsquo;ve worked
+                  </h2>
+                </div>
+                <div className="sec-aside">
+                  <p>Full-time and freelance roles, from 0→1 apps to conversion work on live products.</p>
+                  <a className="text-link" href={RESUME_URL} target="_blank" rel="noreferrer noopener">
+                    Full resume
+                    <ArrowUpRight size={15} strokeWidth={2} aria-hidden />
+                  </a>
+                </div>
+              </div>
+            </FadeIn>
 
-            {/* Card 1 */}
-            <div className="exp-card">
-              <div className="exp-card-header">
-                <div className="exp-company">Lyxonn</div>
-                <div className="exp-date">Sep 2025 – Present</div>
-              </div>
-              <div className="exp-rows">
-                <div className="exp-row">
-                  <span className="exp-label">Role</span>
-                  <div className="exp-value">
-                    <span className="exp-value-main">Product Designer</span>
-                    <span className="exp-value-sub">Full-time</span>
-                  </div>
-                </div>
-                <div className="exp-divider"></div>
-                <div className="exp-row">
-                  <span className="exp-label">Scope</span>
-                  <div className="exp-scope-list">
-                    <span className="exp-scope-item">Mobile & Web Design</span>
-                    <span className="exp-scope-item">Conversion Optimization</span>
-                    <span className="exp-scope-item">UX Research</span>
-                    <span className="exp-scope-item">Usability Testing</span>
-                    <span className="exp-scope-item">UX Architecture</span>
-                    <span className="exp-scope-item">Payments & KYC Flows</span>
-                    <span className="exp-scope-item">Design Systems</span>
-                    <span className="exp-scope-item">Hypothesis Validation</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="exp-card">
-              <div className="exp-card-header">
-                <div className="exp-company">Cake Alliance</div>
-                <div className="exp-date">Jul 2024 – Sep 2025</div>
-              </div>
-              <div className="exp-rows">
-                <div className="exp-row">
-                  <span className="exp-label">Role</span>
-                  <div className="exp-value">
-                    <span className="exp-value-main">UX/UI Designer</span>
-                    <span className="exp-value-sub">Full-time</span>
-                  </div>
-                </div>
-                <div className="exp-divider"></div>
-                <div className="exp-row">
-                  <span className="exp-label">Scope</span>
-                  <div className="exp-scope-list">
-                    <span className="exp-scope-item">Mobile-first UI Design</span>
-                    <span className="exp-scope-item">Responsive Interfaces</span>
-                    <span className="exp-scope-item">Design Systems</span>
-                    <span className="exp-scope-item">User Research</span>
-                    <span className="exp-scope-item">Competitive Analysis</span>
-                    <span className="exp-scope-item">Usability Testing</span>
-                    <span className="exp-scope-item">Product Collaboration</span>
-                    <span className="exp-scope-item">Developer Handoff</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="exp-card">
-              <div className="exp-card-header">
-                <div className="exp-company">GudFood Vdoma</div>
-                <div className="exp-date">Sep – Nov 2024</div>
-              </div>
-              <div className="exp-rows">
-                <div className="exp-row">
-                  <span className="exp-label">Role</span>
-                  <div className="exp-value">
-                    <span className="exp-value-main">Product Designer</span>
-                    <span className="exp-value-sub">Freelance</span>
-                  </div>
-                </div>
-                <div className="exp-divider"></div>
-                <div className="exp-row">
-                  <span className="exp-label">Scope</span>
-                  <div className="exp-scope-list">
-                    <span className="exp-scope-item">UX Research</span>
-                    <span className="exp-scope-item">Stakeholder Interviews</span>
-                    <span className="exp-scope-item">Hypothesis Generation</span>
-                    <span className="exp-scope-item">UI Redesign</span>
-                    <span className="exp-scope-item">Prototyping</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 4 */}
-            <div className="exp-card">
-              <div className="exp-card-header">
-                <div className="exp-company">Skvot</div>
-                <div className="exp-date">Feb 2024 – May 2024</div>
-              </div>
-              <div className="exp-rows">
-                <div className="exp-row">
-                  <span className="exp-label">Role</span>
-                  <div className="exp-value">
-                    <span className="exp-value-main">UX/UI Designer</span>
-                    <span className="exp-value-sub">Full-time</span>
-                  </div>
-                </div>
-                <div className="exp-divider"></div>
-                <div className="exp-row">
-                  <span className="exp-label">Scope</span>
-                  <div className="exp-scope-list">
-                    <span className="exp-scope-item">End-to-end UX/UI</span>
-                    <span className="exp-scope-item">Mobile User Flows</span>
-                    <span className="exp-scope-item">Wireframing</span>
-                    <span className="exp-scope-item">High-fidelity UI</span>
-                    <span className="exp-scope-item">Interactive Prototypes</span>
-                    <span className="exp-scope-item">Onboarding Design</span>
-                    <span className="exp-scope-item">Usability Testing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+            <FadeIn>
+              <ol className="xp-list">
+                {EXPERIENCE.map((job) => (
+                  <li key={job.company} className="xp-row">
+                    <p className="xp-when">{job.period}</p>
+                    <h3 className="xp-org">{job.company}</h3>
+                    <div className="xp-detail">
+                      <p className="xp-role">
+                        {job.role}
+                        <span className="xp-type">{job.type}</span>
+                        {job.caseStudy && (
+                          <Link className="text-link xp-case" href={job.caseStudy}>
+                            Case study
+                            <ArrowUpRight size={14} strokeWidth={2} aria-hidden />
+                          </Link>
+                        )}
+                      </p>
+                      <ul className="xp-scope" aria-label={`Scope at ${job.company}`}>
+                        {job.scope.map((item) => (
+                          <li key={item} className="chip">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </FadeIn>
           </div>
-          </FadeIn>
         </section>
-
-        {/* TESTIMONIALS — hidden */}
 
         {/* ABOUT */}
-        <section className="about-wrapper">
-          <FadeIn>
-          <div className="about-card about-card--light">
-            <div className="about-text-col">
-              <span className="about-eyebrow">About me</span>
-              <h2 className="about-headline">Hey, I&rsquo;m Danylo.</h2>
-              <p className="about-body">I&rsquo;m a Product Designer who solves real problems for real people. I start with data — what&rsquo;s actually happening — before I move. Then I talk to users, learn what they need, and build something that matters.<br/><br/>Outside of design, I play drums and write my own songs. I spend a lot of time with the people who matter to me. I read constantly — books, manga, whatever pulls me in. I cook, watch anime, build things. It&rsquo;s how I stay sane.<br/><br/>I notice things. I ask questions. I care about getting it right.</p>
-              <div className="about-spotify">
-                <p className="about-spotify-label">My go-to playlist for building things</p>
-                <iframe
-                  src="https://open.spotify.com/embed/playlist/2l4YUpAEfKwN8IJsKLgYOY?utm_source=generator"
-                  width="100%"
-                  height="152"
-                  frameBorder={0}
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
-                />
+        <section id="about" className="section" aria-labelledby="about-title">
+          <div className="shell">
+            <FadeIn>
+              <div className="sec-head">
+                <div>
+                  <p className="kicker">
+                    <span className="kicker-index">03</span>About
+                  </p>
+                  <h2 id="about-title" className="sec-title">
+                    Hey, I&rsquo;m Danylo.
+                  </h2>
+                </div>
               </div>
-            </div>
-            <div className="about-photo-col">
-              <Image className="about-photo" src="/images/about me.png" alt="Danylo Ivanov" width={2706} height={2075} sizes="(max-width: 768px) 90vw, 900px" />
+            </FadeIn>
+
+            <div className="about-grid">
+              <FadeIn className="about-photo-wrap">
+                <div className="about-photo">
+                  <Image
+                    src="/images/about me.png"
+                    alt="Danylo holding a pizza at a tiled Kyiv restaurant"
+                    width={2706}
+                    height={2075}
+                    sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1328px) 44vw, 540px"
+                  />
+                </div>
+              </FadeIn>
+
+              <FadeIn className="about-copy">
+                <p>
+                  I&rsquo;m a Product Designer who solves real problems for real people. I start with data —
+                  what&rsquo;s actually happening — before I move. Then I talk to users, learn what they need, and
+                  build something that matters.
+                </p>
+                <p>
+                  Outside of design, I play drums and write my own songs. I spend a lot of time with the people who
+                  matter to me. I read constantly — books, manga, whatever pulls me in. I cook, watch anime, build
+                  things. It&rsquo;s how I stay sane.
+                </p>
+                <p className="about-quote">I notice things. I ask questions. I care about getting it right.</p>
+              </FadeIn>
+
+              <FadeIn className="about-details" delay={0.08}>
+                <dl className="about-facts">
+                  <div>
+                    <dt>Based in</dt>
+                    <dd>Kyiv, Ukraine</dd>
+                  </div>
+                  <div>
+                    <dt>Now</dt>
+                    <dd>Product Designer at Lyxonn</dd>
+                  </div>
+                  <div>
+                    <dt>Off the clock</dt>
+                    <dd>Drums, songwriting, manga, anime, cooking</dd>
+                  </div>
+                </dl>
+                <div className="about-spotify">
+                  <p className="about-spotify-label">My go-to playlist for building things</p>
+                  <iframe
+                    title="Danylo’s go-to playlist for building things on Spotify"
+                    src="https://open.spotify.com/embed/playlist/2l4YUpAEfKwN8IJsKLgYOY?utm_source=generator"
+                    width="100%"
+                    height="152"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                  />
+                </div>
+              </FadeIn>
             </div>
           </div>
-          </FadeIn>
         </section>
-
-        </article>
       </main>
 
       <Footer />

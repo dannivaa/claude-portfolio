@@ -1,27 +1,28 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter, usePathname } from 'next/navigation';
-import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { useLenis } from 'lenis/react';
+import { ArrowUpRight } from 'lucide-react';
+import { RESUME_URL } from '@/lib/site';
 
 const NAV_SECTIONS = [
-  { id: 'projects', label: 'My work' },
+  { id: 'projects', label: 'Work' },
   { id: 'experience', label: 'Experience' },
+  { id: 'about', label: 'About' },
 ];
 
 export default function Navbar() {
-  const router = useRouter();
   const pathname = usePathname();
   const lenis = useLenis();
 
   return (
-    <nav className="navbar">
-      <div className="navbar-left">
+    <header className="nav">
+      <div className="shell">
         <Link
           href="/"
-          className="navbar-avatar"
+          className="nav-brand"
           onClick={(e) => {
             if (pathname === '/') {
               e.preventDefault();
@@ -29,9 +30,15 @@ export default function Navbar() {
             }
           }}
         >
-          <Image src="/images/pfp3d.png" alt="Avatar" width={3920} height={3920} sizes="60px" loading="eager" />
+          <span className="nav-avatar">
+            <Image src="/images/pfp3d.png" alt="" width={3920} height={3920} sizes="32px" loading="eager" />
+          </span>
+          <span>
+            Danylo Ivanov<span className="nav-role"> · Product Designer</span>
+          </span>
         </Link>
-        <div className="navbar-links">
+
+        <nav className="nav-links" aria-label="Sections">
           {NAV_SECTIONS.map(({ id, label }) => (
             <Link
               key={id}
@@ -47,18 +54,18 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
+        </nav>
+
+        <div className="nav-actions">
+          <a className="btn btn-ghost nav-resume" href={RESUME_URL} target="_blank" rel="noreferrer noopener">
+            Resume
+            <ArrowUpRight size={15} strokeWidth={2} aria-hidden />
+          </a>
+          <Link className="btn btn-primary" href="/contact">
+            Let&apos;s talk
+          </Link>
         </div>
       </div>
-      <div className="navbar-right">
-        <button className="navbar-cta" onClick={() => router.push('/contact')}>
-          <span className="navbar-cta-label">Let&apos;s talk</span>
-          <div className="navbar-cta-hover">
-            <span>Let&apos;s talk</span>
-            <ArrowRight size={20} />
-          </div>
-          <div className="navbar-cta-blob"></div>
-        </button>
-      </div>
-    </nav>
+    </header>
   );
 }

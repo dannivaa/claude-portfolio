@@ -40,6 +40,19 @@ export interface GooeyTextRevealProps
   once?: boolean;
   /** Disables splitting and animation while preserving the content. */
   disabled?: boolean;
+  /**
+   * SplitText's accessibility mode. "auto" labels the element with its plain text
+   * and hides the line wrappers, which also hides nested links from assistive
+   * tech; use "none" when the text contains links.
+   */
+  aria?: "auto" | "hidden" | "none";
+  /**
+   * Slice nested elements that span lines into one copy per line (SplitText's
+   * default). Turn off for nested elements that never wrap, such as nowrap
+   * links: with a tight line-height SplitText can misread the element's first
+   * word as wrapped and insert an empty clone before it.
+   */
+  deepSlice?: boolean;
   /** Called after the reveal completes. */
   onComplete?: () => void;
 }
@@ -113,6 +126,8 @@ export const GooeyTextReveal = React.forwardRef<
     scroller,
     once = true,
     disabled = false,
+    aria = "auto",
+    deepSlice = true,
     onComplete,
     ...props
   },
@@ -187,7 +202,8 @@ export const GooeyTextReveal = React.forwardRef<
           const split = SplitText.create(target, {
             type: "lines",
             linesClass: "gooey-text-reveal-line",
-            aria: "auto",
+            aria,
+            deepSlice,
           });
 
           split.lines.forEach((line) => {
@@ -319,6 +335,8 @@ export const GooeyTextReveal = React.forwardRef<
         scroller,
         once,
         disabled,
+        aria,
+        deepSlice,
         onComplete,
         filterId,
         children,

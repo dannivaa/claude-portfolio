@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { ReactLenis, useLenis } from 'lenis/react';
+import { MotionConfig } from 'framer-motion';
 
 function ScrollReset() {
   const pathname = usePathname();
@@ -21,7 +22,8 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
   return (
     <ReactLenis root>
       <ScrollReset />
-      {children}
+      {/* Reduced motion: keep the fades, drop the movement */}
+      <MotionConfig reducedMotion="user">{children}</MotionConfig>
     </ReactLenis>
   );
 }
