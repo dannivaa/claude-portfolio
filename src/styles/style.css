@@ -88,6 +88,12 @@ a {
   padding: 0 var(--gutter);
 }
 
+/* Near full-bleed container for the nav, footer and home page (the case studies keep the 1200px reading width) */
+.wrap--wide {
+  max-width: 1800px;
+  padding: 0 min(var(--gutter), 24px);
+}
+
 .section {
   padding: var(--section-y) 0 0;
 }
@@ -173,6 +179,7 @@ a {
   top: 0;
   z-index: 100;
   background: rgba(255, 255, 255, 0.86);
+  border-bottom: 1px solid var(--line);
   backdrop-filter: saturate(1.4) blur(12px);
   -webkit-backdrop-filter: saturate(1.4) blur(12px);
 }
@@ -248,23 +255,29 @@ a {
 
 /* ─── HERO ────────────────────────────────────────────────────────────────── */
 .hero {
-  padding-top: 112px;
+  padding-top: 26vh;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: end;
 }
 
 .hero-title {
   max-width: 1100px;
   font-family: var(--display);
   font-weight: 500;
-  font-size: 80px;
+  font-size: 64px;
   line-height: 1.02;
   letter-spacing: -0.04em;
   text-wrap: balance;
 }
 
 .hero-lede {
-  max-width: 640px;
-  margin-top: 28px;
-  font-size: 20px;
+  max-width: 560px;
+  font-size: 18px;
   line-height: 1.5;
   color: var(--muted);
 }
@@ -312,31 +325,45 @@ a {
 }
 
 /* ─── WORK ────────────────────────────────────────────────────────────────── */
+.work-section {
+  padding-top: 48px;
+}
+
+/* Two columns with 24px gutters; the lead project spans both so three cards leave no hole */
 .work-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 80px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.work-grid > :first-child {
+  grid-column: 1 / -1;
 }
 
 .work-card {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 }
 
+/* One caption line: title left, project and discipline right */
 .work-body {
-  padding: 0 4px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 24px;
 }
 
 .work-title {
   font-family: var(--text);
   font-weight: 500;
-  font-size: 24px;
-  line-height: 1.35;
-  letter-spacing: -0.03em;
+  font-size: 17px;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
 }
 
 .work-meta {
+  flex-shrink: 0;
   font-size: 15px;
   color: var(--muted);
 }
@@ -345,10 +372,21 @@ a {
 .work-stage {
   position: relative;
   aspect-ratio: 16 / 9;
-  border-radius: 32px;
+  border-radius: 16px;
   overflow: hidden;
   background: radial-gradient(70% 95% at 50% 50%, var(--stage-center), var(--stage-edge));
   isolation: isolate;
+}
+
+/* Hairline drawn over the media so every thumbnail has the same edge */
+.work-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(18, 18, 18, 0.08);
+  pointer-events: none;
 }
 
 .work-stage--video {
@@ -981,6 +1019,10 @@ a {
     padding-top: 88px;
   }
 
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
   .hero-title,
   .nf-title {
     font-size: 60px;
@@ -988,6 +1030,11 @@ a {
 
   .hero-lede {
     font-size: 18px;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
   .section-title {
@@ -1083,8 +1130,11 @@ a {
     white-space: normal;
   }
 
+  .hero-grid {
+    gap: 20px;
+  }
+
   .hero-lede {
-    margin-top: 20px;
     font-size: 17px;
   }
 
@@ -1093,16 +1143,21 @@ a {
     font-size: 28px;
   }
 
+  .work-section {
+    padding-top: 40px;
+  }
+
   .work-grid {
-    gap: 48px;
+    gap: 32px;
   }
 
   .work-stage {
-    border-radius: 24px;
+    border-radius: 12px;
   }
 
-  .work-title {
-    font-size: 19px;
+  .work-body {
+    flex-direction: column;
+    gap: 2px;
   }
 
   .xp-row {

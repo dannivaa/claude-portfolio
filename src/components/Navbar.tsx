@@ -16,7 +16,7 @@ export default function Navbar() {
 
   return (
     <header className="nav">
-      <div className="wrap">
+      <div className="wrap wrap--wide">
         <Link
           href="/"
           className="nav-brand"

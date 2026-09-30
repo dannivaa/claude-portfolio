@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <FadeIn>
       <footer className="site-footer">
-        <div className="wrap">
+        <div className="wrap wrap--wide">
           <ConnectBar />
         </div>
       </footer>

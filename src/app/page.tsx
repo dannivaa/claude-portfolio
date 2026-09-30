@@ -64,8 +64,9 @@ export default function Home() {
 
       <main>
         {/* HERO */}
+        {/* Headline left, intro right on the headline's baseline: the two-column grid the work below follows */}
         <section className="hero">
-          <div className="wrap">
+          <div className="wrap wrap--wide hero-grid">
             {/* deepSlice off: the photo pill sits inside the first line and must stay whole */}
             <GooeyTextReveal deepSlice={false} delay={0.15} duration={1.9} stagger={0.16}>
               <h1 className="hero-title">
@@ -89,8 +90,8 @@ export default function Home() {
         </section>
 
         {/* WORK */}
-        <section id="projects" className="section" aria-label="Selected work">
-          <div className="wrap">
+        <section id="projects" className="section work-section" aria-label="Selected work">
+          <div className="wrap wrap--wide">
             <div className="work-grid">
               {PROJECTS.map((project) => (
                 <FadeIn key={project.slug}>
@@ -103,7 +104,7 @@ export default function Home() {
 
         {/* EXPERIENCE */}
         <section id="experience" className="section" aria-labelledby="experience-title">
-          <div className="wrap">
+          <div className="wrap wrap--wide">
             <h2 id="experience-title" className="section-title">
               Experience
             </h2>

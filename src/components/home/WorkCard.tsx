@@ -28,7 +28,7 @@ export function WorkCard({ project }: { project: Project }) {
   return (
     <Link href={`/${project.slug}`} className="work-card">
       <ClickSpark sparkColor={project.accent} sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-        <Cursor name="View case study" customSVG={eyeIcon} cursorColor={project.accent} style={{ borderRadius: 24 }}>
+        <Cursor name="View case study" customSVG={eyeIcon} cursorColor={project.accent} style={{ borderRadius: 16 }}>
           {'video' in card ? (
             <WorkVideo {...card.video} label={`${project.name}: ${project.summary}`} />
           ) : (
