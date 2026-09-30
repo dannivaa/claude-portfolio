@@ -4,8 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useLenis } from 'lenis/react';
-import { ArrowUpRight } from 'lucide-react';
-import { RESUME_URL } from '@/lib/site';
 
 const NAV_SECTIONS = [
   { id: 'projects', label: 'Work' },
@@ -19,7 +17,7 @@ export default function Navbar() {
 
   return (
     <header className="nav">
-      <div className="shell">
+      <div className="wrap">
         <Link
           href="/"
           className="nav-brand"
@@ -31,11 +29,9 @@ export default function Navbar() {
           }}
         >
           <span className="nav-avatar">
-            <Image src="/images/pfp3d.png" alt="" width={3920} height={3920} sizes="32px" loading="eager" />
+            <Image src="/images/pfp3d.png" alt="" width={3920} height={3920} sizes="40px" loading="eager" />
           </span>
-          <span>
-            Danylo Ivanov<span className="nav-role"> · Product Designer</span>
-          </span>
+          Danylo Ivanov
         </Link>
 
         <nav className="nav-links" aria-label="Sections">
@@ -47,7 +43,7 @@ export default function Navbar() {
               onClick={(e) => {
                 if (pathname === '/') {
                   e.preventDefault();
-                  lenis?.scrollTo(`#${id}`);
+                  lenis?.scrollTo(`#${id}`, { offset: -72 });
                 }
               }}
             >
@@ -56,15 +52,9 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="nav-actions">
-          <a className="btn btn-ghost nav-resume" href={RESUME_URL} target="_blank" rel="noreferrer noopener">
-            Resume
-            <ArrowUpRight size={15} strokeWidth={2} aria-hidden />
-          </a>
-          <Link className="btn btn-primary" href="/contact">
-            Let&apos;s talk
-          </Link>
-        </div>
+        <Link className="btn btn-primary" href="/contact">
+          Let&apos;s talk
+        </Link>
       </div>
     </header>
   );

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import '@/styles/case-study.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { CsArticle, CsBlock, CsHeader, CsNext, CsStage, CsStats, CsSummary } from '@/components/case-study/CaseStudy';
+import { CsArticle, CsBlock, CsHeader, CsNext, CsStage, CsSummary } from '@/components/case-study/CaseStudy';
 import { getProject } from '@/lib/projects';
 
 const project = getProject('safey');
@@ -53,29 +53,22 @@ export default function SafeyCaseStudy() {
           ]}
         />
 
-        <CsStats
-          items={[
-            { value: '6', label: 'Competitors analyzed and ranked by revenue per download' },
-            { value: '$6.67', label: 'Revenue per download at CHAI, the paywall benchmark' },
-            { value: '15–20%', label: 'Target free-to-paid conversion rate' },
-          ]}
-        />
 
         <CsArticle>
-          <CsBlock index="01" label="Background">
+          <CsBlock label="Background">
             <p>Safey is an AI companion app built around a single mission: solving social isolation. The target audience is ages 15–35 — introverts, people afraid of new connections, anyone who needs a space to be heard without judgment. The name itself signals the core value proposition: safety, warmth, a place to be yourself.</p>
             <p>The AI companion market is growing rapidly but is visually and emotionally undifferentiated. Every competitor looks and feels the same — generic UI, interchangeable feature sets, no distinctive identity. Most products treat monetization as an afterthought, presenting paywalls without strategy or brand alignment.</p>
             <p>That created two clear opportunities: <strong>a distinctive brand identity</strong> nobody in the space had claimed, and <strong>an optimized monetization model</strong> built on what actually works in the market rather than guesswork.</p>
           </CsBlock>
 
-          <CsBlock index="02" label="Discovery">
+          <CsBlock label="Discovery">
             <p>Before designing Safey&rsquo;s monetization, I used and audited Replika — the most conceptually similar product in the space and the second most efficient monetizer in the category at $4.00 revenue per download.</p>
             <p>The audit revealed one critical weakness: Replika offers annual subscription only, with no free trial and no monthly option. Users are asked for maximum commitment before experiencing any premium value. And one genuine strength: deep AI personalization — the more the companion feels tailored to the individual user, the stronger the perceived value and the reason to pay.</p>
             <p>Six competitors were analyzed and ranked by revenue per download — not raw revenue, but monetization efficiency. CHAI leads at <strong>$6.67 per download</strong> and became the primary reference for Safey&rsquo;s paywall logic.</p>
             <p>Key patterns across top performers: free trials attached to yearly plans, two tiers only, a monthly + yearly toggle, and feature comparison tables at the moment of decision.</p>
           </CsBlock>
 
-          <CsBlock index="03" label="Solution">
+          <CsBlock label="Solution">
             <p><strong>Subscription model</strong> — In AI companion apps, all core value is interdependent. Voice calls, shared photos, AI personality customization, unlimited messaging — none work as standalone purchases. They only make sense as a bundle. Transactional monetization would fragment the value proposition. Subscription is the model that matches the product architecture.</p>
             <p><strong>Brand identity</strong> — A blue and orange palette chosen to convey warmth and closeness. Handwritten and sketch illustration style for all visual elements, reinforcing the personal and human feel. In a category where products are functionally similar, a distinctive emotional identity is a growth lever.</p>
             <p><strong>Free trial attached to yearly plan only</strong> — If the product delivers real value, users who experience premium during a free trial will commit to the annual plan rather than downgrade. It&rsquo;s a confidence bet on product quality.</p>
@@ -84,7 +77,7 @@ export default function SafeyCaseStudy() {
             <p><strong>Feature comparison table</strong> — Surfaces the value gap between Free and AI+ at the exact moment the user is deciding whether to pay. Borrowed from CHAI&rsquo;s conversion logic — the market&rsquo;s most efficient monetizer.</p>
           </CsBlock>
 
-          <CsBlock index="04" label="Result">
+          <CsBlock label="Result">
             <p>The primary metric this design targets is free-to-paid conversion rate.</p>
             <p>Every decision in this project — the subscription model, the brand identity, the paywall structure — is aimed at a single outcome: getting users from free to paying.</p>
             <p>The hypothesis: a paywall built on market data, combined with a brand identity that creates emotional distinctiveness in an undifferentiated market, drives a <strong>15–20% free-to-paid conversion rate</strong> — in line with top performers in the AI companion category.</p>

@@ -1,7 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { FadeIn } from '@/components/ui/fade-in';
 import { FadeInMount } from '@/components/ui/fade-in-mount';
 import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
@@ -9,7 +9,6 @@ import { getNextProject, type Project } from '@/lib/projects';
 
 export type Screen = { src: string; alt: string; width: number; height: number };
 type Fact = { label: string; value: string };
-type Stat = { value: string; label: string };
 
 function stageStyle(project: Project) {
   return { '--stage-edge': project.stage[0], '--stage-center': project.stage[1] } as CSSProperties;
@@ -35,15 +34,14 @@ function Phone({ screen, eager }: { screen: Screen; eager?: boolean }) {
 export function CsHeader({ project, facts }: { project: Project; facts: Fact[] }) {
   return (
     <section className="cs-head">
-      <div className="shell">
+      <div className="wrap">
         <FadeInMount>
           <Link className="cs-back" href="/#projects">
-            <ArrowLeft size={14} strokeWidth={2} aria-hidden />
+            <ArrowLeft size={16} strokeWidth={2} aria-hidden />
             All work
           </Link>
-          <p className="kicker cs-eyebrow">
-            <span className="kicker-index">{project.index}</span>
-            {project.name} · {project.category} · {project.year}
+          <p className="cs-project">
+            {project.name} · {project.category}
           </p>
         </FadeInMount>
 
@@ -52,10 +50,6 @@ export function CsHeader({ project, facts }: { project: Project; facts: Fact[] }
         </GooeyTextReveal>
 
         <FadeInMount delay={0.6}>
-          <p className="cs-lede">{project.summary}</p>
-        </FadeInMount>
-
-        <FadeInMount delay={0.75}>
           <dl className="cs-facts">
             {facts.map((fact) => (
               <div key={fact.label}>
@@ -74,8 +68,8 @@ export function CsHeader({ project, facts }: { project: Project; facts: Fact[] }
 export function CsStage({ project, screens }: { project: Project; screens: Screen[] }) {
   return (
     <section className="cs-stage-section" aria-label={`${project.name} key screens`}>
-      <div className="shell">
-        <FadeInMount delay={0.85}>
+      <div className="wrap">
+        <FadeInMount delay={0.75}>
           <div className="cs-stage" style={stageStyle(project)}>
             <div className="cs-phones">
               {screens.map((screen) => (
@@ -91,39 +85,14 @@ export function CsStage({ project, screens }: { project: Project; screens: Scree
 
 export function CsSummary({ items }: { items: { label: string; body: string }[] }) {
   return (
-    <section className="section" aria-labelledby="cs-summary-title">
-      <div className="shell">
+    <section className="cs-summary" aria-label="Summary">
+      <div className="wrap">
         <FadeIn>
-          <h2 id="cs-summary-title" className="kicker">
-            The short version
-          </h2>
-          <div className="cs-tldr">
-            {items.map((item, i) => (
-              <div key={item.label} className="cs-tldr-item">
-                <h3 className="cs-tldr-label">
-                  <span className="cs-tldr-index">0{i + 1}</span>
-                  {item.label}
-                </h3>
-                <p>{item.body}</p>
-              </div>
-            ))}
-          </div>
-        </FadeIn>
-      </div>
-    </section>
-  );
-}
-
-export function CsStats({ items }: { items: Stat[] }) {
-  return (
-    <section className="section cs-stats-section" aria-label="Key numbers">
-      <div className="shell">
-        <FadeIn>
-          <dl className="cs-stats">
-            {items.map((stat) => (
-              <div key={stat.value}>
-                <dt>{stat.label}</dt>
-                <dd>{stat.value}</dd>
+          <dl className="cs-psr">
+            {items.map((item) => (
+              <div key={item.label}>
+                <dt>{item.label}</dt>
+                <dd>{item.body}</dd>
               </div>
             ))}
           </dl>
@@ -135,20 +104,18 @@ export function CsStats({ items }: { items: Stat[] }) {
 
 export function CsArticle({ children }: { children: ReactNode }) {
   return (
-    <section className="section">
-      <div className="shell">
-        <div className="cs-article">{children}</div>
-      </div>
-    </section>
+    <div className="cs-article">
+      <div className="wrap">{children}</div>
+    </div>
   );
 }
 
-export function CsBlock({ index, label, children }: { index: string; label: string; children: ReactNode }) {
+export function CsBlock({ label, children }: { label: string; children: ReactNode }) {
+  const id = `cs-${label.toLowerCase()}`;
   return (
     <FadeIn>
-      <section className="cs-block" aria-labelledby={`cs-${label.toLowerCase()}`}>
-        <h2 id={`cs-${label.toLowerCase()}`} className="cs-block-label">
-          <span className="cs-block-index">{index}</span>
+      <section className="cs-block" aria-labelledby={id}>
+        <h2 id={id} className="cs-block-label">
           {label}
         </h2>
         <div className="cs-prose">{children}</div>
@@ -159,13 +126,8 @@ export function CsBlock({ index, label, children }: { index: string; label: stri
 
 export function CsGallery({ project, rows }: { project: Project; rows: Screen[][] }) {
   return (
-    <section className="section" aria-labelledby="cs-gallery-title">
-      <div className="shell">
-        <FadeIn>
-          <h2 id="cs-gallery-title" className="kicker cs-gallery-kicker">
-            More screens
-          </h2>
-        </FadeIn>
+    <section className="cs-gallery" aria-label={`More ${project.name} screens`}>
+      <div className="wrap">
         <FadeIn>
           <div className="cs-stage cs-stage--gallery" style={stageStyle(project)}>
             {rows.map((row, i) => (
@@ -185,24 +147,18 @@ export function CsGallery({ project, rows }: { project: Project; rows: Screen[][
 export function CsNext({ project }: { project: Project }) {
   const next = getNextProject(project.slug);
   return (
-    <section className="section" aria-label="Next case study">
-      <div className="shell">
+    <section className="cs-next-section" aria-label="Next case study">
+      <div className="wrap">
         <FadeIn>
           <Link href={`/${next.slug}`} className="cs-next">
-            <div className="cs-next-copy">
-              <p className="kicker">
-                <span className="kicker-index">Next</span>
-                {next.index} · {next.name}
-              </p>
-              <p className="cs-next-title">{next.title}</p>
-              <p className="cs-next-desc">{next.summary}</p>
-              <span className="work-arrow cs-next-arrow" aria-hidden="true">
-                <ArrowUpRight size={18} strokeWidth={1.75} />
-              </span>
-            </div>
             <div className="cs-next-media">
-              <Image src={next.thumbnail} alt="" width={2112} height={1308} sizes="(max-width: 768px) calc(100vw - 32px), 560px" />
+              <Image src={next.thumbnail} alt="" width={2112} height={1308} sizes="(max-width: 768px) calc(100vw - 32px), 320px" />
             </div>
+            <div className="cs-next-copy">
+              <span className="cs-next-label">Next case study</span>
+              <span className="cs-next-title">{next.title}</span>
+            </div>
+            <ArrowRight className="cs-next-arrow" size={24} strokeWidth={1.75} aria-hidden />
           </Link>
         </FadeIn>
       </div>

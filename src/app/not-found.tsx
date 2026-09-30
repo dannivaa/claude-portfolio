@@ -8,12 +8,9 @@ export default function NotFound() {
     <>
       <Navbar />
       <main className="nf-main">
-        <div className="shell">
-          <p className="kicker">404</p>
-          <h1 className="nf-title">
-            Nothing here, <em>yet</em>.
-          </h1>
-          <p className="nf-copy">This page doesn&rsquo;t exist. The case studies do — they&rsquo;re a click away.</p>
+        <div className="wrap">
+          <h1 className="nf-title">Page not found</h1>
+          <p className="nf-copy">This page doesn&rsquo;t exist, but the case studies do.</p>
           <div>
             <Link className="btn btn-primary" href="/#projects">
               <ArrowLeft size={16} strokeWidth={2} aria-hidden />
@@ -22,7 +19,7 @@ export default function NotFound() {
           </div>
         </div>
       </main>
-      <Footer cta={false} />
+      <Footer />
     </>
   );
 }

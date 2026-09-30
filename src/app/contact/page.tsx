@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import '@/styles/contact.css';
 import { ArrowUpRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { FadeIn } from '@/components/ui/fade-in';
 import { FadeInMount } from '@/components/ui/fade-in-mount';
 import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
@@ -29,25 +28,18 @@ export default function ContactPage() {
 
       <main>
         <section className="contact-hero">
-          <div className="shell">
-            <FadeInMount>
-              <p className="kicker">Contact</p>
-            </FadeInMount>
+          <div className="wrap">
             <GooeyTextReveal delay={0.1} duration={1.9} stagger={0.16}>
-              <h1 className="contact-title">
-                Let&rsquo;s <em>talk</em>.
-              </h1>
+              <h1 className="contact-title">Let&rsquo;s talk.</h1>
             </GooeyTextReveal>
             <FadeInMount delay={0.5}>
-              <p className="contact-lede">
-                Hiring, building something new, or just want to talk shop? Pick whichever channel suits you.
-              </p>
+              <p className="contact-lede">Hiring, working on something, or want to talk shop? Reach me wherever suits you.</p>
             </FadeInMount>
           </div>
         </section>
 
-        <section className="section contact-channels" aria-label="Contact channels">
-          <div className="shell">
+        <section className="contact-channels" aria-label="Contact channels">
+          <div className="wrap">
             <FadeIn>
               <ul className="contact-list">
                 {CHANNELS.map((channel) => (
@@ -62,11 +54,9 @@ export default function ContactPage() {
                       <img className="contact-icon" src={channel.icon} alt="" width={44} height={44} />
                       <span className="contact-label">{channel.label}</span>
                       <span className="contact-value">{channel.value}</span>
-                      <span className="work-arrow contact-arrow" aria-hidden="true">
-                        <ArrowUpRight size={18} strokeWidth={1.75} />
-                      </span>
+                      <ArrowUpRight className="contact-arrow" size={22} strokeWidth={1.75} aria-hidden />
                     </a>
-                    {channel.label === 'Email' && <CopyEmail className="btn btn-ghost btn-copy contact-copy" compact />}
+                    {channel.label === 'Email' && <CopyEmail className="btn btn-secondary btn-copy contact-copy" compact />}
                   </li>
                 ))}
               </ul>
@@ -79,7 +69,6 @@ export default function ContactPage() {
         </section>
       </main>
 
-      <Footer cta={false} />
     </>
   );
 }

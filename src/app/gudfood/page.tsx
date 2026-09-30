@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import '@/styles/case-study.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { CsArticle, CsBlock, CsGallery, CsHeader, CsNext, CsStage, CsStats, CsSummary, type Screen } from '@/components/case-study/CaseStudy';
+import { CsArticle, CsBlock, CsGallery, CsHeader, CsNext, CsStage, CsSummary, type Screen } from '@/components/case-study/CaseStudy';
 import { getProject } from '@/lib/projects';
 
 const project = getProject('gudfood');
@@ -55,22 +55,15 @@ export default function GudFoodCaseStudy() {
           ]}
         />
 
-        <CsStats
-          items={[
-            { value: '7', label: 'Interviews with customers, competitors’ customers and non-users' },
-            { value: '4', label: 'Barriers to reordering found — two of them addressable through design' },
-            { value: '10–15%', label: 'Target lift in repeat order rate within 90 days of launch' },
-          ]}
-        />
 
         <CsArticle>
-          <CsBlock index="01" label="Background">
+          <CsBlock label="Background">
             <p>GudFood Vdoma is a Ukrainian frozen food delivery service — both a D2C brand and a restaurant marketplace — delivering to 26 cities across Ukraine. The product had an existing iOS app but was struggling with retention. Customers ordered once or twice and didn&rsquo;t come back.</p>
             <p>Before talking to users, I met with the GudFood product team to understand the business context and eliminate assumptions before defining my research questions. The team knew users were churning. They had no structured data on why. No feedback mechanism existed in the app — no ratings, no reviews, no complaint resolution. The business was making product decisions without any signal from its customers.</p>
             <p>That gap defined the project.</p>
           </CsBlock>
 
-          <CsBlock index="02" label="Discovery">
+          <CsBlock label="Discovery">
             <p>I interviewed 7 participants — a deliberate mix of GudFood customers, competitors&rsquo; customers, and non-users of frozen food delivery. Existing users adapt to friction over time. Non-users show you what&rsquo;s actually blocking growth. The most valuable insights came from people who had never ordered from GudFood at all.</p>
             <p>Four barriers to reordering emerged:</p>
             <ol>
@@ -84,7 +77,7 @@ export default function GudFoodCaseStudy() {
             <p>No feedback mechanism existed anywhere in the product. One respondent had submitted a complaint through Glovo and never received any acknowledgment. Another was promised a bonus item that never arrived — with no channel to follow up. Users had no voice, and the business had no data. Without a feedback loop, there was no way to identify which dishes underperformed, which restaurant partners had quality issues, or what specifically drove churn.</p>
           </CsBlock>
 
-          <CsBlock index="03" label="Solution">
+          <CsBlock label="Solution">
             <p>The core intervention was a three-touchpoint feedback loop designed to work for both users and the business simultaneously.</p>
             <p><strong>Post-order rating</strong> — A bottom sheet appears after delivery: star rating, quick-feedback tags (Clear communications, Fast resolution, Smooth experience), and an optional text field. Under 10 seconds to complete. Low friction was non-negotiable — a complex feedback form gets ignored.</p>
             <p><strong>Dish-level reviews</strong> — Each product page surfaces reviews from other customers: name, rating, comment. This directly addresses the trust gap. Users unsure whether a frozen dish will taste as good as the restaurant version now have social proof to inform that decision.</p>
@@ -93,7 +86,7 @@ export default function GudFoodCaseStudy() {
             <p>Homepage, product detail, orders &amp; tracking, profile, and support were all rebuilt around what a new user needs to see first — and what a returning user needs to act on quickly.</p>
           </CsBlock>
 
-          <CsBlock index="04" label="Result">
+          <CsBlock label="Result">
             <p>The primary metric this design targets is repeat order rate.</p>
             <p>GudFood&rsquo;s core problem was users ordering once or twice and not returning. Every design decision in this project maps back to moving that number.</p>
             <p>The feedback system is the primary lever. Dish-level reviews and aggregated restaurant ratings close the trust gap that was blocking reorders — users can now make confident purchase decisions based on other customers&rsquo; experience. Post-order ratings give the business the data it needs to identify and fix quality issues that were previously invisible.</p>

@@ -4,29 +4,24 @@ import { join } from 'node:path';
 import type { Project } from '@/lib/projects';
 
 // Build-time only: Open Graph cards for link previews (LinkedIn, Slack, email).
-// Satori needs TTF/OTF, so these are static instances rather than the site's woff2 files.
+// Satori needs TTF/OTF, so these are static Geist instances rather than the site's woff2.
 
-const PAPER = '#fbfaf7';
-const INK = '#141412';
-const MUTED = '#6c6a64';
-const LINE = 'rgba(20, 20, 18, 0.12)';
+const INK = '#121212';
+const MUTED = '#6b7378';
+const PANEL = '#f4f5f6';
 
 const asset = (path: string) => readFile(join(process.cwd(), 'src/og', path));
 
 async function loadFonts() {
-  const [serif, serifItalic, sans, sansMedium, mono] = await Promise.all([
-    asset('fonts/Newsreader-Display-Regular.ttf'),
-    asset('fonts/Newsreader-Display-Italic.ttf'),
-    asset('fonts/FixelText-Regular.otf'),
-    asset('fonts/FixelText-Medium.otf'),
-    asset('fonts/GeistMono-Regular.ttf'),
+  const [regular, medium, semibold] = await Promise.all([
+    asset('fonts/Geist-400.ttf'),
+    asset('fonts/Geist-500.ttf'),
+    asset('fonts/Geist-600.ttf'),
   ]);
   return [
-    { name: 'Newsreader', data: serif, style: 'normal' as const, weight: 400 as const },
-    { name: 'Newsreader', data: serifItalic, style: 'italic' as const, weight: 400 as const },
-    { name: 'Fixel', data: sans, style: 'normal' as const, weight: 400 as const },
-    { name: 'Fixel', data: sansMedium, style: 'normal' as const, weight: 500 as const },
-    { name: 'Geist Mono', data: mono, style: 'normal' as const, weight: 400 as const },
+    { name: 'Geist', data: regular, style: 'normal' as const, weight: 400 as const },
+    { name: 'Geist', data: medium, style: 'normal' as const, weight: 500 as const },
+    { name: 'Geist', data: semibold, style: 'normal' as const, weight: 600 as const },
   ];
 }
 
@@ -38,10 +33,10 @@ function Byline({ avatar }: { avatar: string }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center' }}>
       {/* eslint-disable-next-line @next/next/no-img-element -- Satori renders plain img */}
-      <img src={avatar} width={60} height={60} alt="" style={{ borderRadius: 30, marginRight: 18 }} />
+      <img src={avatar} width={56} height={56} alt="" style={{ borderRadius: 18, marginRight: 16 }} />
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <span style={{ fontSize: 25, fontWeight: 500, color: INK }}>Danylo Ivanov</span>
-        <span style={{ fontSize: 21, color: MUTED }}>Product Designer in Kyiv, Ukraine</span>
+        <span style={{ fontSize: 24, fontWeight: 500, color: INK }}>Danylo Ivanov</span>
+        <span style={{ fontSize: 20, color: MUTED }}>Product Designer, Kyiv</span>
       </div>
     </div>
   );
@@ -61,46 +56,24 @@ export async function renderHomeCard() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          padding: '64px 88px 56px',
-          background: PAPER,
-          fontFamily: 'Fixel',
+          padding: '72px 80px',
+          background: '#ffffff',
+          fontFamily: 'Geist',
         }}
       >
         <Byline avatar={avatar} />
         <div
           style={{
             display: 'flex',
-            flexDirection: 'column',
-            fontFamily: 'Newsreader',
-            fontSize: 96,
-            lineHeight: 1,
+            fontSize: 84,
+            fontWeight: 500,
+            lineHeight: 1.04,
             letterSpacing: -3.4,
             color: INK,
+            maxWidth: 960,
           }}
         >
-          <div style={{ display: 'flex' }}>I design apps people</div>
-          <div style={{ display: 'flex' }}>
-            <span style={{ fontStyle: 'italic', color: '#1f74b8' }}>pay for</span>
-            <span style={{ whiteSpace: 'pre' }}> and </span>
-            <span style={{ fontStyle: 'italic', color: '#c9530b' }}>come back to</span>
-            <span>.</span>
-          </div>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            paddingTop: 24,
-            borderTop: `1px solid ${LINE}`,
-            fontFamily: 'Geist Mono',
-            fontSize: 17,
-            letterSpacing: 1,
-            textTransform: 'uppercase',
-            color: MUTED,
-          }}
-        >
-          <span>Case studies: Safey · GudFood Vdoma · SKVOT</span>
-          <span>Mobile · Conversion · Retention</span>
+          I design apps people pay for and come back to.
         </div>
       </div>
     ),
@@ -123,34 +96,15 @@ export async function renderCaseStudyCard(project: Project) {
           height: '100%',
           display: 'flex',
           alignItems: 'stretch',
-          padding: '64px 88px 56px',
-          background: PAPER,
-          fontFamily: 'Fixel',
+          padding: '64px 72px',
+          background: '#ffffff',
+          fontFamily: 'Geist',
         }}
       >
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: 470, marginRight: 48 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: 480, marginRight: 48 }}>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span
-              style={{
-                fontFamily: 'Geist Mono',
-                fontSize: 17,
-                letterSpacing: 1,
-                textTransform: 'uppercase',
-                color: MUTED,
-              }}
-            >
-              {`Case study ${project.index} · ${project.name}`}
-            </span>
-            <span
-              style={{
-                marginTop: 22,
-                fontFamily: 'Newsreader',
-                fontSize: 66,
-                lineHeight: 1.02,
-                letterSpacing: -2.2,
-                color: INK,
-              }}
-            >
+            <span style={{ fontSize: 22, color: MUTED }}>{`${project.name} · ${project.category}`}</span>
+            <span style={{ marginTop: 16, fontSize: 58, fontWeight: 500, lineHeight: 1.06, letterSpacing: -2.2, color: INK }}>
               {project.title}
             </span>
           </div>
@@ -158,13 +112,7 @@ export async function renderCaseStudyCard(project: Project) {
         </div>
         <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
           {/* eslint-disable-next-line @next/next/no-img-element -- Satori renders plain img */}
-          <img
-            src={thumbnail}
-            width={506}
-            height={313}
-            alt=""
-            style={{ borderRadius: 16, boxShadow: '0 0 0 1px rgba(20, 20, 18, 0.08), 0 24px 48px -24px rgba(20, 20, 18, 0.35)' }}
-          />
+          <img src={thumbnail} width={528} height={327} alt="" style={{ borderRadius: 24, background: PANEL }} />
         </div>
       </div>
     ),
