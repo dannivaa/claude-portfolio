@@ -6,6 +6,8 @@ export type Project = {
   name: string;
   category: string;
   year: string;
+  /** Where the work ended up, shown before the year on the homepage card (e.g. "Handed off 2024"). */
+  status: string;
   title: string;
   summary: string;
   thumbnail: string;
@@ -25,6 +27,7 @@ export const PROJECTS: Project[] = [
     name: 'Safey',
     category: 'AI companion app',
     year: '2026',
+    status: 'Concept',
     title: 'Turning conversations into revenue',
     summary:
       'Paywall and brand identity for an AI companion app, modelled on the category’s most efficient monetizer.',
@@ -46,6 +49,7 @@ export const PROJECTS: Project[] = [
     name: 'GudFood Vdoma',
     category: 'Food delivery app',
     year: '2024',
+    status: 'Handed off',
     title: 'The loop that brought users back',
     summary:
       'A feedback loop that closes the trust gap for a frozen-food delivery service shipping to 26 cities.',
@@ -61,6 +65,7 @@ export const PROJECTS: Project[] = [
     name: 'SKVOT',
     category: 'Education app',
     year: '2024',
+    status: 'Handed off',
     title: 'A bridge between student and lecturer',
     summary:
       'A 0→1 mobile app for Ukraine’s largest pop-culture school, where research cut the “obvious” feature.',
@@ -71,6 +76,29 @@ export const PROJECTS: Project[] = [
     card: { scene: 'skvot' },
   },
 ];
+
+/** Client work that can't be shown: a card on the homepage, no case study. */
+export type NdaWork = {
+  company: string;
+  title: string;
+  year: string;
+  /** Which silhouette the card's blurred placeholder takes. */
+  surface: 'mobile' | 'web';
+};
+
+export const NDA_WORK: Record<'lyxonn' | 'cake', NdaWork> = {
+  lyxonn: { company: 'Lyxonn', title: 'Payments and KYC flows', year: '2026', surface: 'mobile' },
+  cake: { company: 'Cake Alliance', title: 'Mobile-first product and design system', year: '2025', surface: 'web' },
+};
+
+/** Homepage order: newest first, alternating so the two NDA cards sit on a diagonal. */
+export const WORK_ORDER = [
+  { kind: 'project', slug: 'safey' },
+  { kind: 'nda', key: 'lyxonn' },
+  { kind: 'nda', key: 'cake' },
+  { kind: 'project', slug: 'gudfood' },
+  { kind: 'project', slug: 'skvot' },
+] as const;
 
 export function getProject(slug: ProjectSlug): Project {
   const project = PROJECTS.find((p) => p.slug === slug);

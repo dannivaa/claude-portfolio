@@ -39,7 +39,7 @@ export function WorkCard({ project }: { project: Project }) {
       <div className="work-body">
         <h3 className="work-title">{project.title}</h3>
         <p className="work-meta">
-          {project.name} · {project.category}
+          {project.name} · {project.status} {project.year}
         </p>
       </div>
     </Link>
