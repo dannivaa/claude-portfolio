@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowRight } from 'lucide-react';
 import ClickSpark from '@/components/ClickSpark';
 import { Cursor } from '@/components/ui/custom-cursor';
+import { WorkStage } from '@/components/home/WorkStage';
 import { UPCOMING, type Project } from '@/lib/projects';
 
 // Cursor-chip icons: each viewBox is cropped to its stroke bounds (path extents +1 for half the
@@ -24,23 +26,32 @@ const lockIcon = (
   </svg>
 );
 
-const CARD_SIZES = '(max-width: 768px) calc(100vw - 32px), (max-width: 1264px) calc(50vw - 36px), 588px';
+const CARD_SIZES = '(max-width: 1264px) calc(100vw - 48px), 1200px';
 
 export function WorkCard({ project }: { project: Project }) {
   return (
     <Link href={`/${project.slug}`} className="work-card work-card--link">
       <ClickSpark sparkColor={project.accent} sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
         <Cursor name="View case study" customSVG={eyeIcon} cursorColor={project.accent} style={{ borderRadius: 24 }}>
-          <div className="work-media">
-            <Image src={project.thumbnail} alt={project.thumbnailAlt} width={2112} height={1308} sizes={CARD_SIZES} />
-          </div>
+          <WorkStage
+            screens={project.cardScreens}
+            spread={project.cardSpread}
+            stage={project.stage}
+            label={`${project.name} app screens`}
+          />
         </Cursor>
       </ClickSpark>
       <div className="work-body">
-        <h3 className="work-title">{project.title}</h3>
-        <p className="work-meta">
-          {project.name} · {project.category}
-        </p>
+        <div>
+          <h3 className="work-title">{project.title}</h3>
+          <p className="work-meta">
+            {project.name} · {project.category}
+          </p>
+        </div>
+        <span className="work-cta" aria-hidden="true">
+          View case study
+          <ArrowRight size={16} strokeWidth={2} />
+        </span>
       </div>
     </Link>
   );
@@ -58,7 +69,10 @@ export function UpcomingCard() {
         </Cursor>
       </ClickSpark>
       <div className="work-body">
-        <h3 className="work-title">{UPCOMING.title}</h3>
+        <div>
+          <h3 className="work-title">{UPCOMING.title}</h3>
+          <p className="work-meta">Case study in progress</p>
+        </div>
       </div>
     </article>
   );

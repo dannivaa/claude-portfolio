@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -8,14 +7,38 @@ import { FadeInMount } from '@/components/ui/fade-in-mount';
 import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
 import { WorkCard, UpcomingCard } from '@/components/home/WorkCard';
 import { CopyEmail } from '@/components/CopyEmail';
+import { PortraitCard } from '@/components/home/PortraitCard';
+import { DrumKit } from '@/components/home/DrumKit';
 import { PROJECTS } from '@/lib/projects';
 import { RESUME_URL } from '@/lib/site';
 
 const EXPERIENCE = [
-  { company: 'Lyxonn', role: 'Product Designer', type: 'Full-time', period: 'Sep 2025 – Present' },
-  { company: 'Cake Alliance', role: 'UX/UI Designer', type: 'Full-time', period: 'Jul 2024 – Sep 2025' },
-  { company: 'GudFood Vdoma', role: 'Product Designer', type: 'Freelance', period: 'Sep – Nov 2024', caseStudy: '/gudfood' },
-  { company: 'SKVOT', role: 'UX/UI Designer', type: 'Full-time', period: 'Feb – May 2024', caseStudy: '/skvot' },
+  {
+    company: 'Lyxonn',
+    role: 'Product Designer',
+    type: 'Full-time',
+    period: 'Sep 2025 – Present',
+  },
+  {
+    company: 'Cake Alliance',
+    role: 'UX/UI Designer',
+    type: 'Full-time',
+    period: 'Jul 2024 – Sep 2025',
+  },
+  {
+    company: 'GudFood Vdoma',
+    role: 'Product Designer',
+    type: 'Freelance',
+    period: 'Sep – Nov 2024',
+    caseStudy: '/gudfood',
+  },
+  {
+    company: 'SKVOT',
+    role: 'UX/UI Designer',
+    type: 'Full-time',
+    period: 'Feb – May 2024',
+    caseStudy: '/skvot',
+  },
 ];
 
 export default function Home() {
@@ -26,25 +49,30 @@ export default function Home() {
       <main>
         {/* HERO */}
         <section className="hero">
-          <div className="wrap">
-            {/* deepSlice off: the nowrap phrases never span lines, so SplitText mustn't slice them */}
-            <GooeyTextReveal deepSlice={false} delay={0.15} duration={1.9} stagger={0.16}>
-              <h1 className="hero-title">
-                I design apps people <span className="nowrap">pay for</span> and{' '}
-                <span className="nowrap">come back to.</span>
-              </h1>
-            </GooeyTextReveal>
-            <FadeInMount delay={0.7}>
-              <p className="hero-lede">
-                Product designer at Lyxonn, based in Kyiv. Mostly mobile: onboarding, payments, KYC and paywalls.
-              </p>
-              <div className="hero-actions">
-                <a className="btn btn-primary" href={RESUME_URL} target="_blank" rel="noreferrer noopener">
-                  View resume
-                  <ArrowUpRight size={16} strokeWidth={2} aria-hidden />
-                </a>
-                <CopyEmail className="btn btn-secondary btn-copy" />
-              </div>
+          <div className="wrap hero-grid">
+            <div className="hero-copy">
+              {/* deepSlice off: the nowrap phrases never span lines, so SplitText mustn't slice them */}
+              <GooeyTextReveal deepSlice={false} delay={0.15} duration={1.9} stagger={0.16}>
+                <h1 className="hero-title">
+                  I design apps people <span className="nowrap">pay for</span> and{' '}
+                  <span className="nowrap">come back to.</span>
+                </h1>
+              </GooeyTextReveal>
+              <FadeInMount delay={0.7}>
+                <p className="hero-lede">
+                  Product designer at Lyxonn, based in Kyiv. Mostly mobile: onboarding, payments, KYC and paywalls.
+                </p>
+                <div className="hero-actions">
+                  <a className="btn btn-primary" href={RESUME_URL} target="_blank" rel="noreferrer noopener">
+                    View resume
+                    <ArrowUpRight size={16} strokeWidth={2} aria-hidden />
+                  </a>
+                  <CopyEmail className="btn btn-secondary btn-copy" />
+                </div>
+              </FadeInMount>
+            </div>
+            <FadeInMount delay={0.4} className="hero-portrait">
+              <PortraitCard />
             </FadeInMount>
           </div>
         </section>
@@ -127,16 +155,8 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                <div className="about-photo-wrap">
-                  <div className="about-photo">
-                    <Image
-                      src="/images/about me.png"
-                      alt="Danylo holding a pizza at a restaurant in Kyiv"
-                      width={2706}
-                      height={2075}
-                      sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1264px) 48vw, 568px"
-                    />
-                  </div>
+                <div className="about-side">
+                  <DrumKit />
                 </div>
               </div>
             </FadeIn>
