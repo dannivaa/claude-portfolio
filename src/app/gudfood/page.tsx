@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { CsArticle, CsLayout, CsBlock, CsGallery, CsHeader, CsStage, CsSummary, type Screen } from '@/components/case-study/CaseStudy';
 import { getProject } from '@/lib/projects';
+import { GudFoodAffinity, GudFoodBarriers, GudFoodBrief, GudFoodPersona } from '@/components/case-study/research/GudFoodResearch';
 
 const project = getProject('gudfood');
 
@@ -58,13 +59,29 @@ export default function GudFoodCaseStudy() {
 
 
           <CsArticle>
-            <CsBlock label="Background">
+            <CsBlock
+              label="Background"
+              visuals={
+                <>
+                  <GudFoodBrief />
+                </>
+              }
+            >
               <p>GudFood Vdoma is a Ukrainian frozen food delivery service — both a D2C brand and a restaurant marketplace — delivering to 26 cities across Ukraine. The product had an existing iOS app but was struggling with retention. Customers ordered once or twice and didn&rsquo;t come back.</p>
               <p>Before talking to users, I met with the GudFood product team to understand the business context and eliminate assumptions before defining my research questions. The team knew users were churning. They had no structured data on why. No feedback mechanism existed in the app — no ratings, no reviews, no complaint resolution. The business was making product decisions without any signal from its customers.</p>
               <p>That gap defined the project.</p>
             </CsBlock>
 
-            <CsBlock label="Discovery">
+            <CsBlock
+              label="Discovery"
+              visuals={
+                <>
+                  <GudFoodAffinity />
+                  <GudFoodPersona />
+                  <GudFoodBarriers />
+                </>
+              }
+            >
               <p>I interviewed 7 participants — a deliberate mix of GudFood customers, competitors&rsquo; customers, and non-users of frozen food delivery. Existing users adapt to friction over time. Non-users show you what&rsquo;s actually blocking growth. The most valuable insights came from people who had never ordered from GudFood at all.</p>
               <p>Four barriers to reordering emerged:</p>
               <ol>

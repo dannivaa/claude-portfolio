@@ -490,3 +490,750 @@
   }
 }
 
+/* ─── CASE STUDY: RESEARCH VISUALS ────────────────────────────────────────── */
+/* Process artefacts rebuilt from Danylo's research boards: white cards on the
+   page tint, one accent for emphasis, text labels on every colour */
+.cs-visuals {
+  display: grid;
+  gap: 32px;
+  margin-top: 48px;
+}
+
+/* Grid items default to min-width: auto; let wide tables scroll inside the card instead */
+.cs-fig,
+.cs-fig-body {
+  min-width: 0;
+}
+
+.cs-fig-body {
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.cs-fig-body--bare {
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.cs-fig-head {
+  margin-bottom: 28px;
+}
+
+.cs-fig-eyebrow {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.cs-fig-title {
+  margin-top: 6px;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.cs-fig-caption {
+  max-width: 720px;
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.viz-col-label {
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Ranked bars: name, bar, value */
+.viz-bars {
+  list-style: none;
+}
+
+.viz-bar-row {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr) 72px;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+
+.viz-bar-name {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 17px;
+}
+
+.viz-bar-sub {
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.viz-bar-track {
+  height: 12px;
+}
+
+.viz-bar {
+  display: block;
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+  background: #c9cbd8;
+}
+
+.viz-bar-row.is-lead .viz-bar {
+  background: var(--accent);
+}
+
+.viz-bar-value {
+  text-align: right;
+  font-weight: 500;
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Tables */
+.viz-table-scroll {
+  overflow-x: auto;
+}
+
+.viz-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.viz-table th,
+.viz-table td {
+  padding: 12px 16px 12px 0;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid var(--line);
+}
+
+.viz-table thead th {
+  border-top: 0;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.viz-table tbody th {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.viz-table td {
+  color: var(--ink-2);
+}
+
+.viz-tiers {
+  display: inline-flex;
+  gap: 4px;
+  padding-top: 5px;
+}
+
+.viz-tiers span {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--panel);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.viz-tiers .is-on {
+  background: var(--accent);
+  box-shadow: none;
+}
+
+/* Three text columns */
+.viz-cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.viz-col {
+  padding-top: 16px;
+  border-top: 2px solid var(--ink);
+}
+
+.viz-col:last-child {
+  border-top-color: var(--accent);
+}
+
+.viz-col-body {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+/* Metrics */
+.viz-metrics {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.viz-metrics li {
+  padding: 20px;
+  border-radius: 14px;
+  background: var(--panel);
+}
+
+.viz-metric-index {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.viz-metric-name {
+  margin-top: 28px;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+
+.viz-metric-body {
+  margin-top: 6px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* Research brief */
+.viz-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+}
+
+.viz-brief > div {
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+
+.viz-brief dt {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.viz-brief dd {
+  margin-top: 2px;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.viz-questions {
+  counter-reset: q;
+  list-style: none;
+}
+
+.viz-questions li {
+  counter-increment: q;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.viz-questions li::before {
+  content: counter(q, decimal-leading-zero);
+  font-size: 13px;
+  line-height: 23px;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Affinity map: one column per cluster, notes as soft cards */
+.viz-affinity {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.viz-cluster {
+  --tone: #e9e9ef;
+  --tone-ink: #3d4245;
+}
+
+.viz-cluster--value { --tone: #e2f4e5; --tone-ink: #1e6a37; }
+.viz-cluster--pain { --tone: #fde5e2; --tone-ink: #a12a1e; }
+.viz-cluster--habit { --tone: #e2ecfb; --tone-ink: #1f4f99; }
+.viz-cluster--fear { --tone: #eee6fd; --tone-ink: #5b2fb5; }
+.viz-cluster--idea { --tone: #fbf1d0; --tone-ink: #7a5900; }
+
+.viz-cluster-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--tone);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--tone-ink);
+}
+
+.viz-cluster-label span {
+  font-variant-numeric: tabular-nums;
+}
+
+.viz-cluster ul {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.viz-cluster li {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--tone);
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+/* Persona */
+.viz-persona {
+  display: grid;
+  gap: 28px;
+}
+
+.viz-persona-id {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.viz-persona-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 26px;
+}
+
+.viz-persona-name {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.viz-persona-bio {
+  max-width: 640px;
+  margin-top: 2px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.viz-persona-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.viz-persona-grid--voice {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.viz-chips {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.viz-chips li {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--panel);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.viz-lines {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+/* Barriers sorted by owner */
+.viz-sort {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.viz-sort-col {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 20px;
+  border-radius: 14px;
+  background: var(--panel);
+}
+
+.viz-sort-col.is-design {
+  background: var(--accent-soft);
+}
+
+.viz-sort-col.is-design .viz-col-label {
+  color: var(--accent);
+}
+
+.viz-sort-card {
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.viz-sort-card p {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.viz-sort-card span {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Process stages and goals */
+.viz-stages {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.viz-stages li {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--panel);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.viz-stages li span {
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.viz-goals {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.viz-goal {
+  padding-top: 14px;
+  border-top: 2px solid var(--ink);
+}
+
+.viz-goal-body {
+  font-size: 18px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+/* Moodboard */
+.viz-mood {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.viz-mood-tile {
+  overflow: hidden;
+  border-radius: 10px;
+  aspect-ratio: 180 / 224;
+  background: var(--panel);
+}
+
+.viz-mood-tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Competitor matrix: every rating is a labelled chip, colour only reinforces it */
+.viz-matrix td,
+.viz-matrix th {
+  vertical-align: middle;
+}
+
+.viz-rating {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.viz-rating--good { background: #dff3e3; color: #1e6a37; }
+.viz-rating--minor { background: #fbf0cb; color: #6f5200; }
+.viz-rating--poor { background: #fde1de; color: #a12a1e; }
+.viz-rating--none { background: #ececf2; color: #5f6370; }
+
+.viz-legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.viz-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Homepage information architecture */
+.viz-ia {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.viz-ia-notes {
+  display: grid;
+  gap: 8px;
+  padding-top: 18px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.viz-ia-notes--left {
+  text-align: right;
+}
+
+.viz-ia-phone {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  padding: 16px 14px 28px;
+  border: 1.5px solid var(--ink);
+  border-radius: 32px;
+}
+
+.viz-ia-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 4px 8px;
+}
+
+.viz-ia-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--panel);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.viz-ia-pill {
+  flex: 1;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--panel);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.viz-ia-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.viz-ia-block--key {
+  min-height: 72px;
+  background: var(--accent);
+  color: #fff;
+}
+
+.viz-ia-block--course {
+  min-height: 56px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.viz-ia-block--content {
+  background: var(--panel);
+}
+
+.viz-ia-block--util {
+  border: 1px dashed #c9cbd8;
+  color: var(--muted);
+}
+
+.viz-ia-n {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--ink);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.viz-ia-block--content .viz-ia-n,
+.viz-ia-block--util .viz-ia-n {
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.viz-key {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.viz-key--key { background: var(--accent); }
+.viz-key--course { background: var(--accent-soft); box-shadow: inset 0 0 0 1px #d6cdfc; }
+.viz-key--content { background: var(--panel); box-shadow: inset 0 0 0 1px var(--line); }
+.viz-key--util { border: 1px dashed #b9bbc8; }
+
+@media (max-width: 1024px) {
+  .viz-affinity {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .viz-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .viz-persona-grid--voice {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .viz-bar-row {
+    grid-template-columns: 200px minmax(0, 1fr) 64px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cs-visuals {
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .cs-fig-body {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .cs-fig-body--bare {
+    padding: 0;
+  }
+
+  .cs-fig-head {
+    margin-bottom: 20px;
+  }
+
+  .cs-fig-title {
+    font-size: 19px;
+  }
+
+  .cs-fig-caption {
+    font-size: 15px;
+  }
+
+  .viz-bar-row {
+    grid-template-columns: minmax(0, 1fr) 56px;
+    gap: 8px 12px;
+  }
+
+  .viz-bar-name {
+    grid-column: 1 / -1;
+    font-size: 16px;
+  }
+
+  .viz-table {
+    min-width: 640px;
+    font-size: 14px;
+  }
+
+  .viz-cols,
+  .viz-split,
+  .viz-goals,
+  .viz-sort,
+  .viz-persona-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .viz-split {
+    gap: 24px;
+  }
+
+  .viz-affinity {
+    grid-template-columns: 1fr;
+  }
+
+  .viz-metrics,
+  .viz-stages,
+  .viz-persona-grid--voice {
+    grid-template-columns: 1fr;
+  }
+
+  .viz-mood {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .viz-ia {
+    grid-template-columns: minmax(0, 260px);
+    justify-content: center;
+  }
+
+  .viz-ia-notes {
+    display: none;
+  }
+
+  .viz-goal-body {
+    font-size: 17px;
+  }
+}

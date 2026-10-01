@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { CsArticle, CsLayout, CsBlock, CsHeader, CsStage, CsSummary } from '@/components/case-study/CaseStudy';
 import { getProject } from '@/lib/projects';
+import { SafeyMetrics, SafeyPatterns, SafeyPaywallMatrix, SafeyRevenueChart } from '@/components/case-study/research/SafeyResearch';
 
 const project = getProject('safey');
 
@@ -62,7 +63,16 @@ export default function SafeyCaseStudy() {
               <p>That created two clear opportunities: <strong>a distinctive brand identity</strong> nobody in the space had claimed, and <strong>an optimized monetization model</strong> built on what actually works in the market rather than guesswork.</p>
             </CsBlock>
 
-            <CsBlock label="Discovery">
+            <CsBlock
+              label="Discovery"
+              visuals={
+                <>
+                  <SafeyRevenueChart />
+                  <SafeyPaywallMatrix />
+                  <SafeyPatterns />
+                </>
+              }
+            >
               <p>Before designing Safey&rsquo;s monetization, I used and audited Replika — the most conceptually similar product in the space and the second most efficient monetizer in the category at $4.00 revenue per download.</p>
               <p>The audit revealed one critical weakness: Replika offers annual subscription only, with no free trial and no monthly option. Users are asked for maximum commitment before experiencing any premium value. And one genuine strength: deep AI personalization — the more the companion feels tailored to the individual user, the stronger the perceived value and the reason to pay.</p>
               <p>Six competitors were analyzed and ranked by revenue per download — not raw revenue, but monetization efficiency. CHAI leads at <strong>$6.67 per download</strong> and became the primary reference for Safey&rsquo;s paywall logic.</p>
@@ -78,7 +88,14 @@ export default function SafeyCaseStudy() {
               <p><strong>Feature comparison table</strong> — Surfaces the value gap between Free and AI+ at the exact moment the user is deciding whether to pay. Borrowed from CHAI&rsquo;s conversion logic — the market&rsquo;s most efficient monetizer.</p>
             </CsBlock>
 
-            <CsBlock label="Result">
+            <CsBlock
+              label="Result"
+              visuals={
+                <>
+                  <SafeyMetrics />
+                </>
+              }
+            >
               <p>The primary metric this design targets is free-to-paid conversion rate.</p>
               <p>Every decision in this project — the subscription model, the brand identity, the paywall structure — is aimed at a single outcome: getting users from free to paying.</p>
               <p>The hypothesis: a paywall built on market data, combined with a brand identity that creates emotional distinctiveness in an undifferentiated market, drives a <strong>15–20% free-to-paid conversion rate</strong> — in line with top performers in the AI companion category.</p>

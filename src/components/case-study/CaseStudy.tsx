@@ -86,7 +86,8 @@ export function CsArticle({ children }: { children: ReactNode }) {
   return <div className="cs-article">{children}</div>;
 }
 
-export function CsBlock({ label, children }: { label: string; children: ReactNode }) {
+/** One story section. `visuals` sit under the prose at the full column width. */
+export function CsBlock({ label, children, visuals }: { label: string; children: ReactNode; visuals?: ReactNode }) {
   const id = blockId(label);
   return (
     <section id={id} className="cs-block" aria-labelledby={`${id}-title`}>
@@ -94,7 +95,37 @@ export function CsBlock({ label, children }: { label: string; children: ReactNod
         {label}
       </h2>
       <div className="cs-prose">{children}</div>
+      {visuals && <div className="cs-visuals">{visuals}</div>}
     </section>
+  );
+}
+
+/** A research artefact: white card, a small eyebrow and title, an optional caption underneath. */
+export function CsFigure({
+  eyebrow,
+  title,
+  caption,
+  children,
+  bare = false,
+}: {
+  eyebrow: string;
+  title: string;
+  caption?: ReactNode;
+  children: ReactNode;
+  /** No card: for imagery that brings its own surface, like the moodboard. */
+  bare?: boolean;
+}) {
+  return (
+    <figure className="cs-fig">
+      <div className={bare ? 'cs-fig-body cs-fig-body--bare' : 'cs-fig-body'}>
+        <header className="cs-fig-head">
+          <p className="cs-fig-eyebrow">{eyebrow}</p>
+          <p className="cs-fig-title">{title}</p>
+        </header>
+        {children}
+      </div>
+      {caption && <figcaption className="cs-fig-caption">{caption}</figcaption>}
+    </figure>
   );
 }
 
