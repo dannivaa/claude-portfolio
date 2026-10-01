@@ -46,7 +46,7 @@ export const PROJECTS: Project[] = [
     status: 'Shipped',
     title: 'Order processing with zero room for error',
     summary:
-      'Incremental optimization of the admin panel a crypto exchanger’s finance team uses to process orders and send funds.',
+      'A new way to process exchange orders for a crypto exchanger’s finance team, shipped step by step: about 35% faster to complete.',
     thumbnail: '/images/Quorra/quorra-thumbnail.png',
     thumbnailAlt: 'Concept recreation of the admin panel: an operations overview with orders per hour and items needing attention',
     accent: '#0f7a5c',

@@ -64,28 +64,45 @@ export default function QuorraCaseStudy() {
               <CsPoints
                 items={[
                   { title: 'Every decision mine', body: 'No studio on this project: product design was mine end to end.' },
-                  { title: 'Optimization, not a rewrite', body: 'Existing flows improved step by step instead of a full redesign.' },
-                  { title: 'Fewer screens per order', body: 'Screens consolidated around the order the finance team is working on.' },
+                  { title: 'A view for every order', body: 'A dense table replaced by a space built around the order in hand.' },
+                  { title: 'Shipped step by step', body: 'Rolled out in stages instead of one big switch.' },
                 ]}
               />
             </CsSection>
 
-            <CsSection label="Problem" title="Slow completions, and a finance team that said so.">
+            <CsSection label="Problem" title="A dense table, and orders that took too long.">
               <CsText>
                 <p>
-                  Orders took too long to complete, and the finance team complained about it. For the people sending
-                  funds, every extra step is time spent on an order that can&rsquo;t afford a mistake.
+                  Orders were worked from a dense table. There was no space to look at a single order on its own, and the
+                  information inside it had no clear hierarchy, so finding the right data took time.
+                </p>
+                <p>
+                  Watching the finance team at work showed where that time went, and the product metric confirmed it:
+                  time to completion was long.
                 </p>
               </CsText>
             </CsSection>
 
-            <CsSection label="Approach" title="Optimize the flows people already know, instead of rebuilding them.">
+            <CsSection label="Approach" title="A new way to handle an order, introduced step by step.">
               <CsText>
                 <p>
-                  The panel was improved incrementally rather than redesigned from scratch, and screens were consolidated
-                  so that one order needs less moving around.
+                  I redesigned how an order gets handled. Instead of a row in a table, each order now opens in its own
+                  view, with its information regrouped so the hierarchy finally makes sense. It shipped in stages rather
+                  than as one big redesign, for two reasons.
                 </p>
               </CsText>
+              <CsPoints
+                items={[
+                  {
+                    title: 'The team knew the old view',
+                    body: 'They were used to it, and switching everything at once would have slowed them down.',
+                  },
+                  {
+                    title: 'Sensitive sections came first',
+                    body: 'Each one was understood before it changed, so the finance team made no mistakes along the way.',
+                  },
+                ]}
+              />
               <CsVisuals>
                 <CsFigure
                   tag="Concept · Order processing"
@@ -102,6 +119,19 @@ export default function QuorraCaseStudy() {
                   <AdminConfirm />
                 </CsFigure>
               </CsVisuals>
+            </CsSection>
+
+            <CsSection label="Design decisions" title="A completely new look, and the backlash that came with it.">
+              <CsPoints
+                items={[
+                  { title: 'From table to order view', body: 'A dedicated space for the order in hand, not a row among dozens.' },
+                  { title: 'A hierarchy that reads', body: 'Information regrouped and reordered, so the next thing to check is where you look.' },
+                  {
+                    title: 'Backlash, accepted',
+                    body: 'The new look was a big change and pushback was expected. A month of metrics settled it.',
+                  },
+                ]}
+              />
             </CsSection>
 
             <CsSection label="Related work" title="Two more surfaces for a second exchange product.">
@@ -129,12 +159,21 @@ export default function QuorraCaseStudy() {
               </CsVisuals>
             </CsSection>
 
-            <CsSection label="Outcome" title="Fewer complaints from the people doing the work.">
+            <CsSection label="Outcome" title="Orders completed about 35% faster within a month.">
               <CsText>
                 <p>
-                  Qualitative: complaints from the finance team went down after the changes.
+                  Time to completion covers an order from start to finish: taken into work, every check done, funds sent
+                  correctly. Over the first month it came down by about 35%, measured through the product metric and
+                  backed by feedback from the finance team.
                 </p>
               </CsText>
+              <CsPoints
+                items={[
+                  { title: '~35% faster completion', body: 'From taking an order into work to sending the funds.' },
+                  { title: 'Fewer complaints', body: 'Qualitative: fewer complaints from the finance team about the panel.' },
+                  { title: 'Tuned after launch', body: 'Small changes made a few sections easier to spot.' },
+                ]}
+              />
             </CsSection>
           </CsLayout>
         </main>
