@@ -1,59 +1,52 @@
 /* ─── CONTACT PAGE ────────────────────────────────────────────────────────── */
+/* Same rhythm as the home page: a two-column hero, then full-width sections with
+   a small navy heading, the way About labels its lists. */
 .contact {
-  padding: 14vh 0 120px;
+  padding: 22vh 0 120px;
+  /* The calendar frame bleeds past the column; its overhang is empty, so clip it */
+  overflow-x: clip;
 }
 
-.contact-grid {
+.contact-hero {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
-  align-items: start;
+  align-items: end;
 }
 
 .contact-title {
   font-family: var(--display);
   font-weight: 500;
-  font-size: 96px;
-  line-height: 1;
-  letter-spacing: -0.045em;
+  font-size: 64px;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+}
+
+.contact-title span {
+  display: block;
 }
 
 .contact-lede {
-  max-width: 460px;
-  margin-top: 24px;
+  max-width: 560px;
   font-size: 20px;
   line-height: 1.5;
   color: var(--muted);
+  text-wrap: pretty;
 }
 
-/* Reasons to write: label / value rows, the same pattern the case study facts use */
-.contact-reasons {
-  max-width: 520px;
-  margin-top: 28px;
-  border-top: 1px solid var(--line);
-}
-
-.contact-reasons > div {
-  display: grid;
-  grid-template-columns: 128px minmax(0, 1fr);
-  gap: 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 17px;
-  line-height: 1.45;
-}
-
-.contact-reasons dt {
-  color: var(--muted);
+.contact-lede strong {
+  font-weight: 500;
+  color: var(--ink);
 }
 
 .contact-local {
-  font-weight: 500;
-  font-size: 14px;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 32px;
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 15px;
   color: var(--ink);
 }
 
@@ -61,7 +54,8 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--accent);
+  background: #1fae6c;
+  box-shadow: 0 0 0 4px rgba(31, 174, 108, 0.15);
 }
 
 .contact-time {
@@ -73,145 +67,221 @@
   content: '· ';
 }
 
-/* Ruled list: service name, what's behind it, an arrow; the row turns purple on hover */
-.contact-list {
-  list-style: none;
-  border-top: 1px solid var(--line);
+.contact-heading {
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  color: var(--accent);
 }
 
-.contact-list li {
-  border-bottom: 1px solid var(--line);
-}
-
-.contact-row {
+/* Booking: the call's details on the left, Cal.com's calendar card on the right.
+   Without its details panel the card is a fixed 720px, centred in an 880px frame,
+   so the frame bleeds 80px each side to put the card flush with the column. */
+.contact-cal {
   display: grid;
-  grid-template-columns: 48px minmax(0, 1fr) auto;
-  grid-template-rows: auto auto;
+  grid-template-columns: minmax(0, 1fr) 720px;
+  gap: 24px;
+  align-items: start;
+  margin-top: 96px;
+}
+
+.contact-cal-desc {
+  max-width: 400px;
+  margin-top: 12px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.contact-cal-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+  list-style: none;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+.contact-cal-facts li {
+  display: flex;
   align-items: center;
-  column-gap: 20px;
-  padding: 24px 0;
-  transition: color 0.25s var(--ease);
+  gap: 10px;
+}
+
+.contact-cal-facts svg {
+  color: var(--muted);
+}
+
+.contact-cal-box {
+  margin: 0 -80px;
+}
+
+.contact-cal-frame {
+  width: 100%;
+  min-height: 560px;
+  overflow: hidden;
+}
+
+.contact-cal-fallback {
+  margin-top: 28px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.contact-cal-fallback a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(20, 32, 58, 0.25);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.15s;
+}
+
+.contact-cal-fallback a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Direct channels: four tiles in one row, the icon, the service, what's behind it */
+.contact-direct {
+  margin-top: 96px;
+}
+
+.contact-channels {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+  list-style: none;
+}
+
+.contact-channel {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 100%;
+  padding: 16px;
+  border-radius: 18px;
+  background: var(--panel);
+  transition: background-color 0.2s var(--ease);
+}
+
+.contact-channel:hover {
+  background: var(--panel-hover);
 }
 
 .contact-icon {
-  grid-row: 1 / span 2;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px rgba(20, 32, 58, 0.06);
+}
+
+.contact-channel-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .contact-label {
-  grid-column: 2;
   font-weight: 500;
-  font-size: 32px;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  font-size: 17px;
+  color: var(--ink);
 }
 
 .contact-value {
-  grid-column: 2;
-  margin-top: 4px;
-  font-size: 16px;
+  overflow: hidden;
+  font-size: 14px;
   color: var(--muted);
-  overflow-wrap: anywhere;
-  transition: color 0.25s var(--ease);
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .contact-arrow {
-  grid-column: 3;
-  grid-row: 1 / span 2;
-  align-self: center;
-  color: var(--muted);
-  transition: transform 0.25s var(--ease), color 0.25s var(--ease);
+  flex-shrink: 0;
+  margin-left: auto;
+  color: rgba(20, 32, 58, 0.36);
+  transition: color 0.2s var(--ease), transform 0.2s var(--ease);
 }
 
-.contact-row:hover {
+.contact-channel:hover .contact-arrow {
   color: var(--accent);
+  transform: translate(2px, -2px);
 }
 
-.contact-row:hover .contact-value {
-  color: var(--accent);
-}
-
-.contact-row:hover .contact-arrow {
-  color: var(--accent);
-  transform: translate(4px, -4px);
-}
-
-.contact-row:focus-visible {
-  outline-offset: 4px;
-}
-
-/* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .contact {
-    padding: 72px 0 96px;
-  }
-
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
   .contact-title {
-    font-size: 72px;
+    font-size: 48px;
   }
 
   .contact-lede {
     font-size: 18px;
   }
 
-  .contact-label {
-    font-size: 26px;
+  .contact-channels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-cal {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .contact-cal-box {
+    max-width: 880px;
+    margin: 0 0 0 -80px;
   }
 }
 
 @media (max-width: 768px) {
   .contact {
-    padding: 40px 0 64px;
+    padding: 56px 0 72px;
   }
 
-  .contact-grid {
-    gap: 36px;
+  .contact-hero {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .contact-title {
-    font-size: 56px;
+    font-size: 40px;
   }
 
   .contact-lede {
-    margin-top: 16px;
     font-size: 17px;
   }
 
-  .contact-reasons > div {
-    grid-template-columns: 104px minmax(0, 1fr);
+  .contact-heading {
+    font-size: 20px;
+  }
+
+  .contact-cal,
+  .contact-direct {
+    margin-top: 56px;
+  }
+
+  .contact-cal-box {
+    margin: 0 -16px;
+  }
+
+  .contact-cal-desc {
+    font-size: 16px;
+  }
+
+  .contact-cal-facts {
+    margin-top: 16px;
     font-size: 15px;
   }
 
-  .contact-row {
-    grid-template-columns: 40px minmax(0, 1fr) auto;
-    column-gap: 14px;
-    padding: 18px 0;
-  }
-
-  .contact-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-  }
-
-  .contact-label {
-    font-size: 22px;
-  }
-
-  .contact-value {
-    font-size: 15px;
+  .contact-channels {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 16px;
   }
 }
 
 @media (max-width: 480px) {
   .contact-title {
-    font-size: 44px;
+    font-size: 34px;
   }
 }
