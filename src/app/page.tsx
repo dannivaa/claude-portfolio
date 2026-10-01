@@ -3,9 +3,6 @@ import Image from 'next/image';
 import '@/styles/work-motion.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { FadeIn } from '@/components/ui/fade-in';
-import { FadeInMount } from '@/components/ui/fade-in-mount';
-import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
 import { WorkCard } from '@/components/home/WorkCard';
 import { NdaCard } from '@/components/home/NdaCard';
 import { NDA_WORK, WORK_ORDER, getProject } from '@/lib/projects';
@@ -27,25 +24,20 @@ export default function Home() {
         {/* Headline left, intro right on the headline's baseline: the two-column grid the work below follows */}
         <section className="hero">
           <div className="wrap wrap--wide hero-grid">
-            {/* deepSlice off: the photo pill sits inside the first line and must stay whole */}
-            <GooeyTextReveal deepSlice={false} delay={0.15} duration={1.9} stagger={0.16}>
-              <h1 className="hero-title">
-                <span className="hero-phrase">
-                  Creative mind,{' '}
-                  <span className="hero-pill">
-                    <Image src="/images/pfp3d.png" alt="" width={3920} height={3920} sizes="180px" preload />
-                  </span>
-                </span>{' '}
-                <span className="hero-phrase">product brain.</span>
-              </h1>
-            </GooeyTextReveal>
-            <FadeInMount delay={0.7}>
-              <p className="hero-lede">
-                <strong>Hi, I&rsquo;m Danik.</strong> I design apps people pay for and come back to, right now at
-                Lyxonn in Kyiv. Off the clock I play drums, write songs and read way too much manga.{' '}
-                <Link href="/about">More about me</Link>
-              </p>
-            </FadeInMount>
+            <h1 className="hero-title">
+              <span className="hero-phrase">
+                Creative mind,{' '}
+                <span className="hero-pill">
+                  <Image src="/images/pfp3d.png" alt="" width={3920} height={3920} sizes="180px" preload />
+                </span>
+              </span>{' '}
+              <span className="hero-phrase">product brain.</span>
+            </h1>
+            <p className="hero-lede">
+              <strong>Hi, I&rsquo;m Danik.</strong> I design apps people pay for and come back to, right now at
+              Lyxonn in Kyiv. Off the clock I play drums, write songs and read way too much manga.{' '}
+              <Link href="/about">More about me</Link>
+            </p>
           </div>
         </section>
 
@@ -55,13 +47,9 @@ export default function Home() {
             <div className="work-grid">
               {WORK_ORDER.map((item) =>
                 item.kind === 'project' ? (
-                  <FadeIn key={item.slug}>
-                    <WorkCard project={getProject(item.slug)} />
-                  </FadeIn>
+                  <WorkCard key={item.slug} project={getProject(item.slug)} />
                 ) : (
-                  <FadeIn key={item.key}>
-                    <NdaCard work={NDA_WORK[item.key]} />
-                  </FadeIn>
+                  <NdaCard key={item.key} work={NDA_WORK[item.key]} />
                 ),
               )}
             </div>
@@ -74,29 +62,27 @@ export default function Home() {
             <h2 id="experience-title" className="section-title">
               Experience
             </h2>
-            <FadeIn>
-              <ol className="xp-list">
-                {EXPERIENCE.map((job) => (
-                  <li key={job.company} className="xp-row">
-                    <p className="xp-when">
-                      {job.current && <span className="xp-live" aria-hidden="true" />}
-                      {job.period}
-                    </p>
-                    <h3 className="xp-org">{job.company}</h3>
-                    <p className="xp-role">
-                      {job.role} <span>· {job.type}</span>
-                    </p>
-                    {job.caseStudy ? (
-                      <Link className="xp-case" href={job.caseStudy}>
-                        Case study
-                      </Link>
-                    ) : (
-                      <span className="xp-case xp-case--none">Under NDA</span>
-                    )}
-                  </li>
-                ))}
-              </ol>
-            </FadeIn>
+            <ol className="xp-list">
+              {EXPERIENCE.map((job) => (
+                <li key={job.company} className="xp-row">
+                  <p className="xp-when">
+                    {job.current && <span className="xp-live" aria-hidden="true" />}
+                    {job.period}
+                  </p>
+                  <h3 className="xp-org">{job.company}</h3>
+                  <p className="xp-role">
+                    {job.role} <span>· {job.type}</span>
+                  </p>
+                  {job.caseStudy ? (
+                    <Link className="xp-case" href={job.caseStudy}>
+                      Case study
+                    </Link>
+                  ) : (
+                    <span className="xp-case xp-case--none">Under NDA</span>
+                  )}
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
       </main>

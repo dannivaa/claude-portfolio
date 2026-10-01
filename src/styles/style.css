@@ -36,11 +36,6 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
 body {
   background: var(--bg);
   color: var(--ink);
@@ -102,6 +97,11 @@ a {
   padding: var(--section-y) 0 0;
 }
 
+/* Nav anchors (/#projects, /#experience) land just under the sticky bar */
+.section[id] {
+  scroll-margin-top: var(--nav-h);
+}
+
 .section-title {
   margin-bottom: 40px;
   font-family: var(--display);
@@ -128,12 +128,12 @@ a {
   letter-spacing: -0.02em;
   white-space: nowrap;
   cursor: pointer;
-  transition: background-color 0.2s, border-color 0.2s;
+  transition: background-color 0.12s, border-color 0.12s;
 }
 
 .btn svg {
   flex-shrink: 0;
-  transition: transform 0.3s var(--ease);
+  transition: transform 0.15s var(--ease);
 }
 
 .btn:hover svg {
@@ -169,7 +169,7 @@ a {
 
 .copy-label > span {
   grid-area: 1 / 1;
-  transition: opacity 0.2s, transform 0.25s var(--ease);
+  transition: opacity 0.12s, transform 0.12s var(--ease);
 }
 
 .copy-label > span[data-hidden] {
@@ -220,7 +220,7 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s var(--ease);
+  transition: transform 0.12s var(--ease);
 }
 
 .nav-brand:hover .nav-avatar img {
@@ -241,7 +241,7 @@ a {
   font-weight: 500;
   font-size: 15px;
   color: var(--muted);
-  transition: color 0.2s, background-color 0.2s;
+  transition: color 0.12s, background-color 0.12s;
 }
 
 .nav-links a:hover {
@@ -325,7 +325,7 @@ a {
   text-decoration: underline;
   text-decoration-color: var(--accent-soft);
   text-underline-offset: 4px;
-  transition: text-decoration-color 0.2s;
+  transition: text-decoration-color 0.12s;
 }
 
 .hero-lede a:hover {
@@ -372,13 +372,6 @@ a {
   color: var(--muted);
 }
 
-.work-title {
-  transition: color 0.2s;
-}
-
-a.work-card:hover .work-title {
-  color: var(--accent);
-}
 
 /* NDA cards: a blurred silhouette of the product surface on an ultraviolet field */
 .work-stage.nda-stage {
@@ -465,6 +458,24 @@ a.work-card:hover .work-title {
   isolation: isolate;
 }
 
+/* Hover layer: a white wash over the media marks the card under the pointer */
+.work-stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s ease-out;
+}
+
+@media (hover: hover) {
+  .work-card:hover .work-stage::before {
+    opacity: 0.35;
+  }
+}
+
 /* Hairline drawn over the media so every thumbnail has the same edge */
 .work-stage::after {
   content: '';
@@ -492,7 +503,6 @@ a.work-card:hover .work-title {
   left: 0;
   overflow: hidden;
   transform-origin: 0 0;
-  transition: opacity 0.4s var(--ease);
 }
 
 .motion-frame {
@@ -521,17 +531,19 @@ a.work-card:hover .work-title {
   color: #fff;
   font-family: var(--text);
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   white-space: nowrap;
   transform: scale(0);
   transform-origin: left center;
-  transition: transform 0.18s ease-in;
+  transition: transform 0.1s ease-in;
 }
 
 .cursor-chip.is-in {
   transform: scale(1);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.16s cubic-bezier(0.34, 1.4, 0.64, 1);
 }
 
 /* ─── EXPERIENCE ──────────────────────────────────────────────────────────── */
@@ -591,7 +603,7 @@ a.work-card:hover .work-title {
   text-decoration: underline;
   text-decoration-color: var(--accent-soft);
   text-underline-offset: 4px;
-  transition: text-decoration-color 0.2s;
+  transition: text-decoration-color 0.12s;
 }
 
 a.xp-case:hover {
@@ -745,7 +757,7 @@ a.xp-case:hover {
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   transition:
-    transform 0.25s var(--ease),
+    transform 0.12s var(--ease),
     background-color 0.35s var(--ease);
 }
 
@@ -814,18 +826,75 @@ a.xp-case:hover {
   --ua-yellow: #ffd700;
   --ua-ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
   --ua-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  padding: 120px 0 16px;
+  padding: 160px 0 16px;
 }
 
+/* Sign-off: kicker, then the email set large with a copy button */
+.footer-signoff {
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--line);
+}
+
+.footer-kicker {
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.footer-mail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-top: 12px;
+}
+
+.footer-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15em;
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  transition: color 0.12s;
+}
+
+.footer-copy {
+  height: 40px;
+  padding: 0 14px;
+  font-size: 14px;
+  border-radius: 12px;
+}
+
+.footer-email-arrow {
+  width: 0.8em;
+  height: 0.8em;
+  color: var(--accent);
+  transition: transform 0.12s;
+}
+
+.footer-email:hover {
+  color: var(--accent);
+}
+
+.footer-email:hover .footer-email-arrow {
+  transform: translate(0.06em, -0.06em);
+}
+
+/* Bottom bar. It bleeds half a gutter so the Ukraine flood has room around the
+   text, while the text itself stays on the page edge. */
 .connect-block {
+  --bleed: min(var(--gutter) / 2, 12px);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
-  padding: 28px 40px;
-  border-radius: 24px;
-  background: var(--panel);
+  gap: 16px 32px;
+  margin: 16px calc(-1 * var(--bleed)) 0;
+  padding: 20px var(--bleed);
+  border-radius: 20px;
+  background-color: transparent;
   transition: background-color 600ms var(--ua-ease-in-out);
 }
 
@@ -833,15 +902,15 @@ a.xp-case:hover {
 .connect-socials {
   display: flex;
   flex-wrap: wrap;
-  gap: 32px;
+  gap: 8px 28px;
   margin: 0;
   padding: 0;
   list-style: none;
+  font-size: 15px;
+  line-height: 1.4;
 }
 
 .connect-meta {
-  font-size: 16px;
-  line-height: 1.4;
   color: var(--muted);
 }
 
@@ -856,23 +925,15 @@ a.xp-case:hover {
 }
 
 .connect-link {
-  font-size: 16px;
-  line-height: 1.4;
   color: var(--ink);
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.12s;
 }
 
-/* Skiper40 underline is 0.05em; pin it to a whole pixel so it stays solid */
-.connect-link::before {
-  height: 1px;
-}
-
-/* Skiper40 arrow: out of flow so it doesn't reserve space after each word */
-.connect-link svg {
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  margin: -0.275em 0 0 0.4em;
+.connect-link:hover {
+  text-decoration-color: currentColor;
 }
 
 /* Stand with Ukraine: hovering "Kyiv, Ukraine" floods the bar with Pantone
@@ -882,11 +943,11 @@ a.xp-case:hover {
 /* On the way back, wait for the blue to mostly clear before the content
    returns, so dark text never sits on the blue */
 .connect-socials,
-.connect-meta li:first-child {
+.connect-meta li:not(.connect-meta-place) {
   transition: opacity 350ms var(--ua-ease-in-out) 250ms;
 }
 
-.connect-meta li:last-child,
+.connect-meta-place,
 .connect-meta-value {
   transition: color 600ms var(--ua-ease-in-out);
 }
@@ -919,7 +980,7 @@ a.xp-case:hover {
   justify-content: center;
   font-family: var(--display);
   font-weight: 800;
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: clamp(22px, 2.4vw, 32px);
   line-height: 1;
   letter-spacing: -0.03em;
   text-transform: uppercase;
@@ -950,13 +1011,13 @@ a.xp-case:hover {
 }
 
 .connect-block.is-ukraine .connect-socials,
-.connect-block.is-ukraine .connect-meta li:first-child {
+.connect-block.is-ukraine .connect-meta li:not(.connect-meta-place) {
   opacity: 0;
   pointer-events: none;
   transition-delay: 0ms;
 }
 
-.connect-block.is-ukraine .connect-meta li:last-child {
+.connect-block.is-ukraine .connect-meta-place {
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -1068,12 +1129,12 @@ a.xp-case:hover {
     padding: 24px;
   }
 
-  .connect-block {
-    padding: 24px 32px;
+  .site-footer {
+    padding-top: 120px;
   }
 
-  .site-footer {
-    padding-top: 96px;
+  .footer-email {
+    font-size: 48px;
   }
 }
 
@@ -1214,24 +1275,34 @@ a.xp-case:hover {
 
 
   .site-footer {
-    padding: 64px 0 8px;
+    padding: 80px 0 8px;
+  }
+
+  .footer-signoff {
+    padding-bottom: 32px;
+  }
+
+  .footer-kicker {
+    font-size: 16px;
+  }
+
+  .footer-email {
+    font-size: 34px;
   }
 
   .connect-block {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
-    padding: 24px;
-    border-radius: 20px;
+    gap: 16px;
   }
 
   .connect-meta,
   .connect-socials {
-    gap: 12px 24px;
+    gap: 10px 24px;
   }
 
   .connect-ukraine-banner {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .nf-copy {
@@ -1240,6 +1311,10 @@ a.xp-case:hover {
 }
 
 @media (max-width: 480px) {
+  .footer-email {
+    font-size: 24px;
+  }
+
   .hero-title,
   .nf-title,
   .about-title {

@@ -42,7 +42,7 @@ export function Cursor({
 
   const handleMouseLeave = () => {
     setScaled(false);
-    exitTimer.current = setTimeout(() => setMounted(false), 200);
+    exitTimer.current = setTimeout(() => setMounted(false), 120);
   };
 
   useEffect(() => () => clearTimeout(exitTimer.current), []);

@@ -124,18 +124,4 @@
     @apply bg-background text-foreground;
   }
 }
-/* GooeyTextReveal: keep the text hidden until the reveal has set its blurred
-   start state, so it doesn't render sharp before hydration. The delayed
-   animation is a failsafe that shows the text if JS never runs. */
-@keyframes gooey-pending-failsafe {
-  to {
-    visibility: visible;
-  }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  [data-gooey-pending] {
-    visibility: hidden;
-    animation: gooey-pending-failsafe 0s linear 3s forwards;
-  }
-}

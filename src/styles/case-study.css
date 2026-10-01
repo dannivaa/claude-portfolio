@@ -24,11 +24,11 @@
   font-weight: 500;
   font-size: 15px;
   color: var(--muted);
-  transition: color 0.2s;
+  transition: color 0.12s;
 }
 
 .cs-back svg {
-  transition: transform 0.3s var(--ease);
+  transition: transform 0.15s var(--ease);
 }
 
 .cs-back:hover {
@@ -175,7 +175,7 @@
   font-size: 15px;
   line-height: 1.4;
   color: var(--muted);
-  transition: color 0.25s;
+  transition: color 0.12s;
 }
 
 .cs-toc-list a:hover {
@@ -207,7 +207,7 @@
   border-radius: 2px;
   background: var(--accent);
   transform: translateY(var(--bar-top));
-  transition: transform 0.45s var(--ease), height 0.45s var(--ease);
+  transition: transform 0.2s var(--ease), height 0.2s var(--ease);
 }
 
 .cs-block {
@@ -265,7 +265,7 @@
   padding: 16px;
   border-radius: 28px;
   background: var(--panel);
-  transition: background-color 0.2s;
+  transition: background-color 0.12s;
 }
 
 .cs-next:hover {
@@ -311,7 +311,7 @@
 .cs-next-arrow {
   flex-shrink: 0;
   margin-right: 24px;
-  transition: transform 0.3s var(--ease);
+  transition: transform 0.15s var(--ease);
 }
 
 .cs-next:hover .cs-next-arrow {

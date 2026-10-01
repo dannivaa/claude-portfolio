@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "@/styles/style.css";
-import LenisProvider from "@/components/LenisProvider";
 import ClickSpark from "@/components/ClickSpark";
 import { fontVariables } from "@/lib/fonts";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -43,7 +42,7 @@ export default function RootLayout({
     <html lang="en" className={fontVariables}>
       <body>
         <ClickSpark sparkColor="#121212" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-          <LenisProvider>{children}</LenisProvider>
+          {children}
         </ClickSpark>
         <SpeedInsights />
         <Analytics />

@@ -2,9 +2,6 @@ import type { Metadata } from 'next';
 import '@/styles/contact.css';
 import { ArrowUpRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
-import { FadeIn } from '@/components/ui/fade-in';
-import { FadeInMount } from '@/components/ui/fade-in-mount';
-import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
 import { CopyEmail } from '@/components/CopyEmail';
 import { KyivTime } from '@/components/KyivTime';
 import { EMAIL, INSTAGRAM_URL, LINKEDIN_URL, RESUME_URL } from '@/lib/site';
@@ -29,42 +26,36 @@ export default function ContactPage() {
       <main>
         <section className="contact-hero">
           <div className="wrap">
-            <GooeyTextReveal delay={0.1} duration={1.9} stagger={0.16}>
-              <h1 className="contact-title">Let&rsquo;s talk.</h1>
-            </GooeyTextReveal>
-            <FadeInMount delay={0.5}>
-              <p className="contact-lede">Hiring, working on something, or want to talk shop? Reach me wherever suits you.</p>
-            </FadeInMount>
+            <h1 className="contact-title">Let&rsquo;s talk.</h1>
+            <p className="contact-lede">Hiring, working on something, or want to talk shop? Reach me wherever suits you.</p>
           </div>
         </section>
 
         <section className="contact-channels" aria-label="Contact channels">
           <div className="wrap">
-            <FadeIn>
-              <ul className="contact-list">
-                {CHANNELS.map((channel) => (
-                  <li key={channel.label} className="contact-item">
-                    <a
-                      className="contact-row"
-                      href={channel.href}
-                      target={channel.external ? '_blank' : undefined}
-                      rel={channel.external ? 'noreferrer noopener' : undefined}
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element -- tiny local SVG icons */}
-                      <img className="contact-icon" src={channel.icon} alt="" width={44} height={44} />
-                      <span className="contact-label">{channel.label}</span>
-                      <span className="contact-value">{channel.value}</span>
-                      <ArrowUpRight className="contact-arrow" size={22} strokeWidth={1.75} aria-hidden />
-                    </a>
-                    {channel.label === 'Email' && <CopyEmail className="btn btn-secondary btn-copy contact-copy" compact />}
-                  </li>
-                ))}
-              </ul>
-              <p className="contact-local">
-                Kyiv, Ukraine
-                <KyivTime className="contact-time" suffix=" local time" />
-              </p>
-            </FadeIn>
+            <ul className="contact-list">
+              {CHANNELS.map((channel) => (
+                <li key={channel.label} className="contact-item">
+                  <a
+                    className="contact-row"
+                    href={channel.href}
+                    target={channel.external ? '_blank' : undefined}
+                    rel={channel.external ? 'noreferrer noopener' : undefined}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element -- tiny local SVG icons */}
+                    <img className="contact-icon" src={channel.icon} alt="" width={44} height={44} />
+                    <span className="contact-label">{channel.label}</span>
+                    <span className="contact-value">{channel.value}</span>
+                    <ArrowUpRight className="contact-arrow" size={22} strokeWidth={1.75} aria-hidden />
+                  </a>
+                  {channel.label === 'Email' && <CopyEmail className="btn btn-secondary btn-copy contact-copy" compact />}
+                </li>
+              ))}
+            </ul>
+            <p className="contact-local">
+              Kyiv, Ukraine
+              <KyivTime className="contact-time" suffix=" local time" />
+            </p>
           </div>
         </section>
       </main>

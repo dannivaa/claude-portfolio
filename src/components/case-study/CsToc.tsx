@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { useLenis } from 'lenis/react';
 
 export type TocItem = { id: string; label: string };
 
@@ -10,7 +9,6 @@ export type TocItem = { id: string; label: string };
  * upper third of the viewport is the active one; an accent bar slides to its link.
  */
 export function CsToc({ items }: { items: TocItem[] }) {
-  const lenis = useLenis();
   const [active, setActive] = useState(items[0]?.id);
   const listRef = useRef<HTMLOListElement>(null);
   const [bar, setBar] = useState<{ top: number; height: number } | null>(null);
@@ -44,12 +42,6 @@ export function CsToc({ items }: { items: TocItem[] }) {
               href={`#${item.id}`}
               data-id={item.id}
               aria-current={active === item.id ? 'location' : undefined}
-              onClick={(e) => {
-                e.preventDefault();
-                // Lenis honours the block's scroll-margin-top, which lines it up with this list
-                lenis?.scrollTo(`#${item.id}`);
-                history.replaceState(null, '', `#${item.id}`);
-              }}
             >
               {item.label}
             </a>

@@ -3,13 +3,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useLenis } from 'lenis/react';
 
 const NAV_SECTIONS = [{ id: 'projects', label: 'Work' }];
 
 export default function Navbar() {
   const pathname = usePathname();
-  const lenis = useLenis();
 
   return (
     <header className="nav">
@@ -18,9 +16,11 @@ export default function Navbar() {
           href="/"
           className="nav-brand"
           onClick={(e) => {
+            // Already home: jump to the top instead of a no-op navigation
             if (pathname === '/') {
               e.preventDefault();
-              lenis?.scrollTo(0);
+              window.scrollTo(0, 0);
+              history.replaceState(null, '', '/');
             }
           }}
         >
@@ -32,17 +32,7 @@ export default function Navbar() {
 
         <nav className="nav-links" aria-label="Sections">
           {NAV_SECTIONS.map(({ id, label }) => (
-            <Link
-              key={id}
-              href={`/#${id}`}
-              scroll={false}
-              onClick={(e) => {
-                if (pathname === '/') {
-                  e.preventDefault();
-                  lenis?.scrollTo(`#${id}`, { offset: -72 });
-                }
-              }}
-            >
+            <Link key={id} href={`/#${id}`}>
               {label}
             </Link>
           ))}

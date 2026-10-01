@@ -2,9 +2,6 @@ import { Children, isValidElement, type CSSProperties, type ReactNode } from 're
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { FadeIn } from '@/components/ui/fade-in';
-import { FadeInMount } from '@/components/ui/fade-in-mount';
-import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
 import { getNextProject, type Project } from '@/lib/projects';
 import { CsToc, type TocItem } from '@/components/case-study/CsToc';
 
@@ -35,26 +32,20 @@ function Phone({ screen, eager }: { screen: Screen; eager?: boolean }) {
 export function CsHeader({ project, facts }: { project: Project; facts: Fact[] }) {
   return (
     <section className="cs-head">
-      <FadeInMount>
-        <p className="cs-project">
-          {project.name} · {project.status} {project.year}
-        </p>
-      </FadeInMount>
+      <p className="cs-project">
+        {project.name} · {project.status} {project.year}
+      </p>
 
-      <GooeyTextReveal delay={0.1} duration={1.9} stagger={0.16}>
-        <h1 className="cs-title">{project.title}</h1>
-      </GooeyTextReveal>
+      <h1 className="cs-title">{project.title}</h1>
 
-      <FadeInMount delay={0.6}>
-        <dl className="cs-facts">
-          {facts.map((fact) => (
-            <div key={fact.label}>
-              <dt>{fact.label}</dt>
-              <dd>{fact.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </FadeInMount>
+      <dl className="cs-facts">
+        {facts.map((fact) => (
+          <div key={fact.label}>
+            <dt>{fact.label}</dt>
+            <dd>{fact.value}</dd>
+          </div>
+        ))}
+      </dl>
     </section>
   );
 }
@@ -63,15 +54,13 @@ export function CsHeader({ project, facts }: { project: Project; facts: Fact[] }
 export function CsStage({ project, screens }: { project: Project; screens: Screen[] }) {
   return (
     <section className="cs-stage-section" aria-label={`${project.name} key screens`}>
-      <FadeInMount delay={0.75}>
-        <div className="cs-stage" style={stageStyle(project)}>
-          <div className="cs-phones">
-            {screens.map((screen) => (
-              <Phone key={screen.src} screen={screen} eager />
-            ))}
-          </div>
+      <div className="cs-stage" style={stageStyle(project)}>
+        <div className="cs-phones">
+          {screens.map((screen) => (
+            <Phone key={screen.src} screen={screen} eager />
+          ))}
         </div>
-      </FadeInMount>
+      </div>
     </section>
   );
 }
@@ -79,16 +68,14 @@ export function CsStage({ project, screens }: { project: Project; screens: Scree
 export function CsSummary({ items }: { items: { label: string; body: string }[] }) {
   return (
     <section id="overview" className="cs-summary" aria-label="Overview">
-      <FadeIn>
-        <dl className="cs-psr">
-          {items.map((item) => (
-            <div key={item.label}>
-              <dt>{item.label}</dt>
-              <dd>{item.body}</dd>
-            </div>
-          ))}
-        </dl>
-      </FadeIn>
+      <dl className="cs-psr">
+        {items.map((item) => (
+          <div key={item.label}>
+            <dt>{item.label}</dt>
+            <dd>{item.body}</dd>
+          </div>
+        ))}
+      </dl>
     </section>
   );
 }
@@ -102,31 +89,27 @@ export function CsArticle({ children }: { children: ReactNode }) {
 export function CsBlock({ label, children }: { label: string; children: ReactNode }) {
   const id = blockId(label);
   return (
-    <FadeIn>
-      <section id={id} className="cs-block" aria-labelledby={`${id}-title`}>
-        <h2 id={`${id}-title`} className="cs-block-label">
-          {label}
-        </h2>
-        <div className="cs-prose">{children}</div>
-      </section>
-    </FadeIn>
+    <section id={id} className="cs-block" aria-labelledby={`${id}-title`}>
+      <h2 id={`${id}-title`} className="cs-block-label">
+        {label}
+      </h2>
+      <div className="cs-prose">{children}</div>
+    </section>
   );
 }
 
 export function CsGallery({ project, rows }: { project: Project; rows: Screen[][] }) {
   return (
     <section id="screens" className="cs-gallery" aria-label={`More ${project.name} screens`}>
-      <FadeIn>
-        <div className="cs-stage cs-stage--gallery" style={stageStyle(project)}>
-          {rows.map((row, i) => (
-            <div key={i} className="cs-phones">
-              {row.map((screen) => (
-                <Phone key={screen.src} screen={screen} />
-              ))}
-            </div>
-          ))}
-        </div>
-      </FadeIn>
+      <div className="cs-stage cs-stage--gallery" style={stageStyle(project)}>
+        {rows.map((row, i) => (
+          <div key={i} className="cs-phones">
+            {row.map((screen) => (
+              <Phone key={screen.src} screen={screen} />
+            ))}
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
@@ -135,18 +118,16 @@ function CsNext({ project }: { project: Project }) {
   const next = getNextProject(project.slug);
   return (
     <section className="cs-next-section" aria-label="Next case study">
-      <FadeIn>
-        <Link href={`/${next.slug}`} className="cs-next">
-          <div className="cs-next-media">
-            <Image src={next.thumbnail} alt="" width={2112} height={1308} sizes="(max-width: 768px) calc(100vw - 32px), 320px" />
-          </div>
-          <div className="cs-next-copy">
-            <span className="cs-next-label">Next case study</span>
-            <span className="cs-next-title">{next.title}</span>
-          </div>
-          <ArrowRight className="cs-next-arrow" size={24} strokeWidth={1.75} aria-hidden />
-        </Link>
-      </FadeIn>
+      <Link href={`/${next.slug}`} className="cs-next">
+        <div className="cs-next-media">
+          <Image src={next.thumbnail} alt="" width={2112} height={1308} sizes="(max-width: 768px) calc(100vw - 32px), 320px" />
+        </div>
+        <div className="cs-next-copy">
+          <span className="cs-next-label">Next case study</span>
+          <span className="cs-next-title">{next.title}</span>
+        </div>
+        <ArrowRight className="cs-next-arrow" size={24} strokeWidth={1.75} aria-hidden />
+      </Link>
     </section>
   );
 }
@@ -176,12 +157,10 @@ export function CsLayout({ project, children }: { project: Project; children: Re
     <div className="wrap cs-layout">
       <aside className="cs-side">
         <div className="cs-side-inner">
-          <FadeInMount>
-            <Link className="cs-back" href="/#projects">
-              <ArrowLeft size={16} strokeWidth={2} aria-hidden />
-              All work
-            </Link>
-          </FadeInMount>
+          <Link className="cs-back" href="/#projects">
+            <ArrowLeft size={16} strokeWidth={2} aria-hidden />
+            All work
+          </Link>
           <CsToc items={tocFrom(children)} />
         </div>
       </aside>

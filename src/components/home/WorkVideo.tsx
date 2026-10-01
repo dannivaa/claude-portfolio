@@ -42,7 +42,7 @@ export function WorkVideo({
 
   return (
     <div className="work-stage work-stage--video">
-      <video ref={ref} className="work-video" poster={poster} muted loop playsInline preload="metadata" aria-label={label}>
+      <video ref={ref} className="work-video" poster={poster} muted loop playsInline preload="auto" aria-label={label}>
         <source src={webm} type="video/webm" />
         <source src={mp4} type="video/mp4" />
       </video>

@@ -2,19 +2,18 @@
 
 import { useEffect, useId, useRef, useState } from 'react';
 import type { MouseEvent, PointerEvent } from 'react';
-import { Link001 } from '@/components/ui/skiper-ui/skiper40';
-import { EMAIL, INSTAGRAM_URL, LINKEDIN_URL, RESUME_URL } from '@/lib/site';
+import { KyivTime } from '@/components/KyivTime';
+import { INSTAGRAM_URL, LINKEDIN_URL, RESUME_URL } from '@/lib/site';
 
 const SOCIAL_LINKS = [
-  { label: 'Email', href: `mailto:${EMAIL}`, external: false },
-  { label: 'LinkedIn', href: LINKEDIN_URL, external: true },
-  { label: 'Resume', href: RESUME_URL, external: true },
-  { label: 'Instagram', href: INSTAGRAM_URL, external: true },
+  { label: 'LinkedIn', href: LINKEDIN_URL },
+  { label: 'Resume', href: RESUME_URL },
+  { label: 'Instagram', href: INSTAGRAM_URL },
 ];
 
 export function ConnectBar() {
-  // Same alpha-threshold "goo" filter as the hero's GooeyTextReveal; the blur
-  // it resolves is driven by CSS so it can play forward and in reverse on hover
+  // Alpha-threshold "goo" filter; the blur it resolves is driven by CSS so it
+  // can play forward and in reverse on hover
   const gooFilterId = `ua-goo-${useId().replace(/:/g, '')}`;
 
   // "Stand with Ukraine": mouse hover shows it, a tap or Enter toggles it,
@@ -47,26 +46,12 @@ export function ConnectBar() {
 
   return (
     <div ref={blockRef} className={`connect-block${ukraineActive ? ' is-ukraine' : ''}`}>
-      <ul className="connect-socials">
-        {SOCIAL_LINKS.map((link) => (
-          <li key={link.label}>
-            <Link001
-              href={link.href}
-              target={link.external ? '_blank' : '_self'}
-              className="connect-link"
-            >
-              {link.label}
-            </Link001>
-          </li>
-        ))}
-      </ul>
-
       <ul className="connect-meta">
         <li>
           Designing at
           <span className="connect-meta-value">Lyxonn</span>
         </li>
-        <li>
+        <li className="connect-meta-place">
           Based in
           <button
             type="button"
@@ -81,6 +66,19 @@ export function ConnectBar() {
             Kyiv, Ukraine
           </button>
         </li>
+        <li>
+          <KyivTime className="connect-meta-value" suffix=" local" />
+        </li>
+      </ul>
+
+      <ul className="connect-socials">
+        {SOCIAL_LINKS.map((link) => (
+          <li key={link.label}>
+            <a className="connect-link" href={link.href} target="_blank" rel="noreferrer noopener">
+              {link.label}
+            </a>
+          </li>
+        ))}
       </ul>
 
       {/* Revealed while "Kyiv, Ukraine" is hovered */}
