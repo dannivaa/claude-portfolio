@@ -100,7 +100,7 @@ a {
 }
 
 /* Page change: a View Transition crossfade (see PageTransition). The old page
-   lifts away and blurs out; the new one settles in from below a beat later.
+   lifts away and fades out; the new one settles in from below a beat later.
    The nav is pinned so only the content moves. */
 ::view-transition {
   pointer-events: none;
@@ -132,11 +132,12 @@ a {
   animation: page-in 560ms var(--ease) 180ms both;
 }
 
+/* No filter: WebKit draws a filtered view-transition snapshot a few px off to
+   the side, so the page slides sideways and snaps back when the transition ends */
 @keyframes page-out {
   to {
     opacity: 0;
     transform: translateY(-12px);
-    filter: blur(3px);
   }
 }
 
@@ -144,7 +145,6 @@ a {
   from {
     opacity: 0;
     transform: translateY(18px);
-    filter: blur(4px);
   }
 }
 
