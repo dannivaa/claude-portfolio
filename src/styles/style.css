@@ -8,9 +8,9 @@
   --muted: #6b6f7c;
   --line: #e4e4ee;
 
-  --accent: #5b3df5;
-  --accent-hover: #4a2de0;
-  --accent-soft: #ebe7fe;
+  --accent: #14203a;
+  --accent-hover: #24345a;
+  --accent-soft: #e8ebf2;
 
   --text: var(--ff-geist), 'Helvetica Neue', Arial, sans-serif;
   --display: var(--text);
@@ -51,7 +51,7 @@ body {
 /* Selection the way Rachel does it: the text takes the accent, the highlight
    behind it is only a faint wash of the same colour */
 ::selection {
-  background: rgba(91, 61, 245, 0.12);
+  background: rgba(20, 32, 58, 0.12);
   color: var(--accent);
 }
 
@@ -310,21 +310,15 @@ html[data-boot] .nav {
 
 .nav-links a {
   padding: 10px 16px;
-  border-radius: 14px;
   font-weight: 500;
   font-size: 16px;
   color: var(--muted);
-  transition: color 0.12s, background-color 0.12s;
+  transition: color 0.15s;
 }
 
-.nav-links a:hover {
-  color: var(--ink);
-  background: var(--panel);
-}
-
+.nav-links a:hover,
 .nav-links a[aria-current='page'] {
   color: var(--accent);
-  background: var(--accent-soft);
 }
 
 /* ─── HERO ────────────────────────────────────────────────────────────────── */
@@ -341,6 +335,7 @@ html[data-boot] .nav {
 
 .hero-title {
   max-width: 1100px;
+  color: var(--accent);
   font-family: var(--display);
   font-weight: 500;
   font-size: 64px;
@@ -413,8 +408,8 @@ html[data-boot] .nav {
   place-items: center;
   background:
     radial-gradient(60% 80% at 30% 20%, rgba(255, 255, 255, 0.55), transparent 70%),
-    radial-gradient(70% 90% at 80% 90%, #9d87fa, transparent 70%),
-    linear-gradient(160deg, #e0d9fe, #c3b5fc);
+    radial-gradient(70% 90% at 80% 90%, #8e9bb8, transparent 70%),
+    linear-gradient(160deg, #e3e7ef, #c3cbdb);
 }
 
 .nda-surface {
@@ -444,12 +439,12 @@ html[data-boot] .nav {
   height: 5%;
   width: 70%;
   border-radius: 999px;
-  background: #d3cafd;
+  background: #c9d0de;
 }
 
 .nda-bar--head {
   width: 45%;
-  background: #b3a3fa;
+  background: #a9b4c9;
 }
 
 .nda-bar--short {
@@ -466,7 +461,7 @@ html[data-boot] .nav {
 .nda-block {
   flex: 0 0 26%;
   border-radius: 10px;
-  background: #e6e0fe;
+  background: #e3e7ef;
 }
 
 .nda-block--low {
@@ -830,6 +825,11 @@ html[data-boot] .nav {
   --ua-ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
   --ua-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   padding: 160px 0 16px;
+}
+
+/* Without the sign-off (home page) the links bar follows the last section closely */
+.site-footer--bare {
+  padding-top: 96px;
 }
 
 /* Sign-off: kicker, then the email set large with a copy button */
@@ -1277,6 +1277,10 @@ html[data-boot] .nav {
 
   .site-footer {
     padding: 80px 0 8px;
+  }
+
+  .site-footer--bare {
+    padding-top: 56px;
   }
 
   .footer-signoff {

@@ -34,9 +34,9 @@ export default function Home() {
                 <span className="hero-line">obsessed with craft.</span>
               </h1>
               <p className="hero-lede">
-                <strong>Monotone tasks kill the drive, and the creative process with&nbsp;it.</strong> So I hand the manual,
-                repetitive work to AI and give creativity and craft more room. After hours I build my own apps, write
-                songs and play a lot of drums.
+                <strong>Monotone tasks kill my drive, and my creative work goes with&nbsp;it.</strong> I hand the manual,
+                repetitive parts to AI, which leaves more room for creativity and craft. After hours I build my own apps,
+                write songs and play a lot of drums.
               </p>
             </div>
           </section>
@@ -77,7 +77,7 @@ export default function Home() {
           </section>
         </main>
 
-        <Footer />
+        <Footer signoff={false} />
       </PageTransition>
     </>
   );
