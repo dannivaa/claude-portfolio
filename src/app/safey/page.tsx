@@ -159,10 +159,24 @@ export default function SafeyCaseStudy() {
               />
             </CsSection>
 
-            <CsSection label="Outcome" title="Built to move one number: free-to-paid conversion.">
+            <CsSection label="Outcome" title="A hypothesis with a bar to clear: beat the freemium median.">
               <CsText>
-                <p>The hypothesis: a paywall built on market data, with an identity that stands apart in an undifferentiated market, drives a <strong>15–20% free-to-paid conversion rate</strong>, in line with the category&rsquo;s top performers.</p>
+                <p>Safey is a concept, so there is no result yet. What it has is a hypothesis, and a public benchmark to test it against.</p>
+                <p>Freemium apps convert a median <strong>2.1%</strong> of downloads to paid within 35 days, according to RevenueCat&rsquo;s <a href="https://www.revenuecat.com/state-of-subscription-apps" target="_blank" rel="noreferrer">State of Subscription Apps 2026</a>. Hard paywalls reach 10.7%, but Safey keeps a free tier, so 2.1% is the honest comparison.</p>
               </CsText>
+              <CsPoints
+                items={[
+                  { title: 'Benchmark: 2.1%', body: 'Median download-to-paid conversion for freemium apps, measured at day 35.' },
+                  {
+                    title: 'Hypothesis: above the median',
+                    body: 'Two tiers, the trial on the yearly plan and a comparison table at the moment of decision lift Safey past 2.1%.',
+                  },
+                  {
+                    title: 'Guardrail: churn',
+                    body: 'AI apps churn about 30% faster in the same report, so a conversion only counts if the subscriber stays.',
+                  },
+                ]}
+              />
               <CsVisuals>
                 <SafeyMetrics />
               </CsVisuals>

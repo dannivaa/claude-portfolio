@@ -22,8 +22,24 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    slug: 'safey',
+    slug: 'quorra',
     index: '01',
+    name: 'Quorra',
+    category: 'Internal admin panel',
+    year: '2026',
+    status: 'Shipped',
+    title: 'Order processing with zero room for error',
+    summary:
+      'A new way to process exchange orders for a crypto exchanger’s finance team, shipped step by step: about 35% faster to complete.',
+    thumbnail: '/images/Quorra/quorra-thumbnail.png',
+    thumbnailAlt: 'Concept recreation of the admin panel: an operations overview with orders per hour and items needing attention',
+    accent: '#0f7a5c',
+    stage: ['#d9eee4', '#9cd8bf'],
+    brand: { primary: '#0f7a5c', secondary: '#3ccf91', soft: '#e2f3ec' },
+  },
+  {
+    slug: 'safey',
+    index: '02',
     name: 'Safey',
     category: 'AI companion app',
     year: '2026',
@@ -36,22 +52,6 @@ export const PROJECTS: Project[] = [
     accent: '#1f74b8',
     stage: ['#8fd0e6', '#fdb682'],
     brand: { primary: '#1f74b8', secondary: '#f2873f', soft: '#e4f1fa' },
-  },
-  {
-    slug: 'quorra',
-    index: '02',
-    name: 'Quorra',
-    category: 'Internal admin panel',
-    year: '2025',
-    status: 'Shipped',
-    title: 'Order processing with zero room for error',
-    summary:
-      'A new way to process exchange orders for a crypto exchanger’s finance team, shipped step by step: about 35% faster to complete.',
-    thumbnail: '/images/Quorra/quorra-thumbnail.png',
-    thumbnailAlt: 'Concept recreation of the admin panel: an operations overview with orders per hour and items needing attention',
-    accent: '#0f7a5c',
-    stage: ['#d9eee4', '#9cd8bf'],
-    brand: { primary: '#0f7a5c', secondary: '#3ccf91', soft: '#e2f3ec' },
   },
   {
     slug: 'gudfood',

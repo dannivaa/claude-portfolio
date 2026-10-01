@@ -326,6 +326,19 @@
   color: var(--ink);
 }
 
+/* Same underlined link as the About bio */
+.cs-prose a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(20, 32, 58, 0.25);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.15s;
+}
+
+.cs-prose a:hover {
+  text-decoration-color: currentColor;
+}
+
 .cs-prose ol {
   padding-left: 22px;
 }
