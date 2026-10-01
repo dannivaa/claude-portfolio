@@ -34,6 +34,9 @@ html {
   background: var(--bg);
   color: var(--ink);
   -webkit-text-size-adjust: 100%;
+  /* Keep the scrollbar's space on pages too short to scroll (Contact), so the
+     centred layout and the header don't shift sideways between pages */
+  scrollbar-gutter: stable;
 }
 
 body {
