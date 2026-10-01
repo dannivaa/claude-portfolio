@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import Link from 'next/link';
 import '@/styles/work-motion.css';
 import Navbar from '@/components/Navbar';
@@ -5,8 +6,10 @@ import { PageTransition } from '@/components/PageTransition';
 import Footer from '@/components/Footer';
 import { WorkCard } from '@/components/home/WorkCard';
 import { NdaCard } from '@/components/home/NdaCard';
-import { HeroStickers } from '@/components/home/HeroStickers';
+import { HeroToys } from '@/components/home/HeroToys';
 import { NDA_WORK, WORK_ORDER, getProject } from '@/lib/projects';
+
+const CREATIVE = [...'Creative mind,'];
 
 type Job = { company: string; role: string; type: string; period: string; caseStudy?: string };
 
@@ -38,16 +41,25 @@ export default function Home() {
       <PageTransition>
         <main>
           {/* HERO */}
-          {/* Headline left, intro right on its baseline; the stickers above are everything I make, and they drag */}
+          {/* Headline left, intro right on its baseline; above them, a drum, a phone and a record you can play with */}
           <section className="hero">
-          <HeroStickers />
+          <HeroToys />
           <div className="wrap wrap--wide hero-grid">
+            {/* Two voices: the creative half in an expressive display face that wobbles on hover,
+                the product half in the site's plain Geist */}
             <h1 className="hero-title">
-              <span className="hero-phrase">Creative mind,</span> <span className="hero-phrase">product brain.</span>
+              <span className="hero-creative" aria-label="Creative mind,">
+                {CREATIVE.map((ch, i) => (
+                  <span key={i} aria-hidden="true" style={{ '--i': i } as CSSProperties}>
+                    {ch === ' ' ? '\u00a0' : ch}
+                  </span>
+                ))}
+              </span>{' '}
+              <span className="hero-product">product brain.</span>
             </h1>
             <p className="hero-lede">
               <strong>Hi, I&rsquo;m Danik, and I just love making things.</strong> At work that&rsquo;s apps people pay for
-              and come back to, right now at Homecrowd and Lyxonn. Outside of it, it&rsquo;s my own mobile apps and side
+              and come back to, right now at Homecrowd. Outside of it, it&rsquo;s my own mobile apps and side
               projects, songs, and a lot of drums.
             </p>
           </div>

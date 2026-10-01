@@ -36,12 +36,21 @@ function subscribe(onChange: () => void) {
 }
 
 /** Current time in Kyiv, e.g. "14:32 GMT+3". Renders nothing on the server. */
-export function KyivTime({ className, suffix }: { className?: string; suffix?: string }) {
+export function KyivTime({
+  className,
+  suffix,
+  offset = true,
+}: {
+  className?: string;
+  suffix?: string;
+  /** false drops the "GMT+3" part, e.g. "14:32" */
+  offset?: boolean;
+}) {
   const time = useSyncExternalStore(subscribe, getSnapshot, () => null);
   if (!time) return null;
   return (
     <span className={className}>
-      {time}
+      {offset ? time : time.split(' ')[0]}
       {suffix}
     </span>
   );

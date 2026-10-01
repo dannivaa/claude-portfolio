@@ -60,7 +60,7 @@ export function ConnectBar() {
       <ul className="connect-meta">
         <li>
           Designing at
-          <span className="connect-meta-value">Homecrowd &amp; Lyxonn</span>
+          <span className="connect-meta-value">Homecrowd</span>
         </li>
         <li className="connect-meta-place">
           Based in

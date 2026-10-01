@@ -17,4 +17,12 @@ export const geistMono = localFont({
   display: 'swap',
 });
 
-export const fontVariables = `${geist.variable} ${geistMono.variable}`;
+// Bricolage Grotesque: the expressive half of the hero headline ("Creative mind,")
+export const bricolage = localFont({
+  src: '../fonts/BricolageGrotesque-Variable.woff2',
+  weight: '200 800',
+  variable: '--ff-bricolage',
+  display: 'swap',
+});
+
+export const fontVariables = `${geist.variable} ${geistMono.variable} ${bricolage.variable}`;

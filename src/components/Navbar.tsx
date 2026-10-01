@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { KyivTime } from '@/components/KyivTime';
+import { RESUME_URL } from '@/lib/site';
 
 const NAV_SECTIONS = [{ id: 'projects', label: 'Work' }];
 
@@ -27,7 +29,10 @@ export default function Navbar() {
           <span className="nav-avatar">
             <Image src="/images/pfp3d.png" alt="" width={3920} height={3920} sizes="40px" loading="eager" />
           </span>
-          Danylo Ivanov
+          <span className="nav-name">
+            Danylo Ivanov
+            <span className="nav-role">Product designer</span>
+          </span>
         </Link>
 
         <nav className="nav-links" aria-label="Sections">
@@ -39,11 +44,24 @@ export default function Navbar() {
           <Link href="/about" aria-current={pathname === '/about' ? 'page' : undefined}>
             About
           </Link>
+          <a href={RESUME_URL} target="_blank" rel="noreferrer noopener">
+            Resume
+            <span className="nav-ext" aria-hidden="true">
+              ↗
+            </span>
+          </a>
         </nav>
 
-        <Link className="btn btn-primary" href="/contact">
-          Let&apos;s talk
-        </Link>
+        <div className="nav-end">
+          {/* Live local time: a small sign there's a person in Kyiv behind the site */}
+          <p className="nav-time">
+            <span className="nav-time-dot" aria-hidden="true" />
+            Kyiv <KyivTime className="nav-time-value" offset={false} />
+          </p>
+          <Link className="btn btn-primary" href="/contact">
+            Let&apos;s talk
+          </Link>
+        </div>
       </div>
     </header>
   );
