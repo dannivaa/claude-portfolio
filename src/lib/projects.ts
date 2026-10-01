@@ -91,15 +91,13 @@ export type NdaWork = {
   surface: 'mobile' | 'web';
 };
 
-export const NDA_WORK: Record<'lyxonn' | 'homecrowd', NdaWork> = {
-  lyxonn: { company: 'Lyxonn', title: 'Payments and KYC flows', year: '2026', surface: 'web' },
+export const NDA_WORK: Record<'homecrowd', NdaWork> = {
   homecrowd: { company: 'Homecrowd', title: 'Card-linked rewards for college sports fans', year: '2026', surface: 'mobile' },
 };
 
-/** Homepage order: newest first, alternating so the two NDA cards sit on a diagonal. */
+/** Homepage order, newest first: two rows of two cards. */
 export const WORK_ORDER = [
   { kind: 'project', slug: 'safey' },
-  { kind: 'nda', key: 'lyxonn' },
   { kind: 'nda', key: 'homecrowd' },
   { kind: 'project', slug: 'gudfood' },
   { kind: 'project', slug: 'skvot' },
