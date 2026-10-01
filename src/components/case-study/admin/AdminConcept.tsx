@@ -944,13 +944,13 @@ const frame = (label: string, screen: ReactNode) => (
 );
 
 export const AdminOrders = () =>
-  frame('Concept: order queue beside one order, with client, payout, incoming transfer and checks on one screen', <OrdersScreen />);
+  frame('Order queue beside one order, with client, payout, incoming transfer and checks on one screen', <OrdersScreen />);
 
 export const AdminConfirm = () =>
-  frame('Concept: payout confirmation that asks for the last four card digits before funds leave', <ConfirmScreen />);
+  frame('Payout confirmation that asks for the last four card digits before funds leave', <ConfirmScreen />);
 
 export const AdminMarketMaker = () =>
-  frame('Concept: market maker with mid price and quoted band, live quotes, parameters, inventory and change history', <MarketMakerScreen />);
+  frame('Market maker with mid price and quoted band, live quotes, parameters, inventory and change history', <MarketMakerScreen />);
 
 export const AdminWallets = () =>
-  frame('Concept: wallets with total custody, allocation by asset and a table of balances, trends and status', <WalletsScreen />);
+  frame('Wallets with total custody, allocation by asset and a table of balances, trends and status', <WalletsScreen />);

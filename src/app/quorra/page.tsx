@@ -46,7 +46,7 @@ export default function QuorraCaseStudy() {
             <CsNote>
               <strong>Quorra is a stand-in name, and every screen here is a concept recreation.</strong> The company and
               the shipped design stay under NDA, so the screens were built from scratch for the portfolio, with invented
-              names, people and values. The facts in the text are real.
+              names, people and values.
             </CsNote>
 
             <CsSection label="Overview" title="An order queue where funds move, and mistakes don’t get a second try.">
@@ -105,16 +105,16 @@ export default function QuorraCaseStudy() {
               />
               <CsVisuals>
                 <CsFigure
-                  tag="Concept · Order processing"
+                  tag="Order processing"
                   title="One order, one screen: client, payout, incoming transfer and checks together"
-                  caption="Concept recreation. The queue stays in view with time-in-queue on every row, each check sits next to the data it checks, and the order moves on from a single bar at the bottom."
+                  caption="The queue stays in view with time-in-queue on every row, each check sits next to the data it checks, and the order moves on from a single bar at the bottom."
                 >
                   <AdminOrders />
                 </CsFigure>
                 <CsFigure
-                  tag="Concept · Confirm payout"
+                  tag="Confirm payout"
                   title="Speed everywhere else, one deliberate pause where funds leave"
-                  caption="Concept recreation. The amount and recipient are restated in full, and typing the card’s last four digits is the one step that can’t be skipped before an irreversible transfer."
+                  caption="The amount and recipient are restated in full, and typing the card’s last four digits is the one step that can’t be skipped before an irreversible transfer."
                 >
                   <AdminConfirm />
                 </CsFigure>
@@ -143,16 +143,16 @@ export default function QuorraCaseStudy() {
               </CsText>
               <CsVisuals>
                 <CsFigure
-                  tag="Concept · Market Maker mode"
+                  tag="Market Maker mode"
                   title="One switch, the parameters behind it, and a way to stop"
-                  caption="Concept recreation. Mid price and the quoted band sit above the parameters that shape them, live quotes run alongside, and every change is signed and logged."
+                  caption="Mid price and the quoted band sit above the parameters that shape them, live quotes run alongside, and every change is signed and logged."
                 >
                   <AdminMarketMaker />
                 </CsFigure>
                 <CsFigure
-                  tag="Concept · Wallets"
+                  tag="Wallets"
                   title="Custody at a glance, and the one wallet that needs action"
-                  caption="Concept recreation. Allocation sits above the table, health and free balance read from each row, and only the wallet below threshold gets an action."
+                  caption="Allocation sits above the table, health and free balance read from each row, and only the wallet below threshold gets an action."
                 >
                   <AdminWallets />
                 </CsFigure>
