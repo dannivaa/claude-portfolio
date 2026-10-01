@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import '@/styles/work-motion.css';
 import Navbar from '@/components/Navbar';
 import { PageTransition } from '@/components/PageTransition';
 import Footer from '@/components/Footer';
 import { WorkCard } from '@/components/home/WorkCard';
 import { NdaCard } from '@/components/home/NdaCard';
+import { HeroStickers } from '@/components/home/HeroStickers';
 import { NDA_WORK, WORK_ORDER, getProject } from '@/lib/projects';
 
 type Job = { company: string; role: string; type: string; period: string; caseStudy?: string };
@@ -38,25 +38,20 @@ export default function Home() {
       <PageTransition>
         <main>
           {/* HERO */}
-          {/* Headline left, intro right on the headline's baseline: the two-column grid the work below follows */}
+          {/* Headline left, intro right on its baseline; the stickers above are everything I make, and they drag */}
           <section className="hero">
-            <div className="wrap wrap--wide hero-grid">
-              <h1 className="hero-title">
-                <span className="hero-phrase">
-                  Creative mind,{' '}
-                  <span className="hero-pill">
-                    <Image src="/images/pfp3d.png" alt="" width={3920} height={3920} sizes="180px" preload />
-                  </span>
-                </span>{' '}
-                <span className="hero-phrase">product brain.</span>
-              </h1>
-              <p className="hero-lede">
-                <strong>Hi, I&rsquo;m Danik.</strong> I design apps people pay for and come back to, right now at
-                Homecrowd and Lyxonn. Off the clock I play drums, write songs and read way too much manga.{' '}
-                <Link href="/about">More about me</Link>
-              </p>
-            </div>
-          </section>
+          <HeroStickers />
+          <div className="wrap wrap--wide hero-grid">
+            <h1 className="hero-title">
+              <span className="hero-phrase">Creative mind,</span> <span className="hero-phrase">product brain.</span>
+            </h1>
+            <p className="hero-lede">
+              <strong>Hi, I&rsquo;m Danik, and I just love making things.</strong> At work that&rsquo;s apps people pay for
+              and come back to, right now at Homecrowd and Lyxonn. Outside of it, it&rsquo;s my own mobile apps and side
+              projects, songs, and a lot of drums.
+            </p>
+          </div>
+        </section>
 
           {/* WORK */}
           <section id="projects" className="section work-section" aria-label="Selected work">
