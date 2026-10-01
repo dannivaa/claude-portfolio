@@ -9,6 +9,7 @@ import { WorkVideo } from '@/components/home/WorkVideo';
 import { MotionScene } from '@/components/home/MotionScene';
 import { GUDFOOD_SCENE } from '@/components/home/motion/gudfood-scene';
 import { SKVOT_SCENE } from '@/components/home/motion/skvot-scene';
+import { LyxonnCard } from '@/components/case-study/lyxonn/LyxonnConcept';
 
 const SCENES = { gudfood: GUDFOOD_SCENE, skvot: SKVOT_SCENE };
 
@@ -103,6 +104,8 @@ export function CsHeroMedia({ project }: { project: Project }) {
     <div className="cs-hero-media">
       {'video' in card ? (
         <WorkVideo {...card.video} label={`${project.name}: ${project.summary}`} />
+      ) : 'concept' in card ? (
+        <LyxonnCard label={`${project.name}: concept recreation of the admin panel's order screen`} stage={project.stage} />
       ) : (
         <MotionScene html={SCENES[card.scene]} label={project.summary} stage={project.stage} />
       )}
@@ -131,6 +134,28 @@ export function CsSection({ label, title, children }: { label: string; title: st
 
 export function CsText({ children }: { children: ReactNode }) {
   return <div className="cs-prose">{children}</div>;
+}
+
+/** A boxed aside under the hero, for what the reader has to know up front (an NDA, a concept). */
+export function CsNote({ children }: { children: ReactNode }) {
+  return <p className="cs-note">{children}</p>;
+}
+
+/**
+ * Something the case study still needs from Danylo, marked as missing rather than
+ * papered over with generic copy. Remove each one once the real answer is in.
+ */
+export function CsGap({ title, items }: { title: string; items: string[] }) {
+  return (
+    <div className="cs-gap" role="note">
+      <p className="cs-gap-title">Gap · {title}</p>
+      <ul>
+        {items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 /** Two to three short points under a section: a title and a line each. */

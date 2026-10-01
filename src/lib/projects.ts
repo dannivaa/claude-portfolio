@@ -1,4 +1,4 @@
-export type ProjectSlug = 'safey' | 'gudfood' | 'skvot';
+export type ProjectSlug = 'safey' | 'lyxonn' | 'gudfood' | 'skvot';
 
 export type Project = {
   slug: ProjectSlug;
@@ -18,8 +18,11 @@ export type Project = {
   stage: [edge: string, center: string];
   /** Colours the case study's research visuals are drawn in: a primary, a secondary for highlights, a soft tint. */
   brand: { primary: string; secondary: string; soft: string };
-  /** What plays on the homepage card: Danylo's exported video, or a CSS motion loop. */
-  card: { video: { webm: string; mp4: string; poster: string } } | { scene: 'gudfood' | 'skvot' };
+  /** What plays on the homepage card: Danylo's exported video, a CSS motion loop, or a coded concept screen. */
+  card:
+    | { video: { webm: string; mp4: string; poster: string } }
+    | { scene: 'gudfood' | 'skvot' }
+    | { concept: 'lyxonn' };
 };
 
 export const PROJECTS: Project[] = [
@@ -47,8 +50,25 @@ export const PROJECTS: Project[] = [
     },
   },
   {
-    slug: 'gudfood',
+    slug: 'lyxonn',
     index: '02',
+    name: 'Lyxonn',
+    category: 'Internal admin panel',
+    year: '2025',
+    status: 'Shipped',
+    title: 'Order processing with zero room for error',
+    summary:
+      'Incremental optimization of the admin panel a crypto exchanger’s finance team uses to process orders and send funds.',
+    thumbnail: '/images/Lyxonn/lyxonn-thumbnail.png',
+    thumbnailAlt: 'Concept recreation of the admin panel: an order queue beside one order ready to send',
+    accent: '#0f7a5c',
+    stage: ['#d9eee4', '#9cd8bf'],
+    brand: { primary: '#0f7a5c', secondary: '#3ccf91', soft: '#e2f3ec' },
+    card: { concept: 'lyxonn' },
+  },
+  {
+    slug: 'gudfood',
+    index: '03',
     name: 'GudFood Vdoma',
     category: 'Food delivery app',
     year: '2024',
@@ -65,7 +85,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: 'skvot',
-    index: '03',
+    index: '04',
     name: 'Skvot',
     category: 'Education app',
     year: '2024',
@@ -95,9 +115,10 @@ export const NDA_WORK: Record<'homecrowd', NdaWork> = {
   homecrowd: { company: 'Homecrowd', title: 'Card-linked rewards for college sports fans', year: '2026', surface: 'mobile' },
 };
 
-/** Homepage order, newest first: two rows of two cards. */
+/** Homepage order, newest first: rows of two, the last card holding the left half. */
 export const WORK_ORDER = [
   { kind: 'project', slug: 'safey' },
+  { kind: 'project', slug: 'lyxonn' },
   { kind: 'nda', key: 'homecrowd' },
   { kind: 'project', slug: 'gudfood' },
   { kind: 'project', slug: 'skvot' },

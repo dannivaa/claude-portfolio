@@ -639,6 +639,51 @@
   color: var(--muted);
 }
 
+/* ── Notes and gaps ── */
+.cs-note {
+  max-width: 720px;
+  margin-top: 32px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--cs-soft) 70%, #fff);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.cs-note strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* Missing facts, deliberately loud so none of them ships unnoticed */
+.cs-gap {
+  max-width: 720px;
+  margin-top: 28px;
+  padding: 16px 20px;
+  border: 1.5px dashed #d9a33a;
+  border-radius: 14px;
+  background: #fff8ea;
+  color: #6b4a0c;
+}
+
+.cs-gap-title {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.cs-gap ul {
+  margin-top: 6px;
+  padding-left: 18px;
+  list-style: disc;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.cs-prose + .cs-gap {
+  margin-top: 24px;
+}
+
 /* ── Safey ── */
 .sf-rpd {
   display: grid;
@@ -1585,6 +1630,12 @@
 }
 
 @media (max-width: 768px) {
+  .cs-note,
+  .cs-gap {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
   .cs-visuals {
     gap: 28px;
     margin-top: 32px;

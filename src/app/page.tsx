@@ -12,7 +12,7 @@ type Job = { company: string; role: string; type: string; period: string; caseSt
 /** Years only: the list shows the path, not who I'm working for right now. */
 const EXPERIENCE: Job[] = [
   { company: 'Homecrowd', role: 'Product Designer', type: 'Full-time', period: '2026' },
-  { company: 'Lyxonn', role: 'Product Designer', type: 'Part-time', period: '2025 – 2026' },
+  { company: 'Lyxonn', role: 'Product Designer', type: 'Part-time', period: '2025 – 2026', caseStudy: '/lyxonn' },
   { company: 'Cake Alliance', role: 'UX/UI Designer', type: 'Full-time', period: '2024 – 2025' },
   { company: 'GudFood Vdoma', role: 'UX/UI Designer', type: 'Freelance', period: '2024', caseStudy: '/gudfood' },
   { company: 'Skvot', role: 'UX/UI Designer', type: 'Freelance', period: '2024', caseStudy: '/skvot' },
