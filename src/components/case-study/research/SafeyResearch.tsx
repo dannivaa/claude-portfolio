@@ -46,47 +46,54 @@ export function SafeyRevenueChart() {
   );
 }
 
-const PAYWALLS = [
-  { app: 'CHAI', when: 'Right after sign-in', plans: ['Monthly', 'Yearly'], tiers: 2, push: 'Yearly discount + 3-day trial, yearly only', lead: true },
-  { app: 'Replika', when: 'Between setup and unlocking the app', plans: ['Yearly'], tiers: 3, push: 'No trial, no monthly option' },
-  { app: 'Grok', when: 'Right after sign-up', plans: ['Monthly', 'Yearly'], tiers: 1, push: 'Free trial on monthly' },
-  { app: 'Character AI', when: 'Only when you go looking', plans: ['Monthly', 'Yearly'], tiers: 1, push: 'Discount on yearly' },
-  { app: 'HiWaifu', when: 'Only when you go looking', plans: ['1 mo', '3 mo', '6 mo', 'Yearly'], tiers: 2, push: 'Trial on the low tier, best discount on yearly' },
-  { app: 'PolyBuzz', when: 'Only when you go looking', plans: ['Monthly', 'Yearly'], tiers: 3, push: 'A monthly offer when you try to close it' },
+/** Where in the journey each competitor first shows its paywall, and the one lever it pulls to sell the upgrade. */
+const MOMENTS = [
+  {
+    when: 'Right after sign-up',
+    apps: [
+      { app: 'CHAI', push: '3-day trial, yearly only', lead: true },
+      { app: 'Grok', push: 'Trial on monthly' },
+    ],
+  },
+  {
+    when: 'Between setup and unlock',
+    apps: [{ app: 'Replika', push: 'Yearly only, no trial' }],
+  },
+  {
+    when: 'Only when you go looking',
+    apps: [
+      { app: 'Character AI', push: 'Yearly discount' },
+      { app: 'HiWaifu', push: '4 plans, trial on the low tier' },
+      { app: 'PolyBuzz', push: 'Offer when you try to close' },
+    ],
+  },
 ];
 
 export function SafeyPaywallMatrix() {
   return (
     <CsFigure
       tag="Paywall teardown"
-      title="When the paywall shows up, and how each app pushes the upgrade"
-      caption="Every top performer steers people to the yearly plan with a trial, a discount or both. Safey keeps the trial on yearly only, the way CHAI does."
+      title="When each app asks you to pay"
+      caption="The best earners ask early and steer people to the yearly plan with a trial or a discount. Safey keeps the trial on yearly only, the way CHAI does."
     >
-      <ul className="sf-walls">
-        {PAYWALLS.map((p) => (
-          <li key={p.app} className={p.lead ? 'sf-wall is-lead' : 'sf-wall'}>
-            <div className="sf-wall-head">
-              <p className="sf-wall-app">{p.app}</p>
-              {p.lead && <span className="sf-wall-badge">Reference</span>}
-            </div>
-            <p className="sf-wall-k">Appears</p>
-            <p className="sf-wall-v">{p.when}</p>
-            <p className="sf-wall-k">Plans</p>
-            <div className="sf-wall-plans">
-              {p.plans.map((plan) => (
-                <span key={plan}>{plan}</span>
+      <ol className="sf-moments">
+        {MOMENTS.map((m, i) => (
+          <li key={m.when} className="sf-moment">
+            <p className="sf-moment-when">
+              <span>{i + 1}</span>
+              {m.when}
+            </p>
+            <ul>
+              {m.apps.map((a) => (
+                <li key={a.app} className={'lead' in a && a.lead ? 'sf-app is-lead' : 'sf-app'}>
+                  <p className="sf-app-name">{a.app}</p>
+                  <p className="sf-app-push">{a.push}</p>
+                </li>
               ))}
-            </div>
-            <p className="sf-wall-k">Tiers</p>
-            <div className="sf-wall-tiers" aria-label={`${p.tiers} ${p.tiers === 1 ? 'tier' : 'tiers'}`}>
-              {[1, 2, 3].map((n) => (
-                <span key={n} className={n <= p.tiers ? 'is-on' : undefined} />
-              ))}
-            </div>
-            <p className="sf-wall-push">{p.push}</p>
+            </ul>
           </li>
         ))}
-      </ul>
+      </ol>
     </CsFigure>
   );
 }

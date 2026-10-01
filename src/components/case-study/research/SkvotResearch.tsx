@@ -87,34 +87,32 @@ export function SkvotCompetitors() {
       title="Where each learning platform’s UX holds up"
       caption="Prjctr is still the main rival, and now it’s clear where it falls short. Skvot’s edge is everything around the course: content, collabs and podcasts."
     >
-      <div className="sk-matrix-scroll">
-        <table className="sk-matrix">
-          <thead>
-            <tr>
-              <th scope="col">
-                <span className="visually-hidden">Feature</span>
+      <table className="sk-matrix">
+        <thead>
+          <tr>
+            <th scope="col">
+              <span className="visually-hidden">Feature</span>
+            </th>
+            {COMPETITORS.map((c) => (
+              <th key={c} scope="col">
+                {c}
               </th>
-              {COMPETITORS.map((c) => (
-                <th key={c} scope="col">
-                  {c}
-                </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {FEATURES.map((f) => (
+            <tr key={f.name}>
+              <th scope="row">{f.name}</th>
+              {f.ratings.map((r, i) => (
+                <td key={COMPETITORS[i]} data-label={COMPETITORS[i]}>
+                  <span className={`sk-cell sk-cell--${r}`}>{RATING_LABEL[r]}</span>
+                </td>
               ))}
             </tr>
-          </thead>
-          <tbody>
-            {FEATURES.map((f) => (
-              <tr key={f.name}>
-                <th scope="row">{f.name}</th>
-                {f.ratings.map((r, i) => (
-                  <td key={COMPETITORS[i]}>
-                    <span className={`sk-cell sk-cell--${r}`}>{RATING_LABEL[r]}</span>
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
       <ul className="sk-legend">
         {(Object.keys(RATING_LABEL) as Rating[]).map((r) => (
           <li key={r}>
