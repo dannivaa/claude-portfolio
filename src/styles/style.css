@@ -181,25 +181,6 @@ main {
   background: var(--panel-hover);
 }
 
-.btn-copy:hover svg {
-  transform: none;
-}
-
-.copy-label {
-  display: grid;
-  text-align: left;
-}
-
-.copy-label > span {
-  grid-area: 1 / 1;
-  transition: opacity 0.12s, transform 0.12s var(--ease);
-}
-
-.copy-label > span[data-hidden] {
-  opacity: 0;
-  transform: translateY(4px);
-}
-
 /* ─── NAVBAR ──────────────────────────────────────────────────────────────── */
 .nav {
   position: sticky;

@@ -47,6 +47,16 @@ export function ConnectBar() {
 
   return (
     <div ref={blockRef} className={`connect-block${ukraineActive ? ' is-ukraine' : ''}`}>
+      <ul className="connect-socials">
+        {SOCIAL_LINKS.map((link) => (
+          <li key={link.label}>
+            <Link001 href={link.href} className="connect-link">
+              {link.label}
+            </Link001>
+          </li>
+        ))}
+      </ul>
+
       <ul className="connect-meta">
         <li>
           Designing at
@@ -70,16 +80,6 @@ export function ConnectBar() {
         <li>
           <KyivTime className="connect-meta-value" suffix=" local" />
         </li>
-      </ul>
-
-      <ul className="connect-socials">
-        {SOCIAL_LINKS.map((link) => (
-          <li key={link.label}>
-            <Link001 href={link.href} className="connect-link">
-              {link.label}
-            </Link001>
-          </li>
-        ))}
       </ul>
 
       {/* Revealed while "Kyiv, Ukraine" is hovered */}

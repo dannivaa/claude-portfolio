@@ -1,62 +1,138 @@
 /* ─── CONTACT PAGE ────────────────────────────────────────────────────────── */
 .contact-hero {
-  padding: 112px 0 56px;
+  padding: 20vh 0 48px;
+}
+
+.contact-hero-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: end;
 }
 
 .contact-title {
   font-family: var(--display);
   font-weight: 500;
-  font-size: 80px;
-  line-height: 1.02;
-  letter-spacing: -0.04em;
+  font-size: 96px;
+  line-height: 1;
+  letter-spacing: -0.045em;
 }
 
 .contact-lede {
-  max-width: 520px;
-  margin-top: 24px;
+  max-width: 560px;
   font-size: 20px;
   line-height: 1.5;
   color: var(--muted);
 }
 
+/* Reasons to write, in the same ruled label/value rows as the homepage hero */
+.contact-reasons {
+  max-width: 560px;
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.contact-reasons > div {
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr);
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.contact-reasons dt {
+  color: var(--muted);
+}
+
+/* Email banner: the one accent surface on the page */
+.contact-mail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  min-height: 280px;
+  padding: 32px;
+  border-radius: 24px;
+  background: var(--accent);
+  color: #fff;
+  overflow: hidden;
+  transition: background-color 0.12s;
+}
+
+.contact-mail:hover {
+  background: var(--accent-hover);
+}
+
+.contact-mail-label {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.contact-mail-address {
+  font-weight: 500;
+  font-size: 72px;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  overflow-wrap: anywhere;
+}
+
+.contact-mail-arrow {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  transition: transform 0.15s var(--ease);
+}
+
+.contact-mail:hover .contact-mail-arrow {
+  transform: translate(4px, -4px);
+}
+
+.contact-mail:focus-visible {
+  outline-color: var(--accent);
+  outline-offset: 4px;
+  border-radius: 24px;
+}
+
 .contact-list {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 24px;
 }
 
-.contact-item {
+.contact-row {
   position: relative;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 16px;
+  min-height: 160px;
+  align-content: end;
+  padding: 24px;
   border-radius: 24px;
   background: var(--panel);
   transition: background-color 0.12s;
 }
 
-.contact-item:hover {
+.contact-row:hover {
   background: var(--panel-hover);
 }
 
-.contact-row {
-  display: grid;
-  grid-template-columns: 48px minmax(0, 1fr) auto;
-  grid-template-rows: auto auto;
-  align-items: center;
-  column-gap: 16px;
-  padding: 28px;
-  min-height: 180px;
-  align-content: end;
-}
-
 .contact-row:focus-visible {
-  outline-offset: -4px;
+  outline-offset: 4px;
   border-radius: 24px;
 }
 
 .contact-icon {
   grid-row: 1 / span 2;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 12px;
 }
 
@@ -72,14 +148,14 @@
 
 .contact-value {
   grid-column: 2;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--muted);
 }
 
 .contact-arrow {
   position: absolute;
-  top: 28px;
-  right: 28px;
+  top: 24px;
+  right: 24px;
   transition: transform 0.15s var(--ease);
 }
 
@@ -87,52 +163,59 @@
   transform: translate(3px, -3px);
 }
 
-/* The copy button sits outside the mailto link, in the card's top-left corner */
-.contact-copy {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  height: 36px;
-  padding: 0 14px;
-  font-size: 14px;
-  border-radius: 12px;
-  background: #fff;
-}
-
-.contact-copy:hover {
-  background: #fff;
-}
-
 .contact-channels {
   padding-bottom: 120px;
 }
 
 .contact-local {
-  margin-top: 24px;
-  font-size: 15px;
-  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px;
+  font-size: 16px;
+}
+
+.contact-local-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
 }
 
 .contact-time {
+  color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
 
 .contact-time::before {
-  content: ' · ';
+  content: '· ';
 }
 
 /* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .contact-hero {
-    padding: 88px 0 48px;
+    padding: 88px 0 40px;
+  }
+
+  .contact-hero-grid {
+    grid-template-columns: 1fr;
   }
 
   .contact-title {
-    font-size: 60px;
+    font-size: 72px;
   }
 
   .contact-lede {
     font-size: 18px;
+  }
+
+  .contact-mail {
+    min-height: 220px;
+  }
+
+  .contact-mail-address {
+    font-size: 54px;
   }
 
   .contact-label {
@@ -146,29 +229,45 @@
   }
 
   .contact-title {
-    font-size: 48px;
+    font-size: 56px;
   }
 
   .contact-lede {
-    margin-top: 16px;
     font-size: 17px;
+  }
+
+  .contact-reasons > div {
+    grid-template-columns: 104px minmax(0, 1fr);
+    font-size: 15px;
+  }
+
+  .contact-mail {
+    min-height: 180px;
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  .contact-mail-address {
+    font-size: 32px;
+  }
+
+  .contact-mail-arrow {
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
   }
 
   .contact-list {
     grid-template-columns: 1fr;
     gap: 12px;
+    margin-top: 12px;
   }
 
   .contact-row {
     min-height: 0;
     padding: 20px;
-    column-gap: 14px;
-  }
-
-  .contact-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
+    border-radius: 20px;
   }
 
   .contact-arrow {
@@ -177,24 +276,17 @@
     margin-top: -11px;
   }
 
-  .contact-label,
-  .contact-value {
-    padding-right: 32px;
-  }
-
-  .contact-label {
-    font-size: 18px;
-  }
-
-  /* Copy button moves below the address instead of floating over the card */
-  .contact-copy {
-    position: static;
-    margin: -8px 0 20px 74px;
+  .contact-channels {
+    padding-bottom: 64px;
   }
 }
 
 @media (max-width: 480px) {
   .contact-title {
-    font-size: 40px;
+    font-size: 44px;
+  }
+
+  .contact-mail-address {
+    font-size: 26px;
   }
 }
