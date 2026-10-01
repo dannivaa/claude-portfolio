@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "@/styles/style.css";
 import ClickSpark from "@/components/ClickSpark";
+import { BootReveal } from "@/components/BootReveal";
 import { fontVariables } from "@/lib/fonts";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
@@ -39,11 +40,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={fontVariables}>
+    <html lang="en" className={fontVariables} data-boot="">
       <body>
         <ClickSpark sparkColor="#121212" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
           {children}
         </ClickSpark>
+        <BootReveal />
         <SpeedInsights />
         <Analytics />
       </body>

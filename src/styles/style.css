@@ -148,12 +148,33 @@ a {
   }
 }
 
+/* First load: the page settles in the way it does after a page change, and the
+   header fades up with it. BootReveal clears data-boot once this has played. */
+html[data-boot] .page-transition {
+  animation: page-in 560ms var(--ease) 120ms both;
+}
+
+html[data-boot] .nav {
+  animation: boot-fade 480ms ease 60ms both;
+}
+
+@keyframes boot-fade {
+  from {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(*),
   ::view-transition-new(*),
   ::view-transition-group(*) {
     animation-duration: 0s !important;
     animation-delay: 0s !important;
+  }
+
+  html[data-boot] .page-transition,
+  html[data-boot] .nav {
+    animation: none;
   }
 }
 
