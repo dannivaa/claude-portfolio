@@ -15,7 +15,7 @@ import {
   CsText,
   CsVisuals,
 } from '@/components/case-study/CaseStudy';
-import { AdminConfirm, AdminMarketMaker, AdminOrders, AdminParts, AdminWallets } from '@/components/case-study/admin/AdminConcept';
+import { AdminConfirm, AdminMarketMaker, AdminOrders, AdminWallets } from '@/components/case-study/admin/AdminConcept';
 import { getProject } from '@/lib/projects';
 
 const project = getProject('quorra');
@@ -125,24 +125,6 @@ export default function QuorraCaseStudy() {
                   caption="Concept recreation. Allocation sits above the table, health and free balance read from each row, and only the wallet below threshold gets an action."
                 >
                   <AdminWallets />
-                </CsFigure>
-              </CsVisuals>
-            </CsSection>
-
-            <CsSection label="Design system" title="One system in Figma, more than one product surface.">
-              <CsText>
-                <p>
-                  The design system behind the work is built and maintained in Figma, and it spans product surfaces
-                  rather than serving the admin panel alone.
-                </p>
-              </CsText>
-              <CsVisuals>
-                <CsFigure
-                  tag="Concept · Components"
-                  title="The pieces the concept screens are built from"
-                  caption="Component specimens from the screens above. The real system stays in Figma under NDA."
-                >
-                  <AdminParts />
                 </CsFigure>
               </CsVisuals>
             </CsSection>

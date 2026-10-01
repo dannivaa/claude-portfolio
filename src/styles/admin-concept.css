@@ -1,6 +1,6 @@
 /* Admin concept screens for the back-office case study. Each screen is authored at a
    real 1152×720 desktop size in px and scaled to fit by ScaledFrame, so nothing inside
-   a frame needs breakpoints. The component board (.ac-parts) flows normally. */
+   a frame needs breakpoints. */
 
 .ac-scaled {
   position: relative;
@@ -26,7 +26,6 @@
 
 /* ── Tokens and app frame ── */
 .ac-app,
-.ac-parts,
 .ac-modal-wrap,
 .scq {
   --ink: #101413;
@@ -56,7 +55,6 @@
 }
 
 .ac-app .num,
-.ac-parts .num,
 .ac-modal-wrap .num,
 .scq .num {
   font-variant-numeric: tabular-nums;
@@ -1733,49 +1731,6 @@
   background: var(--warn);
 }
 
-/* ── Component board ── */
-.ac-parts {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.ac-part {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  min-width: 0;
-  padding: 18px;
-  border-radius: 14px;
-  background: #fff;
-  box-shadow: 0 0 0 1px var(--line);
-}
-
-.ac-part-label {
-  font-weight: 500;
-  font-size: 12px;
-  color: var(--mute);
-}
-
-.ac-part-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-}
-
-.ac-toast {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  height: 38px;
-  padding: 0 14px 0 10px;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 0 0 1px var(--line), 0 10px 24px -8px rgba(16, 24, 20, 0.22);
-  font-weight: 500;
-}
-
 @keyframes ac-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.35; }
@@ -1795,9 +1750,6 @@
 }
 
 @media (max-width: 1024px) {
-  .ac-parts {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1805,9 +1757,6 @@
     border-radius: 8px;
   }
 
-  .ac-part {
-    padding: 14px;
-  }
 
   .ac-cmd--wide {
     width: 100%;
