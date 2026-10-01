@@ -42,7 +42,7 @@ export default function QuorraCaseStudy() {
               project={project}
               facts={[
                 { label: 'Role', value: 'Product Designer' },
-                { label: 'Timeline', value: '2025 – 2026' },
+                { label: 'Timeline', value: '2025' },
                 { label: 'Scope', value: 'Flow Optimization · Screen Consolidation · Market Maker Mode · Wallets · Design System' },
               ]}
             />
