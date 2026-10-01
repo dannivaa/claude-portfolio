@@ -52,43 +52,42 @@ export default function AboutPage() {
       <Navbar />
 
       <PageTransition>
-        {/* The home page grid: the photo holds the left half, the story reads down the right,
-            starting on the same line as the hero intro and the Experience roles */}
+        {/* The home page grid throughout: photo and bio side by side, then each section with its
+            heading in the left half and its content from the halfway line, like a CV */}
         <main className="about">
-          <div className="wrap wrap--wide about-grid">
+          <div className="wrap wrap--wide">
             <h1 className="visually-hidden">About Danylo Ivanov</h1>
 
-            <figure className="about-photo">
-              <Image
-                src="/images/about me.png"
-                alt="Danylo holding a pizza at a restaurant in Kyiv"
-                width={2706}
-                height={2075}
-                sizes="(max-width: 768px) calc(100vw - 32px), 50vw"
-                preload
-              />
-            </figure>
+            <section className="about-intro" aria-label="Bio">
+              <figure className="about-photo">
+                <Image
+                  src="/images/about me.png"
+                  alt="Danylo holding a pizza at a restaurant in Kyiv"
+                  fill
+                  sizes="(max-width: 768px) calc(100vw - 32px), 50vw"
+                  preload
+                />
+              </figure>
 
-            <div className="about-main">
+              <div className="about-bio">
+                <p>
+                  My name is Danylo Ivanov, and I&rsquo;m a product designer in Kyiv, obsessed with craft. I start with
+                  data, what&rsquo;s actually happening, before I move. Then I talk to users, learn what they need and
+                  build something that matters.
+                </p>
+                <p>
+                  Monotone tasks kill my drive, so I hand the manual, repetitive parts to AI and keep my time for the
+                  creative work. The same goes for the products I design: AI where it earns its place, and a lot of
+                  iterations until a flow feels obvious. You can see how that plays out in my <Link href="/">work</Link>.
+                </p>
+                <p>
+                  Outside of design I play drums and write my own songs. I build my own apps, read constantly, books
+                  and manga, cook and watch anime. It&rsquo;s how I stay sane.
+                </p>
+              </div>
+            </section>
 
-            <div className="about-bio">
-              <p>
-                My name is Danylo Ivanov, and I&rsquo;m a product designer in Kyiv, obsessed with craft. I start with
-                data, what&rsquo;s actually happening, before I move. Then I talk to users, learn what they need and
-                build something that matters.
-              </p>
-              <p>
-                Monotone tasks kill my drive, so I hand the manual, repetitive parts to AI and keep my time for the
-                creative work. The same goes for the products I design: AI where it earns its place, and a lot of
-                iterations until a flow feels obvious. You can see how that plays out in my <Link href="/">work</Link>.
-              </p>
-              <p>
-                Outside of design I play drums and write my own songs. I build my own apps, read constantly, books and
-                manga, cook and watch anime. It&rsquo;s how I stay sane.
-              </p>
-            </div>
-
-            <section className="about-section" aria-labelledby="about-experience">
+            <section className="about-row" aria-labelledby="about-experience">
               <h2 id="about-experience" className="about-heading">
                 Experience
               </h2>
@@ -105,30 +104,28 @@ export default function AboutPage() {
               </ol>
             </section>
 
-            <section className="about-section" aria-labelledby="about-music">
+            <section className="about-row" aria-labelledby="about-music">
               <h2 id="about-music" className="about-heading">
                 Music
               </h2>
-              <p className="about-lede">
-                Music keeps me going. This is the playlist I build things to.
-              </p>
-              <iframe
-                className="about-playlist"
-                title="Danylo’s go-to playlist for building things on Spotify"
-                src="https://open.spotify.com/embed/playlist/2l4YUpAEfKwN8IJsKLgYOY?utm_source=generator"
-                width="100%"
-                height="480"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-              />
+              <div className="about-row-body">
+                <p className="about-lede">Music keeps me going. This is the playlist I build things to.</p>
+                <iframe
+                  className="about-playlist"
+                  title="Danylo’s go-to playlist for building things on Spotify"
+                  src="https://open.spotify.com/embed/playlist/2l4YUpAEfKwN8IJsKLgYOY?utm_source=generator"
+                  width="100%"
+                  height="480"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                />
+                <p className="about-colophon">
+                  Built with love.
+                  <br />
+                  Last updated October 2026
+                </p>
+              </div>
             </section>
-
-            <p className="about-colophon">
-              Built with love.
-              <br />
-              Last updated October 2026
-            </p>
-            </div>
           </div>
         </main>
 

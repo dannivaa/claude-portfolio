@@ -539,31 +539,40 @@ html[data-boot] .nav {
   padding: 72px 0 0;
 }
 
-/* The home hero's two equal columns: photo left, the story from the halfway line */
-.about-grid {
+/* The home hero's two equal columns. The photo gives up 64px on its right so there's room
+   between it and the text, while the text still starts on the halfway line. */
+.about-intro,
+.about-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
-  align-items: start;
 }
 
-.about-main {
-  max-width: 600px;
-}
-
+/* The photo stretches to the bio's height and crops to fit */
 .about-photo {
-  position: sticky;
-  top: calc(var(--nav-h) + 32px);
-  aspect-ratio: 2706 / 2075;
+  position: relative;
+  min-height: 320px;
+  margin-right: 64px;
   border-radius: 20px;
   overflow: hidden;
   background: var(--panel);
 }
 
+.about-bio,
+.about-list,
+.about-row-body {
+  max-width: 600px;
+}
+
+/* Section rows: heading in the left half, content from the halfway line */
+.about-row {
+  align-items: start;
+  margin-top: 120px;
+}
+
 .about-photo img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
+  object-position: 50% 40%;
 }
 
 .about-bio {
@@ -587,10 +596,6 @@ html[data-boot] .nav {
   text-decoration-color: currentColor;
 }
 
-.about-section {
-  margin-top: 88px;
-}
-
 .about-heading {
   font-weight: 500;
   font-size: 24px;
@@ -599,7 +604,6 @@ html[data-boot] .nav {
 }
 
 .about-lede {
-  margin-top: 12px;
   font-size: 19px;
   line-height: 1.6;
   color: var(--ink-2);
@@ -609,7 +613,6 @@ html[data-boot] .nav {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  margin-top: 28px;
 }
 
 .about-item-title {
@@ -642,7 +645,7 @@ html[data-boot] .nav {
 }
 
 .about-colophon {
-  margin-top: 88px;
+  margin-top: 64px;
   font-size: 15px;
   line-height: 1.7;
   color: var(--muted);
@@ -851,6 +854,10 @@ html[data-boot] .nav {
 
 /* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
+  .about-photo {
+    margin-right: 32px;
+  }
+
   .nav-role {
     display: none;
   }
@@ -896,22 +903,27 @@ html[data-boot] .nav {
     padding-top: 32px;
   }
 
-  .about-grid {
+  .about-intro,
+  .about-row {
     grid-template-columns: 1fr;
     gap: 28px;
   }
 
+  .about-row {
+    gap: 20px;
+    margin-top: 64px;
+  }
+
+  /* Stacked, the photo has no text beside it to match, so it takes its own shape */
   .about-photo {
-    position: static;
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+    margin-right: 0;
     border-radius: 16px;
   }
 
   .about-bio {
     font-size: 17px;
-  }
-
-  .about-section {
-    margin-top: 64px;
   }
 
   .about-heading {
