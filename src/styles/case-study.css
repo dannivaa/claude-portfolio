@@ -186,7 +186,7 @@
   color: var(--ink);
 }
 
-/* Track on the left edge with a blue bar that slides to the current section */
+/* Track on the left edge with an accent bar that slides to the current section */
 .cs-toc::before {
   content: '';
   position: absolute;
@@ -205,7 +205,7 @@
   width: 2px;
   height: var(--bar-h);
   border-radius: 2px;
-  background: var(--blue);
+  background: var(--accent);
   transform: translateY(var(--bar-top));
   transition: transform 0.45s var(--ease), height 0.45s var(--ease);
 }

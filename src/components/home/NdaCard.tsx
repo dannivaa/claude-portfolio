@@ -17,7 +17,7 @@ const lockIcon = (
 export function NdaCard({ work }: { work: NdaWork }) {
   return (
     <article className="work-card work-card--nda">
-      <Cursor name="Under NDA" customSVG={lockIcon} cursorColor="var(--blue)" style={{ borderRadius: 16 }}>
+      <Cursor name="Under NDA" customSVG={lockIcon} cursorColor="var(--accent)" style={{ borderRadius: 16 }}>
         <div className="work-stage nda-stage" role="img" aria-label={`${work.company}: work under NDA`}>
           <div className={`nda-surface nda-surface--${work.surface}`} aria-hidden="true">
             <span className="nda-bar nda-bar--head" />

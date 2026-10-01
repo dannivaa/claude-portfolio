@@ -7,7 +7,7 @@ export type TocItem = { id: string; label: string };
 
 /**
  * Sticky "on this page" list beside the case study article. The section crossing the
- * upper third of the viewport is the active one; a blue bar slides to its link.
+ * upper third of the viewport is the active one; an accent bar slides to its link.
  */
 export function CsToc({ items }: { items: TocItem[] }) {
   const lenis = useLenis();
