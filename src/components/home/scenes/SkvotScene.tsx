@@ -11,11 +11,11 @@ const T = timeline('sk', 9.6);
 const RESET = 8.12;
 const back = (pose: Pose): Key => [RESET + 0.01, pose];
 
-const road = T.layer({ s: 1.5, y: 40 }, [
+const road = T.layer({ s: 1.5, y: -14 }, [
   [0.9, {}],
   [1.45, { s: 1.62 }, EASE.camera],
   [1.75, { o: 0 }, EASE.fade],
-  [RESET, { s: 1.35, y: 40 }],
+  [RESET, { s: 1.35, y: -14 }],
   [8.95, { o: 1, s: 1.5 }, EASE.rise],
 ]);
 const rowPress = T.layer({}, [[1.0, {}], [1.18, { s: 0.97 }, EASE.press], [1.4, { s: 1 }, EASE.press]]);

@@ -14,7 +14,7 @@ const back = (pose: Pose): Key => [RESET + 0.01, pose];
 
 const cam = T.layer({ s: 1.75 }, [
   [1.6, {}],
-  [2.4, { s: 1, y: -214 }, EASE.camera],
+  [2.4, { s: 1, y: -210 }, EASE.camera],
   [7.7, {}],
   [8.05, { o: 0 }, EASE.fade],
   [RESET, { s: 1.6, y: 0 }],
@@ -26,14 +26,14 @@ const lastDot = T.layer({ o: 0, s: 0.4 }, [[1.0, {}], [1.3, { o: 1, s: 1 }, EASE
 const outOld = T.layer({}, [[1.12, {}], [1.32, { o: 0, y: -8 }, EASE.fade], [RESET, {}], back({ o: 1, y: 0 })]);
 const inNew = T.layer({ o: 0, y: 8 }, [[1.2, {}], [1.42, { o: 1, y: 0 }, EASE.fade], [RESET, {}], back({ o: 0, y: 8 })]);
 
-const sheet = T.layer({ o: 0, s: 1.16, y: 120 }, [
+const sheet = T.layer({ o: 0, s: 1.16, y: 90 }, [
   [2.05, {}],
-  [2.85, { o: 1, y: 50 }, EASE.rise],
+  [2.85, { o: 1, y: 21 }, EASE.rise],
   [5.7, {}],
-  [6.3, { s: 1.6, y: -120 }, EASE.zoom],
+  [6.3, { s: 1.6, y: -149 }, EASE.zoom],
   [7.7, {}],
   [8.05, { o: 0 }, EASE.fade],
-  back({ o: 0, s: 1.16, y: 120 }),
+  back({ o: 0, s: 1.16, y: 90 }),
 ]);
 
 const rise = (at: number, from = 32) =>
