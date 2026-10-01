@@ -11,15 +11,16 @@ const T = timeline('sk', 9.6);
 const RESET = 8.12;
 const back = (pose: Pose): Key => [RESET + 0.01, pose];
 
+// The tap lands first; only then does the camera move and the roadmap clear
 const road = T.layer({ s: 1.5, y: -14 }, [
-  [0.9, {}],
-  [1.45, { s: 1.62 }, EASE.camera],
-  [1.75, { o: 0 }, EASE.fade],
+  [1.12, {}],
+  [1.55, { s: 1.62 }, EASE.camera],
+  [1.8, { o: 0 }, EASE.fade],
   [RESET, { s: 1.35, y: -14 }],
   [8.95, { o: 1, s: 1.5 }, EASE.rise],
 ]);
-const rowPress = T.layer({}, [[1.0, {}], [1.18, { s: 0.97 }, EASE.press], [1.4, { s: 1 }, EASE.press]]);
-const rowHint = T.layer({ o: 0 }, [[1.0, {}], [1.15, { o: 1 }, EASE.fade], [1.6, {}], [1.75, { o: 0 }, EASE.fade]]);
+const rowPress = T.layer({}, [[0.7, {}], [0.87, { s: 0.97 }, EASE.press], [1.08, { s: 1 }, EASE.press]]);
+const rowHint = T.layer({ o: 0 }, [[0.7, {}], [0.85, { o: 1 }, EASE.fade], [1.6, {}], [1.8, { o: 0 }, EASE.fade]]);
 
 const task = T.layer({ o: 0, s: 1.3, y: 60 }, [
   [1.6, {}],
@@ -36,6 +37,9 @@ const head = rise(1.75, 24);
 const titleIn = rise(1.9);
 const segIn = rise(2.05);
 const bodyIn = rise(2.2);
+// The switch swaps what's below it: the lecture first, the homework once it flips
+const lectureBody = T.layer({}, [[3.28, {}], [3.48, { o: 0, y: -8 }, EASE.fade], [RESET, {}], back({ o: 1, y: 0 })]);
+const homeworkBody = T.layer({ o: 0, y: 8 }, [[3.36, {}], [3.62, { o: 1, y: 0 }, EASE.rise], [RESET, {}], back({ o: 0, y: 8 })]);
 const buttonIn = rise(2.35, 24);
 
 // The switch slides from Lecture to Homework, like the Monthly / Yearly toggle on Safey
@@ -113,14 +117,27 @@ export function SkvotScene({ project, label }: { project: Project; label: string
           </div>
         </div>
         <div className="scs-body" style={bodyIn}>
-          <p>
-            <b>Hi!</b> Your next homework: prepare questions for a briefing with a real client.
-          </p>
-          <p>
-            <b>To do this:</b>
-            <br />— Read the brief
-            <br />— Prepare questions for the client meeting
-          </p>
+          <div className="scs-body-pane" style={lectureBody}>
+            <p>
+              <b>Lecture · 19:30, 04.04</b> How to run a first briefing with a real client: goals, questions and
+              expectations.
+            </p>
+            <p>
+              <b>Attached:</b>
+              <br />— Recording, 1 h 24 min
+              <br />— Slides and the client brief
+            </p>
+          </div>
+          <div className="scs-body-pane" style={homeworkBody}>
+            <p>
+              <b>Hi!</b> Your next homework: prepare questions for a briefing with a real client.
+            </p>
+            <p>
+              <b>To do this:</b>
+              <br />— Read the brief
+              <br />— Prepare questions for the client meeting
+            </p>
+          </div>
         </div>
         <div style={buttonIn}>
           <span className="scs-btn" style={press}>
