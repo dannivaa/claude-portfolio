@@ -5,6 +5,17 @@ import Footer from '@/components/Footer';
 import { WorkCard } from '@/components/home/WorkCard';
 import { PROJECTS } from '@/lib/projects';
 
+type Job = { company: string; role: string; type: string; period: string };
+
+/** Years only: the list shows the path, not who I'm working for right now. */
+const EXPERIENCE: Job[] = [
+  { company: 'Homecrowd', role: 'Product Designer', type: 'Full-time', period: '2026' },
+  { company: 'Lyxonn', role: 'Product Designer', type: 'Part-time', period: '2025 – 2026' },
+  { company: 'Cake Alliance', role: 'UX/UI Designer', type: 'Full-time', period: '2024 – 2025' },
+  { company: 'GudFood Vdoma', role: 'UX/UI Designer', type: 'Freelance', period: '2024' },
+  { company: 'Skvot', role: 'UX/UI Designer', type: 'Freelance', period: '2024' },
+];
+
 export default function Home() {
   return (
     <>
@@ -37,6 +48,26 @@ export default function Home() {
                   <WorkCard key={project.slug} project={project} />
                 ))}
               </div>
+            </div>
+          </section>
+
+          {/* EXPERIENCE: one ruled line per role, the way the work grid captions read */}
+          <section id="experience" className="section" aria-labelledby="experience-title">
+            <div className="wrap wrap--wide">
+              <h2 id="experience-title" className="section-title">
+                Experience
+              </h2>
+              <ol className="xp-list">
+                {EXPERIENCE.map((job) => (
+                  <li key={job.company} className="xp-row">
+                    <p className="xp-when">{job.period}</p>
+                    <h3 className="xp-org">{job.company}</h3>
+                    <p className="xp-role">
+                      {job.role} <span>· {job.type}</span>
+                    </p>
+                  </li>
+                ))}
+              </ol>
             </div>
           </section>
         </main>

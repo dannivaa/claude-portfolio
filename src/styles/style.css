@@ -503,6 +503,47 @@ html[data-boot] .nav {
   transition: transform 0.16s cubic-bezier(0.34, 1.4, 0.64, 1);
 }
 
+/* ─── EXPERIENCE ──────────────────────────────────────────────────────────── */
+.xp-list {
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+
+
+/* Period · company | role · link: the role starts on the work grid's right column (50% + half the gutter) */
+.xp-row {
+  display: grid;
+  grid-template-columns: 200px calc(50% - 236px) minmax(0, 1fr);
+  align-items: baseline;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.xp-when {
+  font-size: 16px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+
+.xp-org {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.xp-role {
+  font-size: 17px;
+  color: var(--ink-2);
+}
+
+.xp-role span {
+  color: var(--muted);
+}
+
 /* ─── ABOUT PAGE ──────────────────────────────────────────────────────────── */
 /* One narrow reading column: photo, bio, then ruled lists the way a CV reads */
 .about {
@@ -570,7 +611,7 @@ html[data-boot] .nav {
 .about-list {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 32px;
   margin-top: 28px;
 }
 
@@ -581,8 +622,15 @@ html[data-boot] .nav {
   color: var(--ink);
 }
 
+.about-item-summary {
+  margin-top: 6px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
 .about-item-meta {
-  margin-top: 4px;
+  margin-top: 6px;
   font-size: 16px;
   color: var(--muted);
   font-variant-numeric: tabular-nums;
@@ -996,6 +1044,7 @@ html[data-boot] .nav {
     font-size: 17px;
   }
 
+  .about-item-summary,
   .about-item-meta {
     font-size: 15px;
   }
@@ -1121,6 +1170,31 @@ html[data-boot] .nav {
   .nf-copy {
     font-size: 17px;
   }
+  .xp-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+    padding: 18px 0;
+  }
+
+  .xp-when {
+    grid-column: 1 / -1;
+    font-size: 15px;
+  }
+
+  .xp-org {
+    grid-row: 2;
+    font-size: 19px;
+  }
+
+  .xp-role {
+    font-size: 16px;
+  }
+
+  .xp-role {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
 }
 
 @media (max-width: 480px) {

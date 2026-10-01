@@ -12,15 +12,39 @@ export const metadata: Metadata = {
     'Danylo Ivanov, product designer in Kyiv: how he works, where he has worked, and the drums, songs, books and manga outside of design.',
 };
 
-type Job = { title: string; type: string; period: string };
+type Job = { title: string; type: string; period: string; summary?: string };
 
 /** Years only: the list shows the path, not who I'm working for right now. */
 const EXPERIENCE: Job[] = [
   { title: 'Product Designer at Homecrowd', type: 'Full-time', period: '2026' },
-  { title: 'Product Designer at Lyxonn', type: 'Part-time', period: '2025 — 2026' },
-  { title: 'UX/UI Designer at Cake Alliance', type: 'Full-time', period: '2024 — 2025' },
-  { title: 'UX/UI Designer at GudFood Vdoma', type: 'Freelance', period: '2024' },
-  { title: 'UX/UI Designer at Skvot', type: 'Freelance', period: '2024' },
+  {
+    title: 'Product Designer at Lyxonn',
+    type: 'Part-time',
+    period: '2025 — 2026',
+    summary:
+      'Designed payments and KYC flows for mobile and web, with conversion work grounded in UX research, usability testing and validated hypotheses. Built and maintained the design system in Figma.',
+  },
+  {
+    title: 'UX/UI Designer at Cake Alliance',
+    type: 'Full-time',
+    period: '2024 — 2025',
+    summary:
+      'Designed mobile-first and responsive interfaces, backed by user research, competitive analysis and usability testing. Worked on the design system and handed off to developers in close collaboration with product.',
+  },
+  {
+    title: 'UX/UI Designer at GudFood Vdoma',
+    type: 'Freelance',
+    period: '2024',
+    summary:
+      'Interviewed stakeholders and customers to find out why people didn’t order twice, then designed a feedback system and redesigned the core screens of a frozen-food delivery app shipping to 26 cities.',
+  },
+  {
+    title: 'UX/UI Designer at Skvot',
+    type: 'Freelance',
+    period: '2024',
+    summary:
+      'Took the first mobile app for Ukraine’s largest pop-culture school from competitor research to UI, cutting homework submission after research showed students and lecturers wouldn’t use it on a phone.',
+  },
 ];
 
 export default function AboutPage() {
@@ -70,6 +94,7 @@ export default function AboutPage() {
                 {EXPERIENCE.map((job) => (
                   <li key={job.title}>
                     <p className="about-item-title">{job.title}</p>
+                    {job.summary && <p className="about-item-summary">{job.summary}</p>}
                     <p className="about-item-meta">
                       {job.type} <span aria-hidden="true">·</span> {job.period}
                     </p>
