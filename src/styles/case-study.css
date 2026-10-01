@@ -1467,9 +1467,9 @@
   line-height: 1.25;
 }
 
-.sk-cell--good { background: #7be495; color: #08230f; }
-.sk-cell--minor { background: #ffe070; color: #2b2000; }
-.sk-cell--poor { background: #ff8a7d; color: #2c0702; }
+.sk-cell--good { background: #000; color: #fff; }
+.sk-cell--minor { background: #e6e6e6; color: #000; }
+.sk-cell--poor { background: #ff2424; color: #fff; }
 .sk-cell--none { background: #fff; color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); }
 
 .sk-legend {
@@ -1582,7 +1582,7 @@
 .sk-ia-block--course {
   min-height: 56px;
   background: var(--cs-secondary);
-  color: #1b2400;
+  color: #fff;
 }
 
 .sk-ia-block--content {

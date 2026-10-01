@@ -83,7 +83,7 @@ export const PROJECTS: Project[] = [
     thumbnailAlt: 'Skvot course card, culture article and course progress screens',
     accent: '#141412',
     stage: ['#ececec', '#b9b9ba'],
-    brand: { primary: '#8a1cdc', secondary: '#d9ef0a', soft: '#f1e6fc' },
+    brand: { primary: '#000000', secondary: '#ff2424', soft: '#f2f2f2' },
   },
 ];
 

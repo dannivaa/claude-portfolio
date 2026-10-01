@@ -159,7 +159,6 @@ export function SafeyScene({ project, label }: { project: Project; label: string
         </div>
 
         <div className="sfy-list" style={list}>
-          <img className="sfy-list-glow" src={`${A}/list-glow.svg`} alt="" />
           <div className="sfy-list-panel">
             <div className="sfy-list-head">
               <span>Free</span>

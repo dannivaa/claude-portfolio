@@ -655,7 +655,8 @@
   inset: 0;
 }
 
-.scq-bar {
+/* Beats .ac-sendbar's margin-top: auto from the admin styles, which load after these */
+.scq .scq-bar {
   margin-top: 28px;
 }
 
@@ -1032,14 +1033,6 @@
   height: 367px;
   border-radius: 20px;
   overflow: hidden;
-}
-
-.sfy-list-glow {
-  position: absolute;
-  left: -212.8px;
-  top: -196.8px;
-  width: 775.6px;
-  height: 760.6px;
 }
 
 .sfy-list-panel {

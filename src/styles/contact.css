@@ -65,7 +65,7 @@
   content: '· ';
 }
 
-/* Channels: five tiles in one row under the hero, the call first and filled navy */
+/* Channels: five equal tiles in one row under the hero */
 .contact-channels {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -89,32 +89,11 @@
   background: var(--panel-hover);
 }
 
-.contact-channel--call {
-  background: var(--accent);
-}
-
-.contact-channel--call:hover {
-  background: var(--accent-hover);
-}
-
-.contact-channel--call .contact-label {
-  color: #fff;
-}
-
-.contact-channel--call .contact-value {
-  color: rgba(255, 255, 255, 0.64);
-}
-
-.contact-channel--call .contact-arrow,
-.contact-channel--call:hover .contact-arrow {
-  color: #fff;
-}
-
 .contact-icon--call {
   display: grid;
   place-items: center;
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
+  background: #fff;
+  color: var(--accent);
 }
 
 .contact-icon {

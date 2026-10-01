@@ -46,11 +46,11 @@ export default function ContactPage() {
             </div>
           </section>
 
-          {/* Every way to reach me in one row, the call first: all of it visible without scrolling */}
+          {/* Every way to reach me in one row, all of it visible without scrolling */}
           <section className="wrap wrap--wide" aria-label="Ways to get in touch">
             <ul className="contact-channels">
               <li>
-                <CalBookingLink calLink={CAL_LINK} href={CAL_URL} className="contact-channel contact-channel--call">
+                <CalBookingLink calLink={CAL_LINK} href={CAL_URL} className="contact-channel">
                   <span className="contact-icon contact-icon--call" aria-hidden="true">
                     <CalendarDays size={20} strokeWidth={1.75} />
                   </span>

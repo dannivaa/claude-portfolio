@@ -51,18 +51,18 @@ const timerOut = T.layer({}, [[6.8, {}], [7.0, { o: 0, y: -8 }, EASE.fade], [RES
 const timerIn = T.layer({ o: 0, y: 8 }, [[6.9, {}], [7.12, { o: 1, y: 0 }, EASE.fade], [RESET, {}], back({ o: 0, y: 8 })]);
 
 const ROWS = [
-  { title: '66/ Підготовка до брифінгу з реальним клієнтом', kind: 'Дедлайн', time: '08:13:23', deadline: true },
-  { title: '67/ Онлайн-зустріч з клієнтом', kind: 'Лекція', time: '19:30 · 04.04' },
-  { title: '68/ Фідбек-сесія', kind: 'Лекція', time: '19:30 · 09.04' },
+  { title: '66/ Prepare for a briefing with a real client', kind: 'Deadline', time: '08:13:23', deadline: true },
+  { title: '67/ Online meeting with the client', kind: 'Lecture', time: '19:30 · 04.04' },
+  { title: '68/ Feedback session', kind: 'Lecture', time: '19:30 · 09.04' },
 ];
 
 export function SkvotScene({ project, label }: { project: Project; label: string }) {
   return (
     <CardScene label={label} stage={project.stage} css={T.css()} className="scs">
       <div className="scs-panel scs-road" style={road}>
-        <p className="scs-h">Роадмап тижня</p>
+        <p className="scs-h">This week</p>
         <div className="scs-chips">
-          <span className="is-on">Всі</span>
+          <span className="is-on">All</span>
           <span>UX/UI Designer</span>
           <span>System Game Designer</span>
         </div>
@@ -93,41 +93,41 @@ export function SkvotScene({ project, label }: { project: Project; label: string
           </span>
         </div>
         <p className="scs-task-title" style={titleIn}>
-          66/ Підготовка до брифінгу з реальним клієнтом
+          66/ Prepare for a briefing with a real client
         </p>
         <div style={segIn}>
           <div className="scs-seg" style={segPress}>
             <span className="scs-seg-thumb" style={thumb} />
             <span className="scs-seg-a">
-              <span className="scs-seg-dim">Лекція</span>
+              <span className="scs-seg-dim">Lecture</span>
               <span className="scs-seg-strong" style={lectureText}>
-                Лекція
+                Lecture
               </span>
             </span>
             <span className="scs-seg-b">
-              <span className="scs-seg-dim">Домашка</span>
+              <span className="scs-seg-dim">Homework</span>
               <span className="scs-seg-strong" style={homeworkText}>
-                Домашка
+                Homework
               </span>
             </span>
           </div>
         </div>
         <div className="scs-body" style={bodyIn}>
           <p>
-            <b>Привіт!</b> Твоє наступне домашнє завдання: підготувати питання для брифінгу з реальним клієнтом.
+            <b>Hi!</b> Your next homework: prepare questions for a briefing with a real client.
           </p>
           <p>
-            <b>Для цього потрібно:</b>
-            <br />— Ознайомитись з брифом
-            <br />— Підготувати запитання до зустрічі з клієнтом
+            <b>To do this:</b>
+            <br />— Read the brief
+            <br />— Prepare questions for the client meeting
           </p>
         </div>
         <div style={buttonIn}>
           <span className="scs-btn" style={press}>
-            <span style={btnOut}>Продовжити дедлайн</span>
+            <span style={btnOut}>Extend deadline</span>
             <span className="scs-btn-done" style={btnIn}>
               <Check size={16} strokeWidth={3} />
-              Дедлайн +24 години
+              Deadline +24 hours
             </span>
           </span>
         </div>

@@ -13,14 +13,15 @@ const T = timeline('qr', 9.6);
 const RESET = 8.12;
 const back = (pose: Pose): Key => [RESET + 0.01, pose];
 
+// The tap lands first; only then does the camera move and the queue clear
 const queue = T.layer({ s: 1.85, y: 20 }, [
-  [0.95, {}],
-  [1.45, { s: 1.98 }, EASE.camera],
-  [1.7, { o: 0 }, EASE.fade],
+  [1.12, {}],
+  [1.52, { s: 1.98 }, EASE.camera],
+  [1.75, { o: 0 }, EASE.fade],
   [RESET, { s: 1.7, y: 20 }],
   [8.95, { o: 1, s: 1.85 }, EASE.rise],
 ]);
-const rowPress = T.layer({}, [[1.0, {}], [1.17, { s: 0.97 }, EASE.press], [1.38, { s: 1 }, EASE.press]]);
+const rowPress = T.layer({}, [[0.7, {}], [0.87, { s: 0.97 }, EASE.press], [1.08, { s: 1 }, EASE.press]]);
 
 const order = T.layer({ o: 0, s: 1.32, y: 90 }, [
   [1.6, {}],
