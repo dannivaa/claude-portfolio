@@ -14,6 +14,7 @@
 
   --text: var(--ff-geist), 'Helvetica Neue', Arial, sans-serif;
   --display: var(--text);
+  --mono: var(--ff-geist-mono), ui-monospace, Menlo, monospace;
 
   --container: 1200px;
   --gutter: 32px;
@@ -97,26 +98,61 @@ a {
   padding: var(--section-y) 0 0;
 }
 
-/* Page change: each page settles in with a short fade-up as it mounts, so
-   navigating between pages never feels like a hard cut */
+/* Page change: a View Transition crossfade (see PageTransition). The old page
+   lifts away and blurs out; the new one settles in from below a beat later.
+   The nav is pinned so only the content moves. */
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+
+::view-transition-old(site-header) {
+  display: none;
+}
+
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+::view-transition-old(.page-exit) {
+  animation: page-out 260ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+::view-transition-new(.page-enter) {
+  animation: page-in 560ms var(--ease) 180ms both;
+}
+
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-12px);
+    filter: blur(3px);
+  }
+}
+
 @keyframes page-in {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(18px);
+    filter: blur(4px);
   }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-main {
-  animation: page-in 0.35s var(--ease) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  main {
-    animation: none;
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
   }
 }
 
@@ -292,33 +328,6 @@ main {
   font-size: 20px;
   line-height: 1.5;
   color: var(--muted);
-}
-
-/* Right column: intro, then a few facts in label/value rows */
-.hero-facts {
-  max-width: 560px;
-  margin-top: 28px;
-  border-top: 1px solid var(--line);
-}
-
-.hero-facts > div {
-  display: grid;
-  grid-template-columns: 112px minmax(0, 1fr);
-  gap: 16px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 16px;
-  line-height: 1.45;
-}
-
-.hero-facts dt {
-  color: var(--muted);
-}
-
-.hero-time {
-  margin-left: 6px;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
 }
 
 /* Each half of the headline stays on one line (the photo rides with "Creative mind,") */
@@ -597,15 +606,6 @@ main {
   font-size: 17px;
 }
 
-.xp-group-note {
-  font-weight: 400;
-  color: var(--muted);
-}
-
-.xp-group-note::before {
-  content: '·';
-  margin-right: 10px;
-}
 
 /* Period · company | role · link: the role starts on the work grid's right column (50% + half the gutter) */
 .xp-row {
@@ -902,13 +902,13 @@ a.xp-case:hover {
   color: var(--ink);
 }
 
-/* Skiper40 sweep sits just under the descenders at this size */
+/* No underline sweep at this size; the arrow alone marks the hover, with room to breathe */
 .footer-email::before {
-  top: 1.12em !important;
-  height: 2px !important;
+  display: none;
 }
 
 .footer-email svg {
+  margin-left: 0.4em;
   color: var(--accent);
 }
 
@@ -1277,10 +1277,6 @@ a.xp-case:hover {
     font-size: 17px;
   }
 
-  .hero-facts > div {
-    grid-template-columns: 96px minmax(0, 1fr);
-    font-size: 15px;
-  }
 
   .xp-role {
     grid-column: 1;

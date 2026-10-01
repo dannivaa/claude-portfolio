@@ -16,6 +16,8 @@ export type Project = {
   accent: string;
   /** Two stops of the soft gradient behind the project's screens, sampled from its thumbnail. */
   stage: [edge: string, center: string];
+  /** Colours the case study's research visuals are drawn in: a primary, a secondary for highlights, a soft tint. */
+  brand: { primary: string; secondary: string; soft: string };
   /** What plays on the homepage card: Danylo's exported video, or a CSS motion loop. */
   card: { video: { webm: string; mp4: string; poster: string } } | { scene: 'gudfood' | 'skvot' };
 };
@@ -35,6 +37,7 @@ export const PROJECTS: Project[] = [
     thumbnailAlt: 'Safey companion profile, character cards and a monthly versus yearly paywall',
     accent: '#1f74b8',
     stage: ['#8fd0e6', '#fdb682'],
+    brand: { primary: '#1f74b8', secondary: '#f2873f', soft: '#e4f1fa' },
     card: {
       video: {
         webm: '/videos/safey-card.webm',
@@ -57,6 +60,7 @@ export const PROJECTS: Project[] = [
     thumbnailAlt: 'GudFood order card with rate and reorder actions, cuisine categories and dish ratings',
     accent: '#c9530b',
     stage: ['#ffe9ae', '#f6a355'],
+    brand: { primary: '#c9530b', secondary: '#f6a355', soft: '#fdf0e2' },
     card: { scene: 'gudfood' },
   },
   {
@@ -73,6 +77,7 @@ export const PROJECTS: Project[] = [
     thumbnailAlt: 'Skvot course card, culture article and course progress screens',
     accent: '#141412',
     stage: ['#ececec', '#b9b9ba'],
+    brand: { primary: '#8a1cdc', secondary: '#d9ef0a', soft: '#f1e6fc' },
     card: { scene: 'skvot' },
   },
 ];

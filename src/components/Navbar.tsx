@@ -10,7 +10,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="nav">
+    <header className="nav" style={{ viewTransitionName: 'site-header' }}>
       <div className="wrap wrap--wide">
         <Link
           href="/"
