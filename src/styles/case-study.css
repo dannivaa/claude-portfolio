@@ -141,18 +141,77 @@
   padding-top: 40px;
 }
 
-.cs-block {
+/* Contents list in the 200px column the summary labels use; the blocks fill the reading column */
+.cs-article-grid {
   display: grid;
   grid-template-columns: 200px minmax(0, 720px);
   gap: 40px;
-  padding: 64px 0;
+}
+
+.cs-toc-col {
   border-top: 1px solid var(--line);
 }
 
-.cs-block-label {
+/* Sits level with the current block's heading: scroll margin (nav + 24px) plus the block's 64px padding */
+.cs-toc {
   position: sticky;
-  top: calc(var(--nav-h) + 24px);
-  align-self: start;
+  top: calc(var(--nav-h) + 88px);
+  margin-top: 64px;
+}
+
+.cs-toc-list {
+  list-style: none;
+}
+
+.cs-toc-list a {
+  display: block;
+  padding: 6px 0 6px 16px;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--muted);
+  transition: color 0.25s;
+}
+
+.cs-toc-list a:hover {
+  color: var(--ink);
+}
+
+.cs-toc-list a[aria-current='location'] {
+  color: var(--ink);
+}
+
+/* Track on the left edge with a blue bar that slides to the current section */
+.cs-toc::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--line);
+}
+
+.cs-toc-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: var(--bar-h);
+  border-radius: 2px;
+  background: var(--blue);
+  transform: translateY(var(--bar-top));
+  transition: transform 0.45s var(--ease), height 0.45s var(--ease);
+}
+
+.cs-block {
+  padding: 64px 0;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: calc(var(--nav-h) + 24px);
+}
+
+.cs-block-label {
+  margin-bottom: 20px;
   font-family: var(--display);
   font-weight: 500;
   font-size: 24px;
@@ -281,10 +340,17 @@
     gap: 24px;
   }
 
-  .cs-psr > div,
-  .cs-block {
+  .cs-psr > div {
     grid-template-columns: 160px minmax(0, 1fr);
     gap: 32px;
+  }
+
+  .cs-article-grid {
+    display: block;
+  }
+
+  .cs-toc-col {
+    display: none;
   }
 
   .cs-psr dt,
@@ -367,8 +433,7 @@
     padding-top: 40px;
   }
 
-  .cs-psr > div,
-  .cs-block {
+  .cs-psr > div {
     grid-template-columns: 1fr;
     gap: 8px;
   }
@@ -382,7 +447,7 @@
   }
 
   .cs-block-label {
-    position: static;
+    margin-bottom: 12px;
     font-size: 22px;
   }
 
@@ -435,5 +500,11 @@
 
   .cs-stage {
     --phone-h: 380px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-toc-bar {
+    transition: none;
   }
 }

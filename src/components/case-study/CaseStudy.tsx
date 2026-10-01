@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from 'react';
+import { Children, isValidElement, type CSSProperties, type ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
@@ -6,6 +6,7 @@ import { FadeIn } from '@/components/ui/fade-in';
 import { FadeInMount } from '@/components/ui/fade-in-mount';
 import { GooeyTextReveal } from '@/components/ui/gooey-text-reveal';
 import { getNextProject, type Project } from '@/lib/projects';
+import { CsToc, type TocItem } from '@/components/case-study/CsToc';
 
 export type Screen = { src: string; alt: string; width: number; height: number };
 type Fact = { label: string; value: string };
@@ -102,20 +103,33 @@ export function CsSummary({ items }: { items: { label: string; body: string }[] 
   );
 }
 
+const blockId = (label: string) => label.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+/** The article's blocks, with a sticky table of contents built from their labels. */
 export function CsArticle({ children }: { children: ReactNode }) {
+  const toc: TocItem[] = Children.toArray(children).flatMap((child) =>
+    isValidElement<{ label?: string }>(child) && child.props.label
+      ? [{ id: blockId(child.props.label), label: child.props.label }]
+      : [],
+  );
   return (
     <div className="cs-article">
-      <div className="wrap">{children}</div>
+      <div className="wrap cs-article-grid">
+        <aside className="cs-toc-col">
+          <CsToc items={toc} />
+        </aside>
+        <div className="cs-article-body">{children}</div>
+      </div>
     </div>
   );
 }
 
 export function CsBlock({ label, children }: { label: string; children: ReactNode }) {
-  const id = `cs-${label.toLowerCase()}`;
+  const id = blockId(label);
   return (
     <FadeIn>
-      <section className="cs-block" aria-labelledby={id}>
-        <h2 id={id} className="cs-block-label">
+      <section id={id} className="cs-block" aria-labelledby={`${id}-title`}>
+        <h2 id={`${id}-title`} className="cs-block-label">
           {label}
         </h2>
         <div className="cs-prose">{children}</div>
