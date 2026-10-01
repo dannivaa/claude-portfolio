@@ -566,7 +566,7 @@ a {
 /* Period · company | role · link: the role starts on the work grid's right column (50% + half the gutter) */
 .xp-row {
   display: grid;
-  grid-template-columns: 200px calc(50% - 236px) minmax(0, 1fr) auto;
+  grid-template-columns: 200px calc(50% - 236px) minmax(0, 1fr);
   align-items: baseline;
   gap: 24px;
   padding: 20px 0;
@@ -594,26 +594,6 @@ a {
 
 .xp-role span {
   color: var(--muted);
-}
-
-.xp-case {
-  justify-self: end;
-  font-size: 16px;
-  color: var(--accent);
-  white-space: nowrap;
-  text-decoration: underline;
-  text-decoration-color: var(--accent-soft);
-  text-underline-offset: 4px;
-  transition: text-decoration-color 0.12s;
-}
-
-a.xp-case:hover {
-  text-decoration-color: currentColor;
-}
-
-.xp-case--none {
-  color: var(--muted);
-  text-decoration: none;
 }
 
 /* ─── ABOUT PAGE ──────────────────────────────────────────────────────────── */
@@ -1212,8 +1192,8 @@ a.xp-case:hover {
   }
 
   .xp-row {
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 4px 16px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
     padding: 18px 0;
   }
 
@@ -1239,11 +1219,6 @@ a.xp-case:hover {
   .xp-role {
     grid-column: 1;
     grid-row: 3;
-  }
-
-  .xp-case {
-    grid-column: 2;
-    grid-row: 2;
   }
 
   .about-hero {

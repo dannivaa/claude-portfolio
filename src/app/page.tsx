@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import '@/styles/work-motion.css';
 import Navbar from '@/components/Navbar';
 import { PageTransition } from '@/components/PageTransition';
@@ -7,15 +6,15 @@ import { WorkCard } from '@/components/home/WorkCard';
 import { NdaCard } from '@/components/home/NdaCard';
 import { NDA_WORK, WORK_ORDER, getProject } from '@/lib/projects';
 
-type Job = { company: string; role: string; type: string; period: string; caseStudy?: string };
+type Job = { company: string; role: string; type: string; period: string };
 
 /** Years only: the list shows the path, not who I'm working for right now. */
 const EXPERIENCE: Job[] = [
   { company: 'Homecrowd', role: 'Product Designer', type: 'Full-time', period: '2026' },
-  { company: 'Lyxonn', role: 'Product Designer', type: 'Part-time', period: '2025 – 2026', caseStudy: '/lyxonn' },
+  { company: 'Lyxonn', role: 'Product Designer', type: 'Part-time', period: '2025 – 2026' },
   { company: 'Cake Alliance', role: 'UX/UI Designer', type: 'Full-time', period: '2024 – 2025' },
-  { company: 'GudFood Vdoma', role: 'UX/UI Designer', type: 'Freelance', period: '2024', caseStudy: '/gudfood' },
-  { company: 'Skvot', role: 'UX/UI Designer', type: 'Freelance', period: '2024', caseStudy: '/skvot' },
+  { company: 'GudFood Vdoma', role: 'UX/UI Designer', type: 'Freelance', period: '2024' },
+  { company: 'Skvot', role: 'UX/UI Designer', type: 'Freelance', period: '2024' },
 ];
 
 export default function Home() {
@@ -69,13 +68,6 @@ export default function Home() {
                     <p className="xp-role">
                       {job.role} <span>· {job.type}</span>
                     </p>
-                    {job.caseStudy ? (
-                      <Link className="xp-case" href={job.caseStudy}>
-                        Case study
-                      </Link>
-                    ) : (
-                      <span className="xp-case xp-case--none">Under NDA</span>
-                    )}
                   </li>
                 ))}
               </ol>

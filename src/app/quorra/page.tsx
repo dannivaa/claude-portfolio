@@ -19,7 +19,7 @@ import {
 import { AdminConfirm, AdminMarketMaker, AdminOrders, AdminParts, AdminWallets } from '@/components/case-study/admin/AdminConcept';
 import { getProject } from '@/lib/projects';
 
-const project = getProject('lyxonn');
+const project = getProject('quorra');
 
 export const metadata: Metadata = {
   title: `${project.name}: ${project.title}`,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-export default function LyxonnCaseStudy() {
+export default function QuorraCaseStudy() {
   return (
     <>
       <Navbar />
@@ -47,15 +47,15 @@ export default function LyxonnCaseStudy() {
               ]}
             />
             <CsNote>
-              <strong>Every screen on this page is a concept recreation.</strong> The shipped design stays under NDA, so
-              these were built from scratch for the portfolio: product names, people and values in them are invented. The
-              facts in the text are real.
+              <strong>Quorra is a stand-in name, and every screen here is a concept recreation.</strong> The company and
+              the shipped design stay under NDA, so the screens were built from scratch for the portfolio, with invented
+              names, people and values. The facts in the text are real.
             </CsNote>
 
             <CsSection label="Overview" title="An order queue where funds move, and mistakes don’t get a second try.">
               <CsText>
                 <p>
-                  Lyxonn is a crypto exchanger running regulated flows, KYC and AML among them. Its admin panel is an
+                  Quorra is a crypto exchanger running regulated flows, KYC and AML among them. Its admin panel is an
                   internal tool with 60+ users, and at its core is the finance team that processes exchange orders: scan
                   the order, gather every relevant piece of data, process it and send the funds to the end user.
                 </p>

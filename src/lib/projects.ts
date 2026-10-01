@@ -1,4 +1,4 @@
-export type ProjectSlug = 'safey' | 'lyxonn' | 'gudfood' | 'skvot';
+export type ProjectSlug = 'safey' | 'quorra' | 'gudfood' | 'skvot';
 
 export type Project = {
   slug: ProjectSlug;
@@ -50,16 +50,16 @@ export const PROJECTS: Project[] = [
     },
   },
   {
-    slug: 'lyxonn',
+    slug: 'quorra',
     index: '02',
-    name: 'Lyxonn',
+    name: 'Quorra',
     category: 'Internal admin panel',
     year: '2025',
     status: 'Shipped',
     title: 'Order processing with zero room for error',
     summary:
       'Incremental optimization of the admin panel a crypto exchanger’s finance team uses to process orders and send funds.',
-    thumbnail: '/images/Lyxonn/lyxonn-thumbnail.png',
+    thumbnail: '/images/Quorra/quorra-thumbnail.png',
     thumbnailAlt: 'Concept recreation of the admin panel: an operations overview with orders per hour and items needing attention',
     accent: '#0f7a5c',
     stage: ['#d9eee4', '#9cd8bf'],
@@ -118,7 +118,7 @@ export const NDA_WORK: Record<'homecrowd', NdaWork> = {
 /** Homepage order, newest first: rows of two, the last card holding the left half. */
 export const WORK_ORDER = [
   { kind: 'project', slug: 'safey' },
-  { kind: 'project', slug: 'lyxonn' },
+  { kind: 'project', slug: 'quorra' },
   { kind: 'nda', key: 'homecrowd' },
   { kind: 'project', slug: 'gudfood' },
   { kind: 'project', slug: 'skvot' },
