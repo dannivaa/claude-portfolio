@@ -10,6 +10,13 @@ import { WorkCard } from '@/components/home/WorkCard';
 import { NdaCard } from '@/components/home/NdaCard';
 import { NDA_WORK, WORK_ORDER, getProject } from '@/lib/projects';
 
+const EXPERIENCE = [
+  { company: 'Lyxonn', role: 'Product Designer', type: 'Full-time', period: 'Sep 2025 – Now', current: true },
+  { company: 'Cake Alliance', role: 'UX/UI Designer', type: 'Full-time', period: 'Jul 2024 – Sep 2025' },
+  { company: 'GudFood Vdoma', role: 'Product Designer', type: 'Freelance', period: 'Sep – Nov 2024', caseStudy: '/gudfood' },
+  { company: 'SKVOT', role: 'UX/UI Designer', type: 'Full-time', period: 'Feb – May 2024', caseStudy: '/skvot' },
+];
+
 export default function Home() {
   return (
     <>
@@ -58,6 +65,38 @@ export default function Home() {
                 ),
               )}
             </div>
+          </div>
+        </section>
+
+        {/* EXPERIENCE: one ruled line per role, the way the work grid captions read */}
+        <section id="experience" className="section" aria-labelledby="experience-title">
+          <div className="wrap wrap--wide">
+            <h2 id="experience-title" className="section-title">
+              Experience
+            </h2>
+            <FadeIn>
+              <ol className="xp-list">
+                {EXPERIENCE.map((job) => (
+                  <li key={job.company} className="xp-row">
+                    <p className="xp-when">
+                      {job.current && <span className="xp-live" aria-hidden="true" />}
+                      {job.period}
+                    </p>
+                    <h3 className="xp-org">{job.company}</h3>
+                    <p className="xp-role">
+                      {job.role} <span>· {job.type}</span>
+                    </p>
+                    {job.caseStudy ? (
+                      <Link className="xp-case" href={job.caseStudy}>
+                        Case study
+                      </Link>
+                    ) : (
+                      <span className="xp-case xp-case--none">Under NDA</span>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </FadeIn>
           </div>
         </section>
       </main>

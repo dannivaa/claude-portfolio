@@ -534,6 +534,75 @@ a.work-card:hover .work-title {
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* ─── EXPERIENCE ──────────────────────────────────────────────────────────── */
+.xp-list {
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+/* Period · company | role · link: the role starts on the work grid's right column (50% + half the gutter) */
+.xp-row {
+  display: grid;
+  grid-template-columns: 200px calc(50% - 236px) minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.xp-when {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.xp-live {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 0 4px var(--blue-soft);
+}
+
+.xp-org {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.xp-role {
+  font-size: 15px;
+  color: var(--ink-2);
+}
+
+.xp-role span {
+  color: var(--muted);
+}
+
+.xp-case {
+  justify-self: end;
+  font-size: 15px;
+  color: var(--blue);
+  white-space: nowrap;
+  text-decoration: underline;
+  text-decoration-color: var(--blue-soft);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s;
+}
+
+a.xp-case:hover {
+  text-decoration-color: currentColor;
+}
+
+.xp-case--none {
+  color: var(--muted);
+  text-decoration: none;
+}
+
 /* ─── ABOUT PAGE ──────────────────────────────────────────────────────────── */
 .about-hero {
   padding-top: 112px;
@@ -1082,6 +1151,32 @@ a.work-card:hover .work-title {
   .work-body {
     flex-direction: column;
     gap: 2px;
+  }
+
+  .xp-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 4px 16px;
+    padding: 18px 0;
+  }
+
+  .xp-when {
+    grid-column: 1 / -1;
+    font-size: 14px;
+  }
+
+  .xp-org {
+    grid-row: 2;
+    font-size: 18px;
+  }
+
+  .xp-role {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .xp-case {
+    grid-column: 2;
+    grid-row: 2;
   }
 
 
