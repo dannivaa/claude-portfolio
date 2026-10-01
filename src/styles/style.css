@@ -244,10 +244,12 @@ html[data-boot] .nav {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(248, 248, 252, 0.86);
+  background: rgba(248, 248, 252, 0.72);
   border-bottom: 1px solid var(--line);
-  backdrop-filter: saturate(1.4) blur(12px);
-  -webkit-backdrop-filter: saturate(1.4) blur(12px);
+  /* Prefixed first: the CSS build keeps only the last of the pair, and Chrome and
+     Firefox need the standard property */
+  -webkit-backdrop-filter: saturate(1.6) blur(20px);
+  backdrop-filter: saturate(1.6) blur(20px);
 }
 
 .nav > .wrap {

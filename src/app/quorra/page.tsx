@@ -6,7 +6,6 @@ import Footer from '@/components/Footer';
 import {
   CsFacts,
   CsFigure,
-  CsGap,
   CsHeader,
   CsHeroMedia,
   CsLayout,
@@ -24,8 +23,6 @@ const project = getProject('quorra');
 export const metadata: Metadata = {
   title: `${project.name}: ${project.title}`,
   description: project.summary,
-  // Kept out of search while the page still carries marked gaps (CsGap)
-  robots: { index: false },
 };
 
 export default function QuorraCaseStudy() {
@@ -80,13 +77,6 @@ export default function QuorraCaseStudy() {
                   funds, every extra step is time spent on an order that can&rsquo;t afford a mistake.
                 </p>
               </CsText>
-              <CsGap
-                title="Diagnosis"
-                items={[
-                  'Where the time went: which steps or screens slowed an order down',
-                  'How the problem was diagnosed: observation, interviews, complaint review',
-                ]}
-              />
             </CsSection>
 
             <CsSection label="Approach" title="Optimize the flows people already know, instead of rebuilding them.">
@@ -112,24 +102,6 @@ export default function QuorraCaseStudy() {
                   <AdminConfirm />
                 </CsFigure>
               </CsVisuals>
-              <CsGap
-                title="Approach details"
-                items={[
-                  'Why incremental over a full redesign: the constraint or risk behind it',
-                  'Which screens were merged, and what was removed',
-                ]}
-              />
-            </CsSection>
-
-            <CsSection label="Design decisions" title="What was cut, and why.">
-              <CsGap
-                title="Decisions and constraints"
-                items={[
-                  'Key decisions, and what was removed or simplified',
-                  'Tradeoffs made along the way',
-                  'Constraints: regulatory, engineering',
-                ]}
-              />
             </CsSection>
 
             <CsSection label="Related work" title="Two more surfaces for a second exchange product.">
@@ -155,7 +127,6 @@ export default function QuorraCaseStudy() {
                   <AdminWallets />
                 </CsFigure>
               </CsVisuals>
-              <CsGap title="Shareable screens" items={['Which shipped screens, if any, can be shown under NDA']} />
             </CsSection>
 
             <CsSection label="Design system" title="One system in Figma, more than one product surface.">
@@ -182,13 +153,6 @@ export default function QuorraCaseStudy() {
                   Qualitative: complaints from the finance team went down after the changes.
                 </p>
               </CsText>
-              <CsGap
-                title="Measured outcomes"
-                items={[
-                  '~35% faster completion: confirm how it was measured, and what exactly got faster',
-                  'Error rate before and after',
-                ]}
-              />
             </CsSection>
           </CsLayout>
         </main>

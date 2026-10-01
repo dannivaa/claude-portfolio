@@ -127,23 +127,6 @@ export function CsNote({ children }: { children: ReactNode }) {
   return <p className="cs-note">{children}</p>;
 }
 
-/**
- * Something the case study still needs from Danylo, marked as missing rather than
- * papered over with generic copy. Remove each one once the real answer is in.
- */
-export function CsGap({ title, items }: { title: string; items: string[] }) {
-  return (
-    <div className="cs-gap" role="note">
-      <p className="cs-gap-title">Gap · {title}</p>
-      <ul>
-        {items.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 /** Two to three short points under a section: a title and a line each. */
 export function CsPoints({ label, items }: { label?: string; items: { title: string; body: string }[] }) {
   return (
