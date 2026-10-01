@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { getNextProject, type Project } from '@/lib/projects';
 import { CsToc, type TocItem } from '@/components/case-study/CsToc';
-import { WorkVideo } from '@/components/home/WorkVideo';
 import { ProjectScene } from '@/components/home/scenes';
 
 export type Screen = { src: string; alt: string; width: number; height: number };
@@ -91,18 +90,11 @@ export function CsFacts({ project, facts }: { project: Project; facts: Fact[] })
   );
 }
 
-/** The homepage card's media, full width under the title: Danylo's video or the CSS motion loop. */
+/** The homepage card's motion loop, full width under the title. */
 export function CsHeroMedia({ project }: { project: Project }) {
-  const { card } = project;
   return (
     <div className="cs-hero-media">
-      {'video' in card ? (
-        <WorkVideo {...card.video} label={`${project.name}: ${project.summary}`} />
-      ) : 'concept' in card ? (
-        <ProjectScene project={project} label={`${project.name}: concept recreation of an order being checked and paid out`} />
-      ) : (
-        <ProjectScene project={project} label={project.summary} />
-      )}
+      <ProjectScene project={project} />
     </div>
   );
 }

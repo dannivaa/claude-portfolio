@@ -700,3 +700,524 @@
   justify-content: center;
   gap: 7px;
 }
+
+/* ── Safey (frame "01" from Figma, 1500×844) ── */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(/fonts/onest-latin.woff2) format('woff2');
+}
+
+.sfy {
+  --sf-ink: #121212;
+  --sf-ink-2: #141414;
+  --sf-glass: rgba(247, 247, 247, 0.9);
+  font-family: 'Onest', var(--ff-geist), sans-serif;
+  color: var(--sf-ink);
+  background: #4a93d1;
+}
+
+.sfy img {
+  display: block;
+  max-width: none;
+}
+
+.sfy-bg {
+  position: absolute;
+  left: -253.7px;
+  top: -1388.7px;
+  width: 2007.4px;
+  height: 3621.4px;
+}
+
+.sfy-main,
+.sfy-pay {
+  position: absolute;
+  left: 555px;
+  top: 0;
+  width: 390px;
+  height: 844px;
+  transform-origin: 50% 50%;
+}
+
+.sfy-main-content {
+  position: absolute;
+  left: 0;
+  top: 62px;
+  width: 390px;
+  height: 774px;
+}
+
+.sfy-glow {
+  position: absolute;
+  left: -236.8px;
+  top: -52.8px;
+  width: 863.6px;
+  height: 880.6px;
+}
+
+.sfy-stack {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sfy-stack--back {
+  left: 70px;
+  top: 353.8px;
+  width: 249px;
+  height: 300.85px;
+  border-radius: 27.29px;
+  background: rgb(176, 223, 224);
+}
+
+.sfy-stack--mid {
+  left: 42px;
+  top: 278.25px;
+  width: 305px;
+  height: 368.5px;
+  border-radius: 33.43px;
+  background: rgb(193, 230, 230);
+}
+
+.sfy-photo {
+  position: absolute;
+  left: 16px;
+  top: 140px;
+  width: 358px;
+  height: 498px;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.sfy-photo-img {
+  position: absolute;
+  left: -35px;
+  top: -146.4px;
+  width: 435px;
+  height: 776.2px;
+  object-fit: cover;
+}
+
+.sfy-photo-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 24.145%, rgba(0, 0, 0, 0) 48.737%);
+}
+
+.sfy-photo-info {
+  position: absolute;
+  left: 16px;
+  top: 374px;
+  width: 326px;
+  height: 104px;
+  color: #fff;
+}
+
+.sfy-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.72px;
+}
+
+.sfy-name img {
+  width: 20px;
+  height: 20px;
+}
+
+.sfy-name img + img {
+  margin-left: -4px;
+}
+
+.sfy-age,
+.sfy-bio {
+  position: absolute;
+  left: 0;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.42px;
+}
+
+.sfy-age {
+  top: 32px;
+}
+
+.sfy-bio {
+  top: 62px;
+  width: 266px;
+  opacity: 0.85;
+}
+
+.sfy-chat {
+  position: absolute;
+  left: 282px;
+  top: 60px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(247, 247, 247, 0.28);
+}
+
+.sfy-chat img {
+  width: 24px;
+  height: 24px;
+}
+
+.sfy-header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 390px;
+  height: 44px;
+}
+
+.sfy-logo {
+  position: absolute;
+  left: 16px;
+  top: 5px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.72px;
+}
+
+.sfy-getai {
+  position: absolute;
+  left: 93px;
+  top: 5px;
+  padding: 7px 14px;
+  border-radius: 1000px;
+  background: #e98742;
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.42px;
+  white-space: nowrap;
+}
+
+.sfy-bell {
+  position: absolute;
+  left: 330px;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--sf-glass);
+}
+
+.sfy-bell img {
+  width: 24px;
+  height: 24px;
+}
+
+.sfy-chips {
+  position: absolute;
+  left: 16px;
+  top: 64px;
+  display: flex;
+  justify-content: space-between;
+  width: 358px;
+}
+
+.sfy-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 36px;
+  border-radius: 27px;
+  background: rgba(247, 247, 247, 0.62);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.42px;
+  color: rgba(18, 18, 18, 0.7);
+  white-space: nowrap;
+}
+
+.sfy-chip.is-on {
+  background: rgba(247, 247, 247, 0.96);
+  color: var(--sf-ink);
+}
+
+.sfy-chip img {
+  width: 20px;
+  height: 20px;
+}
+
+.sfy-tabs {
+  position: absolute;
+  left: 50%;
+  bottom: 21px;
+  display: flex;
+  padding: 4px;
+  border-radius: 296px;
+  background: rgba(247, 247, 247, 0.88);
+  box-shadow: 0 8px 24px -12px rgba(0, 40, 80, 0.25);
+  translate: -50% 0;
+}
+
+.sfy-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  width: 102px;
+  margin-right: -10px;
+  padding: 6px 8px 7px;
+  border-radius: 100px;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: -0.3px;
+  opacity: 0.85;
+}
+
+.sfy-tab:last-child {
+  margin-right: 0;
+}
+
+.sfy-tab.is-on {
+  background: rgba(255, 255, 255, 0.55);
+  opacity: 1;
+}
+
+.sfy-tab img {
+  width: 28px;
+  height: 28px;
+}
+
+.sfy-text {
+  position: absolute;
+  left: 32px;
+  top: 122px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  width: 326px;
+  color: var(--sf-ink-2);
+  text-align: center;
+}
+
+.sfy-title {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 36px;
+  letter-spacing: -0.96px;
+}
+
+.sfy-sub {
+  width: 270px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.48px;
+  color: rgba(20, 20, 20, 0.75);
+}
+
+.sfy-list {
+  position: absolute;
+  left: 20px;
+  top: 229px;
+  width: 350px;
+  height: 367px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.sfy-list-glow {
+  position: absolute;
+  left: -212.8px;
+  top: -196.8px;
+  width: 775.6px;
+  height: 760.6px;
+}
+
+.sfy-list-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  border-radius: 20px;
+}
+
+/* Figma fills these with #2b2b2b in colour-dodge, which lifts the blue behind them into a
+   frosted white. The animated paywall is its own compositing group, so the blend can't
+   reach that blue in a browser; the tint below is the colour it produces in the design. */
+.sfy-list-panel,
+.sfy-toggle {
+  background: rgba(255, 255, 255, 0.34);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.sfy-list-head {
+  display: flex;
+  justify-content: flex-end;
+  gap: 48px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.48px;
+  color: var(--sf-ink-2);
+}
+
+.sfy-list-head span {
+  opacity: 0.7;
+}
+
+.sfy-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 2px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.48px;
+  color: var(--sf-ink-2);
+}
+
+.sfy-row-marks {
+  display: flex;
+  gap: 56px;
+}
+
+.sfy-row-marks img {
+  width: 20px;
+  height: 20px;
+}
+
+.sfy-toggle {
+  position: absolute;
+  left: 20px;
+  top: 612px;
+  width: 350px;
+  height: 88px;
+  border-radius: 20px;
+  transform-origin: 50% 50%;
+}
+
+.sfy-toggle-thumb {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  bottom: 4px;
+  width: 171px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.sfy-plan {
+  position: absolute;
+  color: var(--sf-ink-2);
+  white-space: nowrap;
+}
+
+.sfy-plan > span {
+  position: absolute;
+}
+
+.sfy-plan--month {
+  left: 24px;
+  top: 22px;
+  width: 131px;
+  height: 44px;
+}
+
+.sfy-plan--year {
+  left: 195px;
+  top: 14px;
+  width: 75px;
+  height: 60px;
+}
+
+.sfy-price {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.6px;
+}
+
+.sfy-per,
+.sfy-plan-name,
+.sfy-month {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.36px;
+}
+
+.sfy-plan--month .sfy-price { left: 0; top: 0; }
+.sfy-plan--month .sfy-per { left: 58px; top: 4px; }
+.sfy-plan--month .sfy-plan-name { left: 0; top: 28px; font-weight: 500; }
+
+.sfy-plan--year .sfy-plan-name { left: 0; top: 0; font-weight: 500; }
+.sfy-plan--year .sfy-price { left: 0; top: 20px; }
+.sfy-plan--year .sfy-per { left: 45px; top: 24px; color: rgba(20, 20, 20, 0.75); }
+.sfy-plan--year .sfy-month { left: 0; top: 44px; color: rgba(20, 20, 20, 0.75); }
+
+.sfy-badge {
+  position: absolute;
+  left: 275px;
+  top: 14px;
+  display: flex;
+  align-items: center;
+  height: 16px;
+  padding: 4px;
+  border-radius: 6px;
+  background: #e88641;
+  color: #fff;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.sfy-trial {
+  position: absolute;
+  left: 20px;
+  top: 740px;
+  width: 350px;
+  height: 91px;
+}
+
+.sfy-trial-btn {
+  position: relative;
+  height: 56px;
+  border-radius: 1077px;
+  /* Figma stacks white, saturation and overlay layers under #ff9d57; this is the result */
+  background: #ec8944;
+  box-shadow:
+    0 0 2.15px rgba(0, 0, 0, 0.1),
+    0 1.08px 8.6px rgba(0, 0, 0, 0.12);
+  transform-origin: 50% 50%;
+}
+
+.sfy-trial-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.48px;
+}
+
+.sfy-spinner {
+  width: 20px;
+  height: 20px;
+  transform-origin: 50% 50%;
+}

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import ClickSpark from '@/components/ClickSpark';
 import { Cursor } from '@/components/ui/custom-cursor';
-import { WorkVideo } from '@/components/home/WorkVideo';
 import { ProjectScene } from '@/components/home/scenes';
 import type { Project } from '@/lib/projects';
 
@@ -14,24 +13,12 @@ const eyeIcon = (
   </svg>
 );
 
-const SCENE_LABELS = {
-  gudfood: 'GudFood: the order is delivered, the rating sheet rises, five stars and two tags, and Done turns into a thank-you',
-  skvot: 'Skvot: the week roadmap, the task with a deadline opens, the switch moves to homework and the deadline gains a day',
-};
-
 export function WorkCard({ project }: { project: Project }) {
-  const { card } = project;
   return (
     <Link href={`/${project.slug}`} className="work-card">
       <ClickSpark sparkColor="#14203a" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
         <Cursor name="View case study" customSVG={eyeIcon} cursorColor="var(--accent)" style={{ borderRadius: 16 }}>
-          {'video' in card ? (
-            <WorkVideo {...card.video} label={`${project.name}: ${project.summary}`} />
-          ) : 'concept' in card ? (
-            <ProjectScene project={project} label={`${project.name}: concept recreation of an order being checked and paid out`} />
-          ) : (
-            <ProjectScene project={project} label={SCENE_LABELS[card.scene]} />
-          )}
+          <ProjectScene project={project} />
         </Cursor>
       </ClickSpark>
       <div className="work-body">

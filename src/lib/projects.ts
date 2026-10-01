@@ -18,11 +18,6 @@ export type Project = {
   stage: [edge: string, center: string];
   /** Colours the case study's research visuals are drawn in: a primary, a secondary for highlights, a soft tint. */
   brand: { primary: string; secondary: string; soft: string };
-  /** What plays on the homepage card: Danylo's exported video, a CSS motion loop, or a coded concept screen. */
-  card:
-    | { video: { webm: string; mp4: string; poster: string } }
-    | { scene: 'gudfood' | 'skvot' }
-    | { concept: 'admin' };
 };
 
 export const PROJECTS: Project[] = [
@@ -41,13 +36,6 @@ export const PROJECTS: Project[] = [
     accent: '#1f74b8',
     stage: ['#8fd0e6', '#fdb682'],
     brand: { primary: '#1f74b8', secondary: '#f2873f', soft: '#e4f1fa' },
-    card: {
-      video: {
-        webm: '/videos/safey-card.webm',
-        mp4: '/videos/safey-card.mp4',
-        poster: '/videos/safey-card-poster.jpg',
-      },
-    },
   },
   {
     slug: 'quorra',
@@ -64,7 +52,6 @@ export const PROJECTS: Project[] = [
     accent: '#0f7a5c',
     stage: ['#d9eee4', '#9cd8bf'],
     brand: { primary: '#0f7a5c', secondary: '#3ccf91', soft: '#e2f3ec' },
-    card: { concept: 'admin' },
   },
   {
     slug: 'gudfood',
@@ -81,7 +68,6 @@ export const PROJECTS: Project[] = [
     accent: '#c9530b',
     stage: ['#ffe9ae', '#f6a355'],
     brand: { primary: '#c9530b', secondary: '#f6a355', soft: '#fdf0e2' },
-    card: { scene: 'gudfood' },
   },
   {
     slug: 'skvot',
@@ -98,7 +84,6 @@ export const PROJECTS: Project[] = [
     accent: '#141412',
     stage: ['#ececec', '#b9b9ba'],
     brand: { primary: '#8a1cdc', secondary: '#d9ef0a', soft: '#f1e6fc' },
-    card: { scene: 'skvot' },
   },
 ];
 

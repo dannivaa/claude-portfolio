@@ -2,12 +2,10 @@
 
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 
-/** Scenes are authored on a 1200×675 frame, the card's own 16:9. */
-const FRAME_W = 1200;
-const FRAME_H = 675;
 
 /**
- * Frame for a coded work-card scene. Scales the 1200×675 artboard to the card's width and
+ * Frame for a coded work-card scene. Scales the 16:9 artboard (1200×675 unless the scene was
+ * authored at its Figma size) to the card's width and
  * pauses every animation together while the card is off screen, so the layers never drift
  * apart. With reduced motion the loop holds on its opening frame.
  */
@@ -16,9 +14,14 @@ export function CardScene({
   stage,
   css,
   className,
+  width = 1200,
+  height = 675,
   children,
 }: {
   label: string;
+  /** The artboard the scene was authored on. */
+  width?: number;
+  height?: number;
   stage: [edge: string, center: string];
   /** The scene's @keyframes, from its timeline. */
   css: string;
@@ -32,7 +35,7 @@ export function CardScene({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const ro = new ResizeObserver(([entry]) => setScale(entry.contentRect.width / FRAME_W));
+    const ro = new ResizeObserver(([entry]) => setScale(entry.contentRect.width / width));
     const io = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), { threshold: 0.2 });
     ro.observe(el);
     io.observe(el);
@@ -40,7 +43,7 @@ export function CardScene({
       ro.disconnect();
       io.disconnect();
     };
-  }, []);
+  }, [width]);
 
   return (
     <div
@@ -55,7 +58,7 @@ export function CardScene({
         className={`card-scene${className ? ` ${className}` : ''}`}
         aria-hidden="true"
         data-paused={visible ? undefined : ''}
-        style={{ width: FRAME_W, height: FRAME_H, transform: `scale(${scale ?? 0})`, opacity: scale === null ? 0 : 1 }}
+        style={{ width, height, transform: `scale(${scale ?? 0})`, opacity: scale === null ? 0 : 1 }}
       >
         {children}
       </div>
