@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import type { MouseEvent, PointerEvent } from 'react';
 import { KyivTime } from '@/components/KyivTime';
+import { Link001 } from '@/components/ui/skiper-ui/skiper40';
 import { INSTAGRAM_URL, LINKEDIN_URL, RESUME_URL } from '@/lib/site';
 
 const SOCIAL_LINKS = [
@@ -49,7 +50,7 @@ export function ConnectBar() {
       <ul className="connect-meta">
         <li>
           Designing at
-          <span className="connect-meta-value">Lyxonn</span>
+          <span className="connect-meta-value">Homecrowd &amp; Lyxonn</span>
         </li>
         <li className="connect-meta-place">
           Based in
@@ -74,9 +75,9 @@ export function ConnectBar() {
       <ul className="connect-socials">
         {SOCIAL_LINKS.map((link) => (
           <li key={link.label}>
-            <a className="connect-link" href={link.href} target="_blank" rel="noreferrer noopener">
+            <Link001 href={link.href} className="connect-link">
               {link.label}
-            </a>
+            </Link001>
           </li>
         ))}
       </ul>

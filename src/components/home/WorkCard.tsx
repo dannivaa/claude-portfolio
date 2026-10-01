@@ -20,15 +20,15 @@ const SCENES = { gudfood: GUDFOOD_SCENE, skvot: SKVOT_SCENE };
 
 const SCENE_LABELS = {
   gudfood: 'GudFood: the order tracks to Delivered, then the rating sheet springs up and the order is rated five stars',
-  skvot: 'SKVOT: a lecture alarm opens the weekly roadmap, the deadline task opens and the student extends the deadline',
+  skvot: 'Skvot: a lecture alarm opens the weekly roadmap, the deadline task opens and the student extends the deadline',
 };
 
 export function WorkCard({ project }: { project: Project }) {
   const { card } = project;
   return (
     <Link href={`/${project.slug}`} className="work-card">
-      <ClickSpark sparkColor={project.accent} sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
-        <Cursor name="View case study" customSVG={eyeIcon} cursorColor={project.accent} style={{ borderRadius: 16 }}>
+      <ClickSpark sparkColor="#5b3df5" sparkSize={10} sparkRadius={15} sparkCount={7} duration={300}>
+        <Cursor name="View case study" customSVG={eyeIcon} cursorColor="var(--accent)" style={{ borderRadius: 16 }}>
           {'video' in card ? (
             <WorkVideo {...card.video} label={`${project.name}: ${project.summary}`} />
           ) : (

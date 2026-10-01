@@ -24,7 +24,7 @@ export default function GudFoodCaseStudy() {
           <CsHeader
             project={project}
             facts={[
-              { label: 'Role', value: 'Product Designer' },
+              { label: 'Role', value: 'UX/UI Designer' },
               { label: 'Timeline', value: 'Sep — Nov 2024' },
               { label: 'Scope', value: 'Stakeholder Interviews · UX Research · Hypothesis Generation · UI Redesign · Prototyping' },
             ]}

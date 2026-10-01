@@ -1,6 +1,5 @@
-import { ArrowUpRight } from 'lucide-react';
 import { ConnectBar } from '@/components/ConnectBar';
-import { CopyEmail } from '@/components/CopyEmail';
+import { Link001 } from '@/components/ui/skiper-ui/skiper40';
 import { EMAIL } from '@/lib/site';
 
 export default function Footer() {
@@ -10,13 +9,9 @@ export default function Footer() {
         {/* Sign-off: the email is the one thing a visitor needs at the end of the page */}
         <div className="footer-signoff">
           <p className="footer-kicker">Got something worth building? Say hi.</p>
-          <div className="footer-mail">
-            <a className="footer-email" href={`mailto:${EMAIL}`}>
-              {EMAIL}
-              <ArrowUpRight className="footer-email-arrow" strokeWidth={1.75} aria-hidden />
-            </a>
-            <CopyEmail className="btn btn-secondary btn-copy footer-copy" compact />
-          </div>
+          <Link001 href={`mailto:${EMAIL}`} target="_self" className="footer-email">
+            {EMAIL}
+          </Link001>
         </div>
         <ConnectBar />
       </div>

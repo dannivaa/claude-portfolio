@@ -1,17 +1,15 @@
 'use client';
 
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useState } from 'react';
 
 export type TocItem = { id: string; label: string };
 
 /**
  * Sticky "on this page" list beside the case study article. The section crossing the
- * upper third of the viewport is the active one; an accent bar slides to its link.
+ * upper third of the viewport is the current one; its link turns from muted to ink.
  */
 export function CsToc({ items }: { items: TocItem[] }) {
   const [active, setActive] = useState(items[0]?.id);
-  const listRef = useRef<HTMLOListElement>(null);
-  const [bar, setBar] = useState<{ top: number; height: number } | null>(null);
 
   useEffect(() => {
     const sections = items
@@ -28,33 +26,17 @@ export function CsToc({ items }: { items: TocItem[] }) {
     return () => io.disconnect();
   }, [items]);
 
-  useEffect(() => {
-    const link = listRef.current?.querySelector<HTMLElement>(`[data-id="${active}"]`);
-    if (link) setBar({ top: link.offsetTop, height: link.offsetHeight });
-  }, [active]);
-
   return (
     <nav className="cs-toc" aria-label="On this page">
-      <ol ref={listRef} className="cs-toc-list">
+      <ol className="cs-toc-list">
         {items.map((item) => (
           <li key={item.id}>
-            <a
-              href={`#${item.id}`}
-              data-id={item.id}
-              aria-current={active === item.id ? 'location' : undefined}
-            >
+            <a href={`#${item.id}`} aria-current={active === item.id ? 'location' : undefined}>
               {item.label}
             </a>
           </li>
         ))}
       </ol>
-      {bar && (
-        <span
-          className="cs-toc-bar"
-          aria-hidden="true"
-          style={{ '--bar-top': `${bar.top}px`, '--bar-h': `${bar.height}px` } as CSSProperties}
-        />
-      )}
     </nav>
   );
 }

@@ -62,7 +62,7 @@ export const PROJECTS: Project[] = [
   {
     slug: 'skvot',
     index: '03',
-    name: 'SKVOT',
+    name: 'Skvot',
     category: 'Education app',
     year: '2024',
     status: 'Handed off',
@@ -70,7 +70,7 @@ export const PROJECTS: Project[] = [
     summary:
       'A 0→1 mobile app for Ukraine’s largest pop-culture school, where research cut the “obvious” feature.',
     thumbnail: '/images/Skvot/skvot-thumbnail.png',
-    thumbnailAlt: 'SKVOT course card, culture article and course progress screens',
+    thumbnailAlt: 'Skvot course card, culture article and course progress screens',
     accent: '#141412',
     stage: ['#ececec', '#b9b9ba'],
     card: { scene: 'skvot' },

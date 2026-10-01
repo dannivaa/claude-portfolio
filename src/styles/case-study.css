@@ -22,7 +22,7 @@
   align-items: center;
   gap: 6px;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--muted);
   transition: color 0.12s;
 }
@@ -67,12 +67,12 @@
 
 .cs-facts dt {
   margin-bottom: 4px;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--muted);
 }
 
 .cs-facts dd {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.5;
 }
 
@@ -171,8 +171,8 @@
 
 .cs-toc-list a {
   display: block;
-  padding: 6px 0 6px 16px;
-  font-size: 15px;
+  padding: 5px 0;
+  font-size: 16px;
   line-height: 1.4;
   color: var(--muted);
   transition: color 0.12s;
@@ -186,30 +186,6 @@
   color: var(--ink);
 }
 
-/* Track on the left edge with an accent bar that slides to the current section */
-.cs-toc::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 2px;
-  border-radius: 2px;
-  background: var(--line);
-}
-
-.cs-toc-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2px;
-  height: var(--bar-h);
-  border-radius: 2px;
-  background: var(--accent);
-  transform: translateY(var(--bar-top));
-  transition: transform 0.2s var(--ease), height 0.2s var(--ease);
-}
-
 .cs-block {
   padding: 64px 0;
   border-top: 1px solid var(--line);
@@ -217,17 +193,17 @@
 }
 
 .cs-block-label {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   font-family: var(--display);
   font-weight: 500;
-  font-size: 24px;
+  font-size: 32px;
   line-height: 1.2;
   letter-spacing: -0.03em;
 }
 
 .cs-prose {
   max-width: 720px;
-  font-size: 18px;
+  font-size: 19px;
   line-height: 1.7;
   color: var(--ink-2);
 }
@@ -367,7 +343,11 @@
   .cs-psr dt,
   .cs-psr dd,
   .cs-prose {
-    font-size: 17px;
+    font-size: 18px;
+  }
+
+  .cs-block-label {
+    font-size: 26px;
   }
 
   .cs-block {
@@ -454,14 +434,14 @@
   }
 
   .cs-block-label {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     font-size: 22px;
   }
 
   .cs-psr dt,
   .cs-psr dd,
   .cs-prose {
-    font-size: 16px;
+    font-size: 17px;
   }
 
   .cs-prose > * + * {
@@ -510,8 +490,3 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .cs-toc-bar {
-    transition: none;
-  }
-}

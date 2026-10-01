@@ -33,7 +33,7 @@ export default function SkvotCaseStudy() {
           <CsStage
             project={project}
             screens={[
-              screen(1, 'SKVOT sign-in screen with email, password, Google and Apple options'),
+              screen(1, 'Skvot sign-in screen with email, password, Google and Apple options'),
               screen(2, 'Home: the week’s schedule of lectures and meetings above the latest articles'),
               screen(3, 'Culture tab: courses, articles and filters in one library'),
             ]}
@@ -59,7 +59,7 @@ export default function SkvotCaseStudy() {
 
           <CsArticle>
             <CsBlock label="Background">
-              <p>SKVOT is Ukraine&rsquo;s largest pop-culture education platform — offering courses across design, film, music, and creative careers. The entire product lived on web. There was no mobile app, and no competitor had one either. This was a 0→1 opportunity in an uncontested space, with no existing mobile playbook to follow.</p>
+              <p>Skvot is Ukraine&rsquo;s largest pop-culture education platform — offering courses across design, film, music, and creative careers. The entire product lived on web. There was no mobile app, and no competitor had one either. This was a 0→1 opportunity in an uncontested space, with no existing mobile playbook to follow.</p>
             </CsBlock>
 
             <CsBlock label="Discovery">
@@ -71,14 +71,14 @@ export default function SkvotCaseStudy() {
 
             <CsBlock label="Solution">
               <p><strong>Chat</strong> — Students were context-switching between three separate places to complete one learning loop: watching a lecture on the website, messaging on Telegram, and checking feedback inside a personal cabinet. Chat brings all of that into one native experience — direct messaging between students, lecturers, and support, without ever leaving the app.</p>
-              <p><strong>Culture</strong> — SKVOT&rsquo;s web platform scattered content across disconnected sections. Courses lived in one place, articles in another, podcasts somewhere else. Culture consolidates the full content library — courses, articles, podcasts, video guides — under one brand-aligned tab.</p>
+              <p><strong>Culture</strong> — Skvot&rsquo;s web platform scattered content across disconnected sections. Courses lived in one place, articles in another, podcasts somewhere else. Culture consolidates the full content library — courses, articles, podcasts, video guides — under one brand-aligned tab.</p>
               <p><strong>My Courses</strong> — Enrolled courses, lecture lists, assignment status, instructor grades and feedback — all accessible without leaving the app. Lecturers can grade and respond directly from mobile. The hypothesis: faster feedback turnaround keeps students engaged and reduces drop-off between assignments.</p>
               <p><strong>Homepage</strong> — Weekly schedule at the top, latest content feed below. Students know what&rsquo;s next without digging. Minimal top navigation — profile, search, notifications only.</p>
             </CsBlock>
 
             <CsBlock label="Result">
               <p>Each decision maps to a metric the product would track post-launch.</p>
-              <p><strong>Daily Active Users</strong> — SKVOT had zero mobile presence before this. A native app opens DAU as a trackable metric for the first time.</p>
+              <p><strong>Daily Active Users</strong> — Skvot had zero mobile presence before this. A native app opens DAU as a trackable metric for the first time.</p>
               <p><strong>Course completion rate</strong> — Chat removes the communication friction that causes students to disengage mid-course. Faster lecturer feedback means fewer students falling through the gaps between assignments.</p>
               <p><strong>Content consumption</strong> — The Culture tab consolidates what was previously scattered. Easier discovery means more sessions that go beyond just the enrolled course.</p>
               <p><strong>Feedback turnaround time</strong> — Mobile-accessible grading for lecturers reduces the time between submission and response. The design removes the device barrier that 28 of 34 lecturers faced.</p>
