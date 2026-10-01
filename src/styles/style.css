@@ -282,11 +282,9 @@ a {
 }
 
 .nav-links {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   gap: 4px;
+  margin-right: -16px;
 }
 
 .nav-links a {
@@ -306,13 +304,6 @@ a {
 .nav-links a[aria-current='page'] {
   color: var(--accent);
   background: var(--accent-soft);
-}
-
-.nav .btn {
-  height: 42px;
-  padding: 0 18px;
-  font-size: 15px;
-  border-radius: 14px;
 }
 
 /* ─── HERO ────────────────────────────────────────────────────────────────── */
@@ -570,20 +561,7 @@ a {
   border-top: 1px solid var(--line);
 }
 
-/* "Now" and "Before" groups; the live dot marks roles that are still running */
-.xp-group + .xp-group {
-  margin-top: 48px;
-}
 
-.xp-group-label {
-  font-weight: 500;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-  color: var(--muted);
-}
 
 /* Period · company | role · link: the role starts on the work grid's right column (50% + half the gutter) */
 .xp-row {
@@ -601,13 +579,6 @@ a {
   font-variant-numeric: tabular-nums;
 }
 
-.xp-live {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 4px var(--accent-soft);
-}
 
 .xp-org {
   font-weight: 500;
@@ -1170,7 +1141,13 @@ a.xp-case:hover {
   }
 
   .nav-links {
-    display: none;
+    gap: 0;
+    margin-right: -10px;
+  }
+
+  .nav-links a {
+    padding: 8px 10px;
+    font-size: 15px;
   }
 
   .nav-avatar {
@@ -1254,9 +1231,6 @@ a.xp-case:hover {
     font-size: 16px;
   }
 
-  .xp-group + .xp-group {
-    margin-top: 32px;
-  }
 
   .work-title {
     font-size: 17px;
@@ -1341,6 +1315,11 @@ a.xp-case:hover {
 }
 
 @media (max-width: 480px) {
+  /* Four links need the room: the brand shrinks to the avatar */
+  .nav-name {
+    display: none;
+  }
+
   .footer-email {
     font-size: 24px;
   }

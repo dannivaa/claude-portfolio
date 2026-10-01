@@ -58,10 +58,6 @@ export function ConnectBar() {
       </ul>
 
       <ul className="connect-meta">
-        <li>
-          Designing at
-          <span className="connect-meta-value">Homecrowd</span>
-        </li>
         <li className="connect-meta-place">
           Based in
           <button

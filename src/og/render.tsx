@@ -73,7 +73,7 @@ export async function renderHomeCard() {
             maxWidth: 960,
           }}
         >
-          I design apps people pay for and come back to.
+          Creative mind, product brain.
         </div>
       </div>
     ),

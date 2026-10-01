@@ -9,24 +9,13 @@ import { NDA_WORK, WORK_ORDER, getProject } from '@/lib/projects';
 
 type Job = { company: string; role: string; type: string; period: string; caseStudy?: string };
 
-/** Current roles are grouped apart from past work. */
-const EXPERIENCE: { label: string; current?: boolean; jobs: Job[] }[] = [
-  {
-    label: 'Now',
-    current: true,
-    jobs: [
-      { company: 'Homecrowd', role: 'Product Designer', type: 'Full-time', period: 'Sep 2026 – Now' },
-      { company: 'Lyxonn', role: 'Product Designer', type: 'Part-time', period: 'Sep 2025 – Now' },
-    ],
-  },
-  {
-    label: 'Before',
-    jobs: [
-      { company: 'Cake Alliance', role: 'UX/UI Designer', type: 'Full-time', period: 'Jul 2024 – Sep 2025' },
-      { company: 'GudFood Vdoma', role: 'UX/UI Designer', type: 'Freelance', period: 'Sep – Nov 2024', caseStudy: '/gudfood' },
-      { company: 'Skvot', role: 'UX/UI Designer', type: 'Freelance', period: 'Feb – May 2024', caseStudy: '/skvot' },
-    ],
-  },
+/** Years only: the list shows the path, not who I'm working for right now. */
+const EXPERIENCE: Job[] = [
+  { company: 'Homecrowd', role: 'Product Designer', type: 'Full-time', period: '2026' },
+  { company: 'Lyxonn', role: 'Product Designer', type: 'Part-time', period: '2025 – 2026' },
+  { company: 'Cake Alliance', role: 'UX/UI Designer', type: 'Full-time', period: '2024 – 2025' },
+  { company: 'GudFood Vdoma', role: 'UX/UI Designer', type: 'Freelance', period: '2024', caseStudy: '/gudfood' },
+  { company: 'Skvot', role: 'UX/UI Designer', type: 'Freelance', period: '2024', caseStudy: '/skvot' },
 ];
 
 export default function Home() {
@@ -72,32 +61,24 @@ export default function Home() {
               <h2 id="experience-title" className="section-title">
                 Experience
               </h2>
-              {EXPERIENCE.map((group) => (
-                <div key={group.label} className={`xp-group${group.current ? ' xp-group--now' : ''}`}>
-                  <p className="xp-group-label">
-                    {group.current && <span className="xp-live" aria-hidden="true" />}
-                    {group.label}
-                  </p>
-                  <ol className="xp-list">
-                    {group.jobs.map((job) => (
-                      <li key={job.company} className="xp-row">
-                        <p className="xp-when">{job.period}</p>
-                        <h3 className="xp-org">{job.company}</h3>
-                        <p className="xp-role">
-                          {job.role} <span>· {job.type}</span>
-                        </p>
-                        {job.caseStudy ? (
-                          <Link className="xp-case" href={job.caseStudy}>
-                            Case study
-                          </Link>
-                        ) : (
-                          <span className="xp-case xp-case--none">Under NDA</span>
-                        )}
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              ))}
+              <ol className="xp-list">
+                {EXPERIENCE.map((job) => (
+                  <li key={job.company} className="xp-row">
+                    <p className="xp-when">{job.period}</p>
+                    <h3 className="xp-org">{job.company}</h3>
+                    <p className="xp-role">
+                      {job.role} <span>· {job.type}</span>
+                    </p>
+                    {job.caseStudy ? (
+                      <Link className="xp-case" href={job.caseStudy}>
+                        Case study
+                      </Link>
+                    ) : (
+                      <span className="xp-case xp-case--none">Under NDA</span>
+                    )}
+                  </li>
+                ))}
+              </ol>
             </div>
           </section>
         </main>

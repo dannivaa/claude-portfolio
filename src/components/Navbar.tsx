@@ -46,11 +46,10 @@ export default function Navbar() {
           <a href={RESUME_URL} target="_blank" rel="noreferrer noopener">
             Resume
           </a>
+          <Link href="/contact" aria-current={pathname === '/contact' ? 'page' : undefined}>
+            Contact
+          </Link>
         </nav>
-
-        <Link className="btn btn-primary" href="/contact">
-          Let&apos;s talk
-        </Link>
       </div>
     </header>
   );

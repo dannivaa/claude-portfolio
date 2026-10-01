@@ -1,9 +1,16 @@
+import '@/styles/work-motion.css';
 import { Children, isValidElement, type CSSProperties, type ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { getNextProject, type Project } from '@/lib/projects';
 import { CsToc, type TocItem } from '@/components/case-study/CsToc';
+import { WorkVideo } from '@/components/home/WorkVideo';
+import { MotionScene } from '@/components/home/MotionScene';
+import { GUDFOOD_SCENE } from '@/components/home/motion/gudfood-scene';
+import { SKVOT_SCENE } from '@/components/home/motion/skvot-scene';
+
+const SCENES = { gudfood: GUDFOOD_SCENE, skvot: SKVOT_SCENE };
 
 export type Screen = { src: string; alt: string; width: number; height: number };
 type Fact = { label: string; value: string };
@@ -89,54 +96,80 @@ export function CsFacts({ project, facts }: { project: Project; facts: Fact[] })
   );
 }
 
-/** Tinted panel with the project's key screens, in the colours of its thumbnail. */
-export function CsStage({ project, screens }: { project: Project; screens: Screen[] }) {
+/** The homepage card's media, full width under the title: Danylo's video or the CSS motion loop. */
+export function CsHeroMedia({ project }: { project: Project }) {
+  const { card } = project;
   return (
-    <section className="cs-stage-section" aria-label={`${project.name} key screens`}>
-      <div className="cs-stage" style={stageStyle(project)}>
-        <div className="cs-phones">
-          {screens.map((screen) => (
-            <Phone key={screen.src} screen={screen} eager />
-          ))}
-        </div>
-      </div>
-    </section>
+    <div className="cs-hero-media">
+      {'video' in card ? (
+        <WorkVideo {...card.video} label={`${project.name}: ${project.summary}`} />
+      ) : (
+        <MotionScene html={SCENES[card.scene]} label={project.summary} stage={project.stage} />
+      )}
+    </div>
   );
 }
 
-export function CsSummary({ items }: { items: { label: string; body: string }[] }) {
+const sectionId = (label: string) => label.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+/**
+ * One chapter of the story, Rachel's way: a small label, a statement headline, a
+ * short paragraph, then whatever shows it (points, flows, research artefacts).
+ */
+export function CsSection({ label, title, children }: { label: string; title: string; children?: ReactNode }) {
+  const id = sectionId(label);
   return (
-    <section id="overview" className="cs-summary" aria-label="Overview">
-      <dl className="cs-psr">
-        {items.map((item) => (
-          <div key={item.label}>
-            <dt>{item.label}</dt>
-            <dd>{item.body}</dd>
-          </div>
-        ))}
-      </dl>
-    </section>
-  );
-}
-
-const blockId = (label: string) => label.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-
-export function CsArticle({ children }: { children: ReactNode }) {
-  return <div className="cs-article">{children}</div>;
-}
-
-/** One story section. `visuals` sit under the prose at the full column width. */
-export function CsBlock({ label, children, visuals }: { label: string; children: ReactNode; visuals?: ReactNode }) {
-  const id = blockId(label);
-  return (
-    <section id={id} className="cs-block" aria-labelledby={`${id}-title`}>
-      <h2 id={`${id}-title`} className="cs-block-label">
-        {label}
+    <section id={id} className="cs-section" aria-labelledby={`${id}-title`}>
+      <p className="cs-section-label">{label}</p>
+      <h2 id={`${id}-title`} className="cs-section-title">
+        {title}
       </h2>
-      <div className="cs-prose">{children}</div>
-      {visuals && <div className="cs-visuals">{visuals}</div>}
+      {children}
     </section>
   );
+}
+
+export function CsText({ children }: { children: ReactNode }) {
+  return <div className="cs-prose">{children}</div>;
+}
+
+/** Two to three short points under a section: a title and a line each. */
+export function CsPoints({ label, items }: { label?: string; items: { title: string; body: string }[] }) {
+  return (
+    <div className="cs-points-wrap">
+      {label && <p className="cs-points-label">{label}</p>}
+      <ul className={`cs-points cs-points--${Math.min(items.length, 3)}`}>
+        {items.map((item) => (
+          <li key={item.title}>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/** Core flows: each screen on its own tinted stage with a title and a line underneath. */
+export function CsFlows({ project, items }: { project: Project; items: { screen: Screen; title: string; body: string }[] }) {
+  return (
+    <ul className="cs-flows">
+      {items.map((item) => (
+        <li key={item.screen.src} className="cs-flow">
+          <div className="cs-flow-stage" style={stageStyle(project)}>
+            <Phone screen={item.screen} />
+          </div>
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** Research artefacts and screen rows sit in a column under the section text. */
+export function CsVisuals({ children }: { children: ReactNode }) {
+  return <div className="cs-visuals">{children}</div>;
 }
 
 /**
@@ -200,19 +233,13 @@ function CsNext({ project }: { project: Project }) {
   );
 }
 
-/** Contents entries for the page's sections, read from the elements passed to CsLayout. */
+/** Contents entries, one per CsSection passed to CsLayout. */
 function tocFrom(children: ReactNode): TocItem[] {
-  return Children.toArray(children).flatMap((child): TocItem[] => {
-    if (!isValidElement<{ children?: ReactNode }>(child)) return [];
-    if (child.type === CsSummary) return [{ id: 'overview', label: 'Overview' }];
-    if (child.type === CsArticle)
-      return Children.toArray(child.props.children).flatMap((block) =>
-        isValidElement<{ label?: string }>(block) && block.props.label
-          ? [{ id: blockId(block.props.label), label: block.props.label }]
-          : [],
-      );
-    return [];
-  });
+  return Children.toArray(children).flatMap((child) =>
+    isValidElement<{ label?: string }>(child) && child.type === CsSection && child.props.label
+      ? [{ id: sectionId(child.props.label), label: child.props.label }]
+      : [],
+  );
 }
 
 /**
