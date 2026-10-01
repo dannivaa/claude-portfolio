@@ -539,12 +539,21 @@ html[data-boot] .nav {
   padding: 72px 0 0;
 }
 
-.about-col {
-  width: min(640px, 100% - var(--gutter) * 2);
-  margin: 0 auto;
+/* The home hero's two equal columns: photo left, the story from the halfway line */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.about-main {
+  max-width: 600px;
 }
 
 .about-photo {
+  position: sticky;
+  top: calc(var(--nav-h) + 32px);
   aspect-ratio: 2706 / 2075;
   border-radius: 20px;
   overflow: hidden;
@@ -561,7 +570,6 @@ html[data-boot] .nav {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-top: 40px;
   font-size: 19px;
   line-height: 1.65;
   color: var(--ink-2);
@@ -638,7 +646,6 @@ html[data-boot] .nav {
   font-size: 15px;
   line-height: 1.7;
   color: var(--muted);
-  text-align: center;
 }
 
 /* ─── FOOTER ──────────────────────────────────────────────────────────────── */
@@ -889,16 +896,17 @@ html[data-boot] .nav {
     padding-top: 32px;
   }
 
-  .about-col {
-    width: calc(100% - var(--gutter) * 2);
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
 
   .about-photo {
+    position: static;
     border-radius: 16px;
   }
 
   .about-bio {
-    margin-top: 28px;
     font-size: 17px;
   }
 

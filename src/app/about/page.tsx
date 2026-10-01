@@ -52,9 +52,10 @@ export default function AboutPage() {
       <Navbar />
 
       <PageTransition>
-        {/* One narrow reading column: photo, a short bio, then ruled lists the way a CV reads */}
+        {/* The home page grid: the photo holds the left half, the story reads down the right,
+            starting on the same line as the hero intro and the Experience roles */}
         <main className="about">
-          <div className="about-col">
+          <div className="wrap wrap--wide about-grid">
             <h1 className="visually-hidden">About Danylo Ivanov</h1>
 
             <figure className="about-photo">
@@ -63,10 +64,12 @@ export default function AboutPage() {
                 alt="Danylo holding a pizza at a restaurant in Kyiv"
                 width={2706}
                 height={2075}
-                sizes="(max-width: 768px) calc(100vw - 32px), 640px"
+                sizes="(max-width: 768px) calc(100vw - 32px), 50vw"
                 preload
               />
             </figure>
+
+            <div className="about-main">
 
             <div className="about-bio">
               <p>
@@ -125,6 +128,7 @@ export default function AboutPage() {
               <br />
               Last updated October 2026
             </p>
+            </div>
           </div>
         </main>
 
