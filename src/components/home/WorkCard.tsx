@@ -5,7 +5,7 @@ import { WorkVideo } from '@/components/home/WorkVideo';
 import { MotionScene } from '@/components/home/MotionScene';
 import { GUDFOOD_SCENE } from '@/components/home/motion/gudfood-scene';
 import { SKVOT_SCENE } from '@/components/home/motion/skvot-scene';
-import { LyxonnCard } from '@/components/case-study/lyxonn/LyxonnConcept';
+import { AdminCard } from '@/components/case-study/admin/AdminConcept';
 import type { Project } from '@/lib/projects';
 
 // Cursor-chip icon: the viewBox is cropped to its stroke bounds (paths span 3–21 × 6–18,
@@ -33,7 +33,7 @@ export function WorkCard({ project }: { project: Project }) {
           {'video' in card ? (
             <WorkVideo {...card.video} label={`${project.name}: ${project.summary}`} />
           ) : 'concept' in card ? (
-            <LyxonnCard label={`${project.name}: concept recreation of the admin panel's order screen`} stage={project.stage} />
+            <AdminCard label={`${project.name}: concept recreation of the admin panel's overview`} stage={project.stage} />
           ) : (
             <MotionScene html={SCENES[card.scene]} label={SCENE_LABELS[card.scene]} stage={project.stage} />
           )}

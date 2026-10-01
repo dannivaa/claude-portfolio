@@ -33,13 +33,13 @@ export function ScaledFrame({
   return (
     <div
       ref={ref}
-      className={`lx-scaled${className ? ` ${className}` : ''}`}
+      className={`ac-scaled${className ? ` ${className}` : ''}`}
       role="img"
       aria-label={label}
       style={{ aspectRatio: `${width} / ${height}` }}
     >
       <div
-        className="lx-scaled-inner"
+        className="ac-scaled-inner"
         aria-hidden="true"
         style={{ width, height, transform: `scale(${scale ?? 0})`, opacity: scale === null ? 0 : 1 }}
       >

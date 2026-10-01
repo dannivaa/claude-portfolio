@@ -22,7 +22,7 @@ export type Project = {
   card:
     | { video: { webm: string; mp4: string; poster: string } }
     | { scene: 'gudfood' | 'skvot' }
-    | { concept: 'lyxonn' };
+    | { concept: 'admin' };
 };
 
 export const PROJECTS: Project[] = [
@@ -60,11 +60,11 @@ export const PROJECTS: Project[] = [
     summary:
       'Incremental optimization of the admin panel a crypto exchanger’s finance team uses to process orders and send funds.',
     thumbnail: '/images/Lyxonn/lyxonn-thumbnail.png',
-    thumbnailAlt: 'Concept recreation of the admin panel: an order queue beside one order ready to send',
+    thumbnailAlt: 'Concept recreation of the admin panel: an operations overview with orders per hour and items needing attention',
     accent: '#0f7a5c',
     stage: ['#d9eee4', '#9cd8bf'],
     brand: { primary: '#0f7a5c', secondary: '#3ccf91', soft: '#e2f3ec' },
-    card: { concept: 'lyxonn' },
+    card: { concept: 'admin' },
   },
   {
     slug: 'gudfood',

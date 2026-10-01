@@ -16,7 +16,7 @@ import {
   CsText,
   CsVisuals,
 } from '@/components/case-study/CaseStudy';
-import { LyxonnMarketMaker, LyxonnOrders, LyxonnSystem, LyxonnWallets } from '@/components/case-study/lyxonn/LyxonnConcept';
+import { AdminConfirm, AdminMarketMaker, AdminOrders, AdminParts, AdminWallets } from '@/components/case-study/admin/AdminConcept';
 import { getProject } from '@/lib/projects';
 
 const project = getProject('lyxonn');
@@ -41,14 +41,14 @@ export default function LyxonnCaseStudy() {
             <CsFacts
               project={project}
               facts={[
-                { label: 'Role', value: 'Sole Product Designer' },
+                { label: 'Role', value: 'Product Designer' },
                 { label: 'Timeline', value: '2025 – 2026' },
                 { label: 'Scope', value: 'Flow Optimization · Screen Consolidation · Market Maker Mode · Wallets · Design System' },
               ]}
             />
             <CsNote>
               <strong>Every screen on this page is a concept recreation.</strong> The shipped design stays under NDA, so
-              these were built from scratch for the portfolio, and the names and values in them are illustrative. The
+              these were built from scratch for the portfolio: product names, people and values in them are invented. The
               facts in the text are real.
             </CsNote>
 
@@ -66,7 +66,7 @@ export default function LyxonnCaseStudy() {
               </CsText>
               <CsPoints
                 items={[
-                  { title: 'Sole product designer', body: 'No studio on this project. Every decision in it is mine.' },
+                  { title: 'Every decision mine', body: 'No studio on this project: product design was mine end to end.' },
                   { title: 'Optimization, not a rewrite', body: 'Existing flows improved step by step instead of a full redesign.' },
                   { title: 'Fewer screens per order', body: 'Screens consolidated around the order the finance team is working on.' },
                 ]}
@@ -99,10 +99,17 @@ export default function LyxonnCaseStudy() {
               <CsVisuals>
                 <CsFigure
                   tag="Concept · Order processing"
-                  title="One order, one screen: client, amounts, payout and checks together"
-                  caption="Concept recreation, values illustrative. The queue stays in view, every check sits next to the data it checks, and the send button repeats the exact amount it will move."
+                  title="One order, one screen: client, payout, incoming transfer and checks together"
+                  caption="Concept recreation. The queue stays in view with time-in-queue on every row, each check sits next to the data it checks, and the order moves on from a single bar at the bottom."
                 >
-                  <LyxonnOrders />
+                  <AdminOrders />
+                </CsFigure>
+                <CsFigure
+                  tag="Concept · Confirm payout"
+                  title="Speed everywhere else, one deliberate pause where funds leave"
+                  caption="Concept recreation. The amount and recipient are restated in full, and typing the card’s last four digits is the one step that can’t be skipped before an irreversible transfer."
+                >
+                  <AdminConfirm />
                 </CsFigure>
               </CsVisuals>
               <CsGap
@@ -125,27 +132,27 @@ export default function LyxonnCaseStudy() {
               />
             </CsSection>
 
-            <CsSection label="Related work" title="Two more surfaces for Karbovanets, the exchange product.">
+            <CsSection label="Related work" title="Two more surfaces for a second exchange product.">
               <CsText>
                 <p>
-                  Alongside the order flows: a Market Maker mode and a Wallets page for Karbovanets, both inside the same
-                  admin panel.
+                  Alongside the order flows: a Market Maker mode and a Wallets page for the company&rsquo;s second
+                  exchange product, both inside the same admin panel.
                 </p>
               </CsText>
               <CsVisuals>
                 <CsFigure
                   tag="Concept · Market Maker mode"
                   title="One switch, the parameters behind it, and a way to stop"
-                  caption="Concept recreation, values illustrative. Pricing, the inventory band and a pause control sit next to live quotes, and every change lands in a log."
+                  caption="Concept recreation. Mid price and the quoted band sit above the parameters that shape them, live quotes run alongside, and every change is signed and logged."
                 >
-                  <LyxonnMarketMaker />
+                  <AdminMarketMaker />
                 </CsFigure>
                 <CsFigure
                   tag="Concept · Wallets"
-                  title="Balances per asset and network, with health in the row"
-                  caption="Concept recreation, values illustrative. A wallet’s state reads from the table itself, and details open beside it instead of on a new page."
+                  title="Custody at a glance, and the one wallet that needs action"
+                  caption="Concept recreation. Allocation sits above the table, health and free balance read from each row, and only the wallet below threshold gets an action."
                 >
-                  <LyxonnWallets />
+                  <AdminWallets />
                 </CsFigure>
               </CsVisuals>
               <CsGap title="Shareable screens" items={['Which shipped screens, if any, can be shown under NDA']} />
@@ -160,11 +167,11 @@ export default function LyxonnCaseStudy() {
               </CsText>
               <CsVisuals>
                 <CsFigure
-                  tag="Concept · Design system"
-                  title="Tokens and components the concept screens are built from"
-                  caption="A concept sheet for the screens on this page. The real system stays in Figma under NDA."
+                  tag="Concept · Components"
+                  title="The pieces the concept screens are built from"
+                  caption="Component specimens from the screens above. The real system stays in Figma under NDA."
                 >
-                  <LyxonnSystem />
+                  <AdminParts />
                 </CsFigure>
               </CsVisuals>
             </CsSection>
