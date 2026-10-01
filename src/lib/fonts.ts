@@ -1,15 +1,17 @@
 import localFont from 'next/font/local';
 
-// Geist (by Vercel), variable weight: one file covers body, UI, headings and
-// the footer's heavy "Stand with Ukraine" banner.
+// Geist (by Vercel), variable weight, upright and italic: body, UI, headings,
+// the italic first line of the hero, and the footer's heavy "Stand with Ukraine".
 export const geist = localFont({
-  src: '../fonts/Geist-Variable.woff2',
-  weight: '100 900',
+  src: [
+    { path: '../fonts/Geist-Variable.woff2', weight: '100 900', style: 'normal' },
+    { path: '../fonts/Geist-Italic-Variable.woff2', weight: '100 900', style: 'italic' },
+  ],
   variable: '--ff-geist',
   display: 'swap',
 });
 
-// Geist Mono: small uppercase labels only (case study eyebrows and figure tags)
+// Geist Mono: small uppercase labels only (see .label in style.css)
 export const geistMono = localFont({
   src: '../fonts/GeistMono-Variable.woff2',
   weight: '100 900',
@@ -17,12 +19,4 @@ export const geistMono = localFont({
   display: 'swap',
 });
 
-// Bricolage Grotesque: the expressive half of the hero headline ("Creative mind,")
-export const bricolage = localFont({
-  src: '../fonts/BricolageGrotesque-Variable.woff2',
-  weight: '200 800',
-  variable: '--ff-bricolage',
-  display: 'swap',
-});
-
-export const fontVariables = `${geist.variable} ${geistMono.variable} ${bricolage.variable}`;
+export const fontVariables = `${geist.variable} ${geistMono.variable}`;

@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { KyivTime } from '@/components/KyivTime';
 import { RESUME_URL } from '@/lib/site';
 
 const NAV_SECTIONS = [{ id: 'projects', label: 'Work' }];
@@ -46,22 +45,12 @@ export default function Navbar() {
           </Link>
           <a href={RESUME_URL} target="_blank" rel="noreferrer noopener">
             Resume
-            <span className="nav-ext" aria-hidden="true">
-              ↗
-            </span>
           </a>
         </nav>
 
-        <div className="nav-end">
-          {/* Live local time: a small sign there's a person in Kyiv behind the site */}
-          <p className="nav-time">
-            <span className="nav-time-dot" aria-hidden="true" />
-            Kyiv <KyivTime className="nav-time-value" offset={false} />
-          </p>
-          <Link className="btn btn-primary" href="/contact">
-            Let&apos;s talk
-          </Link>
-        </div>
+        <Link className="btn btn-primary" href="/contact">
+          Let&apos;s talk
+        </Link>
       </div>
     </header>
   );

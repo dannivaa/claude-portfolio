@@ -3,7 +3,7 @@ import '@/styles/case-study.css';
 import Navbar from '@/components/Navbar';
 import { PageTransition } from '@/components/PageTransition';
 import Footer from '@/components/Footer';
-import { CsArticle, CsFacts, CsLayout, CsBlock, CsGallery, CsHeader, CsStage, CsSummary, type Screen } from '@/components/case-study/CaseStudy';
+import { CsArticle, CsFacts, CsLayout, CsBlock, CsHeader, CsScreens, CsStage, CsSummary, type Screen } from '@/components/case-study/CaseStudy';
 import { getProject } from '@/lib/projects';
 import { SkvotCompetitors, SkvotHomeStructure, SkvotMoodboard, SkvotProcess } from '@/components/case-study/research/SkvotResearch';
 
@@ -94,6 +94,15 @@ export default function SkvotCaseStudy() {
                 visuals={
                   <>
                     <SkvotHomeStructure />
+                  <CsScreens
+                    project={project}
+                    caption="A course page, the Culture reader and My Courses: courses and content under one roof."
+                    screens={[
+                    screen(4, 'Course page for UX/UI for game development with dates and programme'),
+                    screen(5, 'Article reader in the Culture tab'),
+                    screen(6, 'My Courses with progress on current courses'),
+                    ]}
+                  />
                   </>
                 }
               >
@@ -103,7 +112,22 @@ export default function SkvotCaseStudy() {
                 <p><strong>Homepage</strong> — Weekly schedule at the top, latest content feed below. Students know what&rsquo;s next without digging. Minimal top navigation — profile, search, notifications only.</p>
               </CsBlock>
 
-              <CsBlock label="Result">
+              <CsBlock
+                label="Result"
+                visuals={
+                  <>
+                  <CsScreens
+                    project={project}
+                    caption="Lecturer feedback and chat in the app, the two things that keep students moving between assignments."
+                    screens={[
+                    screen(7, 'Lecture page with the homework brief and lecturer feedback'),
+                    screen(8, 'Chat list with lecturers, classmates and support'),
+                    screen(9, 'Conversation with a lecturer about homework feedback'),
+                    ]}
+                  />
+                  </>
+                }
+              >
                 <p>Each decision maps to a metric the product would track post-launch.</p>
                 <p><strong>Daily Active Users</strong> — Skvot had zero mobile presence before this. A native app opens DAU as a trackable metric for the first time.</p>
                 <p><strong>Course completion rate</strong> — Chat removes the communication friction that causes students to disengage mid-course. Faster lecturer feedback means fewer students falling through the gaps between assignments.</p>
@@ -111,22 +135,6 @@ export default function SkvotCaseStudy() {
                 <p><strong>Feedback turnaround time</strong> — Mobile-accessible grading for lecturers reduces the time between submission and response. The design removes the device barrier that 28 of 34 lecturers faced.</p>
               </CsBlock>
             </CsArticle>
-
-            <CsGallery
-              project={project}
-              rows={[
-                [
-                  screen(4, 'Course page for UX/UI for game development with dates and programme'),
-                  screen(5, 'Article reader in the Culture tab'),
-                  screen(6, 'My Courses with progress on current courses'),
-                ],
-                [
-                  screen(7, 'Lecture page with the homework brief and lecturer feedback'),
-                  screen(8, 'Chat list with lecturers, classmates and support'),
-                  screen(9, 'Conversation with a lecturer about homework feedback'),
-                ],
-              ]}
-            />
           </CsLayout>
         </main>
 

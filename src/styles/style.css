@@ -14,6 +14,9 @@
 
   --text: var(--ff-geist), 'Helvetica Neue', Arial, sans-serif;
   --display: var(--text);
+  /* Labels: the one place caps appear. Geist Mono, 12px, uppercase, 0.08em,
+     for small metadata only (nav role, hover chip, Now/Before, case study
+     fact labels and figure tags, contact location), never body text */
   --mono: var(--ff-geist-mono), ui-monospace, Menlo, monospace;
 
   --container: 1200px;
@@ -49,9 +52,11 @@ body {
   overflow-x: clip;
 }
 
+/* Selection the way Rachel does it: the text takes the accent, the highlight
+   behind it is only a faint wash of the same colour */
 ::selection {
-  background: var(--accent);
-  color: #fff;
+  background: rgba(91, 61, 245, 0.12);
+  color: var(--accent);
 }
 
 a {
@@ -257,69 +262,9 @@ a {
   font-family: var(--mono);
   font-weight: 400;
   font-size: 12px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
-}
-
-.nav-ext {
-  display: inline-block;
-  margin-left: 3px;
-  font-size: 0.85em;
-  transition: transform 0.2s var(--ease);
-}
-
-.nav-links a:hover .nav-ext {
-  transform: translate(2px, -2px);
-}
-
-.nav-end {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-/* Live Kyiv time with a soft pulsing dot */
-.nav-time {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
-  white-space: nowrap;
-}
-
-.nav-time-value {
-  color: var(--ink);
-  font-variant-numeric: tabular-nums;
-}
-
-.nav-time-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 0 rgba(91, 61, 245, 0.5);
-  animation: live-pulse 2.4s ease-out infinite;
-}
-
-@keyframes live-pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(91, 61, 245, 0.45);
-  }
-  70%,
-  100% {
-    box-shadow: 0 0 0 7px rgba(91, 61, 245, 0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .nav-time-dot {
-    animation: none;
-  }
 }
 
 .nav-avatar {
@@ -379,233 +324,7 @@ a {
 
 /* ─── HERO ────────────────────────────────────────────────────────────────── */
 .hero {
-  position: relative;
-  padding-top: 30vh;
-}
-
-/* Toys: a drum, a phone and a record above the headline, one for each thing the
-   intro mentions. They bob a little; tap the drum or the record for sound, the
-   phone for the next screen. */
-.hero-toys {
-  position: absolute;
-  top: 28px;
-  left: 50%;
-  width: min(100%, 1800px);
-  height: calc(30vh - 84px);
-  padding: 0 min(var(--gutter), 24px);
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
-.toy {
-  position: absolute;
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  pointer-events: auto;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  animation: toy-bob 6s ease-in-out infinite;
-}
-
-.toy:focus-visible {
-  outline-offset: 6px;
-  border-radius: 20px;
-}
-
-.toy--drum {
-  left: 7%;
-  top: 22%;
-  width: 128px;
-  rotate: -7deg;
-}
-
-.toy--phone {
-  left: 41%;
-  top: 0;
-  width: 88px;
-  rotate: 6deg;
-  animation-delay: -2s;
-}
-
-.toy--record {
-  left: 71%;
-  top: 14%;
-  width: 124px;
-  animation-delay: -4s;
-}
-
-.toy svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  overflow: visible;
-}
-
-.toy-drum,
-.toy-record {
-  display: block;
-  transition: transform 0.3s var(--ease);
-}
-
-.toy:hover .toy-drum,
-.toy:hover .toy-record,
-.toy:hover .toy-phone {
-  transform: scale(1.05);
-}
-
-/* Drum */
-.toy-drum-shell {
-  fill: var(--accent);
-}
-
-.toy-drum-band {
-  fill: none;
-  stroke: #8e7bff;
-  stroke-width: 3;
-}
-
-.toy-drum-head {
-  fill: #fbfaf6;
-}
-
-.toy-drum-rim {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 3;
-}
-
-.toy-drum-sticks rect {
-  fill: #e9bf8f;
-  stroke: #9a6b3c;
-  stroke-width: 1.5;
-}
-
-.toy-drum.is-hit {
-  animation: drum-hit 0.32s var(--ease);
-}
-
-@keyframes drum-hit {
-  30% {
-    transform: scale(1.08, 0.9) translateY(4px);
-  }
-  60% {
-    transform: scale(0.97, 1.04);
-  }
-}
-
-/* Phone: real screens crossfading */
-.toy-phone {
-  position: relative;
-  display: block;
-  aspect-ratio: 1560 / 3376;
-  overflow: hidden;
-  border: 4px solid var(--ink);
-  border-radius: 18px;
-  background: var(--ink);
-  box-shadow: 0 18px 30px -18px rgba(18, 18, 18, 0.55);
-  transition: transform 0.3s var(--ease);
-}
-
-.toy-phone img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  opacity: 0;
-  transition: opacity 0.6s var(--ease);
-}
-
-.toy-phone img.is-on {
-  opacity: 1;
-}
-
-/* Record: turns slowly, whirls when tapped */
-.toy-record svg {
-  animation: record-turn 9s linear infinite;
-}
-
-.toy-record.is-spun svg {
-  animation: record-whirl 1s var(--ease), record-turn 9s linear 1s infinite;
-}
-
-.toy-record-disc {
-  fill: #17171a;
-}
-
-.toy-record-groove {
-  fill: none;
-  stroke: #33333a;
-  stroke-width: 1.5;
-}
-
-.toy-record-label {
-  fill: var(--accent);
-}
-
-.toy-record-hole {
-  fill: #f8f8fc;
-}
-
-.toy-record-shine {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.35);
-  stroke-width: 3;
-  stroke-linecap: round;
-}
-
-@keyframes record-turn {
-  to {
-    rotate: 360deg;
-  }
-}
-
-@keyframes record-whirl {
-  from {
-    rotate: 0deg;
-  }
-  to {
-    rotate: 720deg;
-  }
-}
-
-@keyframes toy-bob {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-  50% {
-    translate: 0 -6px;
-  }
-}
-
-.toy-hint {
-  position: absolute;
-  left: calc(71% + 140px);
-  top: 46%;
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-  white-space: nowrap;
-  rotate: -4deg;
-}
-
-.toy-hint::before {
-  content: '← ';
-  color: var(--accent);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .toy,
-  .toy-record svg,
-  .toy-record.is-spun svg,
-  .toy-drum.is-hit {
-    animation: none;
-  }
+  padding-top: 22vh;
 }
 
 .hero-grid {
@@ -632,58 +351,16 @@ a {
   color: var(--muted);
 }
 
-/* Headline in two voices, one per line: "Creative mind," in Bricolage Grotesque,
-   chunky, a touch condensed, letters sitting slightly off-beat and wobbling when
-   the headline is hovered; "product brain." in plain Geist */
+/* Headline on two lines: "Creative mind," in Geist italic, "product brain." upright */
 .hero-creative,
 .hero-product {
   display: block;
 }
 
 .hero-creative {
-  margin-bottom: 0.04em;
-  font-family: var(--ff-bricolage), var(--display);
-  font-weight: 800;
-  font-variation-settings: 'wdth' 84, 'opsz' 96;
-  font-size: 1.12em;
-  line-height: 0.95;
-  letter-spacing: -0.035em;
-  color: var(--accent);
-  white-space: nowrap;
-}
-
-.hero-creative span {
-  display: inline-block;
-  transform-origin: 50% 80%;
-}
-
-.hero-creative span:nth-child(3n + 1) {
-  rotate: -3deg;
-  translate: 0 0.02em;
-}
-
-.hero-creative span:nth-child(3n + 2) {
-  rotate: 2deg;
-  translate: 0 -0.03em;
-}
-
-.hero-title:hover .hero-creative span {
-  animation: letter-wobble 0.7s var(--ease) calc(var(--i) * 35ms);
-}
-
-@keyframes letter-wobble {
-  35% {
-    transform: translateY(-0.12em) rotate(-8deg) scale(1.08);
-  }
-  65% {
-    transform: translateY(0.03em) rotate(5deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-title:hover .hero-creative span {
-    animation: none;
-  }
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.045em;
 }
 
 .hero-lede strong {
@@ -730,7 +407,6 @@ a {
   font-size: 16px;
   color: var(--muted);
 }
-
 
 /* NDA cards: a blurred silhouette of the product surface on an ultraviolet field */
 .work-stage.nda-stage {
@@ -881,6 +557,11 @@ a {
 }
 
 .cursor-chip {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -888,12 +569,7 @@ a {
   border-radius: 999px;
   background: var(--chip-bg, var(--ink));
   color: #fff;
-  font-family: var(--text);
-  font-weight: 500;
-  font-size: 12px;
   line-height: 20px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   white-space: nowrap;
   transform: scale(0);
   transform-origin: left center;
@@ -917,14 +593,17 @@ a {
 }
 
 .xp-group-label {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 14px;
-  font-weight: 500;
-  font-size: 17px;
+  color: var(--muted);
 }
-
 
 /* Period · company | role · link: the role starts on the work grid's right column (50% + half the gutter) */
 .xp-row {
@@ -1446,30 +1125,6 @@ a.xp-case:hover {
     padding-top: 56px;
   }
 
-  /* Toys leave the absolute layout and sit in a row above the headline */
-  .hero-toys {
-    position: static;
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    width: auto;
-    height: auto;
-    margin-bottom: 40px;
-    padding: 0 var(--gutter);
-    transform: none;
-  }
-
-  .toy {
-    position: relative;
-    left: auto;
-    top: auto;
-  }
-
-  .toy-hint {
-    position: static;
-    align-self: center;
-  }
-
   .hero-grid {
     grid-template-columns: 1fr;
   }
@@ -1514,7 +1169,6 @@ a.xp-case:hover {
     grid-template-columns: 1fr;
   }
 
-
   .drums {
     padding: 24px;
   }
@@ -1535,8 +1189,7 @@ a.xp-case:hover {
     --nav-h: 64px;
   }
 
-  .nav-links,
-  .nav-time {
+  .nav-links {
     display: none;
   }
 
@@ -1548,35 +1201,6 @@ a.xp-case:hover {
 
   .hero {
     padding-top: 32px;
-  }
-
-  .hero-toys {
-    flex-wrap: wrap;
-    gap: 18px;
-    margin-bottom: 28px;
-  }
-
-  .toy--drum,
-  .toy--record {
-    width: 88px;
-  }
-
-  .toy--phone {
-    width: 62px;
-  }
-
-  .toy-phone {
-    border-width: 3px;
-    border-radius: 12px;
-  }
-
-  .toy-hint {
-    flex-basis: 100%;
-    rotate: 0deg;
-  }
-
-  .toy-hint::before {
-    content: '↑ ';
   }
 
   .drums {
@@ -1599,7 +1223,6 @@ a.xp-case:hover {
     font-size: 48px;
     line-height: 1.04;
   }
-
 
   .hero-grid {
     gap: 20px;
@@ -1659,7 +1282,6 @@ a.xp-case:hover {
     font-size: 17px;
   }
 
-
   .xp-role {
     grid-column: 1;
     grid-row: 3;
@@ -1669,7 +1291,6 @@ a.xp-case:hover {
     grid-column: 2;
     grid-row: 2;
   }
-
 
   .about-hero {
     padding-top: 40px;
@@ -1702,7 +1323,6 @@ a.xp-case:hover {
   .about-playlist iframe {
     margin-top: 20px;
   }
-
 
   .site-footer {
     padding: 80px 0 8px;

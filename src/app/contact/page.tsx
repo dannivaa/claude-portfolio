@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   description: 'Get in touch with Danylo Ivanov, product designer in Kyiv — email, LinkedIn, resume and Instagram.',
 };
 
+const REASONS = [
+  { label: 'Hiring', value: 'You’re looking for a product designer' },
+  { label: 'Building', value: 'Onboarding, payments, KYC or a paywall that has to convert' },
+  { label: 'Talking shop', value: 'Design, product thinking, or what you’re working on' },
+];
+
 const CHANNELS = [
   { label: 'Email', value: EMAIL, href: `mailto:${EMAIL}`, external: false },
   { label: 'LinkedIn', value: 'Full work history', href: LINKEDIN_URL, external: true },
@@ -31,8 +37,16 @@ export default function ContactPage() {
               <div className="contact-intro">
                 <h1 className="contact-title">Let&rsquo;s talk.</h1>
                 <p className="contact-lede">
-                  Hiring, building something, or just want to talk design? Email is the fastest way to reach me.
+                  Email is the fastest way to reach me. These are the best reasons to:
                 </p>
+                <dl className="contact-reasons">
+                  {REASONS.map((reason) => (
+                    <div key={reason.label}>
+                      <dt>{reason.label}</dt>
+                      <dd>{reason.value}</dd>
+                    </div>
+                  ))}
+                </dl>
                 <p className="contact-local">
                   <span className="contact-local-dot" aria-hidden="true" />
                   Kyiv, Ukraine

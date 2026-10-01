@@ -71,6 +71,7 @@
 .cs-facts dt,
 .cs-facts-label {
   font-family: var(--mono);
+  font-weight: 400;
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -169,8 +170,13 @@
   object-position: top center;
 }
 
-.cs-stage--gallery {
-  gap: 40px;
+/* Screens set inside a story section: same stage, a little less padding */
+.cs-screens {
+  min-width: 0;
+}
+
+.cs-stage--inline {
+  padding: 56px 32px;
 }
 
 /* ─── CASE STUDY: SUMMARY (problem / solution / result) ───────────────────── */
@@ -178,8 +184,7 @@
   padding-top: 80px;
 }
 
-.cs-summary,
-.cs-gallery {
+.cs-summary {
   scroll-margin-top: calc(var(--nav-h) + 24px);
 }
 
@@ -272,11 +277,7 @@
   margin-top: 10px;
 }
 
-/* ─── CASE STUDY: GALLERY + NEXT ──────────────────────────────────────────── */
-.cs-gallery {
-  padding-top: 64px;
-}
-
+/* ─── CASE STUDY: NEXT ────────────────────────────────────────────────────── */
 .cs-next-section {
   padding-top: 120px;
 }
@@ -442,10 +443,6 @@
     border-radius: 24px;
   }
 
-  .cs-stage--gallery {
-    gap: 20px;
-  }
-
   .cs-phones {
     justify-content: flex-start;
     gap: 16px;
@@ -495,10 +492,6 @@
 
   .cs-prose > * + * {
     margin-top: 16px;
-  }
-
-  .cs-gallery {
-    padding-top: 32px;
   }
 
   .cs-next-section {
@@ -565,6 +558,7 @@
 
 .cs-fig-tag {
   font-family: var(--mono);
+  font-weight: 400;
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -609,7 +603,8 @@
 
 .sf-rpd-label {
   font-family: var(--mono);
-  font-size: 11px;
+  font-weight: 400;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
@@ -947,7 +942,8 @@
 
 .gf-ladder-k {
   font-family: var(--mono);
-  font-size: 11px;
+  font-weight: 400;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
@@ -1123,11 +1119,12 @@
 }
 
 .gf-persona-k {
-  margin-bottom: 8px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-weight: 400;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  margin-bottom: 8px;
   color: var(--muted);
 }
 
@@ -1216,12 +1213,13 @@
 }
 
 .gf-bin-label {
-  display: flex;
-  justify-content: space-between;
   font-family: var(--mono);
+  font-weight: 400;
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
   color: var(--ink-2);
 }
 
@@ -1298,7 +1296,8 @@
 
 .sk-goal-tag {
   font-family: var(--mono);
-  font-size: 11px;
+  font-weight: 400;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--cs-primary);

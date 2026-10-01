@@ -166,19 +166,19 @@ export function CsFigure({
   );
 }
 
-export function CsGallery({ project, rows }: { project: Project; rows: Screen[][] }) {
+/** A row of screens set inside a story section, on the same tinted stage as the hero screens. */
+export function CsScreens({ project, screens, caption }: { project: Project; screens: Screen[]; caption?: string }) {
   return (
-    <section id="screens" className="cs-gallery" aria-label={`More ${project.name} screens`}>
-      <div className="cs-stage cs-stage--gallery" style={stageStyle(project)}>
-        {rows.map((row, i) => (
-          <div key={i} className="cs-phones">
-            {row.map((screen) => (
-              <Phone key={screen.src} screen={screen} />
-            ))}
-          </div>
-        ))}
+    <figure className="cs-screens">
+      <div className="cs-stage cs-stage--inline" style={stageStyle(project)}>
+        <div className="cs-phones">
+          {screens.map((screen) => (
+            <Phone key={screen.src} screen={screen} />
+          ))}
+        </div>
       </div>
-    </section>
+      {caption && <figcaption className="cs-fig-caption">{caption}</figcaption>}
+    </figure>
   );
 }
 
@@ -205,7 +205,6 @@ function tocFrom(children: ReactNode): TocItem[] {
   return Children.toArray(children).flatMap((child): TocItem[] => {
     if (!isValidElement<{ children?: ReactNode }>(child)) return [];
     if (child.type === CsSummary) return [{ id: 'overview', label: 'Overview' }];
-    if (child.type === CsGallery) return [{ id: 'screens', label: 'Screens' }];
     if (child.type === CsArticle)
       return Children.toArray(child.props.children).flatMap((block) =>
         isValidElement<{ label?: string }>(block) && block.props.label
