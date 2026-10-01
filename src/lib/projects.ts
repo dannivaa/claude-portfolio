@@ -86,16 +86,16 @@ export type NdaWork = {
   surface: 'mobile' | 'web';
 };
 
-export const NDA_WORK: Record<'lyxonn' | 'cake', NdaWork> = {
-  lyxonn: { company: 'Lyxonn', title: 'Payments and KYC flows', year: '2026', surface: 'mobile' },
-  cake: { company: 'Cake Alliance', title: 'Mobile-first product and design system', year: '2025', surface: 'web' },
+export const NDA_WORK: Record<'lyxonn' | 'homecrowd', NdaWork> = {
+  lyxonn: { company: 'Lyxonn', title: 'Payments and KYC flows', year: '2026', surface: 'web' },
+  homecrowd: { company: 'Homecrowd', title: 'Card-linked rewards for college sports fans', year: '2026', surface: 'mobile' },
 };
 
 /** Homepage order: newest first, alternating so the two NDA cards sit on a diagonal. */
 export const WORK_ORDER = [
   { kind: 'project', slug: 'safey' },
   { kind: 'nda', key: 'lyxonn' },
-  { kind: 'nda', key: 'cake' },
+  { kind: 'nda', key: 'homecrowd' },
   { kind: 'project', slug: 'gudfood' },
   { kind: 'project', slug: 'skvot' },
 ] as const;

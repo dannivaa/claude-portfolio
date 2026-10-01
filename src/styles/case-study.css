@@ -1,3 +1,17 @@
+/* ─── CASE STUDY: LAYOUT ──────────────────────────────────────────────────── */
+/* Narrow left column (back link + contents) beside one column for everything else */
+.cs-layout {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 40px;
+}
+
+.cs-side-inner {
+  position: sticky;
+  top: var(--nav-h);
+  padding-top: 40px;
+}
+
 /* ─── CASE STUDY: HEADER ──────────────────────────────────────────────────── */
 .cs-head {
   padding: 40px 0 56px;
@@ -26,7 +40,6 @@
 }
 
 .cs-project {
-  margin-top: 64px;
   font-size: 18px;
   color: var(--muted);
 }
@@ -67,7 +80,8 @@
 /* Three phones must fit the stage: 3 × (h × 1179/2556) + gaps ≤ stage width,
    so the height is also capped by the viewport width */
 .cs-stage {
-  --phone-h: min(600px, 66vh, (100vw - 256px) * 0.72);
+  /* Three phones + gaps + padding must fit the content column (viewport, capped at the 1264px wrap, less gutters and the 240px side column) */
+  --phone-h: min(560px, 66vh, (min(100vw, 1264px) - 448px) * 0.72);
   --phone-w: calc(var(--phone-h) * 1179 / 2556);
   display: flex;
   flex-direction: column;
@@ -117,9 +131,14 @@
   padding-top: 80px;
 }
 
+.cs-summary,
+.cs-gallery {
+  scroll-margin-top: calc(var(--nav-h) + 24px);
+}
+
 .cs-psr > div {
   display: grid;
-  grid-template-columns: 200px minmax(0, 720px);
+  grid-template-columns: 160px minmax(0, 720px);
   gap: 40px;
   padding: 24px 0;
   border-top: 1px solid var(--line);
@@ -141,22 +160,9 @@
   padding-top: 40px;
 }
 
-/* Contents list in the 200px column the summary labels use; the blocks fill the reading column */
-.cs-article-grid {
-  display: grid;
-  grid-template-columns: 200px minmax(0, 720px);
-  gap: 40px;
-}
-
-.cs-toc-col {
-  border-top: 1px solid var(--line);
-}
-
-/* Sits level with the current block's heading: scroll margin (nav + 24px) plus the block's 64px padding */
 .cs-toc {
-  position: sticky;
-  top: calc(var(--nav-h) + 88px);
-  margin-top: 64px;
+  position: relative;
+  margin-top: 40px;
 }
 
 .cs-toc-list {
@@ -220,6 +226,7 @@
 }
 
 .cs-prose {
+  max-width: 720px;
   font-size: 18px;
   line-height: 1.7;
   color: var(--ink-2);
@@ -313,8 +320,20 @@
 
 /* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
+  .cs-layout {
+    display: block;
+  }
+
+  .cs-side-inner {
+    position: static;
+    padding-top: 32px;
+  }
+
+  .cs-toc {
+    display: none;
+  }
+
   .cs-project {
-    margin-top: 48px;
     font-size: 16px;
   }
 
@@ -345,14 +364,6 @@
     gap: 32px;
   }
 
-  .cs-article-grid {
-    display: block;
-  }
-
-  .cs-toc-col {
-    display: none;
-  }
-
   .cs-psr dt,
   .cs-psr dd,
   .cs-prose {
@@ -375,10 +386,6 @@
 @media (max-width: 768px) {
   .cs-head {
     padding: 24px 0 32px;
-  }
-
-  .cs-project {
-    margin-top: 32px;
   }
 
   .cs-title {

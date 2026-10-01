@@ -5,10 +5,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useLenis } from 'lenis/react';
 
-const NAV_SECTIONS = [
-  { id: 'projects', label: 'Work' },
-  { id: 'experience', label: 'Experience' },
-];
+const NAV_SECTIONS = [{ id: 'projects', label: 'Work' }];
 
 export default function Navbar() {
   const pathname = usePathname();
