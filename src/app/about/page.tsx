@@ -121,7 +121,7 @@ export default function AboutPage() {
             </section>
 
             <p className="about-colophon">
-              Set in Geist. Designed and built by Danylo with Next.js.
+              Built with love.
               <br />
               Last updated October 2026
             </p>
