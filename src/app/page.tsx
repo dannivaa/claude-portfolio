@@ -41,12 +41,12 @@ export default function Home() {
           <section className="hero">
             <div className="wrap wrap--wide hero-grid">
               <h1 className="hero-title">
-                <em className="hero-creative">Creative mind,</em>
-                <span className="hero-product">product brain.</span>
+                <span className="hero-line">Creative mind,</span>
+                <span className="hero-line">product brain.</span>
               </h1>
               <p className="hero-lede">
-                <strong>Hi, I&rsquo;m Danik, and I just love making things.</strong> By day I&rsquo;m a product designer at
-                Homecrowd. After hours I build my own mobile apps and side projects, write songs and play a lot of drums.
+                <strong>Hi, I&rsquo;m Danik, and I just love making things.</strong> By day I&rsquo;m a product designer.
+                After hours I build my own mobile apps and side projects, write songs and play a lot of drums.
               </p>
             </div>
           </section>

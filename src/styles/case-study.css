@@ -70,11 +70,8 @@
 
 .cs-facts dt,
 .cs-facts-label {
-  font-family: var(--mono);
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
   color: var(--muted);
 }
 
@@ -557,11 +554,8 @@
 }
 
 .cs-fig-tag {
-  font-family: var(--mono);
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
   color: var(--cs-primary);
 }
 
@@ -602,11 +596,8 @@
 }
 
 .sf-rpd-label {
-  font-family: var(--mono);
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
   color: var(--muted);
 }
 
@@ -792,7 +783,6 @@
 }
 
 .sf-pattern-n {
-  font-family: var(--mono);
   font-size: 12px;
   color: var(--muted);
 }
@@ -941,11 +931,8 @@
 }
 
 .gf-ladder-k {
-  font-family: var(--mono);
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
   color: var(--muted);
 }
 
@@ -991,7 +978,6 @@
 
 .gf-guide li::before {
   content: counter(q, decimal-leading-zero);
-  font-family: var(--mono);
   font-size: 12px;
   line-height: 22px;
   color: var(--cs-primary);
@@ -1119,11 +1105,8 @@
 }
 
 .gf-persona-k {
-  font-family: var(--mono);
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
   margin-bottom: 8px;
   color: var(--muted);
 }
@@ -1213,11 +1196,8 @@
 }
 
 .gf-bin-label {
-  font-family: var(--mono);
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
   display: flex;
   justify-content: space-between;
   color: var(--ink-2);
@@ -1295,11 +1275,8 @@
 }
 
 .sk-goal-tag {
-  font-family: var(--mono);
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
   color: var(--cs-primary);
 }
 
@@ -1428,7 +1405,6 @@
   display: grid;
   gap: 8px;
   padding-top: 18px;
-  font-family: var(--mono);
   font-size: 12px;
   letter-spacing: 0.04em;
   color: var(--muted);
@@ -1518,7 +1494,6 @@
   border-radius: 50%;
   background: #fff;
   color: var(--ink);
-  font-family: var(--mono);
   font-size: 11px;
 }
 
@@ -1703,7 +1678,6 @@
     content: attr(data-label);
     display: block;
     margin-bottom: 4px;
-    font-family: var(--mono);
     font-size: 10px;
     letter-spacing: 0.04em;
     color: var(--muted);

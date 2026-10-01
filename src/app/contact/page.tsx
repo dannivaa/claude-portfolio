@@ -12,16 +12,18 @@ export const metadata: Metadata = {
 };
 
 const REASONS = [
-  { label: 'Hiring', value: 'You’re looking for a product designer' },
-  { label: 'Building', value: 'Onboarding, payments, KYC or a paywall that has to convert' },
-  { label: 'Talking shop', value: 'Design, product thinking, or what you’re working on' },
+  { label: 'Hiring', value: 'You want a designer who doesn’t stop at good enough' },
+  {
+    label: 'Building',
+    value: 'Bringing AI into your product, sharpening a flow that underperforms, or a problem that needs an unexpected answer',
+  },
 ];
 
 const CHANNELS = [
-  { label: 'Email', value: EMAIL, href: `mailto:${EMAIL}`, external: false },
-  { label: 'LinkedIn', value: 'Full work history', href: LINKEDIN_URL, external: true },
-  { label: 'Resume', value: 'Opens in Google Drive', href: RESUME_URL, external: true },
-  { label: 'Instagram', value: 'Life outside of design', href: INSTAGRAM_URL, external: true },
+  { label: 'Email', value: EMAIL, href: `mailto:${EMAIL}`, external: false, icon: '/icons/gmail.svg' },
+  { label: 'LinkedIn', value: 'Full work history', href: LINKEDIN_URL, external: true, icon: '/icons/linkedin.svg' },
+  { label: 'Resume', value: 'Opens in Google Drive', href: RESUME_URL, external: true, icon: '/icons/drive.svg' },
+  { label: 'Instagram', value: 'Life outside of design', href: INSTAGRAM_URL, external: true, icon: '/icons/instagram.svg' },
 ];
 
 export default function ContactPage() {
@@ -37,7 +39,7 @@ export default function ContactPage() {
               <div className="contact-intro">
                 <h1 className="contact-title">Let&rsquo;s talk.</h1>
                 <p className="contact-lede">
-                  Email is the fastest way to reach me. These are the best reasons to:
+                  Email is the fastest way to reach me. Good reasons to write:
                 </p>
                 <dl className="contact-reasons">
                   {REASONS.map((reason) => (
@@ -63,6 +65,8 @@ export default function ContactPage() {
                       target={channel.external ? '_blank' : undefined}
                       rel={channel.external ? 'noreferrer noopener' : undefined}
                     >
+                      {/* eslint-disable-next-line @next/next/no-img-element -- tiny local SVG icons */}
+                      <img className="contact-icon" src={channel.icon} alt="" width={48} height={48} />
                       <span className="contact-label">{channel.label}</span>
                       <span className="contact-value">{channel.value}</span>
                       <ArrowUpRight className="contact-arrow" size={28} strokeWidth={1.5} aria-hidden />

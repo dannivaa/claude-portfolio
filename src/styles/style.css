@@ -14,10 +14,6 @@
 
   --text: var(--ff-geist), 'Helvetica Neue', Arial, sans-serif;
   --display: var(--text);
-  /* Labels: the one place caps appear. Geist Mono, 12px, uppercase, 0.08em,
-     for small metadata only (nav role, hover chip, Now/Before, case study
-     fact labels and figure tags, contact location), never body text */
-  --mono: var(--ff-geist-mono), ui-monospace, Menlo, monospace;
 
   --container: 1200px;
   --gutter: 32px;
@@ -259,11 +255,8 @@ a {
 }
 
 .nav-role {
-  font-family: var(--mono);
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
   color: var(--muted);
 }
 
@@ -351,16 +344,9 @@ a {
   color: var(--muted);
 }
 
-/* Headline on two lines: "Creative mind," in Geist italic, "product brain." upright */
-.hero-creative,
-.hero-product {
+/* Headline on two lines: "Creative mind," then "product brain." */
+.hero-line {
   display: block;
-}
-
-.hero-creative {
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.045em;
 }
 
 .hero-lede strong {
@@ -557,11 +543,8 @@ a {
 }
 
 .cursor-chip {
-  font-family: var(--mono);
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -593,11 +576,8 @@ a {
 }
 
 .xp-group-label {
-  font-family: var(--mono);
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
   display: flex;
   align-items: center;
   gap: 10px;
