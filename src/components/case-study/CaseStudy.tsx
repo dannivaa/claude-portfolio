@@ -8,6 +8,17 @@ import { CsToc, type TocItem } from '@/components/case-study/CsToc';
 export type Screen = { src: string; alt: string; width: number; height: number };
 type Fact = { label: string; value: string };
 
+/** The project's palette as CSS variables, for the facts row and the research visuals. */
+function brandStyle(project: Project) {
+  return {
+    '--cs-primary': project.brand.primary,
+    '--cs-secondary': project.brand.secondary,
+    '--cs-soft': project.brand.soft,
+    '--cs-c1': project.stage[0],
+    '--cs-c2': project.stage[1],
+  } as CSSProperties;
+}
+
 function stageStyle(project: Project) {
   return { '--stage-edge': project.stage[0], '--stage-center': project.stage[1] } as CSSProperties;
 }
@@ -29,23 +40,51 @@ function Phone({ screen, eager }: { screen: Screen; eager?: boolean }) {
   );
 }
 
-export function CsHeader({ project, facts }: { project: Project; facts: Fact[] }) {
+export function CsHeader({ project }: { project: Project }) {
   return (
     <section className="cs-head">
       <p className="cs-project">
         {project.name} · {project.status} {project.year}
       </p>
-
       <h1 className="cs-title">{project.title}</h1>
+    </section>
+  );
+}
 
-      <dl className="cs-facts">
-        {facts.map((fact) => (
+/**
+ * Project facts under the screens: Role, Timeline and Status share one ruled row,
+ * Scope runs underneath as tags. Scope arrives as one "A · B · C" string.
+ */
+export function CsFacts({ project, facts }: { project: Project; facts: Fact[] }) {
+  const scope = facts.find((f) => f.label === 'Scope');
+  const rest = facts.filter((f) => f !== scope);
+  return (
+    <section className="cs-facts" aria-label="Project facts">
+      <dl className="cs-facts-row">
+        {rest.map((fact) => (
           <div key={fact.label}>
             <dt>{fact.label}</dt>
             <dd>{fact.value}</dd>
           </div>
         ))}
+        <div>
+          <dt>Status</dt>
+          <dd className="cs-facts-status">
+            <span aria-hidden="true" />
+            {project.status} {project.year}
+          </dd>
+        </div>
       </dl>
+      {scope && (
+        <div className="cs-facts-scope">
+          <p className="cs-facts-label">Scope</p>
+          <ul>
+            {scope.value.split(' · ').map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </section>
   );
 }
@@ -100,28 +139,26 @@ export function CsBlock({ label, children, visuals }: { label: string; children:
   );
 }
 
-/** A research artefact: white card, a small eyebrow and title, an optional caption underneath. */
+/**
+ * A research artefact on a tinted panel: a small mono tag in the corner (the way
+ * Rachel labels hers), a title, the artefact itself, and an optional caption.
+ */
 export function CsFigure({
-  eyebrow,
+  tag,
   title,
   caption,
   children,
-  bare = false,
 }: {
-  eyebrow: string;
-  title: string;
+  tag: string;
+  title?: string;
   caption?: ReactNode;
   children: ReactNode;
-  /** No card: for imagery that brings its own surface, like the moodboard. */
-  bare?: boolean;
 }) {
   return (
     <figure className="cs-fig">
-      <div className={bare ? 'cs-fig-body cs-fig-body--bare' : 'cs-fig-body'}>
-        <header className="cs-fig-head">
-          <p className="cs-fig-eyebrow">{eyebrow}</p>
-          <p className="cs-fig-title">{title}</p>
-        </header>
+      <div className="cs-fig-panel">
+        <p className="cs-fig-tag">{tag}</p>
+        {title && <p className="cs-fig-title">{title}</p>}
         {children}
       </div>
       {caption && <figcaption className="cs-fig-caption">{caption}</figcaption>}
@@ -185,7 +222,7 @@ function tocFrom(children: ReactNode): TocItem[] {
  */
 export function CsLayout({ project, children }: { project: Project; children: ReactNode }) {
   return (
-    <div className="wrap cs-layout">
+    <div className="wrap cs-layout" data-project={project.slug} style={brandStyle(project)}>
       <aside className="cs-side">
         <div className="cs-side-inner">
           <Link className="cs-back" href="/#projects">

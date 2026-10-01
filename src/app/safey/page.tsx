@@ -3,7 +3,7 @@ import '@/styles/case-study.css';
 import Navbar from '@/components/Navbar';
 import { PageTransition } from '@/components/PageTransition';
 import Footer from '@/components/Footer';
-import { CsArticle, CsLayout, CsBlock, CsHeader, CsStage, CsSummary } from '@/components/case-study/CaseStudy';
+import { CsArticle, CsFacts, CsLayout, CsBlock, CsHeader, CsStage, CsSummary } from '@/components/case-study/CaseStudy';
 import { getProject } from '@/lib/projects';
 import { SafeyMetrics, SafeyPatterns, SafeyPaywallMatrix, SafeyRevenueChart } from '@/components/case-study/research/SafeyResearch';
 
@@ -22,14 +22,7 @@ export default function SafeyCaseStudy() {
       <PageTransition>
         <main className="cs-main">
           <CsLayout project={project}>
-            <CsHeader
-              project={project}
-              facts={[
-                { label: 'Role', value: 'Product Designer' },
-                { label: 'Timeline', value: 'March — May 2026' },
-                { label: 'Scope', value: 'Product Audit · Competitor Research · Brand Identity · Paywall Design' },
-              ]}
-            />
+            <CsHeader project={project} />
 
             <CsStage
               project={project}
@@ -37,6 +30,15 @@ export default function SafeyCaseStudy() {
                 { src: '/images/Safey/01.png', alt: 'Safey home: companion cards filtered by Romance, Sport and Vampire', width: 1560, height: 3376 },
                 { src: '/images/Safey/02.png', alt: 'Safey onboarding: “Find someone you can get close with”', width: 1560, height: 3376 },
                 { src: '/images/Safey/03.png', alt: 'Safey AI+ paywall with a Free versus AI+ feature table and monthly or yearly plans', width: 1560, height: 3376 },
+              ]}
+            />
+
+            <CsFacts
+              project={project}
+              facts={[
+                { label: 'Role', value: 'Product Designer' },
+                { label: 'Timeline', value: 'March — May 2026' },
+                { label: 'Scope', value: 'Product Audit · Competitor Research · Brand Identity · Paywall Design' },
               ]}
             />
 

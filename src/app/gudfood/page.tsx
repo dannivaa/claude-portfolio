@@ -3,7 +3,7 @@ import '@/styles/case-study.css';
 import Navbar from '@/components/Navbar';
 import { PageTransition } from '@/components/PageTransition';
 import Footer from '@/components/Footer';
-import { CsArticle, CsLayout, CsBlock, CsGallery, CsHeader, CsStage, CsSummary, type Screen } from '@/components/case-study/CaseStudy';
+import { CsArticle, CsFacts, CsLayout, CsBlock, CsGallery, CsHeader, CsStage, CsSummary, type Screen } from '@/components/case-study/CaseStudy';
 import { getProject } from '@/lib/projects';
 import { GudFoodAffinity, GudFoodBarriers, GudFoodBrief, GudFoodPersona } from '@/components/case-study/research/GudFoodResearch';
 
@@ -24,14 +24,7 @@ export default function GudFoodCaseStudy() {
       <PageTransition>
         <main className="cs-main">
           <CsLayout project={project}>
-            <CsHeader
-              project={project}
-              facts={[
-                { label: 'Role', value: 'UX/UI Designer' },
-                { label: 'Timeline', value: 'Sep — Nov 2024' },
-                { label: 'Scope', value: 'Stakeholder Interviews · UX Research · Hypothesis Generation · UI Redesign · Prototyping' },
-              ]}
-            />
+            <CsHeader project={project} />
 
             <CsStage
               project={project}
@@ -39,6 +32,15 @@ export default function GudFoodCaseStudy() {
                 screen(1, 'GudFood home: delivery address, search, cuisine categories, a first-order discount and a winter sale'),
                 screen(2, 'Past orders, each with Rate order and Order again actions'),
                 screen(3, 'Post-order rating sheet: “How was your order?” with stars and quick-feedback tags'),
+              ]}
+            />
+
+            <CsFacts
+              project={project}
+              facts={[
+                { label: 'Role', value: 'UX/UI Designer' },
+                { label: 'Timeline', value: 'Sep — Nov 2024' },
+                { label: 'Scope', value: 'Stakeholder Interviews · UX Research · Hypothesis Generation · UI Redesign · Prototyping' },
               ]}
             />
 

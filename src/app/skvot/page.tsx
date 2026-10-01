@@ -3,7 +3,7 @@ import '@/styles/case-study.css';
 import Navbar from '@/components/Navbar';
 import { PageTransition } from '@/components/PageTransition';
 import Footer from '@/components/Footer';
-import { CsArticle, CsLayout, CsBlock, CsGallery, CsHeader, CsStage, CsSummary, type Screen } from '@/components/case-study/CaseStudy';
+import { CsArticle, CsFacts, CsLayout, CsBlock, CsGallery, CsHeader, CsStage, CsSummary, type Screen } from '@/components/case-study/CaseStudy';
 import { getProject } from '@/lib/projects';
 import { SkvotCompetitors, SkvotHomeStructure, SkvotMoodboard, SkvotProcess } from '@/components/case-study/research/SkvotResearch';
 
@@ -24,14 +24,7 @@ export default function SkvotCaseStudy() {
       <PageTransition>
         <main className="cs-main">
           <CsLayout project={project}>
-            <CsHeader
-              project={project}
-              facts={[
-                { label: 'Role', value: 'UX/UI Designer' },
-                { label: 'Timeline', value: 'Mar — Apr 2024' },
-                { label: 'Scope', value: 'UX Research · Competitor Analysis · Wireframing · UI Design · Prototyping' },
-              ]}
-            />
+            <CsHeader project={project} />
 
             <CsStage
               project={project}
@@ -39,6 +32,15 @@ export default function SkvotCaseStudy() {
                 screen(1, 'Skvot sign-in screen with email, password, Google and Apple options'),
                 screen(2, 'Home: the week’s schedule of lectures and meetings above the latest articles'),
                 screen(3, 'Culture tab: courses, articles and filters in one library'),
+              ]}
+            />
+
+            <CsFacts
+              project={project}
+              facts={[
+                { label: 'Role', value: 'UX/UI Designer' },
+                { label: 'Timeline', value: 'Mar — Apr 2024' },
+                { label: 'Scope', value: 'UX Research · Competitor Analysis · Wireframing · UI Design · Prototyping' },
               ]}
             />
 

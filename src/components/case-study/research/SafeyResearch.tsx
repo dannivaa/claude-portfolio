@@ -2,90 +2,91 @@ import { CsFigure } from '@/components/case-study/CaseStudy';
 
 /** Downloads and revenue for the last month, from Danylo's competitor teardown. */
 const COMPETITORS = [
-  { name: 'CHAI', downloads: 300_000, revenue: 2_000_000, label: '300k downloads · $2M revenue' },
-  { name: 'Replika', downloads: 50_000, revenue: 200_000, label: '50k downloads · $200k revenue' },
-  { name: 'Grok', downloads: 5_000_000, revenue: 17_000_000, label: '5M downloads · $17M revenue' },
-  { name: 'Character AI', downloads: 400_000, revenue: 900_000, label: '400k downloads · $900k revenue' },
-  { name: 'PolyBuzz', downloads: 500_000, revenue: 1_000_000, label: '500k downloads · $1M revenue' },
-  { name: 'HiWaifu', downloads: 50_000, revenue: 20_000, label: '50k downloads · $20k revenue' },
-]
-  .map((c) => ({ ...c, rpd: c.revenue / c.downloads }))
-  .sort((a, b) => b.rpd - a.rpd);
+  { name: 'CHAI', downloads: '300k', revenue: '$2M', rpd: 2_000_000 / 300_000 },
+  { name: 'Replika', downloads: '50k', revenue: '$200k', rpd: 200_000 / 50_000 },
+  { name: 'Grok', downloads: '5M', revenue: '$17M', rpd: 17_000_000 / 5_000_000 },
+  { name: 'Character AI', downloads: '400k', revenue: '$900k', rpd: 900_000 / 400_000 },
+  { name: 'PolyBuzz', downloads: '500k', revenue: '$1M', rpd: 1_000_000 / 500_000 },
+  { name: 'HiWaifu', downloads: '50k', revenue: '$20k', rpd: 20_000 / 50_000 },
+].sort((a, b) => b.rpd - a.rpd);
 
-const MAX_RPD = COMPETITORS[0].rpd;
+const LEAD = COMPETITORS[0];
+const LAST = COMPETITORS[COMPETITORS.length - 1];
 
-/** Ranked by monetization efficiency, not raw revenue: Grok earns most but converts each download worse than CHAI. */
+/** Monetization efficiency, not raw revenue: Grok earns most but turns each download into less than CHAI. */
 export function SafeyRevenueChart() {
   return (
     <CsFigure
-      eyebrow="Competitor analysis"
+      tag="Competitor analysis"
       title="Revenue per download, last month"
-      caption="Six AI companion apps, picked as the top earners and most downloaded in the category. CHAI became the reference for Safey’s paywall."
+      caption="Six AI companion apps, picked as the category’s top earners and most downloaded. Ranked by what each download is worth, CHAI leads by a distance."
     >
-      <ol className="viz-bars">
-        {COMPETITORS.map((c, i) => (
-          <li key={c.name} className={i === 0 ? 'viz-bar-row is-lead' : 'viz-bar-row'}>
-            <div className="viz-bar-name">
-              <span>{c.name}</span>
-              <span className="viz-bar-sub">{c.label}</span>
-            </div>
-            <div className="viz-bar-track" aria-hidden="true">
-              <span className="viz-bar" style={{ width: `${(c.rpd / MAX_RPD) * 100}%` }} />
-            </div>
-            <span className="viz-bar-value">${c.rpd.toFixed(2)}</span>
-          </li>
-        ))}
-      </ol>
+      <div className="sf-rpd">
+        <div className="sf-rpd-hero">
+          <p className="sf-rpd-label">The reference</p>
+          <p className="sf-rpd-number">${LEAD.rpd.toFixed(2)}</p>
+          <p className="sf-rpd-note">
+            per download at {LEAD.name}, {Math.round(LEAD.rpd / LAST.rpd)}× {LAST.name}. Safey’s paywall logic starts here.
+          </p>
+        </div>
+        <ol className="sf-cols" aria-label="Revenue per download by app">
+          {COMPETITORS.map((c, i) => (
+            <li key={c.name} className={i === 0 ? 'is-lead' : undefined}>
+              <span className="sf-col-value">${c.rpd.toFixed(2)}</span>
+              <span className="sf-col-bar" style={{ height: `${(c.rpd / LEAD.rpd) * 100}%` }} aria-hidden="true" />
+              <span className="sf-col-name">{c.name}</span>
+              <span className="sf-col-sub">
+                {c.downloads} · {c.revenue}
+              </span>
+            </li>
+          ))}
+        </ol>
+      </div>
     </CsFigure>
   );
 }
 
 const PAYWALLS = [
-  { app: 'CHAI', when: 'Right after sign-in', plans: 'Monthly, yearly', tiers: 2, push: 'Yearly discount + 3-day trial on yearly only' },
-  { app: 'Replika', when: 'Between setup and unlocking the app', plans: 'Yearly only', tiers: 3, push: 'No trial, no monthly option' },
-  { app: 'Grok', when: 'Right after sign-up', plans: 'Monthly, yearly', tiers: 1, push: 'Free trial on the monthly plan' },
-  { app: 'Character AI', when: 'Only when the user goes looking', plans: 'Monthly, yearly', tiers: 1, push: 'Discount on yearly' },
-  { app: 'HiWaifu', when: 'Only when the user goes looking', plans: 'Monthly, 3 mo, 6 mo, yearly', tiers: 2, push: 'Trial on the low tier, deepest discount on yearly' },
-  { app: 'PolyBuzz', when: 'Only when the user goes looking', plans: 'Monthly, yearly', tiers: 3, push: 'Monthly offer when you try to close it' },
+  { app: 'CHAI', when: 'Right after sign-in', plans: ['Monthly', 'Yearly'], tiers: 2, push: 'Yearly discount + 3-day trial, yearly only', lead: true },
+  { app: 'Replika', when: 'Between setup and unlocking the app', plans: ['Yearly'], tiers: 3, push: 'No trial, no monthly option' },
+  { app: 'Grok', when: 'Right after sign-up', plans: ['Monthly', 'Yearly'], tiers: 1, push: 'Free trial on monthly' },
+  { app: 'Character AI', when: 'Only when you go looking', plans: ['Monthly', 'Yearly'], tiers: 1, push: 'Discount on yearly' },
+  { app: 'HiWaifu', when: 'Only when you go looking', plans: ['1 mo', '3 mo', '6 mo', 'Yearly'], tiers: 2, push: 'Trial on the low tier, best discount on yearly' },
+  { app: 'PolyBuzz', when: 'Only when you go looking', plans: ['Monthly', 'Yearly'], tiers: 3, push: 'A monthly offer when you try to close it' },
 ];
 
 export function SafeyPaywallMatrix() {
   return (
     <CsFigure
-      eyebrow="Paywall teardown"
+      tag="Paywall teardown"
       title="When the paywall shows up, and how each app pushes the upgrade"
-      caption="Every top performer leads users toward the yearly plan through a trial, a discount or both. Safey keeps the trial on yearly only, the way CHAI does."
+      caption="Every top performer steers people to the yearly plan with a trial, a discount or both. Safey keeps the trial on yearly only, the way CHAI does."
     >
-      <div className="viz-table-scroll">
-        <table className="viz-table">
-          <thead>
-            <tr>
-              <th scope="col">App</th>
-              <th scope="col">Paywall appears</th>
-              <th scope="col">Plans</th>
-              <th scope="col">Tiers</th>
-              <th scope="col">Push to pay</th>
-            </tr>
-          </thead>
-          <tbody>
-            {PAYWALLS.map((p) => (
-              <tr key={p.app}>
-                <th scope="row">{p.app}</th>
-                <td>{p.when}</td>
-                <td>{p.plans}</td>
-                <td>
-                  <span className="viz-tiers" aria-label={`${p.tiers} ${p.tiers === 1 ? 'tier' : 'tiers'}`}>
-                    {[1, 2, 3].map((n) => (
-                      <span key={n} className={n <= p.tiers ? 'is-on' : undefined} />
-                    ))}
-                  </span>
-                </td>
-                <td>{p.push}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <ul className="sf-walls">
+        {PAYWALLS.map((p) => (
+          <li key={p.app} className={p.lead ? 'sf-wall is-lead' : 'sf-wall'}>
+            <div className="sf-wall-head">
+              <p className="sf-wall-app">{p.app}</p>
+              {p.lead && <span className="sf-wall-badge">Reference</span>}
+            </div>
+            <p className="sf-wall-k">Appears</p>
+            <p className="sf-wall-v">{p.when}</p>
+            <p className="sf-wall-k">Plans</p>
+            <div className="sf-wall-plans">
+              {p.plans.map((plan) => (
+                <span key={plan}>{plan}</span>
+              ))}
+            </div>
+            <p className="sf-wall-k">Tiers</p>
+            <div className="sf-wall-tiers" aria-label={`${p.tiers} ${p.tiers === 1 ? 'tier' : 'tiers'}`}>
+              {[1, 2, 3].map((n) => (
+                <span key={n} className={n <= p.tiers ? 'is-on' : undefined} />
+              ))}
+            </div>
+            <p className="sf-wall-push">{p.push}</p>
+          </li>
+        ))}
+      </ul>
     </CsFigure>
   );
 }
@@ -101,18 +102,19 @@ const PATTERNS = [
   },
   {
     label: 'Takeaway',
-    body: 'The catalogue is the norm and the features barely differ. Any personalisation or a more engaging setup is what stands out.',
+    body: 'The catalogue is the norm and the features barely differ. Personalisation, or a more engaging setup, is what stands out.',
   },
 ];
 
 export function SafeyPatterns() {
   return (
-    <CsFigure eyebrow="Patterns" title="What the category repeats, and where it breaks the mould">
-      <div className="viz-cols">
-        {PATTERNS.map((p) => (
-          <div key={p.label} className="viz-col">
-            <p className="viz-col-label">{p.label}</p>
-            <p className="viz-col-body">{p.body}</p>
+    <CsFigure tag="Patterns" title="What the category repeats, and where it breaks the mould">
+      <div className="sf-patterns">
+        {PATTERNS.map((p, i) => (
+          <div key={p.label} className={i === PATTERNS.length - 1 ? 'sf-pattern is-key' : 'sf-pattern'}>
+            <span className="sf-pattern-n">0{i + 1}</span>
+            <p className="sf-pattern-label">{p.label}</p>
+            <p className="sf-pattern-body">{p.body}</p>
           </div>
         ))}
       </div>
@@ -120,29 +122,30 @@ export function SafeyPatterns() {
   );
 }
 
-const METRICS = [
-  { name: 'Trial start rate', body: 'How many people who see the paywall start the 3-day trial.' },
-  { name: 'Trial → paid, yearly', body: 'The number the whole model is built to move.' },
-  { name: 'Paywall drop-off', body: 'Kept at a healthy level for the niche, not pushed to zero.' },
-  { name: 'Refund rate', body: 'Filters out people who forgot to cancel after the trial.' },
-];
+const JOURNEY = ['Sees the paywall', 'Starts the 3-day trial', 'Pays for the year', 'Stays subscribed'];
+const METRICS = ['Trial start rate', 'Trial → paid, yearly', 'Refund rate'];
 
 export function SafeyMetrics() {
   return (
     <CsFigure
-      eyebrow="Measurement plan"
-      title="What to watch after launch"
-      caption="RevenueCat’s benchmarks show roughly 90% of users leaving at a soft paywall, so drop-off is read against the category, not against zero."
+      tag="Measurement plan"
+      title="One metric for every step from paywall to paying"
+      caption="Drop-off is read against the category, not against zero: RevenueCat’s benchmarks show roughly 90% of people leaving at a soft paywall. Refunds catch anyone who forgot to cancel the trial."
     >
-      <ul className="viz-metrics">
-        {METRICS.map((m, i) => (
-          <li key={m.name}>
-            <span className="viz-metric-index">0{i + 1}</span>
-            <p className="viz-metric-name">{m.name}</p>
-            <p className="viz-metric-body">{m.body}</p>
-          </li>
-        ))}
-      </ul>
+      <div className="sf-journey">
+        <ol className="sf-journey-steps">
+          {JOURNEY.map((step, i) => (
+            <li key={step}>
+              <span className="sf-journey-dot">{i + 1}</span>
+              <span className="sf-journey-step">{step}</span>
+              {i < METRICS.length && <span className="sf-journey-metric">{METRICS[i]}</span>}
+            </li>
+          ))}
+        </ol>
+        <p className="sf-journey-exit">
+          <span aria-hidden="true">↳</span> Leaves at the paywall: <strong>paywall drop-off</strong>
+        </p>
+      </div>
     </CsFigure>
   );
 }
