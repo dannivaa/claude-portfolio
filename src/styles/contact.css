@@ -1,10 +1,8 @@
 /* ─── CONTACT PAGE ────────────────────────────────────────────────────────── */
-/* Same rhythm as the home page: a two-column hero, then full-width sections with
-   a small navy heading, the way About labels its lists. */
+/* Same rhythm as the home page: a two-column hero, then every way to get in touch
+   in one row, so nothing waits below the fold. */
 .contact {
   padding: 22vh 0 120px;
-  /* The calendar frame bleeds past the column; its overhang is empty, so clip it */
-  overflow-x: clip;
 }
 
 .contact-hero {
@@ -67,90 +65,12 @@
   content: '· ';
 }
 
-.contact-heading {
-  font-weight: 500;
-  font-size: 24px;
-  letter-spacing: -0.02em;
-  color: var(--accent);
-}
-
-/* Booking: the call's details on the left, Cal.com's calendar card on the right.
-   Without its details panel the card is a fixed 720px, centred in an 880px frame,
-   so the frame bleeds 80px each side to put the card flush with the column. */
-.contact-cal {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 720px;
-  gap: 24px;
-  align-items: start;
-  margin-top: 96px;
-}
-
-.contact-cal-desc {
-  max-width: 400px;
-  margin-top: 12px;
-  font-size: 17px;
-  line-height: 1.55;
-  color: var(--ink-2);
-}
-
-.contact-cal-facts {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 24px;
-  list-style: none;
-  font-size: 16px;
-  color: var(--ink);
-}
-
-.contact-cal-facts li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.contact-cal-facts svg {
-  color: var(--muted);
-}
-
-.contact-cal-box {
-  margin: 0 -80px;
-}
-
-.contact-cal-frame {
-  width: 100%;
-  min-height: 560px;
-  overflow: hidden;
-}
-
-.contact-cal-fallback {
-  margin-top: 28px;
-  font-size: 15px;
-  color: var(--muted);
-}
-
-.contact-cal-fallback a {
-  color: var(--accent);
-  text-decoration: underline;
-  text-decoration-color: rgba(20, 32, 58, 0.25);
-  text-underline-offset: 4px;
-  transition: text-decoration-color 0.15s;
-}
-
-.contact-cal-fallback a:hover {
-  text-decoration-color: currentColor;
-}
-
-/* Direct channels: four tiles in one row, the icon, the service, what's behind it */
-.contact-direct {
-  margin-top: 96px;
-}
-
+/* Channels: five tiles in one row under the hero, the call first and filled navy */
 .contact-channels {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 12px;
-  margin-top: 24px;
+  margin-top: 72px;
   list-style: none;
 }
 
@@ -167,6 +87,34 @@
 
 .contact-channel:hover {
   background: var(--panel-hover);
+}
+
+.contact-channel--call {
+  background: var(--accent);
+}
+
+.contact-channel--call:hover {
+  background: var(--accent-hover);
+}
+
+.contact-channel--call .contact-label {
+  color: #fff;
+}
+
+.contact-channel--call .contact-value {
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.contact-channel--call .contact-arrow,
+.contact-channel--call:hover .contact-arrow {
+  color: #fff;
+}
+
+.contact-icon--call {
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
 }
 
 .contact-icon {
@@ -222,15 +170,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .contact-cal {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .contact-channels li:first-child {
+    grid-column: 1 / -1;
   }
 
-  .contact-cal-box {
-    max-width: 880px;
-    margin: 0 0 0 -80px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -251,32 +194,10 @@
     font-size: 17px;
   }
 
-  .contact-heading {
-    font-size: 20px;
-  }
-
-  .contact-cal,
-  .contact-direct {
-    margin-top: 56px;
-  }
-
-  .contact-cal-box {
-    margin: 0 -16px;
-  }
-
-  .contact-cal-desc {
-    font-size: 16px;
-  }
-
-  .contact-cal-facts {
-    margin-top: 16px;
-    font-size: 15px;
-  }
-
   .contact-channels {
     grid-template-columns: 1fr;
     gap: 8px;
-    margin-top: 16px;
+    margin-top: 40px;
   }
 }
 

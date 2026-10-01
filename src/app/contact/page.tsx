@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import '@/styles/contact.css';
-import { ArrowUpRight, Clock, Globe, Video } from 'lucide-react';
+import { ArrowUpRight, CalendarDays } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import { PageTransition } from '@/components/PageTransition';
 import { KyivTime } from '@/components/KyivTime';
-import { CalBooking } from '@/components/CalBooking';
+import { CalBookingLink } from '@/components/CalBooking';
 import { CAL_LINK, CAL_URL, EMAIL, INSTAGRAM_URL, LINKEDIN_URL, RESUME_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -35,8 +35,8 @@ export default function ContactPage() {
             </h1>
             <div className="contact-intro">
               <p className="contact-lede">
-                <strong>Hiring a designer, or bringing AI into your product?</strong> Pick a time for a 30-minute intro
-                call below, or write to me if that&rsquo;s easier.
+                <strong>Hiring a designer, or bringing AI into your product?</strong> Book a 30-minute intro call, or
+                write to me if that&rsquo;s easier.
               </p>
               <p className="contact-local">
                 <span className="contact-local-dot" aria-hidden="true" />
@@ -46,48 +46,21 @@ export default function ContactPage() {
             </div>
           </section>
 
-          {/* Booking happens here, not on another site: the call's details in the site's own type,
-              Cal.com's calendar beside them */}
-          <section className="wrap wrap--wide contact-cal" aria-labelledby="contact-book">
-            <div className="contact-cal-info">
-              <h2 id="contact-book" className="contact-heading">
-                Book an intro call
-              </h2>
-              <p className="contact-cal-desc">
-                Let&rsquo;s get to know each other. Tell me what you&rsquo;re trying to solve and I&rsquo;ll see where I
-                can help.
-              </p>
-              <ul className="contact-cal-facts">
-                <li>
-                  <Clock size={18} strokeWidth={1.75} aria-hidden />
-                  30 minutes
-                </li>
-                <li>
-                  <Video size={18} strokeWidth={1.75} aria-hidden />
-                  Google Meet
-                </li>
-                <li>
-                  <Globe size={18} strokeWidth={1.75} aria-hidden />
-                  Times shown in your time zone
-                </li>
-              </ul>
-              <p className="contact-cal-fallback">
-                Calendar not loading?{' '}
-                <a href={CAL_URL} target="_blank" rel="noreferrer noopener">
-                  Open it on Cal.com
-                </a>
-              </p>
-            </div>
-            <div className="contact-cal-box">
-              <CalBooking calLink={CAL_LINK} />
-            </div>
-          </section>
-
-          <section className="wrap wrap--wide contact-direct" aria-labelledby="contact-direct">
-            <h2 id="contact-direct" className="contact-heading">
-              Or reach me directly
-            </h2>
+          {/* Every way to reach me in one row, the call first: all of it visible without scrolling */}
+          <section className="wrap wrap--wide" aria-label="Ways to get in touch">
             <ul className="contact-channels">
+              <li>
+                <CalBookingLink calLink={CAL_LINK} href={CAL_URL} className="contact-channel contact-channel--call">
+                  <span className="contact-icon contact-icon--call" aria-hidden="true">
+                    <CalendarDays size={20} strokeWidth={1.75} />
+                  </span>
+                  <span className="contact-channel-text">
+                    <span className="contact-label">Book an intro call</span>
+                    <span className="contact-value">30 min on Google Meet</span>
+                  </span>
+                  <ArrowUpRight className="contact-arrow" size={20} strokeWidth={1.75} aria-hidden />
+                </CalBookingLink>
+              </li>
               {CHANNELS.map((channel) => (
                 <li key={channel.label}>
                   <a
