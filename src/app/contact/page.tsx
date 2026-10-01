@@ -4,11 +4,11 @@ import { ArrowUpRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import { PageTransition } from '@/components/PageTransition';
 import { KyivTime } from '@/components/KyivTime';
-import { EMAIL, INSTAGRAM_URL, LINKEDIN_URL, RESUME_URL } from '@/lib/site';
+import { CAL_URL, EMAIL, INSTAGRAM_URL, LINKEDIN_URL, RESUME_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Get in touch with Danylo Ivanov, product designer in Kyiv — email, LinkedIn, resume and Instagram.',
+  description: 'Get in touch with Danylo Ivanov, product designer in Kyiv: email, book a call, LinkedIn, resume and Instagram.',
 };
 
 const REASONS = [
@@ -21,6 +21,7 @@ const REASONS = [
 
 const CHANNELS = [
   { label: 'Email', value: EMAIL, href: `mailto:${EMAIL}`, external: false, icon: '/icons/gmail.svg' },
+  { label: 'Book a call', value: '30 minutes on Cal.com', href: CAL_URL, external: true, icon: '/icons/calendar.svg' },
   { label: 'LinkedIn', value: 'Full work history', href: LINKEDIN_URL, external: true, icon: '/icons/linkedin.svg' },
   { label: 'Resume', value: 'Opens in Google Drive', href: RESUME_URL, external: true, icon: '/icons/drive.svg' },
   { label: 'Instagram', value: 'Life outside of design', href: INSTAGRAM_URL, external: true, icon: '/icons/instagram.svg' },
@@ -39,7 +40,7 @@ export default function ContactPage() {
               <div className="contact-intro">
                 <h1 className="contact-title">Let&rsquo;s talk.</h1>
                 <p className="contact-lede">
-                  Email is the fastest way to reach me. Good reasons to write:
+                  Email is the fastest way to reach me, or grab 30&nbsp;minutes in my calendar. Good reasons to get in&nbsp;touch:
                 </p>
                 <dl className="contact-reasons">
                   {REASONS.map((reason) => (

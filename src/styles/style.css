@@ -354,9 +354,10 @@ html[data-boot] .nav {
   font-size: 20px;
   line-height: 1.5;
   color: var(--muted);
+  text-wrap: pretty;
 }
 
-/* Headline on two lines: "Creative mind," then "product brain." */
+/* Headline on three set lines: "I'm Danylo," / "a product designer" / "obsessed with craft." */
 .hero-line {
   display: block;
 }

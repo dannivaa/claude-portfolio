@@ -29,12 +29,14 @@ export default function Home() {
           <section className="hero">
             <div className="wrap wrap--wide hero-grid">
               <h1 className="hero-title">
-                <span className="hero-line">Creative mind,</span>
-                <span className="hero-line">product brain.</span>
+                <span className="hero-line">I&rsquo;m Danylo,</span>
+                <span className="hero-line">a product designer</span>
+                <span className="hero-line">obsessed with craft.</span>
               </h1>
               <p className="hero-lede">
-                <strong>Hi, I&rsquo;m Danik, and I just love making things.</strong> By day I&rsquo;m a product designer.
-                After hours I build my own mobile apps and side projects, write songs and play a lot of drums.
+                <strong>Monotone tasks kill the drive, and the creative process with&nbsp;it.</strong> So I hand the manual,
+                repetitive work to AI and give creativity and craft more room. After hours I build my own apps, write
+                songs and play a lot of drums.
               </p>
             </div>
           </section>

@@ -73,7 +73,7 @@ export async function renderHomeCard() {
             maxWidth: 960,
           }}
         >
-          Creative mind, product brain.
+          A product designer obsessed with craft.
         </div>
       </div>
     ),
