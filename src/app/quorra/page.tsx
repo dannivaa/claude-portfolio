@@ -121,17 +121,31 @@ export default function QuorraCaseStudy() {
               </CsVisuals>
             </CsSection>
 
-            <CsSection label="Design decisions" title="A completely new look, and the backlash that came with it.">
+            <CsSection label="Design decisions" title="The table they asked for, and the order view I pushed for instead.">
+              <CsText>
+                <p>
+                  The finance team&rsquo;s first request was a table, so that&rsquo;s where I started. Working through it
+                  showed the limit: a better table still left no room for a single order and no clear hierarchy inside
+                  it. A dedicated order view solved both, so I dropped the table and pushed back on the request.
+                </p>
+              </CsText>
               <CsPoints
                 items={[
                   { title: 'From table to order view', body: 'A dedicated space for the order in hand, not a row among dozens.' },
                   { title: 'A hierarchy that reads', body: 'Information regrouped and reordered, so the next thing to check is where you look.' },
-                  {
-                    title: 'Backlash, accepted',
-                    body: 'The new look was a big change and pushback was expected. A month of metrics settled it.',
-                  },
                 ]}
               />
+            </CsSection>
+
+            <CsSection label="Pushback" title="The finance team wasn’t happy with the new core flow.">
+              <CsText>
+                <p>
+                  The redesign changed the core flow, the part of the panel the team relied on most, and they pushed back
+                  on it. I defended it from the UX side and proposed a test instead of a debate: run it with a group of
+                  users for a while, then decide.
+                </p>
+                <p>A month of metrics settled it.</p>
+              </CsText>
             </CsSection>
 
             <CsSection label="Related work" title="Two more surfaces for a second exchange product.">
@@ -163,13 +177,13 @@ export default function QuorraCaseStudy() {
               <CsText>
                 <p>
                   Time to completion covers an order from start to finish: taken into work, every check done, funds sent
-                  correctly. Over the first month it came down by about 35%, measured through the product metric and
-                  backed by feedback from the finance team.
+                  correctly. Over the first month it came down by about 35% against the pre-launch baseline, measured
+                  through the product metric and backed by feedback from the finance team.
                 </p>
               </CsText>
               <CsPoints
                 items={[
-                  { title: '~35% faster completion', body: 'From taking an order into work to sending the funds.' },
+                  { title: '~35% faster completion', body: 'Against the pre-launch baseline, from taking an order into work to sending the funds.' },
                   { title: 'Fewer complaints', body: 'Qualitative: fewer complaints from the finance team about the panel.' },
                   { title: 'Tuned after launch', body: 'Small changes made a few sections easier to spot.' },
                 ]}
