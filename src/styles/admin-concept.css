@@ -24,18 +24,11 @@
     0 24px 48px -20px rgba(8, 64, 44, 0.28);
 }
 
-/* Card and hero: the whole window floats on the stage */
-.ac-stage .ac-stage-window {
-  position: absolute;
-  left: 10%;
-  top: 5.5%;
-  width: 80%;
-}
-
 /* ── Tokens and app frame ── */
 .ac-app,
 .ac-parts,
-.ac-modal-wrap {
+.ac-modal-wrap,
+.scq {
   --ink: #101413;
   --ink-2: #3c4441;
   --mute: #7b8480;
@@ -64,7 +57,8 @@
 
 .ac-app .num,
 .ac-parts .num,
-.ac-modal-wrap .num {
+.ac-modal-wrap .num,
+.scq .num {
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
 }
@@ -1787,9 +1781,10 @@
   50% { opacity: 0.35; }
 }
 
+/* Transform only, so the drift never triggers layout */
 @keyframes ac-drift {
-  0%, 100% { left: 59%; }
-  50% { left: 63%; }
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(12px); }
 }
 
 @media (prefers-reduced-motion: reduce) {

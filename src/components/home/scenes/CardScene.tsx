@@ -1,24 +1,29 @@
 'use client';
 
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 
-/** Scenes are authored on a 1200×600 frame and centred in a 16:9 card (1200×675). */
+/** Scenes are authored on a 1200×675 frame, the card's own 16:9. */
 const FRAME_W = 1200;
 const FRAME_H = 675;
 
 /**
- * A CSS motion loop for a work card. The markup is static, generated from the
- * design canvas; this scales it to the card's width and pauses every animation
- * together while the card is off screen, so the loop never drifts out of sync.
+ * Frame for a coded work-card scene. Scales the 1200×675 artboard to the card's width and
+ * pauses every animation together while the card is off screen, so the layers never drift
+ * apart. With reduced motion the loop holds on its opening frame.
  */
-export function MotionScene({
-  html,
+export function CardScene({
   label,
   stage,
+  css,
+  className,
+  children,
 }: {
-  html: string;
   label: string;
   stage: [edge: string, center: string];
+  /** The scene's @keyframes, from its timeline. */
+  css: string;
+  className?: string;
+  children: ReactNode;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState<number | null>(null);
@@ -45,12 +50,14 @@ export function MotionScene({
       aria-label={label}
       style={{ '--stage-edge': stage[0], '--stage-center': stage[1] } as CSSProperties}
     >
+      <style>{css}</style>
       <div
-        className="motion-scene"
+        className={`card-scene${className ? ` ${className}` : ''}`}
+        aria-hidden="true"
         data-paused={visible ? undefined : ''}
         style={{ width: FRAME_W, height: FRAME_H, transform: `scale(${scale ?? 0})`, opacity: scale === null ? 0 : 1 }}
       >
-        <div className="motion-frame" dangerouslySetInnerHTML={{ __html: html }} />
+        {children}
       </div>
     </div>
   );

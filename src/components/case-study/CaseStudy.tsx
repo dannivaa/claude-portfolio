@@ -1,4 +1,3 @@
-import '@/styles/work-motion.css';
 import { Children, isValidElement, type CSSProperties, type ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -6,12 +5,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { getNextProject, type Project } from '@/lib/projects';
 import { CsToc, type TocItem } from '@/components/case-study/CsToc';
 import { WorkVideo } from '@/components/home/WorkVideo';
-import { MotionScene } from '@/components/home/MotionScene';
-import { GUDFOOD_SCENE } from '@/components/home/motion/gudfood-scene';
-import { SKVOT_SCENE } from '@/components/home/motion/skvot-scene';
-import { AdminCard } from '@/components/case-study/admin/AdminConcept';
-
-const SCENES = { gudfood: GUDFOOD_SCENE, skvot: SKVOT_SCENE };
+import { ProjectScene } from '@/components/home/scenes';
 
 export type Screen = { src: string; alt: string; width: number; height: number };
 type Fact = { label: string; value: string };
@@ -105,9 +99,9 @@ export function CsHeroMedia({ project }: { project: Project }) {
       {'video' in card ? (
         <WorkVideo {...card.video} label={`${project.name}: ${project.summary}`} />
       ) : 'concept' in card ? (
-        <AdminCard label={`${project.name}: concept recreation of the admin panel's overview`} stage={project.stage} />
+        <ProjectScene project={project} label={`${project.name}: concept recreation of an order being checked and paid out`} />
       ) : (
-        <MotionScene html={SCENES[card.scene]} label={project.summary} stage={project.stage} />
+        <ProjectScene project={project} label={project.summary} />
       )}
     </div>
   );

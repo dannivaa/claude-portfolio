@@ -59,7 +59,7 @@ const NAV: { group?: string; items: { id: Page; label: string; icon: typeof Wall
 ];
 
 /** Two overlapping coin marks for a trading pair. */
-function Pair({ from, to }: { from: string; to: string }) {
+export function Pair({ from, to }: { from: string; to: string }) {
   return (
     <span className="ac-pair" aria-hidden="true">
       <span className={`ac-coin ac-coin--${from.toLowerCase()}`}>{from.slice(0, 1)}</span>
@@ -955,18 +955,6 @@ export const AdminMarketMaker = () =>
 export const AdminWallets = () =>
   frame('Concept: wallets with total custody, allocation by asset and a table of balances, trends and status', <WalletsScreen />);
 
-/** The work card and case study hero: the overview dashboard floating on the project's stage. */
-export function AdminCard({ label, stage }: { label: string; stage: [edge: string, center: string] }) {
-  return (
-    <div className="work-stage ac-stage" style={{ '--stage-edge': stage[0], '--stage-center': stage[1] } as CSSProperties}>
-      <div className="ac-stage-window">
-        <ScaledFrame width={W} height={H} label={label} className="ac-window">
-          <OverviewScreen />
-        </ScaledFrame>
-      </div>
-    </div>
-  );
-}
 
 /** Component specimens from the concept screens, in flowing HTML so the board reflows on mobile. */
 export function AdminParts() {

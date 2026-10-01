@@ -2,10 +2,7 @@ import Link from 'next/link';
 import ClickSpark from '@/components/ClickSpark';
 import { Cursor } from '@/components/ui/custom-cursor';
 import { WorkVideo } from '@/components/home/WorkVideo';
-import { MotionScene } from '@/components/home/MotionScene';
-import { GUDFOOD_SCENE } from '@/components/home/motion/gudfood-scene';
-import { SKVOT_SCENE } from '@/components/home/motion/skvot-scene';
-import { AdminCard } from '@/components/case-study/admin/AdminConcept';
+import { ProjectScene } from '@/components/home/scenes';
 import type { Project } from '@/lib/projects';
 
 // Cursor-chip icon: the viewBox is cropped to its stroke bounds (paths span 3–21 × 6–18,
@@ -17,11 +14,9 @@ const eyeIcon = (
   </svg>
 );
 
-const SCENES = { gudfood: GUDFOOD_SCENE, skvot: SKVOT_SCENE };
-
 const SCENE_LABELS = {
-  gudfood: 'GudFood: the order tracks to Delivered, then the rating sheet springs up and the order is rated five stars',
-  skvot: 'Skvot: a lecture alarm opens the weekly roadmap, the deadline task opens and the student extends the deadline',
+  gudfood: 'GudFood: the order is delivered, the rating sheet rises, five stars and two tags, and Done turns into a thank-you',
+  skvot: 'Skvot: the week roadmap, the task with a deadline opens, the switch moves to homework and the deadline gains a day',
 };
 
 export function WorkCard({ project }: { project: Project }) {
@@ -33,9 +28,9 @@ export function WorkCard({ project }: { project: Project }) {
           {'video' in card ? (
             <WorkVideo {...card.video} label={`${project.name}: ${project.summary}`} />
           ) : 'concept' in card ? (
-            <AdminCard label={`${project.name}: concept recreation of the admin panel's overview`} stage={project.stage} />
+            <ProjectScene project={project} label={`${project.name}: concept recreation of an order being checked and paid out`} />
           ) : (
-            <MotionScene html={SCENES[card.scene]} label={SCENE_LABELS[card.scene]} stage={project.stage} />
+            <ProjectScene project={project} label={SCENE_LABELS[card.scene]} />
           )}
         </Cursor>
       </ClickSpark>

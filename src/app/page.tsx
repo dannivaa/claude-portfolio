@@ -1,4 +1,3 @@
-import '@/styles/work-motion.css';
 import Navbar from '@/components/Navbar';
 import { PageTransition } from '@/components/PageTransition';
 import Footer from '@/components/Footer';

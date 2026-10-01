@@ -1,0 +1,700 @@
+/* Coded work-card scenes (GudFood, Skvot, Quorra), authored on a 1200×675 artboard and
+   scaled by CardScene. Static layout lives here; all motion comes from each scene's
+   timeline and touches only transform and opacity, so the loops stay on the GPU at 60fps. */
+.card-scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  transform-origin: 0 0;
+  font-family: var(--ff-geist), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.card-scene * {
+  box-sizing: border-box;
+}
+
+.card-scene[data-paused] *,
+.card-scene[data-paused] {
+  animation-play-state: paused !important;
+}
+
+/* Reduced motion: the loop holds on its opening frame */
+@media (prefers-reduced-motion: reduce) {
+  .card-scene * {
+    animation-play-state: paused !important;
+  }
+}
+
+/* ── GudFood ── */
+.scg {
+  --gf-ink: #212121;
+  --gf-muted: rgba(33, 33, 33, 0.6);
+  --gf-brand: #c44017;
+  --gf-line: #ece7e2;
+  color: var(--gf-ink);
+  letter-spacing: -0.02em;
+}
+
+.scg-cam {
+  position: absolute;
+  left: 370px;
+  top: 250px;
+  width: 460px;
+  transform-origin: 50% 50%;
+}
+
+.scg-card {
+  padding: 18px 20px 16px;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(33, 33, 33, 0.06),
+    0 30px 60px -28px rgba(140, 60, 10, 0.35);
+}
+
+.scg-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.scg-logo {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(33, 33, 33, 0.1);
+}
+
+.scg-name {
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 22px;
+}
+
+.scg-sub {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--gf-muted);
+}
+
+.scg-status {
+  position: relative;
+  width: 124px;
+  height: 30px;
+  margin-left: auto;
+}
+
+.scg-status > span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.scg-status img {
+  width: 14px;
+  height: 14px;
+}
+
+.scg-status-a {
+  background: #f2ebff;
+  color: #7c3bed;
+}
+
+.scg-status-b {
+  background: #e5f6ec;
+  color: #1a9b55;
+}
+
+.scg-track {
+  position: relative;
+  height: 44px;
+  margin: 22px 30px 0;
+}
+
+.scg-rail,
+.scg-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 5px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.scg-rail {
+  background: var(--gf-line);
+}
+
+.scg-fill {
+  background: var(--gf-brand);
+}
+
+.scg-step {
+  position: absolute;
+  top: 0;
+  width: 0;
+}
+
+.scg-step i {
+  position: absolute;
+  left: -6px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: inset 0 0 0 2px var(--gf-line);
+}
+
+.scg-step i.is-on {
+  background: var(--gf-brand);
+  box-shadow: 0 0 0 3px #fff;
+}
+
+.scg-step span {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  font-size: 12px;
+  white-space: nowrap;
+  color: var(--gf-muted);
+  transform: translateX(-50%);
+}
+
+.scg-eta {
+  position: relative;
+  height: 20px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--gf-muted);
+  text-align: center;
+}
+
+.scg-eta span {
+  position: absolute;
+  inset: 0;
+}
+
+.scg-eta b {
+  font-weight: 600;
+  color: var(--gf-ink);
+}
+
+.scg-sheet {
+  position: absolute;
+  left: 370px;
+  top: 248px;
+  width: 460px;
+  padding: 26px 24px 22px;
+  border-radius: 26px;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(33, 33, 33, 0.06),
+    0 40px 80px -30px rgba(140, 60, 10, 0.45);
+  text-align: center;
+  transform-origin: 50% 50%;
+}
+
+.scg-sheet-title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.scg-stars {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.scg-star {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.scg-star img {
+  position: absolute;
+  inset: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.scg-helper {
+  margin-top: 10px;
+  font-size: 15px;
+  color: var(--gf-muted);
+}
+
+.scg-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 18px 0 22px;
+}
+
+.scg-tags > span {
+  display: inline-flex;
+}
+
+.scg-tag {
+  position: relative;
+  display: inline-flex;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #f4f1ee;
+  font-size: 14px;
+  white-space: nowrap;
+  color: var(--gf-ink);
+}
+
+.scg-tag-on {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  background: #fdece5;
+  box-shadow: inset 0 0 0 1.5px var(--gf-brand);
+  color: var(--gf-brand);
+}
+
+.scg-done {
+  position: relative;
+  display: block;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--gf-brand);
+  color: #fff;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.scg-done > span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ── Skvot ── */
+/* Skvot's condensed display face, subset to Latin and Cyrillic */
+@font-face{font-family:'WM Oswald';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/oswald-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'WM Oswald';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/oswald-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'WM Oswald';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/oswald-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'WM Oswald';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/oswald-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+
+.scs {
+  --sk-ink: #0f0f0f;
+  --sk-muted: rgba(15, 15, 15, 0.55);
+  --sk-line: rgba(15, 15, 15, 0.1);
+  --sk-red: #e5251b;
+  --sk-purple: #8a1cdc;
+  --sk-lime: #d9ef0a;
+  color: var(--sk-ink);
+}
+
+.scs-panel {
+  position: absolute;
+  left: 374px;
+  width: 452px;
+  padding: 24px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(15, 15, 15, 0.06),
+    0 36px 70px -30px rgba(15, 15, 15, 0.35);
+  transform-origin: 50% 50%;
+}
+
+.scs-road {
+  top: 170px;
+}
+
+.scs-task {
+  top: 132px;
+}
+
+.scs-h,
+.scs-task-title,
+.scs-group {
+  font-family: 'WM Oswald', var(--ff-geist), sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+}
+
+.scs-h {
+  font-size: 30px;
+  line-height: 34px;
+}
+
+.scs-chips {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.scs-chips span {
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: #f2f2f2;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--sk-muted);
+}
+
+.scs-chips .is-on {
+  background: var(--sk-ink);
+  color: #fff;
+}
+
+.scs-group {
+  margin-top: 18px;
+  font-size: 16px;
+  color: var(--sk-purple);
+}
+
+.scs-rows {
+  margin-top: 8px;
+  list-style: none;
+}
+
+.scs-rows li {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 10px;
+  margin: 0 -10px;
+  border-radius: 12px;
+}
+
+.scs-rows li + li {
+  border-top: 1px solid var(--sk-line);
+  border-radius: 0;
+}
+
+.scs-row-hint {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: rgba(138, 28, 220, 0.08);
+}
+
+.scs-row-title {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.scs-row-title small {
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--sk-muted);
+}
+
+.scs-row-title small.is-red,
+.scs-row-time.is-red {
+  color: var(--sk-red);
+}
+
+.scs-row-time {
+  position: relative;
+  margin-left: auto;
+  font-weight: 600;
+  font-size: 13px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.scs-task-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scs-back {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: #f2f2f2;
+  font-size: 16px;
+}
+
+.scs-timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #fdeceb;
+  color: var(--sk-red);
+  font-weight: 600;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.scs-timer-val {
+  position: relative;
+  display: inline-block;
+  width: 64px;
+  height: 18px;
+}
+
+.scs-timer-val span {
+  position: absolute;
+  inset: 0;
+}
+
+.scs-timer-val .is-new {
+  color: var(--sk-ink);
+}
+
+.scs-task-title {
+  margin-top: 16px;
+  font-size: 26px;
+  line-height: 30px;
+}
+
+.scs-seg {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 404px;
+  height: 40px;
+  margin-top: 16px;
+  padding: 3px;
+  border-radius: 12px;
+  background: #f2f2f2;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.scs-seg-thumb {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 199px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--sk-ink);
+}
+
+.scs-seg-a,
+.scs-seg-b {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.scs-seg-a > span,
+.scs-seg-b > span {
+  grid-area: 1 / 1;
+}
+
+.scs-seg-dim {
+  color: var(--sk-muted);
+}
+
+.scs-seg-strong {
+  color: #fff;
+}
+
+.scs-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 18px 0 20px;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(15, 15, 15, 0.8);
+}
+
+.scs-body b {
+  font-weight: 600;
+  color: var(--sk-ink);
+}
+
+.scs-btn {
+  position: relative;
+  display: block;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--sk-ink);
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.scs-btn > span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.scs-btn-done {
+  border-radius: inherit;
+  background: var(--sk-lime);
+  color: var(--sk-ink);
+}
+
+/* ── Quorra (pieces come from the admin concept's own styles) ── */
+.scq {
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.scq-panel {
+  position: absolute;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(16, 24, 20, 0.07),
+    0 36px 70px -30px rgba(8, 64, 44, 0.4);
+  transform-origin: 50% 50%;
+}
+
+.scq-queue {
+  left: 425px;
+  top: 178px;
+  width: 350px;
+  padding: 4px 0 8px;
+  background: var(--tint);
+}
+
+.scq-tabs {
+  padding: 10px 12px 8px;
+}
+
+.scq-order {
+  left: 330px;
+  top: 150px;
+  width: 540px;
+  padding: 20px 22px 18px;
+}
+
+.scq-amount {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 6px;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 32px;
+  letter-spacing: -0.035em;
+}
+
+.scq-checks {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.scq-checks ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+}
+
+.scq-checks li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 500;
+}
+
+.scq-checks small {
+  margin-left: auto;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--mute);
+}
+
+.scq-tick {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1.5px var(--line-2);
+}
+
+.scq-tick .ac-tick {
+  position: absolute;
+  inset: 0;
+}
+
+.scq-bar {
+  margin-top: 16px;
+}
+
+.scq-modal {
+  left: 390px;
+  top: 128px;
+  width: 420px;
+  padding: 20px;
+  border-radius: 18px;
+}
+
+.scq-modal-amount {
+  margin: 16px 0 4px;
+  padding: 14px;
+}
+
+.scq .ac-otp .scq-otp-box {
+  position: relative;
+}
+
+.scq .ac-otp .scq-otp-digit {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  border-radius: inherit;
+  background: #f6fcf9;
+  box-shadow: inset 0 0 0 1.5px var(--go-2);
+}
+
+.scq-send {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.scq-send > span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
