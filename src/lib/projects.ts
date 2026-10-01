@@ -102,28 +102,6 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-/** Client work that can't be shown: a card on the homepage, no case study. */
-export type NdaWork = {
-  company: string;
-  title: string;
-  year: string;
-  /** Which silhouette the card's blurred placeholder takes. */
-  surface: 'mobile' | 'web';
-};
-
-export const NDA_WORK: Record<'homecrowd', NdaWork> = {
-  homecrowd: { company: 'Homecrowd', title: 'Card-linked rewards for college sports fans', year: '2026', surface: 'mobile' },
-};
-
-/** Homepage order, newest first: rows of two, the last card holding the left half. */
-export const WORK_ORDER = [
-  { kind: 'project', slug: 'safey' },
-  { kind: 'project', slug: 'quorra' },
-  { kind: 'nda', key: 'homecrowd' },
-  { kind: 'project', slug: 'gudfood' },
-  { kind: 'project', slug: 'skvot' },
-] as const;
-
 export function getProject(slug: ProjectSlug): Project {
   const project = PROJECTS.find((p) => p.slug === slug);
   if (!project) throw new Error(`Unknown project: ${slug}`);
