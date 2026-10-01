@@ -3,26 +3,10 @@
 import { useState, useRef, useEffect, ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
-const colorMap: Record<string, string> = {
-  blue:   '#3B82F6',
-  sky:    '#0EA5E9',
-  green:  '#22C55E',
-  purple: '#A855F7',
-  pink:   '#EC4899',
-  yellow: '#EAB308',
-  indigo: '#6366F1',
-  orange: '#F97316',
-  dark:   '#050c0f',
-};
-
-function resolveColor(cursorColor: string): string {
-  if (cursorColor.startsWith('#')) return cursorColor;
-  return colorMap[cursorColor] ?? colorMap.dark;
-}
-
 interface CursorProps {
   children: ReactNode;
   name?: string;
+  /** Chip background, any CSS colour. */
   cursorColor?: string;
   customSVG?: ReactNode;
   className?: string;
@@ -32,7 +16,7 @@ interface CursorProps {
 export function Cursor({
   children,
   name,
-  cursorColor = 'dark',
+  cursorColor = 'var(--ink)',
   customSVG,
   className,
   style,
@@ -40,7 +24,6 @@ export function Cursor({
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [mounted, setMounted] = useState(false);
   const [scaled, setScaled] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
   const exitTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   // Viewport coords: the chip is portaled to <body> with position: fixed,
@@ -52,29 +35,27 @@ export function Cursor({
   const handleMouseEnter = (e: React.MouseEvent) => {
     clearTimeout(exitTimer.current);
     setPos({ x: e.clientX, y: e.clientY });
-    setMounted(true);
+    // Re-entering before the exit finished: the chip is still mounted, scale it back in
+    if (mounted) setScaled(true);
+    else setMounted(true);
   };
 
   const handleMouseLeave = () => {
     setScaled(false);
-    exitTimer.current = setTimeout(() => setMounted(false), 200);
+    exitTimer.current = setTimeout(() => setMounted(false), 120);
   };
+
+  useEffect(() => () => clearTimeout(exitTimer.current), []);
 
   // Trigger scale-in on the frame after mount so the transition plays
   useEffect(() => {
-    if (mounted) {
-      const id = requestAnimationFrame(() => setScaled(true));
-      return () => cancelAnimationFrame(id);
-    } else {
-      setScaled(false);
-    }
+    if (!mounted) return;
+    const id = requestAnimationFrame(() => setScaled(true));
+    return () => cancelAnimationFrame(id);
   }, [mounted]);
-
-  const color = resolveColor(cursorColor);
 
   return (
     <div
-      ref={ref}
       className={className}
       style={{ position: 'relative', ...style }}
       onMouseMove={handleMouseMove}
@@ -84,37 +65,10 @@ export function Cursor({
       {children}
 
       {mounted && (name || customSVG) && createPortal(
-        <div
-          style={{
-            position: 'fixed',
-            left: pos.x,
-            top: pos.y,
-            transform: 'translate(0px, 28px)',
-            pointerEvents: 'none',
-            zIndex: 9999,
-          }}
-        >
+        <div className="cursor-chip-anchor" style={{ left: pos.x, top: pos.y }} aria-hidden="true">
           <div
-            style={{
-              backgroundColor: color,
-              color: '#ffffff',
-              padding: '6px 16px',
-              borderRadius: 9999,
-              fontSize: 14,
-              fontWeight: 500,
-              fontFamily: "'Fixel Text', sans-serif",
-              letterSpacing: '0.7px',
-              lineHeight: '20px',
-              whiteSpace: 'nowrap',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-              transform: scaled ? 'scale(1)' : 'scale(0)',
-              transformOrigin: 'left center',
-              transition: scaled
-                ? 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)'
-                : 'transform 0.18s ease-in',
-            }}
+            className={`cursor-chip${scaled ? ' is-in' : ''}`}
+            style={{ '--chip-bg': cursorColor } as React.CSSProperties}
           >
             {customSVG}
             {name}

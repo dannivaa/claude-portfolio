@@ -1,64 +1,51 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter, usePathname } from 'next/navigation';
-import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
-import { useLenis } from 'lenis/react';
+import type { MouseEvent } from 'react';
+import { usePathname } from 'next/navigation';
+import { PROJECTS } from '@/lib/projects';
 
-const NAV_SECTIONS = [
-  { id: 'projects', label: 'My work' },
-  { id: 'experience', label: 'Experience' },
-];
+// The homepage is the work page, and a case study is part of it
+const WORK_PATHS = new Set(['/', ...PROJECTS.map((p) => `/${p.slug}`)]);
 
 export default function Navbar() {
-  const router = useRouter();
   const pathname = usePathname();
-  const lenis = useLenis();
+
+  // Already home: jump to the top instead of a no-op navigation
+  const toTopIfHome = (e: MouseEvent) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      window.scrollTo(0, 0);
+      history.replaceState(null, '', '/');
+    }
+  };
 
   return (
-    <nav className="navbar">
-      <div className="navbar-left">
-        <Link
-          href="/"
-          className="navbar-avatar"
-          onClick={(e) => {
-            if (pathname === '/') {
-              e.preventDefault();
-              lenis?.scrollTo(0);
-            }
-          }}
-        >
-          <Image src="/images/pfp3d.png" alt="Avatar" width={3920} height={3920} sizes="60px" loading="eager" />
+    <header className="nav" style={{ viewTransitionName: 'site-header' }}>
+      <div className="wrap wrap--wide">
+        <Link href="/" className="nav-brand" onClick={toTopIfHome}>
+          <span className="nav-avatar">
+            <Image src="/images/pfp3d.png" alt="" width={3920} height={3920} sizes="40px" loading="eager" />
+          </span>
+          <span className="nav-name">
+            Danylo Ivanov
+            <span className="nav-role">Product designer</span>
+          </span>
         </Link>
-        <div className="navbar-links">
-          {NAV_SECTIONS.map(({ id, label }) => (
-            <Link
-              key={id}
-              href={`/#${id}`}
-              scroll={false}
-              onClick={(e) => {
-                if (pathname === '/') {
-                  e.preventDefault();
-                  lenis?.scrollTo(`#${id}`);
-                }
-              }}
-            >
-              {label}
-            </Link>
-          ))}
-        </div>
+
+        <nav className="nav-links" aria-label="Sections">
+          <Link href="/" aria-current={WORK_PATHS.has(pathname) ? 'page' : undefined} onClick={toTopIfHome}>
+            Work
+          </Link>
+          <Link href="/about" aria-current={pathname === '/about' ? 'page' : undefined}>
+            About
+          </Link>
+          <Link href="/contact" aria-current={pathname === '/contact' ? 'page' : undefined}>
+            Contact
+          </Link>
+        </nav>
       </div>
-      <div className="navbar-right">
-        <button className="navbar-cta" onClick={() => router.push('/contact')}>
-          <span className="navbar-cta-label">Let&apos;s talk</span>
-          <div className="navbar-cta-hover">
-            <span>Let&apos;s talk</span>
-            <ArrowRight size={20} />
-          </div>
-          <div className="navbar-cta-blob"></div>
-        </button>
-      </div>
-    </nav>
+    </header>
   );
 }
