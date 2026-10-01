@@ -509,8 +509,6 @@ html[data-boot] .nav {
   border-top: 1px solid var(--line);
 }
 
-
-
 /* Period · company | role · link: the role starts on the work grid's right column (50% + half the gutter) */
 .xp-row {
   display: grid;
@@ -526,7 +524,6 @@ html[data-boot] .nav {
   color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
-
 
 .xp-org {
   font-weight: 500;
@@ -639,7 +636,7 @@ html[data-boot] .nav {
 .about-playlist {
   display: block;
   width: 100%;
-  margin: 28px 0 24px;
+  margin-top: 28px;
   border: 0;
   border-radius: 12px;
 }
@@ -650,115 +647,6 @@ html[data-boot] .nav {
   line-height: 1.7;
   color: var(--muted);
   text-align: center;
-}
-
-/* ─── DRUMS ───────────────────────────────────────────────────────────────── */
-.drums {
-  padding: 32px;
-  border-radius: 28px;
-  background: var(--ink);
-  color: #fafafa;
-}
-
-.drums-title {
-  font-weight: 500;
-  font-size: 24px;
-  letter-spacing: -0.03em;
-}
-
-.drums-hint {
-  margin-top: 4px;
-  font-size: 15px;
-  color: rgba(250, 250, 250, 0.6);
-}
-
-.drums-pads {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 12px;
-  margin-top: 28px;
-}
-
-.drum-pad {
-  position: relative;
-  grid-column: span 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  aspect-ratio: 5 / 4;
-  padding: 14px;
-  border: 0;
-  border-radius: 20px;
-  background: #262626;
-  color: #fafafa;
-  font: inherit;
-  cursor: pointer;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-  transition:
-    transform 0.12s var(--ease),
-    background-color 0.35s var(--ease);
-}
-
-/* Two pads on the bottom row, centred under the three above */
-.drum-pad:nth-child(4) {
-  grid-column: 2 / span 2;
-}
-
-.drum-pad:hover {
-  background: #303030;
-}
-
-.drum-pad.is-hit {
-  transform: scale(0.93);
-  background: var(--pad-color);
-  transition-duration: 0.05s;
-}
-
-.drum-pad--kick {
-  --pad-color: #1f74b8;
-}
-
-.drum-pad--snare {
-  --pad-color: #c9530b;
-}
-
-.drum-pad--hat {
-  --pad-color: #d9a400;
-}
-
-.drum-pad--tom {
-  --pad-color: #2e9e6a;
-}
-
-.drum-pad--crash {
-  --pad-color: #7a1fc2;
-}
-
-.drum-pad-label {
-  font-weight: 500;
-  font-size: 15px;
-}
-
-.drum-pad-key {
-  align-self: flex-end;
-  min-width: 24px;
-  padding: 2px 6px;
-  border-radius: 6px;
-  background: rgba(250, 250, 250, 0.12);
-  font-size: 12px;
-  text-align: center;
-  color: rgba(250, 250, 250, 0.7);
-}
-
-/* No keyboard on touch screens, so no key hints */
-@media (hover: none) {
-  .drums-keys,
-  .drum-pad-key {
-    display: none;
-  }
 }
 
 /* ─── FOOTER ──────────────────────────────────────────────────────────────── */
@@ -999,15 +887,6 @@ html[data-boot] .nav {
     font-size: 32px;
   }
 
-
-
-
-
-
-  .drums {
-    padding: 24px;
-  }
-
   .site-footer {
     padding-top: 80px;
   }
@@ -1080,21 +959,6 @@ html[data-boot] .nav {
     padding-top: 32px;
   }
 
-  .drums {
-    padding: 20px;
-    border-radius: 24px;
-  }
-
-  .drums-pads {
-    gap: 8px;
-    margin-top: 20px;
-  }
-
-  .drum-pad {
-    padding: 10px;
-    border-radius: 16px;
-  }
-
   .hero-title,
   .nf-title {
     font-size: 48px;
@@ -1131,22 +995,9 @@ html[data-boot] .nav {
     gap: 2px;
   }
 
-
-
-
-
-
   .work-title {
     font-size: 17px;
   }
-
-
-
-
-
-
-
-
 
   .site-footer {
     padding: 56px 0 8px;

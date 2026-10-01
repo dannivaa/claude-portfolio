@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import { PageTransition } from '@/components/PageTransition';
 import Footer from '@/components/Footer';
-import { DrumKit } from '@/components/home/DrumKit';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -22,28 +21,28 @@ const EXPERIENCE: Job[] = [
     type: 'Part-time',
     period: '2025 — 2026',
     summary:
-      'Designed payments and KYC flows for mobile and web, with conversion work grounded in UX research, usability testing and validated hypotheses. Built and maintained the design system in Figma.',
+      'Designed payments and KYC flows for mobile and web. Drove conversion work through UX research, usability testing and validated hypotheses. Built and maintained the design system in Figma.',
   },
   {
     title: 'UX/UI Designer at Cake Alliance',
     type: 'Full-time',
     period: '2024 — 2025',
     summary:
-      'Designed mobile-first and responsive interfaces, backed by user research, competitive analysis and usability testing. Worked on the design system and handed off to developers in close collaboration with product.',
+      'Designed mobile-first and responsive interfaces, informed by user research, competitive analysis and usability testing. Worked on the design system and handed off to developers.',
   },
   {
     title: 'UX/UI Designer at GudFood Vdoma',
     type: 'Freelance',
     period: '2024',
     summary:
-      'Interviewed stakeholders and customers to find out why people didn’t order twice, then designed a feedback system and redesigned the core screens of a frozen-food delivery app shipping to 26 cities.',
+      'Interviewed stakeholders and customers to find out why people didn’t order twice. Designed a feedback system and redesigned the core screens of a frozen-food delivery app shipping to 26 cities.',
   },
   {
     title: 'UX/UI Designer at Skvot',
     type: 'Freelance',
     period: '2024',
     summary:
-      'Took the first mobile app for Ukraine’s largest pop-culture school from competitor research to UI, cutting homework submission after research showed students and lecturers wouldn’t use it on a phone.',
+      'Took the first mobile app for Ukraine’s largest pop-culture school from competitor research to UI. Cut homework submission after research showed students and lecturers wouldn’t use it on a phone.',
   },
 ];
 
@@ -108,18 +107,17 @@ export default function AboutPage() {
                 Music
               </h2>
               <p className="about-lede">
-                Music keeps me going. This is the playlist I build things to, and a kit you can play below.
+                Music keeps me going. This is the playlist I build things to.
               </p>
               <iframe
                 className="about-playlist"
                 title="Danylo’s go-to playlist for building things on Spotify"
                 src="https://open.spotify.com/embed/playlist/2l4YUpAEfKwN8IJsKLgYOY?utm_source=generator"
                 width="100%"
-                height="152"
+                height="480"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy"
               />
-              <DrumKit />
             </section>
 
             <p className="about-colophon">
