@@ -76,9 +76,9 @@ export default function AboutPage() {
                   build something that matters.
                 </p>
                 <p>
-                  Monotone tasks kill my drive, so I hand the manual, repetitive parts to AI and keep my time for the
-                  creative work. The same goes for the products I design: AI where it earns its place, and a lot of
-                  iterations until a flow feels obvious. You can see how that plays out in my <Link href="/">work</Link>.
+                  I automate the boring parts of my own work with AI and spend the time I get back on craft. The products
+                  I design get the same care: AI where it earns its place, and a lot of iterations until a flow feels
+                  obvious. You can see how that plays out in my <Link href="/">work</Link>.
                 </p>
                 <p>
                   Outside of design I play drums and write my own songs. I build my own apps, read constantly, books

@@ -32,9 +32,8 @@ export default function Home() {
                 <span className="hero-line">obsessed with craft.</span>
               </h1>
               <p className="hero-lede">
-                <strong>Monotone tasks kill my drive, and my creative work goes with&nbsp;it.</strong> I hand the manual,
-                repetitive parts to AI, which leaves more room for creativity and craft. After hours I build my own apps,
-                write songs and play a lot of drums.
+                <strong>I automate the boring parts.</strong> Manual, repetitive work goes to AI, which leaves more room
+                for creativity and craft. After hours I build my own apps, write songs and play a lot of&nbsp;drums.
               </p>
             </div>
           </section>
