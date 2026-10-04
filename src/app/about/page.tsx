@@ -11,36 +11,36 @@ export const metadata: Metadata = {
     'Danylo Ivanov, product designer in Kyiv: how he works, where he has worked, and the drums, songs, books and manga outside of design.',
 };
 
-type Job = { title: string; type: string; period: string; summary?: string };
+/** field: what the company does, so a recruiter knows the domain without looking it up. */
+type Job = { title: string; field: string; period: string; summary?: string };
 
-/** Years only: the list shows the path, not who I'm working for right now. */
+/** Matches the CV role for role and month for month: a mismatch reads as hiding something. */
 const EXPERIENCE: Job[] = [
-  { title: 'Product Designer at Homecrowd', type: 'Full-time', period: '2026' },
   {
     title: 'Product Designer at Lyxonn',
-    type: 'Part-time',
-    period: '2025 — 2026',
+    field: 'Crypto & fintech',
+    period: 'Sep 2025 — Present',
     summary:
       'Designed payments and KYC flows for mobile and web. Drove conversion work through UX research, usability testing and validated hypotheses. Built and maintained the design system in Figma.',
   },
   {
     title: 'UX/UI Designer at Cake Alliance',
-    type: 'Full-time',
-    period: '2024 — 2025',
+    field: 'Digital agency',
+    period: 'Jul 2024 — Sep 2025',
     summary:
       'Designed mobile-first and responsive interfaces, informed by user research, competitive analysis and usability testing. Worked on the design system and handed off to developers.',
   },
   {
     title: 'UX/UI Designer at GudFood Vdoma',
-    type: 'Freelance',
-    period: '2024',
+    field: 'Food delivery',
+    period: 'Sep — Nov 2024',
     summary:
       'Interviewed stakeholders and customers to find out why people didn’t order twice. Designed a feedback system and redesigned the core screens of a frozen-food delivery app shipping to 26 cities.',
   },
   {
     title: 'UX/UI Designer at Skvot',
-    type: 'Freelance',
-    period: '2024',
+    field: 'Edtech',
+    period: 'Feb — May 2024',
     summary:
       'Took the first mobile app for Ukraine’s largest pop-culture school from competitor research to UI. Cut homework submission after research showed students and lecturers wouldn’t use it on a phone.',
   },
@@ -76,9 +76,9 @@ export default function AboutPage() {
                   build something that matters.
                 </p>
                 <p>
-                  I automate the boring parts of my own work with AI and spend the time I get back on craft. The products
-                  I design get the same care: AI where it earns its place, and a lot of iterations until a flow feels
-                  obvious. You can see how that plays out in my <Link href="/">work</Link>.
+                  AI speeds up my groundwork, from research synthesis to prototypes and specs, so I can test more ideas
+                  and spend longer on the details that ship. I design products the same way: AI where it earns its
+                  place, and a lot of iterations until a flow feels obvious. You can see how that plays out in my <Link href="/">work</Link>.
                 </p>
                 <p>
                   Outside of design I play drums and write my own songs. I build my own apps, read constantly, books
@@ -97,7 +97,7 @@ export default function AboutPage() {
                     <p className="about-item-title">{job.title}</p>
                     {job.summary && <p className="about-item-summary">{job.summary}</p>}
                     <p className="about-item-meta">
-                      {job.type} <span aria-hidden="true">·</span> {job.period}
+                      {job.field} <span aria-hidden="true">·</span> {job.period}
                     </p>
                   </li>
                 ))}
