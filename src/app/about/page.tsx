@@ -11,20 +11,22 @@ export const metadata: Metadata = {
     'Danylo Ivanov, product designer in Kyiv: how he works, where he has worked, and the drums, songs, books and manga outside of design.',
 };
 
-type Job = { title: string; type: string; period: string; summary?: string };
+/** field: what the company does, so a recruiter knows the domain without looking it up. */
+type Job = { title: string; field: string; type: string; period: string; summary?: string };
 
-/** Years only: the list shows the path, not who I'm working for right now. */
+/** Matches the CV and LinkedIn role for role: a mismatch reads as hiding something. */
 const EXPERIENCE: Job[] = [
-  { title: 'Product Designer at Homecrowd', type: 'Full-time', period: '2026' },
   {
     title: 'Product Designer at Lyxonn',
+    field: 'Fintech',
     type: 'Part-time',
-    period: '2025 — 2026',
+    period: '2025 — Present',
     summary:
       'Designed payments and KYC flows for mobile and web. Drove conversion work through UX research, usability testing and validated hypotheses. Built and maintained the design system in Figma.',
   },
   {
     title: 'UX/UI Designer at Cake Alliance',
+    field: 'Digital agency',
     type: 'Full-time',
     period: '2024 — 2025',
     summary:
@@ -32,6 +34,7 @@ const EXPERIENCE: Job[] = [
   },
   {
     title: 'UX/UI Designer at GudFood Vdoma',
+    field: 'Food delivery',
     type: 'Freelance',
     period: '2024',
     summary:
@@ -39,6 +42,7 @@ const EXPERIENCE: Job[] = [
   },
   {
     title: 'UX/UI Designer at Skvot',
+    field: 'Edtech',
     type: 'Freelance',
     period: '2024',
     summary:
@@ -97,7 +101,8 @@ export default function AboutPage() {
                     <p className="about-item-title">{job.title}</p>
                     {job.summary && <p className="about-item-summary">{job.summary}</p>}
                     <p className="about-item-meta">
-                      {job.type} <span aria-hidden="true">·</span> {job.period}
+                      {job.field} <span aria-hidden="true">·</span> {job.type} <span aria-hidden="true">·</span>{' '}
+                      {job.period}
                     </p>
                   </li>
                 ))}

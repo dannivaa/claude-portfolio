@@ -536,6 +536,12 @@ html[data-boot] .nav {
   color: var(--muted);
 }
 
+/* Company field rides the name in the role line's muted grey, at body weight so the name still leads */
+.xp-org span {
+  font-weight: 400;
+  color: var(--muted);
+}
+
 /* ─── ABOUT PAGE ──────────────────────────────────────────────────────────── */
 /* One narrow reading column: photo, bio, then ruled lists the way a CV reads */
 .about {
