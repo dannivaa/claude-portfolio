@@ -5,14 +5,14 @@ import { WorkCard } from '@/components/home/WorkCard';
 import { PROJECTS } from '@/lib/projects';
 
 /** field: what the company does, so a recruiter knows the domain without looking it up. */
-type Job = { company: string; field: string; role: string; type: string; period: string };
+type Job = { company: string; field: string; role: string; period: string };
 
-/** Matches the CV and LinkedIn role for role: a mismatch reads as hiding something. */
+/** Matches the CV role for role and month for month: a mismatch reads as hiding something. */
 const EXPERIENCE: Job[] = [
-  { company: 'Lyxonn', field: 'Crypto & fintech', role: 'Product Designer', type: 'Part-time', period: '2025 – Present' },
-  { company: 'Cake Alliance', field: 'Digital agency', role: 'UX/UI Designer', type: 'Full-time', period: '2024 – 2025' },
-  { company: 'GudFood Vdoma', field: 'Food delivery', role: 'UX/UI Designer', type: 'Freelance', period: '2024' },
-  { company: 'Skvot', field: 'Edtech', role: 'UX/UI Designer', type: 'Freelance', period: '2024' },
+  { company: 'Lyxonn', field: 'Crypto & fintech', role: 'Product Designer', period: 'Sep 2025 – Present' },
+  { company: 'Cake Alliance', field: 'Digital agency', role: 'UX/UI Designer', period: 'Jul 2024 – Sep 2025' },
+  { company: 'GudFood Vdoma', field: 'Food delivery', role: 'UX/UI Designer', period: 'Sep – Nov 2024' },
+  { company: 'Skvot', field: 'Edtech', role: 'UX/UI Designer', period: 'Feb – May 2024' },
 ];
 
 export default function Home() {
@@ -62,9 +62,7 @@ export default function Home() {
                     <h3 className="xp-org">
                       {job.company} <span>· {job.field}</span>
                     </h3>
-                    <p className="xp-role">
-                      {job.role} <span>· {job.type}</span>
-                    </p>
+                    <p className="xp-role">{job.role}</p>
                   </li>
                 ))}
               </ol>

@@ -12,39 +12,35 @@ export const metadata: Metadata = {
 };
 
 /** field: what the company does, so a recruiter knows the domain without looking it up. */
-type Job = { title: string; field: string; type: string; period: string; summary?: string };
+type Job = { title: string; field: string; period: string; summary?: string };
 
-/** Matches the CV and LinkedIn role for role: a mismatch reads as hiding something. */
+/** Matches the CV role for role and month for month: a mismatch reads as hiding something. */
 const EXPERIENCE: Job[] = [
   {
     title: 'Product Designer at Lyxonn',
     field: 'Crypto & fintech',
-    type: 'Part-time',
-    period: '2025 — Present',
+    period: 'Sep 2025 — Present',
     summary:
       'Designed payments and KYC flows for mobile and web. Drove conversion work through UX research, usability testing and validated hypotheses. Built and maintained the design system in Figma.',
   },
   {
     title: 'UX/UI Designer at Cake Alliance',
     field: 'Digital agency',
-    type: 'Full-time',
-    period: '2024 — 2025',
+    period: 'Jul 2024 — Sep 2025',
     summary:
       'Designed mobile-first and responsive interfaces, informed by user research, competitive analysis and usability testing. Worked on the design system and handed off to developers.',
   },
   {
     title: 'UX/UI Designer at GudFood Vdoma',
     field: 'Food delivery',
-    type: 'Freelance',
-    period: '2024',
+    period: 'Sep — Nov 2024',
     summary:
       'Interviewed stakeholders and customers to find out why people didn’t order twice. Designed a feedback system and redesigned the core screens of a frozen-food delivery app shipping to 26 cities.',
   },
   {
     title: 'UX/UI Designer at Skvot',
     field: 'Edtech',
-    type: 'Freelance',
-    period: '2024',
+    period: 'Feb — May 2024',
     summary:
       'Took the first mobile app for Ukraine’s largest pop-culture school from competitor research to UI. Cut homework submission after research showed students and lecturers wouldn’t use it on a phone.',
   },
@@ -101,8 +97,7 @@ export default function AboutPage() {
                     <p className="about-item-title">{job.title}</p>
                     {job.summary && <p className="about-item-summary">{job.summary}</p>}
                     <p className="about-item-meta">
-                      {job.field} <span aria-hidden="true">·</span> {job.type} <span aria-hidden="true">·</span>{' '}
-                      {job.period}
+                      {job.field} <span aria-hidden="true">·</span> {job.period}
                     </p>
                   </li>
                 ))}
