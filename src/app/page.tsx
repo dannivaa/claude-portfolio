@@ -9,7 +9,7 @@ type Job = { company: string; field: string; role: string; type: string; period:
 
 /** Matches the CV and LinkedIn role for role: a mismatch reads as hiding something. */
 const EXPERIENCE: Job[] = [
-  { company: 'Lyxonn', field: 'Fintech', role: 'Product Designer', type: 'Part-time', period: '2025 – Present' },
+  { company: 'Lyxonn', field: 'Crypto & fintech', role: 'Product Designer', type: 'Part-time', period: '2025 – Present' },
   { company: 'Cake Alliance', field: 'Digital agency', role: 'UX/UI Designer', type: 'Full-time', period: '2024 – 2025' },
   { company: 'GudFood Vdoma', field: 'Food delivery', role: 'UX/UI Designer', type: 'Freelance', period: '2024' },
   { company: 'Skvot', field: 'Edtech', role: 'UX/UI Designer', type: 'Freelance', period: '2024' },

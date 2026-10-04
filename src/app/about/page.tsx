@@ -18,7 +18,7 @@ type Job = { title: string; field: string; type: string; period: string; summary
 const EXPERIENCE: Job[] = [
   {
     title: 'Product Designer at Lyxonn',
-    field: 'Fintech',
+    field: 'Crypto & fintech',
     type: 'Part-time',
     period: '2025 — Present',
     summary:
